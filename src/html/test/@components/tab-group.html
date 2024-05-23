@@ -1,0 +1,35 @@
+<template id="tabGroup">
+  <div class="test-tab-group">
+    <div class="tab-menu">
+      <div class="tab" v-for="tab in propstablist" v-html="tab.tit" 
+      :class="{'is-active': tab.cate === propstabnum}" 
+      @click="tabActive(tab.cate)"></div>
+    </div>
+    <slot></slot>
+    
+      
+  </div>
+</template>
+
+<script>
+  const tabGroup = {
+    
+    template: document.querySelector('#tabGroup').innerHTML,
+    props: {
+      propslogin: { type: Boolean },
+      propstabnum: { type: Number  },
+      propstechinfo: { type: Object  },
+      propstablist: { type: Array },
+    },
+    
+    setup(props, context) {
+      const tabActive = (id) => {
+        context.emit('tab-active', id)
+        // console.log(props)
+      }
+      return {
+        tabActive
+      }
+    },
+  }
+</script>

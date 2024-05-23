@@ -1,0 +1,486 @@
+/* stylelint-disable */
+
+/* 네스프레소 홈페이지 스타일 재정의 */
+.header-dummy {
+	box-sizing: border-box;
+	height: 130px;
+	padding: 50px 0 0;
+	position: relative;
+	background: #000;
+
+	.header {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 2002;
+		background: #000;
+
+		.inner {
+			height: 50px;
+		}
+	}
+
+	.nav {
+		background: #1b1b1b;
+	}
+
+	@include breakpoint('lg') {
+		height: 216px;
+		padding: 120px 0 20px;
+
+		.header {
+			.inner { @include size(100%,80px); }
+		}
+
+		.nav {
+			@include size(100%,76px);
+		}
+	}
+}
+
+#topDelBan {
+	@include size(100%, 4vh);
+	background-color: #03c75a;
+}
+
+// 장바구니 레이어 머신최대100%페이백 benefitMessage
+.g_cart_component_wrapper div {
+	h3 { font-size: 16px;}
+	p { font-size: 12px;}
+}
+
+// .Overlay { display: none !important; }
+
+html {
+	font-size: clamp(5px,1.302vw,10px);
+	// font-size: 16px;
+	scroll-behavior: smooth;
+
+	@include breakpoint('lg') {
+		font-size: 16px;
+	}
+
+	body.has-overlay {overflow-y: scroll !important;}
+}
+
+@media screen and (max-width: 767px) {
+	.Header__customer {
+		height: 100%;
+		font-size: 16px;
+	}
+
+	.QuantitySelector {
+		left: auto; right: 0;
+		font-size: 12px;
+	}
+
+	// 모바일 하단 footer accordion
+	.t-md-400-sl { font-size: 20px; }
+	.pt4 { padding-top: 1em; }
+
+	.pb7 { padding-bottom: 2em; }
+	.pt7 { padding-top: 2em; }
+
+	// 장바구니 레이어 제품명 title
+	.MiniBasketItem__title { font-size: .85em; }
+	// 모바일 헤더 머신 아이콘 위치
+	.Header__customer #at_maicondiv { top: -1rem !important; }
+
+	// 모바일 장바구니
+	// .QuantitySelector { position: absolute; left: 50%; top: -200%; transform: translate(-50%,0); }
+	.AddToBagButton__container { position: relative;}
+	.AddToBagButton__container > * { position: relative;}
+	.QuantitySelector {
+		position: absolute !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	}
+	// vote-result 모바일 장바구니 > 수량체크 레이아웃
+	.best-wrap .list .item1 .QuantitySelector { left: 10rem; }
+	.best-wrap .list .item2 .QuantitySelector { left: 0; }
+	.best-wrap .list .item3 .QuantitySelector { left: -10rem; }
+	.swiper .QuantitySelector { left: -50%; }
+} //mo
+
+@media screen and (max-width: 995px) {
+	//네이버페이 배너
+	.sticky-banner { font-size: 1.3rem; }
+	.LanguageSwitcher__button { font-size: .8em; }
+
+	.LoginDropdownButton__icon { font-size: 30px; }
+
+	.ResponsiveContainer { font-size: 16px; }
+
+	.HeaderNavigationBarItem__element { font-size: .8125em; }
+
+	.LanguageSwitcher__link { padding: 1em 15px; }
+
+	.LanguageSwitcher__button-icon { font-size: .75em; }
+
+	.MiniBasketButton, .MiniBasketButtonGuest { 
+		font-size: .875em; 
+		.MiniBasketButton__quantity { font-size: 1em; }
+	}
+	// .AddToBagButtonSmall__icon-sign { font-size: 2.7em;  }
+	.AddToBagButtonSmall__icon-sign { font-size: 1.4em;  }
+	.item-cart .util .AddToBagButtonSmall__quantity .AddToBagButtonSmall__icon-sign { font-size: 2.7em; }
+	.AddToBagButtonSmall { width: 3em; height: 3em; border-radius: 50%; font-size: 1em; }
+
+	.t-sm-400-caps, .t-sm-400-sl-caps {
+		font-size: 1em;
+		letter-spacing: -.0625rem;
+	}
+
+	footer { font-size: 16px; }
+
+	nb-footer-logos section.pb4 {
+		padding-bottom: .75em;
+		font-size: 16px;
+	}
+
+	nb-footer-logos li {
+		margin: .25em 1em .25em 0;
+	}
+
+	nb-footer-logos li > * {
+		padding: .25em;
+	}
+
+	nb-container .cb-inner {
+		margin: 0 2em;
+		font-size: 16px;
+	}
+
+	nb-footer-logos img, nb-footer-logos svg { height: 1.5em; }
+
+	.nb-informative-stripe__inner {
+		padding: .5em;
+		font-size: .75em;
+		letter-spacing: .0625em;
+	}
+
+	.nb-informative-stripe__inner nb-link > :first-of-type {
+		font-size: .75em;
+		letter-spacing: .0625em;
+	}
+
+	nb-link > * {
+		padding: .375em .375em .5em;
+		margin: -.375em -.375em -.5em;
+	}
+
+	nb-footer-links button::after {
+		right: 1em;
+		border-width: .375em .3125em 0;
+	}
+
+	nb-footer-links button, nb-footer-links h3 { padding: 1em 0; }
+
+	.t-xs-500, .t-xs-500-sl { font-size: .875em; }
+
+	nb-footer-bottom .big-links {
+		margin-bottom: .5em;
+		font-size: 16px;
+	}
+
+	nb-footer-bottom .cb-row:last-child {
+		padding: 2em 0 1.5em;
+		font-size: 16px;
+	}
+
+	nb-footer-bottom a {
+		padding-top: .5em;
+		padding-right: .625em;
+		padding-bottom: .5em;
+		padding-left: .625em;
+		margin-left: -.625em;
+		line-height: 1em;
+	}
+
+	nb-footer-bottom .socials p {
+		font-size: .875em;
+	}
+
+	nb-footer-bottom .socials a {
+		padding-right: .25em;
+		padding-left: .25em;
+	}
+
+	nb-footer-bottom .pagetop a {
+		padding-right: 2em;
+		line-height: 1.5em;
+	}
+
+	nb-footer-bottom .pagetop nb-icon { right: -1.5em; }
+
+	nb-footer-bottom .pagetop nb-icon svg {
+		width: 5.625em;
+		height: 1em;
+	}
+
+	nb-footer-bottom .copyright {
+		column-gap: .75em;
+	}
+
+	nb-footer-bottom .copyright a {
+		padding-right: .375em;
+		padding-left: .375em;
+		margin-right: -.375em;
+	}
+
+	nb-footer-bottom .copyright p {
+		font-size: .875em;
+	}
+
+	nb-footer-bottom .copyright nb-icon svg {
+		width: 5.625em;
+		height: 1.5em;
+	}
+
+	.KR_footer {
+		font-size: 16px;
+	}
+
+	.KR_footer li {
+		font-size: .75em;
+		line-height: 1.5;
+	}
+
+	.t-2xs-500, .t-2xs-500-sl {
+		font-size: .75em;
+		letter-spacing: .0625em;
+	}
+
+	.t-sm-400, .t-sm-400-sl {
+		font-size: 1em;
+	}
+
+	nb-dropdown .nb-dropdown__menu > div button {
+		padding: .75em 1em .75em 2.5em;
+	}
+
+	nb-dropdown .nb-dropdown__button span:last-child {
+		font-size: 1.2em;
+		line-height: 1em;
+	}
+
+	nb-footer-bottom nb-dropdown .nb-dropdown__button span:last-child {
+		padding-right: 1em;
+		letter-spacing: .1em;
+	}
+
+	.QuantitySelector { font-size: 16px; }
+
+	.QuantitySelector__popin {
+		width: 17.25em;
+		padding: .625em;
+		font-size: .75em;
+	}
+
+	.QuantitySelectorCustomField__container { font-size: 16px; }
+
+	.PredefinedQuantityList__quantity {
+		width: 3em;
+		height: 3em;
+		letter-spacing: .1em;
+	}
+
+	.TextField__label--compact {
+		top: 11px;
+		font-size: .7em;
+	}
+
+	.QuantitySelectorCustomField__button-ok {
+		padding: 0 .8em;
+		font-size: .8em;
+		line-height: 1.625em;
+	}
+
+	.MiniBasketDropdown__dropdown {
+		font-size: 16px;
+	}
+
+	.MiniBasketDropdown__header__title {
+		font-size: 1.25em;
+	}
+
+	.BenefitMessage { font-size: 1em; }
+
+	.MiniBasketItemCategory { font-size: 1em; }
+
+	.MiniBasketItem { font-size: 1em; }
+
+	.MiniBasketItem__title {
+		padding: 30px 0;
+		font-size: 1em;
+	}
+
+	.MiniBasketFooter { font-size: 16px; }
+
+	.MiniBasketTotalTable__creditSubTotal,
+	.MiniBasketTotalTable__creditSubTotal-value,
+	.MiniBasketTotalTable__creditTotalPrice,
+	.MiniBasketTotalTable__creditTotalPrice-value,
+	.MiniBasketTotalTable__totalPrice,
+	.MiniBasketTotalTable__totalPrice-value { font-size: 1em; }
+
+	.MiniBasketDropdown__content__title { font-size: 1em; }
+
+	// .QuantitySelectorCustomField__input { height: 7.9em; }
+
+	.MiniBasketItemPriceAndName__price { padding: 18px 0 0; }
+
+	.MiniBasketTotalTable__cartDisclamerMessage-label { font-size: .75em; }
+
+	.MiniBasketFooter__button-checkout { font-size: .875em; }
+
+	.MiniBasketDropdown__Link-reorder,
+	.MiniBasketDropdown__Link-shopping { font-size: .875em; }
+
+	nb-app-banner nb-cta { margin: 0 1em 0 -2em; }
+	nb-app-banner a nb-icon { right: .75em; }
+
+	nb-cta .button--navigation {
+		width: 3em;
+		height: 3em;
+	}
+
+	nb-app-banner nb-icon[icon='24/symbol/nespresso-monogram'] svg {
+		width: 2.5em;
+		height: 2.5em;
+		margin-right: 1em;
+	}
+
+	.t-xs-700, .t-xs-700-sl {
+		font-size: .875em;
+		letter-spacing: .0625em;
+	}
+
+	nb-app-banner a {
+		top: -.5em;
+		right: -1em;
+		bottom: -.5em;
+		left: 1em;
+	}
+
+	nb-app-banner .pt3 { padding-top: 2.2em; }
+
+	nb-app-banner .pb3 { padding-bottom: 2.2em; }
+
+	// .LoginDropdown__maxHeightIos {
+	// 	font-size: clamp(5px, 1.302vw, 10px);
+	// }
+
+	.TextField {
+		// .TextField__label--compact {
+		// 	font-size: clamp(5px, 1.302vw, 10px);
+		// }
+		// .TextField__label--compact { top: 22px; overflow: visible !important; }
+		.TextField__label-value { font-size: .8em; line-height: 1.2; }
+		.TextField__input--compact { font-size: 16px !important; }
+		&.TextField--active {
+			.TextField__label-value { font-size: 1.6em; }
+			.TextField__label--compact {
+				top: 8px;
+				font-size: .8rem !important;
+			}
+			.TextField__input--compact { font-size: 16px; }
+		}
+	}
+	
+	.LoginDropdown__title { font-size: .8em; }
+
+	.LoginDropdown__description {
+		margin: 20px 0 15px !important;
+		font-size: .75em;
+	}
+
+	.AccessibleLink.DefaultLink.LoginForm__forgotten-password {
+		margin: .5em 0;
+		font-size: .8em;
+	}
+
+	.ElementWithChevron.DefaultButton.LoginForm__submit.DefaultButton--regular,
+	.ElementWithChevron.DefaultButton.LoginDropdown__register-link.DefaultButton--regular { font-size: 1em }
+	
+
+	.LoginDropdown__register-description {
+		margin: 18px 0 !important;
+		font-size: .75em;
+	}
+
+	.LoginForm__remember-me { margin: 1em 0 1.2em; }
+
+	.InputCheckbox__label-value {
+		position: relative;
+		top: 4px;
+		font-size: 3.1em;
+	}
+
+	.DefaultButton__left-chevron,
+	.DefaultButton__right-chevron { font-size: .7em; }
+
+	.Glyph {
+		// &.Glyph--user.LoginDropdownButton__icon { font-size: 4.5em; }
+		&.Glyph--cross.LoginDropdownButton__icon { font-size: 3em; }
+	}
+
+	.LoggedInPanel__title {
+		font-size: .87em;
+		margin: 15px 0 25px;
+	}
+
+	.AccountMenu__sections {
+		padding: 15px 10px 15px 0;
+		font-size: .75em;
+	}
+
+	.LoggedInPanel__logout-button {
+		margin-top: 15px;
+		font-size: .75em;
+	}
+
+	.LoginDropdown__reorder-title {
+		margin: 20px 0;
+		font-size: .75em;
+	}
+
+	.AccessibleLink.ElementWithChevron.CheckoutActionButton { font-size: .8em; }
+
+	.MiniBasketButton__quantity { font-size: .75em; }
+
+} // max 995
+
+@media screen and (min-width: 768px) {
+	.QuantitySelectorCustomField__input { height: auto; }
+	.TextField .TextField__label--compact { top: .4em; }
+	.Header__customer { align-items: center;}
+} // 768 ~
+
+// pc일 때
+.Overlay { display: none !important; }
+.HeaderNavigationBarItem__element {font-size: .9rem;}
+.HeaderNavigationBarItem__title  { line-height: 1.2;}
+
+.MiniBasketItem__title { font-size: .85rem; }
+// pc 헤더 머신 아이콘 
+.Header__customer #at_maicondiv { margin-left: 18px; }
+
+#at_maiconbtn {
+	display: inline-flex !important;
+	justify-content: center;
+	transform: scale(.9);
+}
+
+@include breakpoint('lg') {
+	//네이버페이 배너
+	.sticky-banner { font-size: 14px; }
+
+	.AddToBagButtonSmall__icon-sign { font-size: 1.2em;}
+	// 동그라미 모양 장바구니 버튼. 투표결과 page 사용
+	.AddToBagButtonSmall { width: 60px; height: 60px; border-radius: 50%; font-size: 16px; }
+	.AddToBagButtonSmall > .AddToBagButtonSmall__quantity { top: 20px; }
+	.t-md-400-sl { font-size: 1.25rem; }
+}

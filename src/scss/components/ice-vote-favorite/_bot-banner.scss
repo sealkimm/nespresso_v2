@@ -1,0 +1,50 @@
+.bot-banner {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	position: relative;
+	z-index: 2;
+	background-color: #1a4c8b;
+	background-size: 100% auto;
+	color: #fff;
+	text-align: center;
+
+	@include size(100%,14rem);
+	@include font(2.2rem,var(--light));
+
+	.txt-main {
+		@include font(2.8rem,var(--medium));
+	}
+
+	.txt-sub {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+
+		&::after {
+			content: '';
+
+			@include sprite-x2($ice-vote-favorite-x2-arrow-cta);
+		}
+	}
+
+	@include breakpoint('lg') {
+		gap: 10px;
+		height: 100px;
+		font-size: 16px;
+
+		.txt-main { font-size: 24px; }
+
+		.txt-sub {
+			gap: 10px;
+
+			&::after {
+				@include sprite($ice-vote-favorite-arrow-cta);
+			}
+		}
+	}
+}

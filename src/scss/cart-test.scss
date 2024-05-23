@@ -1,0 +1,32 @@
+/* stylelint-disable */
+
+// Base
+@use './base';	// 로컬 작업용
+// @use './base/deploy';	// 배포용
+
+// helpers
+@import './helpers/variables';	
+// @import './helpers/functions';
+@import './helpers/mixins';	
+@import './helpers/media';
+
+
+// vendors - img sprite 해당 캠페인 파일만
+@import './vendors/ice2024-sprite';
+@import './vendors/ice2024-x2-sprite';
+
+// Components
+@import './components/ice2024';
+
+// Pages
+@import './pages/_cart-test.scss';
+
+// 네스프레소 홈페이지 관련 스타일 재정의
+@import './redefine/';
+
+:root {
+	--primary-color: #ec6a37;
+  --secondary-color: #FFD551;
+}
+
+

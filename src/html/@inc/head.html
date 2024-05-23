@@ -1,0 +1,64 @@
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, viewport-fit=contain">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	{% if pageInfo.title -%}
+	<title>{{pageInfo.title}} l 네스프레소 코리아</title>
+	{% else -%}
+	<title>네스프레소 코리아</title>
+	{% endif %}
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.13/vue.global.prod.min.js" integrity="sha512-dJsT2VK9KxehzZYzxzUELznI6velu2pAOwpkL5jj4TQQhTNGXZUMup7aLqgqNwVPSUF/Ntcdfla3BEcfC7zwCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-i18n/9.8.0/vue-i18n.global.prod.min.js" integrity="sha512-iuTznHiKb+kPjq1uSBJYCvGKBesn22/10VI7amhi0yz4yPx9lbqZOYFn7DqNZLCNOxRopqzFZwghBvuGhcz6Rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js" integrity="sha512-uzOpZ74myvXTYZ+mXUsPhDF+/iL/n32GDxdryI2SJronkEyKC8FBFRLiBQ7l7U/PTYebDbgTtbqTa6/vGtU23A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" integrity="sha512-A64Nik4Ql7/W/PJk2RNOmVyC/Chobn5TY08CiKEX50Sdw+33WTOpPJ/63bfWPl0hxiRv1trPs5prKO8CpA7VNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js" integrity="sha512-tQFq+nb/TSS648SDzWbSj0A67t4I1PFzR0U6Oi/yEYFyUbAIwg74SOCbr7t2X1Rn+iln7sYwfh8y+z7p0gddOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.nespresso.com/mosaic/_ui/img/favicon.ico"/>
+	{% if pageInfo.page == 'test' -%}
+	<link rel="stylesheet" href="{{base}}/css/test.css">
+	{{ include('test/@inc/gtm.html') }}
+	{{ include('test/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'cartTest' -%}
+	<link rel="stylesheet" href="{{base}}/css/ice2024.css">
+	{{ include('cart-test/@inc/gtm.html') }}
+	{{ include('cart-test/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'vote-favorite-coffee' -%}
+	<link rel="stylesheet" href="{{base}}/css/vote-favorite-coffee.css">
+	{{ include('vote-favorite-coffee/@inc/gtm.html') }}
+	{{ include('vote-favorite-coffee/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'vote-favorite-result' -%}
+	<link rel="stylesheet" href="{{base}}/css/vote-favorite-result.css">
+	{{ include('vote-favorite-result/@inc/gtm.html') }}
+	{{ include('vote-favorite-result/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'ice-vote-favorite' -%}
+	<link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css@1.1.0/dist/charts.min.css" />
+	<link rel="stylesheet" href="{{base}}/css/ice-vote-favorite.css">
+	{{ include('ice-vote-favorite/@inc/gtm.html') }}
+	{{ include('ice-vote-favorite/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'ice2024' -%}
+	<!-- <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/cfa9e7cb/www-widgetapi.vflset/www-widgetapi.js" async=""></script> -->
+	<link rel="stylesheet" href="{{base}}/css/ice2024.css">
+	{{ include('ice2024/@inc/gtm.html') }}
+	{{ include('ice2024/@inc/messages.html') }}
+	{% endif %}
+	{% if pageInfo.page == 'wonka-project' -%}
+	<link rel="stylesheet" href="{{base}}/css/wonka-project.css">
+	{{ include('wonka-project/@inc/gtm.html') }}
+	{{ include('wonka-project/@inc/messages.html') }}
+	{% endif %}
+
+	<!-- deploy minify styles -->
+	<style></style>
+</head>

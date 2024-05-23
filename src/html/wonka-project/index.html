@@ -1,0 +1,234 @@
+{%
+	set	pageInfo	=	{
+		lang:	'ko',
+		section:	'wonka-project',
+		page:	'wonka-project',
+		title:	'웡카 프로젝트',
+		order:	[0,0]
+	}
+%}
+{%	extends	'@inc/layout.html'	%}
+{%	block	content	%}
+
+<div class="wonka-project-wrap"	ref="container">
+	<!-- intro -->
+	<div class="intro-wrap">
+		<div class="main" v-lazy="(isMobile) ? bg.intro.main[0]	:	bg.intro.main[1]">
+			<span class="title" v-html="msg.intro.title" v-if="isMobile"></span>
+			<div class="title" v-html="msg.intro.titlePc" v-else></div>
+			<span class="sub" v-html="msg.intro.sub"></span>
+			<div class="star-area">
+				<span class="star star1"></span>
+				<span class="star star2"></span>
+				<span class="star star3"></span>
+				<span class="star star4"></span>
+				<span class="star star5"></span>
+			</div>
+		</div>
+		<div class="payback">
+			<span class="title" v-html="msg.intro.payback.title"></span>
+			<span class="sub" v-html="msg.intro.payback.sub" v-if="isMobile"></span>
+			<span class="sub" v-html="msg.intro.payback.subPc" v-else></span>
+		</div>
+	</div>
+
+	<!-- guide -->
+	<div class="guide-wrap" v-lazy="(isMobile) ? bg.guide[0]	:	bg.guide[1]">
+		<div class="title-area">
+			<span class="sub" v-html="msg.step.sub"></span>
+			<span class="title" v-html="msg.step.title"></span>
+		</div>
+		<div class="inner">
+			<div class="button-area">
+				<button v-for="item in msg.step.num" :key="item.id" :id="'step' + item.id"
+				@click="activeStep(item.id)" :class="{ 'is-active': activeStep === item.id }"
+				:ga_category="" :ga_action="" :ga_label=""
+				><span v-html="`${item.label}`"></span></button>
+			</div>
+		</div>
+		<div class="step-area">
+			<ul class="list">
+				<li v-for="item in msg.step.num" :key="item.id" :id="item.id">
+					<span class="label" v-html="`${item.label}`"></span>
+					<div class="tit" v-html="item.tit" v-if="isMobile"></div>
+					<div class="tit" v-html="(item.titPc) ? item.titPc : item.tit" v-else></div>
+					<p class="txt" v-html="item.txt" v-if="isMobile"></p>
+					<p class="txt"  v-html="(item.txtPc) ? item.txtPc : item.txt" v-else></p>
+					<span class="txt2" v-if="item.txt2 && isMobile" v-html="item.txt2"></span>
+					<span class="txt2" v-if="item.txt2Pc && !isMobile" v-html="item.txt2Pc"></span>
+					<button class="link" v-if="item.link" v-html="item.link"
+					:ga_category="" :ga_action="" :ga_label=""
+					></button>
+					<div class="note" v-if="item.note1">
+						<span v-html="item.note1"></span>
+						<span v-if="item.note2 && isMobile" v-html="item.note2"></span>
+						<span v-if="item.note2Pc && !isMobile" v-html="item.note2Pc"></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- qna -->
+	<div class="qna-wrap" v-lazy="(isMobile) ? bg.qna[0]	:	bg.qna[1]">
+		<div class="title-area">
+			<div class="sub" v-html="msg.qna.sub"></div>
+			<div class="title" v-html="msg.qna.title"></div>
+		</div>
+		<ul class="tabs-area">
+			<li class="tab">
+				<button :class="{ 'is-active': activeQnaTab >= 0 && activeQnaTab <= 4 }"
+					@click="activeQnaSlide(0)" v-html="msg.qna.tabs[0].tabtit"
+					:ga_category="" :ga_action="" :ga_label=""
+					></button>
+			</li>
+			<li class="tab">
+				<button :class="{ 'is-active': activeQnaTab == 5 }"
+					@click="activeQnaSlide(5)" v-html="msg.qna.tabs[1].tabtit"
+					:ga_category="" :ga_action="" :ga_label=""
+					></button>
+			</li>
+			<li class="tab">
+				<button :class="{ 'is-active': activeQnaTab == 6 }"
+					@click="activeQnaSlide(6)" v-html="msg.qna.tabs[2].tabtit"
+					:ga_category="" :ga_action="" :ga_label=""
+					></button>
+			</li>
+			<li class="tab">
+				<button :class="{ 'is-active': activeQnaTab == 7 }"
+					@click="activeQnaSlide(7)" v-html="msg.qna.tabs[3].tabtit"
+					:ga_category="" :ga_action="" :ga_label=""
+					></button>
+			</li>
+		</ul>
+		<div class="swiper qna-swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide qna-item" v-for="(page, index) in msg.qna.pages" :key="page.num">
+					<div class="wrap">
+						<div class="qa-wrap qa-wrap1">
+							<div class="quest">
+								<div class="txt" v-html="page.cont1.quest"></div>
+							</div>
+							<div class="answer"><p v-html="page.cont1.answer"></p></div>
+						</div>
+						<div class="qa-wrap qa-wrap2" v-if="page.cont2.quest">
+							<div class="quest">
+								<div class="txt" v-html="page.cont2.quest"></div>
+							</div>
+							<div class="answer"><p v-html="page.cont2.answer"></p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev" ga_category="" ga_action="" ga_label=""></div>
+			<div class="swiper-button-next" ga_category="" ga_action="" ga_label=""></div>
+		</div>
+	</div>
+
+	<!-- pro -->
+	<div class="pro-wrap" v-lazy="(isMobile) ? bg.pro[0]	:	bg.pro[1]">
+		<div class="title-area">
+			<div class="sub" v-html="msg.pro.sub"></div>
+			<div class="title" v-html="msg.pro.title"></div>
+		</div>
+		<ul class="tabs-area">
+			<li class="tab" :class="{'is-active': proContentNum == item.id}" v-for="item in msg.pro.tabs" :key="item.id" @click="activePro(item.id)">
+				<button v-html="item.tabtit"
+				:ga_category="" :ga_action="" :ga_label=""
+				></button>
+			</li>
+		</ul>
+		
+		<!-- original -->
+		<div class="tab-content" v-show="proContentNum === 0">
+			<div class="swiper pro-swiper">
+				<div class="swiper-wrapper" v-if="isMobile">
+					<div class="swiper-slide pro-item" v-for="(item, index) in msg.pro.ori" :key="item.num">
+						<div class="wrap">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.namePc" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-wrapper" v-else>
+					<div class="swiper-slide pro-item">
+						<div class="wrap" v-for="(item, index) in msg.pro.ori.slice(0,3)" :key="item.num">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.namePc" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+					<div class="swiper-slide pro-item">
+						<div class="wrap" v-for="(item, index) in msg.pro.ori.slice(3,5)" :key="item.num">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.namePc" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"
+					ga_category="" ga_action="" ga_label=""
+				></div>
+				<div class="swiper-button-next"
+				ga_category="" ga_action="" ga_label=""
+				></div>
+			</div>
+		</div>
+		<!-- acc -->
+		<div class="tab-content" v-show="proContentNum === 1">
+			<div class="swiper pro-swiper">
+				<div class="swiper-wrapper" v-if="isMobile">
+					<div class="swiper-slide pro-item" v-for="(item, index) in msg.pro.acc" :key="item.num">
+						<div class="wrap">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.name" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-wrapper" v-else>
+					<div class="swiper-slide pro-item">
+						<div class="wrap" v-for="(item, index) in msg.pro.acc.slice(0,3)" :key="item.num">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.name" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+					<div class="swiper-slide pro-item">
+						<div class="wrap" v-for="(item, index) in msg.pro.acc.slice(3,5)" :key="item.num">
+							<div class="img"><img :src=item.imgUrl.mo></div>
+							<p class="name" v-html="item.name" v-if="isMobile"></p>
+							<p class="name" v-html="item.name" v-else></p>
+							<span class="price" v-html="item.price"></span>
+							<a class="buy" :href="" v-html="item.buy"></a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"
+				ga_category="" ga_action="" ga_label=""
+				></div>
+				<div class="swiper-button-next"
+				ga_category="" ga_action="" ga_label=""
+				></div>
+			</div>
+		</div>
+	</div>
+
+	{{	include('../wonka-project/@components/content-tab-group.html')	}}
+</div>
+{{	include('../wonka-project/@inc/vue.html')	}}
+{%	endblock	%}

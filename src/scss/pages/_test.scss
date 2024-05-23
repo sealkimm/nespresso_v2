@@ -1,0 +1,43 @@
+.test-wrap {
+	.dummy-wrap {
+		padding: 3rem 3rem 10rem;
+
+		.title {
+			@include font(5.5rem, $bold, 1.3);
+
+			em { //국문 숫자
+				font-size: 5.8rem;
+			}
+
+			&:lang(en) { //영문
+				font-size: 6rem;
+			}
+
+			// pc
+			@include breakpoint('lg') {
+				font-size: 30px;
+
+
+				em { font-size: 34px; }
+
+				&:lang(en) { //pc-영문
+					font-size: 32px;
+				}
+			}
+		}
+
+		.list {
+			margin-top: 2rem;
+			font-size: 2rem;
+		}
+
+		@include breakpoint('lg') {
+			padding: 30px 30px 100px;
+
+			.list {
+				margin-top: 80px;
+				font-size: 22px;
+			}
+		}
+	}
+}

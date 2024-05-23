@@ -1,0 +1,182 @@
+{%
+	set	pageInfo	=	{
+		lang:	'en',
+		section:	'vote-favorite-coffee',
+		page:	'vote-favorite-coffee',
+		title:	'VOTE FOR YOUR FAVORITE COFFEE',
+		order:	[0,0]
+	}
+%}
+{%	extends	'@inc/layout.html'	%}
+{%	block	content	%}
+<button type="button" class="test-login" v-if="isLogin" @click="testLogout">로그아웃</button>
+<!-- <button type="button" class="test-login" v-else @click="testLogin">로그인</button> -->
+<div class="vote-favorite-coffee-wrap"	ref="container">
+	<div	class="intro-wrap">
+		<div	class="trophy" v-lazy="(isMobile) ? bg.intro.trophy[0]	:	bg.intro.trophy[1]"></div>
+		<div	class="curtain"	v-lazy="(isMobile) ? bg.intro.curtain[0] :	bg.intro.curtain[1]">
+			<div	class="frame"	v-lazy="(isMobile) ? bg.intro.frame[0] :	bg.intro.frame[1]">
+				<div	class="intro-tit">
+					<span	class="main"></span>
+					<span	class="period" v-html="msg.intro.period"></span>
+				</div>
+			</div>
+		</div>
+		<div class="event"	v-lazy="(isMobile)	?	bg.intro.event[0]	:	bg.intro.event[1]">
+			<div class="event-item">
+				<span	class="label"	v-html="msg.intro.event1.label"></span>
+				<span	class="tit"	v-html="msg.intro.event1.tit"></span>
+				<span	class="desc" v-if="isMobile"	v-html="msg.intro.event1.desc"></span>
+				<span	class="desc" v-else	v-html="msg.intro.event1.descPc"></span>
+				<span	class="period" v-html="msg.intro.event1.period"></span>
+			</div>
+			<div class="event-item">
+				<span	class="label"	v-html="msg.intro.event2.label"></span>
+				<span	class="tit"	v-html="msg.intro.event2.tit"></span>
+				<span	class="desc" v-if="isMobile"	v-html="msg.intro.event2.desc"></span>
+				<span	class="desc" v-else	v-html="msg.intro.event2.descPc"></span>
+				<span	class="period" v-html="msg.intro.event2.period"></span>
+				<span class="icon"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="vote-main-wrap">
+		<div class="caution-layer" :class="{'is-show': loginAlertLayer}">
+			<div class="layer alert">
+				<div class="body">
+					<div class="txt-box">
+						<div class="main" v-html="msg.layerpop.loginAlert.tit.main"></div>
+						<div class="sub" v-html="msg.layerpop.loginAlert.tit.sub"></div>
+					</div>
+					<!-- <a href="javascript:document.querySelector('#ta-login-dropdown--not-logged').click();document.querySelector('.caution-layer').classList.remove('is-show')" class="btn gradient" v-html="msg.layerpop.loginAlert.ctaBtn.txt" :ga_category="msg.layerpop.loginAlert.ctaBtn.gaCategory" :ga_action="msg.layerpop.loginAlert.ctaBtn.gaAction" :ga_label="msg.layerpop.loginAlert.ctaBtn.gaLabel"></a> -->
+					<button type="button" class="btn gradient" @click="testLogin" v-html="msg.layerpop.loginAlert.ctaBtn.txt" :ga_category="msg.layerpop.loginAlert.ctaBtn.gaCategory" :ga_action="msg.layerpop.loginAlert.ctaBtn.gaAction" :ga_label="msg.layerpop.loginAlert.ctaBtn.gaLabel"></button>
+				</div>
+			</div>
+		</div>
+		<div class="vote-wrap">
+			<div class="title" :class="{ 'vl': mainContentNum === 'vertuo', 'ol': mainContentNum === 'original' }"></div>
+			
+			<content-tab-group 
+				:propstabnum="mainContentNum"
+				:propstechinfo="techInfo"
+				:propscontenttabinit="{...contentTabInit}"
+				:propstablist="msg.mainTab"
+				@tab-active="mainTabUpdate">
+				<div class="tab-cont-wrap" v-show="mainContentNum === 'vertuo'">
+					<div class="vote-capsule-list">
+						<div class="vote-item vertuo" v-for="item in msg.capsules.vl" :data-void-id="item.voteId" :key="item.voteId" @click="selectCapsule(item.cate, item.voteId, item.voteName, $event)">
+							<div class="capsule">
+								<span class="heart" v-lazy="bg.heart"></span>
+								<span class="img" v-lazy="bg.capsules.vl[item.id - 1].img"></span>
+							</div>
+							<span class="name" v-html="item.name"></span>
+							<label :for="item.voteId" class="radio-only like" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel">
+								<input type="radio" :id="item.voteId" :name="item.cate" :value="item.voteId" v-model="selectVlId">
+								<span></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="tab-cont-wrap" v-show="mainContentNum === 'original'">
+					<div class="vote-capsule-list">
+						<div class="vote-item original" v-for="item in msg.capsules.ol" :data-void-id="item.voteId" :key="item.voteId" @click="selectCapsule(item.cate, item.voteId, item.voteName, $event)">
+							<div class="capsule">
+								<span class="heart" v-lazy="bg.heart"></span>
+								<span class="img" v-lazy="bg.capsules.ol[item.id - 1].img"></span>
+							</div>
+							<span class="name" v-html="item.name"></span>
+							<label :for="item.voteId" class="radio-only like" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel">
+								<input type="radio" :id="item.voteId" :name="item.cate" :value="item.voteId" v-model="selectOlId">
+								<span></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</content-tab-group>
+		</div>
+		<div class="review-wrap">
+			<div class="title review"></div>
+			<div class="input-cont">
+				<textarea :placeholder="msg.review.placeholder.vl" v-model="vlReview" @input="watchVlTxt($event)" v-show="mainContentNum === 'vertuo'" :disabled="selectVlId == '' || vlBtnCount > 0"></textarea>
+				<textarea :placeholder="msg.review.placeholder.ol" v-model="olReview" @input="watchOlTxt($event)" v-show="mainContentNum === 'original'" :disabled="selectOlId == '' || olBtnCount > 0"></textarea>
+			</div>
+			<div class="privacy-cont">
+				<div class="tit" v-html="msg.review.privacyTit"></div>
+				<div class="item" v-for="item in msg.review.privacy" :key="item.id">
+					<div class="num" v-html="`${item.id}.`"></div>
+					<div class="txt" v-html="item.txt" v-if="isMobile"></div>
+					<div class="txt" v-html="item.txtPc" v-else></div>
+				</div>
+			</div>
+			<label class="agree-cont" for="vlAgreeOk" @change="agreeCheck" v-show="mainContentNum === 'vertuo'">
+				<div v-html="msg.review.agree.txt"></div>
+				<div class="checkbox-only agree">
+					<input type="checkbox" id="vlAgreeOk" name="vlAgreeOk" :disabled="!vlReviewActive">
+					<span></span>
+				</div>
+			</label>
+
+			<label class="agree-cont" for="olAgreeOk" @change="agreeCheck" v-show="mainContentNum === 'original'">
+				<div v-html="msg.review.agree.txt"></div>
+				<div class="checkbox-only agree">
+					<input type="checkbox" id="olAgreeOk" name="olAgreeOk" :disabled="!olReviewActive">
+					<span></span>
+				</div>
+			</label>
+			
+			<div class="btn-group agreement">
+				<button 
+				type="button"
+				class="btn large gradient"
+				v-html="msg.review.ctaReqBtn.txt"
+				@click="voteSubmit(mainContentNum, mainContentNum === 'vertuo' ? selectVlId : selectOlId, mainContentNum === 'vertuo' ? selectVlName : selectOlName)"
+				:disabled="mainContentNum === 'vertuo' ? vlBtnDisbled : olBtnDisbled">
+				</button>
+			</div>
+			<div class="benefit-cont">
+				<div class="txt" v-html="msg.review.benefit.txt" v-if="isMobile"></div>
+				<div class="txt" v-html="msg.review.benefit.txtPc" v-else></div>
+			</div>
+			<div class="btn-group cta">
+				<a :href="msg.review.ctaBtn.vl.url" target="_blank" v-html="msg.review.ctaBtn.vl.txt" :ga_category="msg.review.ctaBtn.vl.gaCategory" :ga_action="msg.review.ctaBtn.vl.gaAction" :ga_label="msg.review.ctaBtn.vl.gaLabel" class="btn cta" v-if="mainContentNum === 'vertuo'"></a>
+				<a :href="msg.review.ctaBtn.ol.url" target="_blank" v-html="msg.review.ctaBtn.ol.txt" :ga_category="msg.review.ctaBtn.ol.gaCategory" :ga_action="msg.review.ctaBtn.ol.gaAction" :ga_label="msg.review.ctaBtn.ol.gaLabel" class="btn cta" v-else></a>
+			</div>
+		</div>
+
+		<dl class="caution-wrap" v-lazy="(isMobile) ? bg.cautionLine[0] : bg.cautionLine[1]" v-if="isMobile">
+			<dt class="tit" v-html="msg.contentCaution.tit"></dt>
+			<dd class="item" v-for="item in msg.contentCaution.cont" v-html="item.txt" :key="item.id"></dd>
+		</dl>
+		<dl class="caution-wrap" v-lazy="(isMobile) ? bg.cautionLine[0] : bg.cautionLine[1]" v-else>
+			<dt class="tit" v-html="msg.contentCaution.tit"></dt>
+			<dd class="item" v-for="item in msg.contentCaution.cont" v-html="item.txtPc" :key="item.id"></dd>
+		</dl>
+
+	</div>
+	<a href="#" class="bot-banner" target="_blank" v-lazy="(isMobile) ? bg.botBanner[0] : bg.botBanner[1]" :ga_category="msg.botBanner.gaCategory" :ga_action="msg.botBanner.gaAction" :ga_label="msg.botBanner.gaLabel">
+		<span class="txt-main" v-html="msg.botBanner.txt1"></span>
+    <span class="txt-sub" v-html="msg.botBanner.txt2" v-if="msg.botBanner.txt2 != ''"></span>
+	</a>
+
+	<div class="layer-wrap" :class="{'is-show': googleFormsLayer}">
+		<div class="layer alert">
+			<div class="body">
+				<div class="txt-box">
+					<div class="main" v-html="msg.layerpop.gotoForms.complateTit"></div>
+					<button type="button" class="goto-tab" v-html="msg.layerpop.gotoForms.btnVl" v-show="mainContentNum === 'vertuo' && olBtnCount === 0 " @click="changeTab('original');"></button>
+					<button type="button" class="goto-tab" v-html="msg.layerpop.gotoForms.btnOl" v-show="mainContentNum === 'original' && vlBtnCount === 0" @click="changeTab('vertuo');"></button>
+					<div class="main" v-html="msg.layerpop.gotoForms.tit"></div>
+				</div>
+				<a :href="msg.layerpop.gotoForms.ctaBtn.url" target="_blank" class="btn gradient" v-html="msg.layerpop.gotoForms.ctaBtn.txt" :ga_category="msg.layerpop.gotoForms.ctaBtn.gaCategory" :ga_action="msg.layerpop.gotoForms.ctaBtn.gaAction" :ga_label="msg.layerpop.gotoForms.ctaBtn.gaLabel" @click="closeLayer(msg.layerpop.gotoForms.type)"></a>
+				<button type="button" class="btn-close" @click="closeLayer(msg.layerpop.gotoForms.type)"></button>
+			</div>
+		</div>
+	</div>
+
+
+
+	{{	include('../vote-favorite-coffee/@components/content-tab-group.html')	}}
+</div>
+{{	include('../vote-favorite-coffee/@inc/vue.html')	}}
+{%	endblock	%}

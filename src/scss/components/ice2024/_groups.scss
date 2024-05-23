@@ -1,0 +1,11 @@
+.btn-group {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&.col {
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 2rem;
+	}
+}

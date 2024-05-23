@@ -1,0 +1,73 @@
+{
+  "type": "PersonInfo",
+  "memberNumber": "1860788",
+  "email": "nestestkr+mr2@gmail.com",
+  "checkoutPreferences": {
+      "defaultDeliveryAddress": "5126477",
+      "defaultBillingAddress": "2712299",
+      "expressCheckout": false
+  },
+  "currency": "KRW",
+  "tariff": "1",
+  "taxSystem": "7",
+  "clubCredit": 0,
+  "preferredTechnology": "nesclub2.kr.b2c/machineTechno/original",
+  "enabledTechnologies": [
+      "nesclub2.kr.b2c/machineTechno/original"
+  ],
+  "orderHistorySize": 3,
+  "lastOrderDate": "2023-06-19T15:25:11.000+02:00",
+  "clubMemberStatus": true,
+  "eligibleForClubMembership": false,
+  "recaptureConsent": false,
+  "optIns": [],
+  "limitedProducts": {
+      "erp.kr.b2c/prod/106851": 40,
+      "erp.kr.b2c/prod/10670": 20,
+      "erp.kr.b2c/prod/10637": 20
+  },
+  "extraProductSelections": [
+      "64",
+      "2900",
+      "2700"
+  ],
+  "productSelections": [
+      "64",
+      "2900",
+      "2700"
+  ],
+  "status": "Active",
+  "languageOfCorrespondence": "en",
+  "signupDate": "2017-07-04",
+  "persistentBasketLoaded": true,
+  "referralCode": "RWC967",
+  "selectionIDs": [
+      "5942",
+      "32638",
+      "35575",
+      "36832",
+      "36838",
+      "37554",
+      "38039",
+      "38680",
+      "38816",
+      "39390",
+      "39423"
+  ],
+  "firstName": "MR2",
+  "lastName": "Test",
+  "userGroups": {
+      "userGroups": [
+          "Assign to Market Segment 32638",
+          "Assign to Market Segment 38711",
+          "Assign to Market Segment 35575",
+          "Assign to Market Segment 38039",
+          "Assign to Market Segment Seoul restrict",
+          "Assign to Market Segment 39390",
+          "KR_5942_Eligible",
+          "Original Recycling Shoppingbag Market Segment",
+          "Assign to Market Segment logged in B2C user",
+          "Assign to Market Segment 39481"
+      ]
+  }
+}

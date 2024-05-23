@@ -1,0 +1,495 @@
+<script>
+  const {
+    createApp,
+    ref,
+    toRefs,
+    computed,
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    watchEffect,
+    onUpdated,
+    watch,
+    reactive,
+    component,
+  } = Vue;
+  const locale = document.querySelector('html').getAttribute('lang');
+  const lazyloadOptions = (el, binding) => {
+    const initStyle = (el, binding) => {
+      const style = `${el.getAttribute('style')}`;
+      el.style.backgroundImage = `url(${binding.value})`;
+      el.classList.add('bg-lazy');
+    };
+    const callIntersectionApi = () => {
+      const options = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px',
+      };
+      const lazyLoadCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 감지대상이 교차영역에 진입 할 경우
+            initStyle(el, binding);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const lazyLoadingIO = new IntersectionObserver(lazyLoadCallback, options);
+      lazyLoadingIO.observe(el);
+    };
+    window.IntersectionObserver
+      ? callIntersectionApi()
+      : initStyle(el, binding);
+  };
+
+  const App = {
+    setup() {
+      // ----- 데일리 투표 데이터 넣는 곳 
+      const dailyRank = {
+        // yyyy-mm-dd 중 dd만 입력하시면 됩니다.
+        date: '7',
+        //최대 득표수를 기준으로, 차트 바의 길이가 정해집니다 -> 득표수/최대득표수
+        vtMax: '310', 
+        olMax: '300',
+        // 캡슐의 순서는 고정입니다. 해당 캡슐 순서에 맞는 득표수를 입력해주세요.
+        // rank 1~3위는, 특표 전체의 % 값을 텍스트로 띄우고있습니다 -> 1-3위의 %값은 필수로 입력해주세요
+        vt: [
+          { rank: 7 ,vote: '200', }, /* 아이스 레제로 */  
+          { rank: 8 ,vote: '80', }, /* 더블 에스프레소 돌체 */ 
+          { rank: 9 ,vote: '70', }, /* 알티시오 디카페나토 */  
+          { rank: 6 ,vote: '44', }, /* 콜롬비아 */ 
+          { rank: 5 ,vote: '100', }, /* 솔레리오 */ 
+          { rank: 4 ,vote: '110', }, /* 콜드브루 */ 
+          { rank: 3 ,vote: '233', percent: '15%' }, /* 아이스 포르테 */  
+          { rank: 2 ,vote: '263', percent: '24%' }, /* 인텐소 */  
+          { rank: 1 ,vote: '310', percent: '40%' }, /* 기타 */ 
+        ],
+        ol: [
+          { rank: 7 ,vote: '60',  }, /* 프레도 인텐소 */ 
+          { rank: 8 ,vote: '55', }, /* 콜롬비아 */ 
+          { rank: 9 ,vote: '20', }, /* 아르페지오 디카페나토 */  
+          { rank: 6 ,vote: '80' }, /* 프레도 델리카토 */ 
+          { rank: 5 ,vote: '90' }, /* 리반토 */  
+          { rank: 4 ,vote: '100' }, /* 카프리치오 */  
+          { rank: 3 ,vote: '180', percent: '12%'}, /* 나폴리 */  
+          { rank: 2 ,vote: '210', percent: '26%'}, /* 파리 */ 
+          { rank: 1 ,vote: '300', percent: '40%'}, /* 기타 */  
+        ],
+      }
+      // 데일리 투표 데이터 넣는 곳  ----- // 
+
+
+      // const imgPath = '{{base}}/img/ice-vote-favorite';
+      const imgPath = 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite';
+      // const imgPath = 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite';
+      const bg = {
+        botBanner: [`${imgPath}/mob/bg-bot-banner.webp`, `${imgPath}/bg-bot-banner.webp`],
+        // intro: {
+          // frame: [`${imgPath}/mob/bg-intro-frame.webp`, `${imgPath}/bg-intro-frame.webp`],
+          // curtain: [`${imgPath}/mob/bg-intro-curtain.webp`, `${imgPath}/bg-intro-curtain.webp`],
+          // event: [`${imgPath}/mob/bg-intro-event.webp`, `${imgPath}/bg-intro-event.webp`],
+          // trophy: [`${imgPath}/mob/bg-intro-trophy.webp`, `${imgPath}/bg-intro-trophy.webp`],
+        // },
+        // intro : [ `${imgPath}/mob/2405-kv.webp`, `${imgPath}/2405-kv.webp` ],
+        intro : [ `https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/kv_mo.jpg`,
+          `https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/kv_pc.png` ],
+        capsules: {
+          vl: [
+            /* 아이스 레제로 */{ id: 1, img: `${imgPath}/mob/capsules/vt-01.webp` },
+            /* 더블 에스프레소 돌체 */{ id: 2, img: `${imgPath}/mob/capsules/vt-06.webp` },
+            /* 알티시오 디카페나토 */{ id: 3, img: `${imgPath}/mob/capsules/vt-08.webp` },
+
+            /* 콜롬비아 */{ id: 4, img: `${imgPath}/mob/capsules/vt-02.webp` },
+            /* 아이스 포르테 */{ id: 5, img: `${imgPath}/mob/capsules/vt-05.webp` },
+            /* 솔레리오 */{ id: 6, img: `${imgPath}/mob/capsules/vt-03.webp` },
+
+            /* 인텐소 */{ id: 7, img: `${imgPath}/mob/capsules/vt-07.webp` },
+            /* 콜드브루 */{ id: 8, img: `${imgPath}/mob/capsules/vt-04.webp` },
+            /* 기타 */{ id: 9, img: `${imgPath}/mob/capsules/vt-09.webp` },
+          ],
+          vlCoffee: [
+            /* 아이스 레제로 */{ id: 1, img: `${imgPath}/mob/capsules/vt-01-on.webp` },
+            /* 더블 에스프레소 돌체 */{ id: 2, img: `${imgPath}/mob/capsules/vt-06-on.webp` },
+            /* 알티시오 디카페나토 */{ id: 3, img: `${imgPath}/mob/capsules/vt-08-on.webp` },
+
+            /* 콜롬비아 */{ id: 4, img: `${imgPath}/mob/capsules/vt-02-on.webp` },
+            /* 아이스 포르테 */{ id: 5, img: `${imgPath}/mob/capsules/vt-05-on.webp` },
+            /* 솔레리오 */{ id: 6, img: `${imgPath}/mob/capsules/vt-03-on.webp` },
+
+            /* 인텐소 */{ id: 7, img: `${imgPath}/mob/capsules/vt-07-on.webp` },
+            /* 콜드브루 */{ id: 8, img: `${imgPath}/mob/capsules/vt-04-on.webp` },
+            /* 기타 */{ id: 9, img: `${imgPath}/mob/capsules/vt-09-on.webp` },
+          ],
+          ol: [
+            /* 프레도 인텐소 */{ id: 1, img: `${imgPath}/mob/capsules/ol-04.webp` },
+            /* 아르페지오 디카페나토 */{ id: 2, img: `${imgPath}/mob/capsules/ol-06.webp` },
+            /* 콜롬비아 */{ id: 3, img: `${imgPath}/mob/capsules/ol-03.webp` },
+            
+            /* 프레도 델리카토 */{ id: 4, img: `${imgPath}/mob/capsules/ol-01.webp` },
+            /* 카프리치오 */{ id: 5, img: `${imgPath}/mob/capsules/ol-05.webp` },
+            /* 리반토 */{ id: 6, img: `${imgPath}/mob/capsules/ol-02.webp` },
+
+            /* 나폴리 */{ id: 7, img: `${imgPath}/mob/capsules/ol-07.webp` },
+            /* 파리 */{ id: 8, img: `${imgPath}/mob/capsules/ol-08.webp` },
+            /* 기타 */{ id: 9, img: `${imgPath}/mob/capsules/ol-09.webp` },
+          ],
+          olCoffee: [
+            /* 프레도 인텐소 */{ id: 1, img: `${imgPath}/mob/capsules/ol-04-on.webp` },
+            /* 아르페지오 디카페나토 */{ id: 2, img: `${imgPath}/mob/capsules/ol-06-on.webp` },
+            /* 콜롬비아 */{ id: 3, img: `${imgPath}/mob/capsules/ol-03-on.webp` },
+            
+            /* 프레도 델리카토 */{ id: 4, img: `${imgPath}/mob/capsules/ol-01-on.webp` },
+            /* 카프리치오 */{ id: 5, img: `${imgPath}/mob/capsules/ol-05-on.webp` },
+            /* 리반토 */{ id: 6, img: `${imgPath}/mob/capsules/ol-02-on.webp` },
+
+            /* 나폴리 */{ id: 7, img: `${imgPath}/mob/capsules/ol-07-on.webp` },
+            /* 파리 */{ id: 8, img: `${imgPath}/mob/capsules/ol-08-on.webp` },
+            /* 기타 */{ id: 9, img: `${imgPath}/mob/capsules/ol-09-on.webp` },
+          ],
+        },
+        cautionLine: [`${imgPath}/mob/bg-line1.webp`, `${imgPath}/bg-line1.png`],
+        heart: `${imgPath}/mob/heart.webp`,
+      };
+      const state = reactive({
+        isMobile: true,
+        lang: locale,
+        msg: locale === 'ko' ? messages.ko : messages.en, // 국문, 영문 메시지
+        isLogin: JSON.parse(sessionStorage.getItem('loginInfo-kr'))
+          ? JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
+          : false,
+        vlReview: '',
+        olReview: '',
+        vlCapsuleNum: 'vl-coffee-1',
+        olCapsuleNum: 'ol-coffee-1',
+        memberInfo: {},
+        techInfo: 'vertuo',
+        mainContentNum: 'vertuo',
+        selectVlId: '',
+        selectOlId: '',
+        selectVlName: '',
+        selectOlName: '',
+        // vlAgreeY: false,
+        // olAgreeY: false,`
+        vlAgreeY: true,
+        olAgreeY: true,
+
+        // vlReviewActive: false,
+        // olReviewActive: false,
+        vlBtnDisabled: true,
+        olBtnDisabled: true,
+        googleFormsLayer: false,
+        // googleFormsLayer: true,
+        loginAlertLayer: false,
+        // loginAlertLayer: true,
+        vlBtnCount: 0,
+        olBtnCount: 0,
+        // contentTabInit: {
+        //   tabGroupClass: '',
+        //   tabWrapClass: 'tab-wrap',
+        //   tabClass: 'tab1',
+        // },
+        bg,
+        dailyRank
+      });
+
+      const gaHeadingInit = () => {
+        let $gaHeading = document.querySelector('#hidden-main-heading')
+        if(document.documentElement.lang === "ko") {
+          $gaHeading.append('나의 인생 아이스 커피 투표하기');
+        } else {
+          $gaHeading.append('Vote favorite iced coffee');
+        }
+      }
+
+      const checkMedia = () => {
+        const mediaQueryList = window.matchMedia('(min-width: 1024px)');
+        mediaQueryList.matches
+          ? (state.isMobile = false)
+          : (state.isMobile = true);
+        mediaQueryList.addEventListener('change', e =>
+          e.matches ? (state.isMobile = false) : (state.isMobile = true),
+        );
+      };
+
+      const barAnimations = () => {
+        
+
+        const chart = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.chart-wrap',
+            repeat: true,
+            start: '0% 80%',
+            toggleActions: "restart reverse replay reverse",
+          },
+        })
+        if(state.isMobile) {
+          chart.fromTo('#mob-chart tbody td', { scaleX: 0, duration: .1  } , {scaleX: 1, duration: .8, ease: 'ease-in'})
+        } else {
+          // const pcChart = gsap.timeline({
+          //   scrollTrigger: {
+          //     trigger: 'chart-wrap',
+          //     repeat: true,
+          //     start: '0% 80%',
+          //     toggleActions: "restart reverse replay reverse",
+          //   },
+          // })
+          chart.fromTo('#pc-chart tbody td', { scaleY: 0, duration: .3  } , {scaleY: 1, duration: .8, ease: 'ease-in'})
+        }
+      }
+
+      const obj = {
+        success: true,
+        userToken: 'eyJhbGciOiJIUzI1NiJ9.eyJtYXJrZXQiOiJrciIsInVzZXJfbmFtZSI6Im5lc3Rlc3RrcittcjJAZ21haWwuY29tIiwic2NvcGUiOlsiY3VzdG9tZXJfaW5mbyIsImNoZWNrb3V0Il0sImNoYW5uZWwiOiJCMkMiLCJhdXRoZW50aWNhdGlvblR5cGUiOiJMT0dHRUQiLCJleHAiOjE3MDQxNzM1MzcsInRva2VuVHlwZSI6IkNVU1RPTUVSIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9DVVNUT01FUkdST1VQIl0sImp0aSI6IjJkMzVmNzE2LTRkZTUtNDRkOS04Y2Y4LTYwM2Q4MGNlMzg0ZiIsImNsaWVudF9pZCI6Im5lc3ByZXNzby1jbGllbnRzIn0.Cg-Awl9MnMf2yNKiUueEby9IAIPsCK8-CEtAlXhYKWE',
+        memberNumber: '1860788',
+        timestamp: 1704166337525,
+        language: 'ko',
+      };
+
+      const testLogin = () => {
+        sessionStorage.setItem('loginInfo-kr', JSON.stringify(obj));
+        location.reload();
+        state.isLogin = JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
+      }
+
+      const testLogout = () => {
+        sessionStorage.removeItem("loginInfo-kr")
+        location.reload();
+      }
+
+    // 로컬
+      // const getMemberInfo = async () => {
+      //   if(JSON.parse(sessionStorage.getItem('loginInfo-kr')) !== null) {
+      //   state.isLogin = JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
+      //   // state.loginAlertLayer = false;
+      //   await fetch('{{base}}/db.json')
+      //     .then(res => res.json())
+      //     .then(user => {
+      //       state.memberInfo = user;
+      //       const splitTxt = state.memberInfo.enabledTechnologies[0].split('/');
+      //       state.techInfo = splitTxt[splitTxt.length - 1];
+      //       mainTabSelect(state.techInfo);
+      //       console.log(
+      //         `로그인: ${state.isLogin}, 회원번호: ${state.memberInfo.memberNumber}, 사용중인 머신 종류: ${state.techInfo}`,
+      //       );
+      //     })
+      //   } else {
+      //     // state.loginAlertLayer = true;
+      //   }
+      // }
+      // {"success":true,"userToken":"fake","memberNumber":"6668688","timestamp":1714695359401,"language":"ko"}
+    // 전달
+      const getMemberInfo = async () => {
+        if(JSON.parse(sessionStorage.getItem('loginInfo-kr')) !== null) {
+          await window.napi
+          .customer()
+          .read()
+          .then(user => {
+            state.memberInfo = user;
+            const splitTxt = state.memberInfo.enabledTechnologies[0].split('/')
+            state.techInfo = splitTxt[splitTxt.length -1];
+            mainTabSelect(state.techInfo)
+            state.isLogin = true;
+            state.loginAlertLayer = false;
+            console.log(`로그인: ${state.isLogin}, 멤버번호: ${state.memberInfo.memberNumber}, 사용중인 머신 종류: ${state.techInfo}`)
+          })
+          .catch(error => {
+            console.log(error);
+          })
+        }
+      }
+
+      const selectCapsule = (cate, id, voteName, e) => {
+        const voteItemVl = document.querySelectorAll('.vote-item.vertuo');
+        const voteItemOl = document.querySelectorAll('.vote-item.original');
+        const voteItemId = e.currentTarget.dataset.voidId;
+        const targetClass = e.currentTarget.childNodes[0].childNodes[0].classList[0]
+
+        if(JSON.parse(sessionStorage.getItem('loginInfo-kr')) !== null) {
+          if(cate === 'vertuo') {
+            state.selectVlId = id;
+            state.selectVlName = voteName;
+            ( state.vlBtnCount === 1 || state.vlAgreeY) ? state.vlBtnDisabled = false: state.vlBtnDisabled = true;
+            
+            voteItemVl.forEach(item => {
+              item.classList.remove('is-selected')
+              item.classList.add('is-not-selected')
+            });
+          } else if(cate === 'original') {
+            state.selectOlId = id;
+            state.selectOlName = voteName;
+            // ( state.olBtnCount === 1 || state.olAgreeY)&& state.isLogin ? state.olBtnDisabled = false : state.olBtnDisabled = true;
+            ( state.olBtnCount === 1 || state.olAgreeY) ? state.olBtnDisabled = false : state.olBtnDisabled = true;
+            voteItemOl.forEach(item => {
+              item.classList.remove('is-selected')
+              item.classList.add('is-not-selected')
+            });
+          }
+
+          e.currentTarget.classList.remove('is-not-selected');
+          e.currentTarget.classList.add('is-selected');
+        } else {
+          state.loginAlertLayer = true;
+        }
+      }
+
+      const voteSubmit = (cate, voted_coffee, voteName) => {
+        if(cate === 'vertuo') {
+          state.vlBtnCount += 1;
+          const data = {
+            "event": "local_event",
+            "event_raised_by": "local market",
+            "local_event_category": "VMF2-VL",
+            "local_event_action": voteName + "-" + JSON.parse(sessionStorage.getItem("loginInfo-kr")).memberNumber, //선택캡슐 id-memberNum
+            "local_event_label": state.vlReview, // 리뷰 textbox 내용
+          }
+          console.log(data);
+          // 전달
+          gtmDataObject.push(data);
+        } else {
+          state.olBtnCount += 1;
+          const data = {
+            "event": "local_event",
+            "event_raised_by": "local market",
+            "local_event_category": "VMF2-OL",
+            "local_event_action": voteName + "-" + JSON.parse(sessionStorage.getItem("loginInfo-kr")).memberNumber,//선택캡슐 id-memberNum
+            "local_event_label": state.olReview, // 리뷰 textbox 내용
+          }
+          console.log(data);
+          // 전달
+          gtmDataObject.push(data);
+        }
+        state.googleFormsLayer = true;
+      }
+
+      const closeLayer = (type) => {
+        switch (type) {
+          case 'googleForms':
+            state.googleFormsLayer = false;
+            if(state.mainContentNum === 'vertuo') {
+              if (state.vlBtnCount === 1) {
+                state.vlBtnDisabled = true;
+                // document.querySelector('.agree-cont.vlAgreeOk').classList.add('is-disabled');
+                const voteItemVl = document.querySelectorAll('.vote-item.vertuo');
+                voteItemVl.forEach(item => item.classList.add('is-disabled'));
+              }
+            } else {
+              if (state.olBtnCount === 1) {
+                state.olBtnDisabled = true;
+                // document.querySelector('.agree-cont.olAgreeOk').classList.add('is-disabled');
+                const voteItemOl = document.querySelectorAll('.vote-item.original');
+                voteItemOl.forEach(item => item.classList.add('is-disabled'));
+              }
+            }
+            break;
+          case 'loginAlert':
+            state.loginAlertLayer = false;
+            break;
+          case 'loginAndClose':
+            state.loginAlertLayer = false;
+            document.querySelector('#ta-login-dropdown--not-logged').click();
+            document.querySelector('#ta-login-dropdown--not-logged').classList.add('LoginDropdownButton--open');
+            break;
+        }
+      }
+
+      const agreeCheck = () => {
+        if(state.mainContentNum === 'vertuo') {
+          state.vlAgreeY = !state.vlAgreeY
+          state.vlBtnDisabled = !state.vlBtnDisabled
+        } else {
+          state.olAgreeY = !state.olAgreeY
+          state.olBtnDisabled = !state.olBtnDisabled
+        }
+      }
+
+      const mainTabSelect = v => {
+        state.mainContentNum = v;
+        // console.log('tab변경 & vl/olBtnCount(투표여부) 확인',state.vlBtnCount,state.olBtnCount);
+        if(state.mainContentNum === 'vertuo') {
+          if(state.vlBtnCount === 0) {
+            state.selectVlId === '' ? state.vlBtnDisabled = true : state.vlBtnDisabled = false;
+
+            if(state.vlAgreeY) { state.vlAgreeY = false }
+          } else {
+            state.vlBtnDisabled = true
+            state.vlAgreeY = false
+            const voteItemVl = document.querySelectorAll('.vote-item.vertuo');
+            voteItemVl.forEach(item => item.classList.add('is-disabled'));
+          }
+          
+
+        } else {
+          if(state.olBtnCount === 0) {
+            state.selectOlId === '' ? state.olBtnDisabled = true : state.olBtnDisabled = false;
+
+            if(state.olAgreeY) { state.olAgreeY = false }
+          } else {
+            state.olBtnDisabled = true
+            state.olAgreeY = false
+            const voteItemOl = document.querySelectorAll('.vote-item.original');
+            voteItemOl.forEach(item => item.classList.add('is-disabled'));
+          }
+          
+          
+        }
+      };
+
+      const mainTabUpdate = v => {
+        mainTabSelect(v);
+      };
+
+      const getPageNum = () => {
+        const urlStr = window.location.href;
+        const url = new URL(urlStr);
+        const urlParams = url.searchParams;
+        const tabName = urlParams.get('tab');
+        mainTabSelect(tabName ?? 'vertuo');
+      };
+
+      const changeTab = (v) => {
+        mainTabSelect(v);
+        const offsetVal = (document.querySelector('.vote-wrap').getBoundingClientRect().top + window.scrollY);
+        window.scrollTo(0 ,offsetVal - offsetVal*.1);
+        closeLayer('googleForms');
+      }
+
+      checkMedia();
+      getPageNum();
+      getMemberInfo();
+      onMounted(() => {
+        // DOM 로드 되고 난 후에 사용할 함수들 선언
+        gaHeadingInit();
+        barAnimations();
+      });
+
+      return {
+        // life cycle hook 제외한 커스텀 함수 중에서 setup 함수 바깥에 사용 할 경우, 컴포넌트 데이터 전달 할 경우 return
+        gaHeadingInit,
+        ...toRefs(state), // toRefs() - 반응형 객체를 일반 객체로 변환
+        propsTabNum: state.mainContentNum, // component props data
+        propsTabList: state.msg.mainTab,
+        propsTechInfo: state.techInfo,
+        propsLogin: state.isLogin,
+        propsContentTabInit: state.contentTabInit,
+        mainTabUpdate,
+        selectCapsule,
+        voteSubmit,
+        agreeCheck,
+        // watchVlTxt,
+        // watchOlTxt,
+        closeLayer,
+        testLogin,
+        testLogout,
+        getMemberInfo,
+        changeTab,
+      };
+    },
+  };
+
+  // vue3 앱 초기화, 관련 써드파티 플려그인 초기화
+  const app = Vue.createApp(App)
+    .directive('lazy', lazyloadOptions)
+    .component('content-tab-group', contentTabGroup)
+    .mount('#app');
+</script>

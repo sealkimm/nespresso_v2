@@ -1,0 +1,306 @@
+<!-- ????? -->
+<script>
+  const {
+    createApp,
+    ref,
+    toRefs,
+    computed,
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    watchEffect,
+    onUpdated,
+    watch,
+    reactive,
+    component,
+  } = Vue;
+  const locale = document.querySelector('html').getAttribute('lang');
+  const lazyloadOptions = (el, binding) => {
+    const initStyle = (el, binding) => {
+      const style = `${el.getAttribute('style')}`;
+      el.style.backgroundImage = `url(${binding.value})`;
+      el.classList.add('bg-lazy');
+    };
+    const callIntersectionApi = () => {
+      const options = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px',
+      };
+      const lazyLoadCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 감지대상이 교차영역에 진입 할 경우
+            initStyle(el, binding);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const lazyLoadingIO = new IntersectionObserver(lazyLoadCallback, options);
+      lazyLoadingIO.observe(el);
+    };
+    window.IntersectionObserver
+      ? callIntersectionApi()
+      : initStyle(el, binding);
+  };
+
+  const App = {
+    setup() {
+      // const imgPath = '{{base}}/img/vote-favorite-coffee';
+      // const imgPath = 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/vote-favorite-coffee';
+      const imgPath = '{{base}}/img/wonka-project';
+      const bg = {
+        intro: {
+          main: [`${imgPath}/mob/bg-intro.webp`, `${imgPath}/bg-intro.webp`],
+        },
+        guide: [`${imgPath}/mob/bg-payback-step.webp`, `${imgPath}/bg-payback-step.webp`],
+        qna: [`${imgPath}/mob/bg-qna.webp`, `${imgPath}/bg-qna.webp`],
+        pro: [`${imgPath}/mob/bg-pro.webp`, `${imgPath}/bg-pro.webp`],
+      };
+      const state = reactive({
+        isMobile: true,
+        lang: locale,
+        msg: locale === 'ko' ? messages.ko : messages.en, // 국문, 영문 메시지
+        isLogin: JSON.parse(sessionStorage.getItem('loginInfo-kr'))
+          ? JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
+          : false,
+        activeStep: 0,
+        activeQnaTab: 0,
+        proContentNum: 0,
+        bg,
+      });
+
+      const gaHeadingInit = () => {
+        let $gaHeading = document.querySelector('#hidden-main-heading')
+        if(document.documentElement.lang === "ko") {
+          $gaHeading.append('웡카 프로젝트');
+        } else {
+          $gaHeading.append('Wonka Project');
+        }
+      }
+
+      const checkMedia = () => {
+        const mediaQueryList = window.matchMedia('(min-width: 1024px)');
+        mediaQueryList.matches
+          ? (state.isMobile = false)
+          : (state.isMobile = true);
+        mediaQueryList.addEventListener('change', e =>
+          e.matches ? (state.isMobile = false) : (state.isMobile = true),
+        );
+      };
+
+      const starMotion = () => {
+        const options = { yoyo: true, repeat: -1, ease: 'none' };
+        
+        if (state.isMobile) {
+          gsap.fromTo('.star1', {scale: 0.8}, {scale: 2.5, duration: 1.7, ...options});
+          gsap.fromTo('.star2', {scale: 1}, {scale: 3, duration: 1.2, ...options});
+          gsap.fromTo('.star3', {scale: 1}, {scale: 2.5, duration: 1.7, ...options});
+          gsap.fromTo('.star4', {scale: 0.8}, {scale: 3, duration: 1.9, ...options});
+          gsap.fromTo('.star5', {scale: 0.6}, {scale: 2.6, duration: 1.4, ...options});
+        } else {
+          gsap.fromTo('.star1', {scale: 0.8}, {scale: 2, duration: 1.7, ...options});
+          gsap.fromTo('.star2', {scale: 1}, {scale: 2.5, duration: 1.2, ...options});
+          gsap.fromTo('.star3', {scale: 1}, {scale: 2, duration: 1.7, ...options});
+          gsap.fromTo('.star4', {scale: 0.8}, {scale: 2.5, duration: 1.9, ...options});
+          gsap.fromTo('.star5', {scale: 0.6}, {scale: 2, duration: 1.4, ...options});
+        }
+      };
+
+      const qnaSwiper = () => {
+        state.qnaSwiper = new Swiper('.qna-swiper', {
+          loop: false,
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
+          slidesPerView: 1,
+          loopFillGroupWithBlank: true,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+          el: ".qna-swiper .swiper-pagination",
+          clickable: true,
+          renderBullet: (idx, className) => {
+            let bulletClass = '';
+            if (idx >= 0 && idx <= 4) bulletClass = 'bullet-benefit';
+            else if (idx == 5) bulletClass = 'bullet-order';
+            else if (idx == 6) bulletClass = 'bullet-exchange';
+            else if (idx == 7) bulletClass = 'bullet-etc';
+
+            return `<span class="qna-bullet ${bulletClass} bullet${idx} ${className}"></span>`;
+          },
+        },
+          on: {
+          init: (swiper) => {
+            const idx = swiper.activeIndex;
+            state.activeQnaTab.value = idx;
+            const bullets = document.querySelectorAll('.qna-bullet');
+            const items = document.querySelectorAll('.bullet-benefit');
+            bullets.forEach(bullet => bullet.style.display = "none");
+            items.forEach(bullet => bullet.style.display = "inline-block");
+          },
+          slideChange: (swiper) => {
+            const idx = swiper.activeIndex;
+            state.activeQnaTab = idx;
+            const bullets = document.querySelectorAll('.qna-bullet');
+            bullets.forEach(bullet => bullet.style.display = "none");
+
+            if (idx >= 0 && idx <= 4) {
+              document.querySelectorAll('.bullet-benefit').forEach(bullet => bullet.style.display = "inline-block");
+            } else if (idx == 5) {
+              document.querySelectorAll('.bullet-order').forEach(bullet => bullet.style.display = "inline-block");
+            } else if (idx == 6) {
+              document.querySelectorAll('.bullet-exchange').forEach(bullet => bullet.style.display = "inline-block");
+            } else if (idx == 7) {
+              document.querySelectorAll('.bullet-etc').forEach(bullet => bullet.style.display = "inline-block");
+            }
+          }
+        }
+        });
+        return qnaSwiper;
+      };
+
+      const proSwiper = () => {
+        state.proSwiper = new Swiper('.pro-swiper', {
+          loop: false,
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
+          slidesPerView: 1,
+          loopFillGroupWithBlank: true,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+          el: ".pro-swiper .swiper-pagination",
+          clickable: true,
+          renderBullet: (idx, className) => {
+            let bulletClass = '';
+            return `<span class="pro-bullet ${bulletClass} bullet${idx} ${className}"></span>`;
+            },
+          },
+          on: {
+            slideChange: function () {
+              console.log('Current slide index:', this.activeIndex);
+            },
+          },
+        });
+        return proSwiper;
+      };
+      
+      
+      const activeQnaSlide = (idx) => {
+        if (state.qnaSwiper) {
+          state.qnaSwiper.slideTo(idx);
+        }
+        state.activeQnaTab = idx;
+      };
+
+      const activePro = (idx) => {
+          state.proContentNum = idx;
+      };
+
+      const stepPositions = [
+        { id: 0, click: 1000, start: 0, end: 1330 },
+        { id: 1, start: 1330, end: 1700 },
+        { id: 2, start: 1700, end: 2100 },
+        { id: 3, start: 2100 }
+      ];
+
+      const activeStep = (idx) => {
+        // pc
+        state.activeStep = idx;
+        const targetStep = stepPositions.find(step => step.id === idx);
+
+        if (targetStep) {
+          window.scrollTo({
+              top: (targetStep.click) ? targetStep.click : targetStep.start,
+          });
+        }
+
+        //모바일
+        if(state.isMobile) {
+          const targetElement = document.getElementById(idx);
+
+          if (targetElement && state.isMobile) {
+            console.log(targetElement)
+              targetElement.scrollIntoView({block: 'start'});
+          }
+
+          const stepItems = document.querySelectorAll('.guide-wrap li');
+          const buttons = document.querySelectorAll('.guide-wrap button'); 
+          buttons[0].classList.add('is-active');
+          stepItems.forEach((item, index) => {
+            const button = buttons[index];
+            const tl4 = gsap.timeline({
+              scrollTrigger: {
+                trigger: item,
+                start: "0% 30%",
+                end: "130% 30%",
+                scrub: 1,
+                onEnter: () => {button.classList.add('is-active')},
+                onLeave: () => {
+                  if (index !== 3) { 
+                    button.classList.remove('is-active');
+                  }
+                },
+                onEnterBack: () => {button.classList.add('is-active')},
+                onLeaveBack: () => {
+                  if (index !== 0) { 
+                    button.classList.remove('is-active');
+                  }
+                },
+              }
+            });
+          });
+        }
+      };
+
+      const updateActiveBtn = () => {
+          const currentPosition = window.scrollY;
+          const buttons = document.querySelectorAll('.guide-wrap button');
+
+          let activeIndex = stepPositions.findIndex(step => currentPosition >= step.start && (step.end === undefined || currentPosition < step.end));
+
+          buttons.forEach(button => {
+              button.classList.remove('is-active');
+          });
+
+          if (activeIndex !== -1) {
+              buttons[activeIndex].classList.add('is-active');
+          }
+      }
+
+      window.addEventListener('scroll', updateActiveBtn);
+
+      checkMedia();
+      onMounted(() => {
+        // DOM 로드 되고 난 후에 사용할 함수들 선언
+        starMotion();
+        gaHeadingInit();
+        qnaSwiper();
+        proSwiper();
+        activeStep()
+      });
+
+      return {
+        gaHeadingInit,
+        ...toRefs(state), // toRefs() - 반응형 객체를 일반 객체로 변환
+        propsTabNum: state.proContentNum,
+        activeQnaSlide,
+        activePro,
+        activeStep,
+      };
+    },
+  };
+
+  // vue3 앱 초기화, 관련 써드파티 플려그인 초기화
+  const app = Vue.createApp(App)
+    .directive('lazy', lazyloadOptions)
+    .component('content-tab-group', contentTabGroup)
+    .mount('#app');
+</script>
+

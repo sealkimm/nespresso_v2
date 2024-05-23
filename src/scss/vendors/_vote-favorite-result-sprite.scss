@@ -1,0 +1,200 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$vote-favorite-result-cta-w-name: 'vote-favorite-result-cta-w';
+$vote-favorite-result-cta-w-x: 533px;
+$vote-favorite-result-cta-w-y: 151px;
+$vote-favorite-result-cta-w-offset-x: -533px;
+$vote-favorite-result-cta-w-offset-y: -151px;
+$vote-favorite-result-cta-w-width: 6px;
+$vote-favorite-result-cta-w-height: 13px;
+$vote-favorite-result-cta-w-total-width: 549px;
+$vote-favorite-result-cta-w-total-height: 527px;
+$vote-favorite-result-cta-w-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-cta-w: (533px, 151px, -533px, -151px, 6px, 13px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-cta-w', );
+$vote-favorite-result-left-arrow-name: 'vote-favorite-result-left-arrow';
+$vote-favorite-result-left-arrow-x: 350px;
+$vote-favorite-result-left-arrow-y: 277px;
+$vote-favorite-result-left-arrow-offset-x: -350px;
+$vote-favorite-result-left-arrow-offset-y: -277px;
+$vote-favorite-result-left-arrow-width: 25px;
+$vote-favorite-result-left-arrow-height: 50px;
+$vote-favorite-result-left-arrow-total-width: 549px;
+$vote-favorite-result-left-arrow-total-height: 527px;
+$vote-favorite-result-left-arrow-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-left-arrow: (350px, 277px, -350px, -277px, 25px, 50px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-left-arrow', );
+$vote-favorite-result-right-arrow-name: 'vote-favorite-result-right-arrow';
+$vote-favorite-result-right-arrow-x: 385px;
+$vote-favorite-result-right-arrow-y: 277px;
+$vote-favorite-result-right-arrow-offset-x: -385px;
+$vote-favorite-result-right-arrow-offset-y: -277px;
+$vote-favorite-result-right-arrow-width: 25px;
+$vote-favorite-result-right-arrow-height: 50px;
+$vote-favorite-result-right-arrow-total-width: 549px;
+$vote-favorite-result-right-arrow-total-height: 527px;
+$vote-favorite-result-right-arrow-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-right-arrow: (385px, 277px, -385px, -277px, 25px, 50px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-right-arrow', );
+$vote-favorite-result-tab-ol-off-name: 'vote-favorite-result-tab-ol-off';
+$vote-favorite-result-tab-ol-off-x: 420px;
+$vote-favorite-result-tab-ol-off-y: 277px;
+$vote-favorite-result-tab-ol-off-offset-x: -420px;
+$vote-favorite-result-tab-ol-off-offset-y: -277px;
+$vote-favorite-result-tab-ol-off-width: 22px;
+$vote-favorite-result-tab-ol-off-height: 28px;
+$vote-favorite-result-tab-ol-off-total-width: 549px;
+$vote-favorite-result-tab-ol-off-total-height: 527px;
+$vote-favorite-result-tab-ol-off-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-tab-ol-off: (420px, 277px, -420px, -277px, 22px, 28px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-tab-ol-off', );
+$vote-favorite-result-tab-ol-on-name: 'vote-favorite-result-tab-ol-on';
+$vote-favorite-result-tab-ol-on-x: 452px;
+$vote-favorite-result-tab-ol-on-y: 277px;
+$vote-favorite-result-tab-ol-on-offset-x: -452px;
+$vote-favorite-result-tab-ol-on-offset-y: -277px;
+$vote-favorite-result-tab-ol-on-width: 22px;
+$vote-favorite-result-tab-ol-on-height: 28px;
+$vote-favorite-result-tab-ol-on-total-width: 549px;
+$vote-favorite-result-tab-ol-on-total-height: 527px;
+$vote-favorite-result-tab-ol-on-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-tab-ol-on: (452px, 277px, -452px, -277px, 22px, 28px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-tab-ol-on', );
+$vote-favorite-result-tab-vl-off-name: 'vote-favorite-result-tab-vl-off';
+$vote-favorite-result-tab-vl-off-x: 484px;
+$vote-favorite-result-tab-vl-off-y: 277px;
+$vote-favorite-result-tab-vl-off-offset-x: -484px;
+$vote-favorite-result-tab-vl-off-offset-y: -277px;
+$vote-favorite-result-tab-vl-off-width: 22px;
+$vote-favorite-result-tab-vl-off-height: 28px;
+$vote-favorite-result-tab-vl-off-total-width: 549px;
+$vote-favorite-result-tab-vl-off-total-height: 527px;
+$vote-favorite-result-tab-vl-off-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-tab-vl-off: (484px, 277px, -484px, -277px, 22px, 28px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-tab-vl-off', );
+$vote-favorite-result-tab-vl-on-name: 'vote-favorite-result-tab-vl-on';
+$vote-favorite-result-tab-vl-on-x: 516px;
+$vote-favorite-result-tab-vl-on-y: 277px;
+$vote-favorite-result-tab-vl-on-offset-x: -516px;
+$vote-favorite-result-tab-vl-on-offset-y: -277px;
+$vote-favorite-result-tab-vl-on-width: 22px;
+$vote-favorite-result-tab-vl-on-height: 28px;
+$vote-favorite-result-tab-vl-on-total-width: 549px;
+$vote-favorite-result-tab-vl-on-total-height: 527px;
+$vote-favorite-result-tab-vl-on-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-tab-vl-on: (516px, 277px, -516px, -277px, 22px, 28px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-tab-vl-on', );
+$vote-favorite-result-title-ol-name: 'vote-favorite-result-title-ol';
+$vote-favorite-result-title-ol-x: 0px;
+$vote-favorite-result-title-ol-y: 277px;
+$vote-favorite-result-title-ol-offset-x: 0px;
+$vote-favorite-result-title-ol-offset-y: -277px;
+$vote-favorite-result-title-ol-width: 340px;
+$vote-favorite-result-title-ol-height: 120px;
+$vote-favorite-result-title-ol-total-width: 549px;
+$vote-favorite-result-title-ol-total-height: 527px;
+$vote-favorite-result-title-ol-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-title-ol: (0px, 277px, 0px, -277px, 340px, 120px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-title-ol', );
+$vote-favorite-result-title-review-name: 'vote-favorite-result-title-review';
+$vote-favorite-result-title-review-x: 0px;
+$vote-favorite-result-title-review-y: 151px;
+$vote-favorite-result-title-review-offset-x: 0px;
+$vote-favorite-result-title-review-offset-y: -151px;
+$vote-favorite-result-title-review-width: 523px;
+$vote-favorite-result-title-review-height: 116px;
+$vote-favorite-result-title-review-total-width: 549px;
+$vote-favorite-result-title-review-total-height: 527px;
+$vote-favorite-result-title-review-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-title-review: (0px, 151px, 0px, -151px, 523px, 116px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-title-review', );
+$vote-favorite-result-title-vt-name: 'vote-favorite-result-title-vt';
+$vote-favorite-result-title-vt-x: 0px;
+$vote-favorite-result-title-vt-y: 407px;
+$vote-favorite-result-title-vt-offset-x: 0px;
+$vote-favorite-result-title-vt-offset-y: -407px;
+$vote-favorite-result-title-vt-width: 340px;
+$vote-favorite-result-title-vt-height: 120px;
+$vote-favorite-result-title-vt-total-width: 549px;
+$vote-favorite-result-title-vt-total-height: 527px;
+$vote-favorite-result-title-vt-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-title-vt: (0px, 407px, 0px, -407px, 340px, 120px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-title-vt', );
+$vote-favorite-result-title-name: 'vote-favorite-result-title';
+$vote-favorite-result-title-x: 0px;
+$vote-favorite-result-title-y: 0px;
+$vote-favorite-result-title-offset-x: 0px;
+$vote-favorite-result-title-offset-y: 0px;
+$vote-favorite-result-title-width: 549px;
+$vote-favorite-result-title-height: 141px;
+$vote-favorite-result-title-total-width: 549px;
+$vote-favorite-result-title-total-height: 527px;
+$vote-favorite-result-title-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-title: (0px, 0px, 0px, 0px, 549px, 141px, 549px, 527px, '@@img/sprites/vote-favorite-result.webp', 'vote-favorite-result-title', );
+$vote-favorite-result-width: 549px;
+$vote-favorite-result-height: 527px;
+$vote-favorite-result-image: '@@img/sprites/vote-favorite-result.webp';
+$vote-favorite-result-sprites: ($vote-favorite-result-cta-w, $vote-favorite-result-left-arrow, $vote-favorite-result-right-arrow, $vote-favorite-result-tab-ol-off, $vote-favorite-result-tab-ol-on, $vote-favorite-result-tab-vl-off, $vote-favorite-result-tab-vl-on, $vote-favorite-result-title-ol, $vote-favorite-result-title-review, $vote-favorite-result-title-vt, $vote-favorite-result-title, );
+$vote-favorite-result: (549px, 527px, '@@img/sprites/vote-favorite-result.webp', $vote-favorite-result-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

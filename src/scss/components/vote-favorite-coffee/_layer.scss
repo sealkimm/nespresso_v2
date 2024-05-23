@@ -1,0 +1,153 @@
+.layer-wrap {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999999;
+	background: rgba(0 0 0 / .8);
+
+	@include size(100%,100%);
+
+	&.is-show {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.layer {
+	&.alert {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 42rem;
+		background-image: linear-gradient(#000,#000), linear-gradient(-45deg,#c28d38,#f0e4c1,#ffe8c2,#e0bc7f,#c69d5e);
+		background-clip: content-box, border-box;
+		background-origin: border-box;
+		border: .5rem solid transparent;
+
+		@include size(52.5rem,32.9rem);
+		@include breakpoint('lg') {
+			@include size(420px,290px);
+			margin-top: 370px;
+			border-width: 5px;
+		}
+	}
+
+	& > .body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		position: relative;
+		background-image: linear-gradient(#000,#000), linear-gradient(-45deg,#c28d38,#f0e4c1,#ffe8c2,#e0bc7f,#c69d5e);
+		background-clip: content-box, border-box;
+		background-origin: border-box;
+		border: .1rem solid transparent;
+
+		@include size(98%,97%);
+		@include breakpoint('lg') {
+			gap: 20px;
+			border-width: 1px;
+		}
+
+		.btn-close {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+
+			@include sprite-x2($vote-favorite-coffee-x2-close1);
+			@include breakpoint('lg') {
+				top: 15px;
+				right: 15px;
+
+				@include sprite($vote-favorite-coffee-close1);
+			}
+		}
+
+		.txt-box {
+			@include font(3.4rem,var(--regular),1.3);
+			background: linear-gradient(-45deg,#c28d38,#f0e4c1,#ffe8c2,#e0bc7f,#c69d5e);
+			background-clip: text;
+			text-align: center;
+			-webkit-text-fill-color: transparent;
+
+			em { font-size: 3.6rem; }
+
+			span {
+				display: block;
+
+				@include font(2.2rem,var(--bold));
+			}
+
+			.sub {
+				font-size: 2rem;
+
+				em { font-size: 2.2rem; }
+			}
+
+			.goto-tab {
+				position: relative;
+				background: #fff;
+				background-clip: text;
+				font-size: 1.6rem;
+
+				&::after {
+					content: '';
+					margin-left: .5em;
+					position: relative;
+
+					@include sprite-x2($vote-favorite-coffee-x2-arrow-cta2);
+				}
+			}
+
+			@include breakpoint('lg') {
+				font-size: 28px;
+
+				em { font-size: 30px; }
+
+				span {
+					font-size: 22px;
+				}
+
+				.sub {
+					font-size: 16px;
+
+					em { font-size: 18px; }
+				}
+
+				.goto-tab {
+					top: -5px;
+					font-size: 14px;
+
+					&::after {
+						@include sprite($vote-favorite-coffee-arrow-cta2);
+						margin-left: 5px;
+						top: 1px;
+					}
+				}
+			}
+		}
+
+		.btn {
+			gap: 1rem;
+			height: 7rem;
+			padding: 0 6rem;
+
+			@include font(2.6rem,var(--medium));
+			@include breakpoint('lg') {
+				gap: 10px;
+				height: 47px;
+				padding: 5px 40px 0;
+				font-size: 14px;
+
+				&::after {
+					top: -2px;
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+/* stylelint-disable */
+
+// Base
+@use './base';	// 로컬 작업용
+// @use './base/deploy';	// 배포용
+
+// helpers
+@import './helpers/variables';	
+// @import './helpers/functions';
+@import './helpers/mixins';	
+@import './helpers/media';
+
+
+// vendors - img sprite 해당 캠페인 파일만
+@import './vendors/vote-favorite-coffee-sprite';
+@import './vendors/vote-favorite-coffee-x2-sprite';
+
+// Components
+@import './components/vote-favorite-coffee';
+
+// Pages
+@import './pages/_vote-favorite-coffee.scss';
+
+// 네스프레소 홈페이지 관련 스타일 재정의
+@import './redefine/';
+
+
+
+
+

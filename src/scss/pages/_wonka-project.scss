@@ -1,0 +1,1115 @@
+// $path: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/wonka-project';
+$path: '@@img';
+
+.wonka-project-wrap {
+	height: 100%;
+	min-height: 100vh;
+
+	.intro-wrap {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		.main {
+			@include size(100%,104.6rem);
+			display: flex;
+			flex-direction: column;
+			gap: 2.8rem;
+			padding-top: 20rem;
+			position: relative;
+			color: #fff;
+			text-align: center;
+
+			.title {
+				background: linear-gradient(90deg,#c28d38 0%,#f0e4c1 32%,#fff 46%,#e0bc7f 57%,#c69d5e 100%);
+				background-clip: text;
+				font-size: 8rem;
+				font-weight: var(--bold);
+				line-height: 120%;
+				letter-spacing: -.4rem;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.sub {
+				font-size: 3.4rem;
+				letter-spacing: -.17rem;
+
+				span {
+					background: var(--Gradation-Gold01,linear-gradient(90deg,#c28d38 0%,#f0e4c1 32%,#fff 46%,#e0bc7f 57%,#c69d5e 100%));
+					background-clip: text;
+					font-weight: var(--bold);
+					line-height: 135%;
+					-webkit-text-fill-color: transparent;
+				}
+			}
+
+			.star-area {
+				.star {
+					@include sprite-x2($wonka-project-x2-intro-star);
+					position: absolute;
+					background-size: cover;
+
+					&.star1 {
+						width: 13rem;
+						height: 13rem;
+						top: .5rem;
+						left: 25rem;
+					}
+
+					&.star2 {
+						width: 8.6rem;
+						height: 8.6rem;
+						top: 11.5rem;
+						left: 5.5rem;
+					}
+
+					&.star3 {
+						width: 13rem;
+						height: 13rem;
+						top: 92rem;
+						left: 0;
+					}
+
+					&.star4 {
+						width: 7.5rem;
+						height: 7.5rem;
+						top: 68rem;
+						left: 66rem;
+					}
+
+					&.star5 {
+						width: 15rem;
+						height: 15rem;
+						top: 75rem;
+						left: 64rem;
+					}
+				}
+			}
+
+			@include breakpoint('lg') {
+				gap: 15px;
+				height: 650px;
+				padding-top: 155px;
+
+				&.bg-lazy { background-repeat: repeat-x; }
+
+				.title {
+					font-size: 58px;
+					letter-spacing: -2.9px;
+				}
+
+				.sub {
+					font-size: 24px;
+					letter-spacing: -1.2px;
+				}
+
+				.star-area {
+					width: 1000px;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 50%;
+					transform: translateX(-50%);
+
+					.star {
+						@include sprite($wonka-project-intro-star);
+						background-size: cover;
+
+						&.star1 {
+							width: 130px;
+							height: 130px;
+							top: -10px;
+							left: 300px;
+						}
+
+						&.star2 {
+							width: 80px;
+							height: 80px;
+							top: 100px;
+							left: 200px;
+						}
+
+						&.star3 {
+							width: 150px;
+							height: 150px;
+							top: 476px;
+							left: 26px;
+						}
+
+						&.star4 {
+							width: 80px;
+							height: 80px;
+							top: 239px;
+							left: 872px;
+						}
+
+						&.star5 {
+							width: 150px;
+							height: 150px;
+							top: 369px;
+							left: 824px;
+						}
+					}
+				}
+			}
+		}
+
+		.payback {
+			@include size(100%,36.2rem);
+			display: flex;
+			flex-direction: column;
+			gap: 3.5rem;
+			padding-top: 7rem;
+			background: linear-gradient(96deg,#c28d38 0%,#f0e4c1 38.75%,#ffe8c2 52.99%,#e0bc7f 66.98%,#c69d5e 92.38%);
+			color: #363024;
+			text-align: center;
+
+			.title {
+				position: relative;
+				font-size: 5.4rem;
+				font-weight: var(--bold);
+				line-height: 135%;
+				letter-spacing: -.27rem;
+
+				&::after {
+					@include before-after();
+					width: 6.45rem;
+					height: .1rem;
+					top: 8rem;
+					left: 50%;
+					background-color: #cba873;
+					transform: translateX(-50%);
+				}
+			}
+
+			.sub {
+				font-size: 3.2rem;
+				line-height: 135%;
+				color: #6f4a15;
+				letter-spacing: -.16rem;
+
+				span {
+					font-weight: var(--bold);
+					color: #363024;
+				}
+			}
+
+			@include breakpoint('lg') {
+				gap: 30px;
+				height: 210px;
+				padding-top: 40px;
+
+				.title {
+					font-size: 30px;
+					letter-spacing: -1.5px;
+
+					&::after {
+						width: 60px;
+						height: 1px;
+						top: 53px;
+					}
+				}
+
+				.sub {
+					font-size: 22px;
+					letter-spacing: -1.1px;
+				}
+			}
+		}
+	}
+
+	.guide-wrap {
+		@include size(100%,276.3rem);
+		padding-top: 9rem;
+		position: relative;
+
+		.title-area {
+			display: flex;
+			flex-direction: column;
+			gap: 1.6rem;
+			color: #fff;
+			text-align: center;
+
+			.title {
+				font-size: 6rem;
+				font-weight: var(--bold);
+				line-height: 130%;
+				letter-spacing: -3px;
+			}
+
+			.sub {
+				background: linear-gradient(180deg,#cba873 0%,#c39162 108.55%);
+				background-clip: text;
+				font-size: 3.8rem;
+				line-height: 135%;
+				letter-spacing: -1.9px;
+				-webkit-text-fill-color: transparent;
+			}
+		}
+
+		.inner {
+			height: 223rem;
+			margin-top: 12rem;
+		}
+
+		.button-area {
+			display: inline-flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			position: sticky;
+			top: 12rem;
+			left: 0;
+			z-index: 10;
+
+			button {
+				@include size(16rem,7rem);
+				display: block;
+				background-color: #544b3a;
+				font-size: 3.4rem;
+				font-weight: 500;
+				line-height: 7rem;
+				text-align: center;
+				transition: background .2s ease-out;
+
+
+				span {
+					background: linear-gradient(180deg,#cba873 0%,#c39162 108.55%);
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+
+				&.is-active {
+					background: linear-gradient(96deg,#c28d38 0%,#f0e4c1 39%,#ffe8c2 53%,#e0bc7f 67%,#c69d5e 92%);
+					transition: background .2s ease-out;
+
+					span {
+						background: none;
+						font-weight: 600;
+						-webkit-text-fill-color: #6f4a15;
+					}
+				}
+			}
+		}
+
+		.step-area {
+			overflow: hidden;
+			overflow-x: hidden;
+			position: absolute;
+			top: 29.2rem;
+			right: -2rem;
+			background-color: #fff;
+			border: 7px solid transparent;
+			border-image: linear-gradient(to right,#c28d38 0%,#f0e4c1 38.7485%,#ffe8c2 52.9863%,#e0bc7f 66.9751%,#c69d5e 92.377%);
+			border-image-slice: 1;
+
+			@include size(68.7rem,237.1rem);
+
+			.list {
+				@include size(66rem,233.8rem);
+				display: flex;
+				flex-direction: column;
+				gap: 14.6rem;
+				padding: 6.2rem 0 0 10.5rem;
+				position: absolute;
+				top: 1rem;
+				left: 1rem;
+				background-color: #fff;
+				border: 3px solid transparent;
+				border-image: linear-gradient(to right,#c28d38 0%,#f0e4c1 38.7485%,#ffe8c2 52.9863%,#e0bc7f 66.9751%,#c69d5e 92.377%);
+				border-image-slice: 1;
+
+				.label {
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+					margin-bottom: 2.5rem;
+					background: linear-gradient(180deg,#cba873 0%,#c39162 108.55%);
+					background-clip: text;
+					font-size: 3.4rem;
+					font-weight: 500;
+					letter-spacing: -.17rem;
+					-webkit-text-fill-color: transparent;
+				}
+
+				.tit {
+					margin-bottom: 1.9rem;
+					font-size: 4.4rem;
+					font-weight: 700;
+					line-height: 135%;
+					letter-spacing: -.22rem;
+				}
+
+				.txt {
+					font-size: 2.8rem;
+					font-weight: 500;
+					line-height: 135%;
+					letter-spacing: -.14rem;
+
+					span {
+						color: #986a1c;
+					}
+				}
+
+				.txt2 {
+					display: block;
+					margin: 1.2rem 0 6rem 0;
+					font-size: 2.6rem;
+					color: #363024;
+					letter-spacing: -.13rem;
+				}
+
+				.link {
+					@include size(29.2rem,7rem);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 1rem;
+					margin-top: 4.5rem;
+					background-color: #000;
+					font-size: 2.8rem;
+					font-weight: 500;
+					line-height: 7rem;
+					color: #fff;
+					text-align: center;
+
+					&::after {
+						content: '';
+						display: block;
+						margin-top: -.3rem;
+
+						@include sprite-x2($wonka-project-x2-step-arrow);
+					}
+				}
+
+				.note {
+					display: flex;
+					flex-direction: column;
+					gap: 1.5rem;
+					margin-top: 4rem;
+					font-size: 2rem;
+					line-height: 135%;
+					color: #9d9d9d;
+					letter-spacing: -.1rem;
+
+					span {
+						display: block;
+					}
+				}
+
+				li {
+					position: relative;
+					scroll-margin-top: 18rem;
+
+					.label {
+						&::before {
+							content: '';
+							display: block;
+						}
+					}
+
+					&::after {
+						@include before-after();
+						bottom: -8.3rem;
+						left: -4.5rem;
+
+						@include sprite-x2($wonka-project-x2-payback-step-bar);
+					}
+
+					&:nth-child(1) {
+						.label {
+							&::before {
+								@include sprite-x2($wonka-project-x2-payback-step1);
+							}
+						}
+					}
+
+					&:nth-child(2) {
+						.label {
+							&::before {
+								@include sprite-x2($wonka-project-x2-payback-step2);
+							}
+						}
+					}
+
+					&:nth-child(3) {
+						.label {
+							&::before {
+								@include sprite-x2($wonka-project-x2-payback-step3);
+							}
+						}
+					}
+
+					&:nth-child(4) {
+						.label {
+							&::before {
+								@include sprite-x2($wonka-project-x2-payback-step4);
+							}
+						}
+
+						&::after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint('lg') {
+			height: 1675px;
+			padding-top: 64px;
+
+			&.bg-lazy { background-repeat: repeat-x; }
+
+			.title-area {
+				gap: 13px;
+
+				.title {
+					font-size: 46px;
+				}
+
+				.sub {
+					font-size: 28px;
+				}
+			}
+
+			.inner {
+				@include size(840px,1300px);
+				margin: 70px auto 0;
+			}
+
+			.button-area {
+				gap: 10px;
+				padding-left: 1px;
+				top: 120px;
+
+				button {
+					@include size(105px,46px);
+					padding-left: 13px;
+					font-size: 20px;
+					line-height: 46px;
+					text-align: left;
+				}
+			}
+
+			.step-area {
+				@include size(735px,1405px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto;
+				top: 200px;
+				left: 75px;
+
+				.list {
+					@include size(698px,1373px);
+					gap: 102px;
+					padding: 34px 0 0 80px;
+					position: static;
+
+					.label {
+						gap: 8px;
+						margin-bottom: 12px;
+						font-size: 22px;
+						letter-spacing: -1.1px;
+					}
+
+					.tit {
+						margin-bottom: 8px;
+						font-size: 28px;
+						letter-spacing: -1.4px;
+					}
+
+					.txt {
+						font-size: 20px;
+						letter-spacing: -1px;
+					}
+
+					.txt2 {
+						margin: 7px 0 43px 0;
+						font-size: 18px;
+					}
+
+					.link {
+						margin-top: 30px;
+						font-size: 16px;
+						line-height: 46px;
+
+						@include size(173px,46px);
+
+						&::after {
+							@include sprite($wonka-project-step-arrow);
+						}
+					}
+
+					.note {
+						gap: 10px;
+						margin-top: 20px;
+						font-size: 16px;
+						letter-spacing: -.8px;
+					}
+
+					li {
+						position: relative;
+
+						&::after {
+							bottom: -60px;
+							left: -24px;
+
+							@include sprite($wonka-project-payback-step-bar);
+						}
+
+						&:nth-child(1) {
+							.label {
+								&::before {
+									@include sprite($wonka-project-payback-step1);
+								}
+							}
+						}
+
+						&:nth-child(2) {
+							.label {
+								&::before {
+									@include sprite($wonka-project-payback-step2);
+								}
+							}
+						}
+
+						&:nth-child(3) {
+							.label {
+								&::before {
+									@include sprite($wonka-project-payback-step3);
+								}
+							}
+						}
+
+						&:nth-child(4) {
+							.label {
+								&::before {
+									@include sprite($wonka-project-payback-step4);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.qna-wrap {
+		@include size(100%,139.5rem);
+		padding: 10.5rem 0;
+
+		.title-area {
+			display: flex;
+			flex-direction: column;
+			gap: 2.8rem;
+			margin-bottom: 5rem;
+			font-family: 'Noto Sans KR';
+			text-align: center;
+
+			.title {
+				font-size: 6rem;
+				font-weight: 700;
+				letter-spacing: -.3rem;
+			}
+
+			.sub {
+				font-size: 3.4rem;
+				font-weight: 500;
+				color: #6f4a15;
+			}
+		}
+
+		.tabs-area {
+			display: flex;
+			justify-content: center;
+			gap: 1.2rem;
+			margin-bottom: 7.5rem;
+
+			.tab {
+				font-size: 3rem;
+				line-height: 7rem;
+				text-align: center;
+				letter-spacing: -.15rem;
+
+				button {
+					min-width: 15.4rem;
+					height: 7rem;
+					padding: 0 2.3rem;
+					border: 2px solid #363024;
+					border-radius: 50rem;
+
+					&.is-active {
+						background-color: #363024;
+						font-weight: var(--bold);
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		.qna-swiper {
+			.swiper-wrapper {
+				height: 94rem;
+
+				.wrap {
+					display: flex;
+					flex-direction: column;
+					gap: 2rem;
+					padding: 0 9rem;
+				}
+
+				.qa-wrap {
+					padding: 5rem 3.5rem;
+					background-color: #fff;
+					border-top: .5rem solid #6f4a15;
+					word-break: auto-phrase;
+
+					.quest {
+						display: flex;
+						gap: 1.1rem;
+						margin-bottom: 4rem;
+						font-size: 3.6rem;
+						font-weight: 700;
+						line-height: 125%;
+						color: #6f4a15;
+						letter-spacing: -.18rem;
+
+						.txt {
+							flex: 1;
+						}
+
+						&::before {
+							content: '';
+							display: block;
+
+							@include sprite-x2($wonka-project-x2-qna-ico);
+						}
+					}
+
+					.answer {
+						font-size: 2.6rem;
+						line-height: 125%;
+						letter-spacing: -.13rem;
+
+						.cs {
+							display: block;
+							margin-top: 2rem;
+							font-size: 1.8rem;
+							color: #9d9d9d;
+							letter-spacing: -.09rem;
+						}
+					}
+				}
+			}
+
+			.swiper-button-disabled {
+				display: none;
+			}
+
+			.swiper-button-prev, .swiper-button-next {
+				margin-top: -5rem;
+				color: #fff;
+				transform: scale(1.25);
+			}
+
+			.swiper-button-prev {
+				left: 3rem;
+			}
+
+			.swiper-button-next {
+				right: 3rem;
+			}
+
+			.qna-bullet {
+				width: 1.6rem;
+				height: 1.6rem;
+				background-color: #6f4a15;
+			}
+		}
+
+		@include breakpoint('lg') {
+			@include size(100%,912px);
+			padding: 60px 0;
+
+			&.bg-lazy { background-repeat: repeat-x; }
+
+			.title-area {
+				gap: 23px;
+				margin-bottom: 45px;
+
+				.title {
+					font-size: 46px;
+					letter-spacing: -2.3px;
+				}
+
+				.sub {
+					font-size: 28px;
+				}
+			}
+
+			.tabs-area {
+				gap: 10px;
+				margin-bottom: 52px;
+
+				.tab {
+					font-size: 22px;
+					line-height: 46px;
+
+					button {
+						min-width: 120px;
+						height: 46px;
+						padding: 0 25px;
+					}
+				}
+			}
+
+			.qna-swiper {
+				width: 1100px;
+
+				.swiper-wrapper {
+					height: 532px;
+
+					.wrap {
+						gap: 20px;
+						width: 834px;
+						padding: 0;
+						margin: 0 auto;
+					}
+
+					.qa-wrap {
+						padding: 32px 50px;
+
+						.quest {
+							gap: 10px;
+							margin-bottom: 25px;
+							font-size: 28px;
+							letter-spacing: -1.4px;
+
+							&::before {
+								@include sprite($wonka-project-qna-ico);
+							}
+						}
+
+						.answer {
+							font-size: 20px;
+							letter-spacing: -1px;
+
+							.cs {
+								margin-top: 16px;
+								font-size: 16px;
+							}
+						}
+					}
+				}
+
+				.swiper-button-prev, .swiper-button-next {
+					margin-top: -33px;
+					transform: scale(1.4);
+				}
+
+				.swiper-button-prev {
+					left: calc(50% - 492px);
+				}
+
+				.swiper-button-next {
+					right: calc(50% - 492px);
+				}
+
+				.qna-bullet {
+					width: 16px;
+					height: 16px;
+				}
+			}
+		}
+	}
+
+	.pro-wrap {
+		@include size(100%,131.1rem);
+		padding-top: 8.8rem;
+
+		.title-area {
+			text-align: center;
+
+			.title {
+				font-size: 6rem;
+				line-height: 130%;
+				letter-spacing: -.3rem;
+
+				span {
+					font-weight: 700;
+					letter-spacing: -.2rem;
+				}
+			}
+
+			.sub {
+				margin-bottom: 2rem;
+				font-size: 4rem;
+				font-weight: 600;
+				color: #6f4a15;
+			}
+		}
+
+		.tabs-area {
+			width: 41.8rem;
+			height: 7.2rem;
+			margin: 0 auto;
+			margin-top: 4rem;
+			position: relative;
+			border: 1px solid #e0bc7f;
+			border-radius: 5rem;
+
+			.tab {
+				width: 24rem;
+				height: 7rem;
+				position: absolute;
+				border-radius: 5rem;
+				font-size: 2.2rem;
+				font-weight: 700;
+				line-height: 7rem;
+				color: #6f4a15;
+				text-align: center;
+
+				button {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: .8rem;
+					width: 100%;
+
+					&::before {
+						content: '';
+						display: block;
+						margin-top: -.5rem;
+
+						@include sprite-x2($wonka-project-x2-pro-ori-ico);
+					}
+				}
+
+				&:nth-child(1) {
+					position: absolute;
+					left: 0;
+				}
+
+				&:nth-child(2) {
+					width: 19.6rem;
+					position: absolute;
+					right: 0;
+
+					button {
+						&::before {
+							@include sprite-x2($wonka-project-x2-pro-acc-ico);
+						}
+					}
+				}
+
+				&.is-active {
+					background: linear-gradient(96deg,#c28d38 0%,#f0e4c1 39%,#ffe8c2 53%,#e0bc7f 67%,#c69d5e 93%);
+				}
+			}
+		}
+
+		.tab-content {
+			margin-top: 5rem;
+
+			.swiper-wrapper {
+				height: 77rem;
+			}
+
+			.swiper-button-disabled {
+				display: none;
+			}
+
+			.swiper-button-prev, .swiper-button-next {
+				margin-top: -20.5rem;
+				opacity: .3;
+				color: #986a1c;
+				transform: scale(1.25);
+			}
+
+			.swiper-button-prev {
+				left: 3rem;
+			}
+
+			.swiper-button-next {
+				right: 3rem;
+			}
+
+			.pro-bullet {
+				width: 1.6rem;
+				height: 1.6rem;
+				background-color: #986a1c;
+			}
+
+			.wrap {
+				text-align: center;
+
+				.name {
+					margin-bottom: 4rem;
+					font-size: 4.4rem;
+					font-weight: 500;
+					line-height: 125%;
+					letter-spacing: -.22rem;
+				}
+
+				.price {
+					display: block;
+					font-size: 3.6rem;
+				}
+
+				.buy {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: .8rem;
+					width: 23.4rem;
+					height: 7.1rem;
+					margin: 3rem auto 0;
+					margin-top: 3rem;
+					border: 1px solid #000;
+					font-size: 2.6rem;
+
+					&::after {
+						content: '';
+						display: block;
+						margin-top: -.8rem;
+
+						@include sprite-x2($wonka-project-x2-buy-arrow);
+					}
+				}
+
+				.img {
+					width: 40rem;
+					height: 40rem;
+					margin: 0 auto;
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+					margin-bottom: 3.5rem;
+				}
+			}
+		}
+
+		@include breakpoint('lg') {
+			padding-top: 64px;
+
+			@include size(100%,975px);
+
+			&.bg-lazy { background-repeat: repeat-x; }
+
+			.title-area {
+				.title {
+					font-size: 46px;
+					letter-spacing: -2.3px;
+				}
+
+				.sub {
+					margin-bottom: 25px;
+					font-size: 30px;
+					letter-spacing: -1.5px;
+				}
+			}
+
+			.tabs-area {
+				@include size(400px,50px);
+				margin-top: 26px;
+
+				.tab {
+					@include size(230px,50px);
+					font-size: 20px;
+					line-height: 50px;
+
+					&:nth-child(2) {
+						width: 188px;
+
+						button {
+							&::before {
+								@include sprite($wonka-project-pro-acc-ico);
+							}
+						}
+					}
+
+					button {
+						&::before {
+							@include sprite($wonka-project-pro-ori-ico);
+						}
+					}
+				}
+			}
+
+			.tab-content {
+				margin-top: 50px;
+
+				.swiper {
+					width: 1100px;
+				}
+
+				.swiper-wrapper {
+					height: 530px;
+
+					.swiper-slide {
+						display: flex;
+						justify-content: center;
+						gap: 50px;
+					}
+				}
+
+				.swiper-button-prev, .swiper-button-next {
+					margin-top: -100px;
+					transform: scale(1.4);
+				}
+
+				.swiper-button-prev {
+					left: calc(50% - 492px);
+				}
+
+				.swiper-button-next {
+					right: calc(50% - 492px);
+				}
+
+				.pro-bullet {
+					width: 16px;
+					height: 16px;
+				}
+
+				.wrap {
+					.name {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						height: 70px;
+						margin-bottom: 20px;
+						font-size: 28px;
+					}
+
+					.price {
+						font-size: 27px;
+					}
+
+					.buy {
+						gap: 5px;
+						width: 142px;
+						height: 47px;
+						margin-top: 25px;
+						font-size: 14px;
+
+						&::after {
+							margin-top: -2px;
+
+							@include sprite($wonka-project-buy-arrow);
+						}
+					}
+
+					.img {
+						width: 240px;
+						height: 240px;
+						margin-bottom: 16px;
+					}
+				}
+			}
+		}
+	}
+}

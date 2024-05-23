@@ -1,0 +1,200 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$wonka-project-buy-arrow-name: 'wonka-project-buy-arrow';
+$wonka-project-buy-arrow-x: 404px;
+$wonka-project-buy-arrow-y: 15px;
+$wonka-project-buy-arrow-offset-x: -404px;
+$wonka-project-buy-arrow-offset-y: -15px;
+$wonka-project-buy-arrow-width: 6px;
+$wonka-project-buy-arrow-height: 12px;
+$wonka-project-buy-arrow-total-width: 687px;
+$wonka-project-buy-arrow-total-height: 150px;
+$wonka-project-buy-arrow-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-buy-arrow: (404px, 15px, -404px, -15px, 6px, 12px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-buy-arrow', );
+$wonka-project-intro-star-name: 'wonka-project-intro-star';
+$wonka-project-intro-star-x: 0px;
+$wonka-project-intro-star-y: 0px;
+$wonka-project-intro-star-offset-x: 0px;
+$wonka-project-intro-star-offset-y: 0px;
+$wonka-project-intro-star-width: 150px;
+$wonka-project-intro-star-height: 150px;
+$wonka-project-intro-star-total-width: 687px;
+$wonka-project-intro-star-total-height: 150px;
+$wonka-project-intro-star-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-intro-star: (0px, 0px, 0px, 0px, 150px, 150px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-intro-star', );
+$wonka-project-payback-step-bar-name: 'wonka-project-payback-step-bar';
+$wonka-project-payback-step-bar-x: 160px;
+$wonka-project-payback-step-bar-y: 0px;
+$wonka-project-payback-step-bar-offset-x: -160px;
+$wonka-project-payback-step-bar-offset-y: 0px;
+$wonka-project-payback-step-bar-width: 527px;
+$wonka-project-payback-step-bar-height: 5px;
+$wonka-project-payback-step-bar-total-width: 687px;
+$wonka-project-payback-step-bar-total-height: 150px;
+$wonka-project-payback-step-bar-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-payback-step-bar: (160px, 0px, -160px, 0px, 527px, 5px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-payback-step-bar', );
+$wonka-project-payback-step1-name: 'wonka-project-payback-step1';
+$wonka-project-payback-step1-x: 210px;
+$wonka-project-payback-step1-y: 15px;
+$wonka-project-payback-step1-offset-x: -210px;
+$wonka-project-payback-step1-offset-y: -15px;
+$wonka-project-payback-step1-width: 30px;
+$wonka-project-payback-step1-height: 30px;
+$wonka-project-payback-step1-total-width: 687px;
+$wonka-project-payback-step1-total-height: 150px;
+$wonka-project-payback-step1-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-payback-step1: (210px, 15px, -210px, -15px, 30px, 30px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-payback-step1', );
+$wonka-project-payback-step2-name: 'wonka-project-payback-step2';
+$wonka-project-payback-step2-x: 250px;
+$wonka-project-payback-step2-y: 15px;
+$wonka-project-payback-step2-offset-x: -250px;
+$wonka-project-payback-step2-offset-y: -15px;
+$wonka-project-payback-step2-width: 31px;
+$wonka-project-payback-step2-height: 26px;
+$wonka-project-payback-step2-total-width: 687px;
+$wonka-project-payback-step2-total-height: 150px;
+$wonka-project-payback-step2-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-payback-step2: (250px, 15px, -250px, -15px, 31px, 26px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-payback-step2', );
+$wonka-project-payback-step3-name: 'wonka-project-payback-step3';
+$wonka-project-payback-step3-x: 291px;
+$wonka-project-payback-step3-y: 15px;
+$wonka-project-payback-step3-offset-x: -291px;
+$wonka-project-payback-step3-offset-y: -15px;
+$wonka-project-payback-step3-width: 31px;
+$wonka-project-payback-step3-height: 26px;
+$wonka-project-payback-step3-total-width: 687px;
+$wonka-project-payback-step3-total-height: 150px;
+$wonka-project-payback-step3-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-payback-step3: (291px, 15px, -291px, -15px, 31px, 26px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-payback-step3', );
+$wonka-project-payback-step4-name: 'wonka-project-payback-step4';
+$wonka-project-payback-step4-x: 160px;
+$wonka-project-payback-step4-y: 65px;
+$wonka-project-payback-step4-offset-x: -160px;
+$wonka-project-payback-step4-offset-y: -65px;
+$wonka-project-payback-step4-width: 28px;
+$wonka-project-payback-step4-height: 28px;
+$wonka-project-payback-step4-total-width: 687px;
+$wonka-project-payback-step4-total-height: 150px;
+$wonka-project-payback-step4-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-payback-step4: (160px, 65px, -160px, -65px, 28px, 28px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-payback-step4', );
+$wonka-project-pro-acc-ico-name: 'wonka-project-pro-acc-ico';
+$wonka-project-pro-acc-ico-x: 332px;
+$wonka-project-pro-acc-ico-y: 15px;
+$wonka-project-pro-acc-ico-offset-x: -332px;
+$wonka-project-pro-acc-ico-offset-y: -15px;
+$wonka-project-pro-acc-ico-width: 26px;
+$wonka-project-pro-acc-ico-height: 26px;
+$wonka-project-pro-acc-ico-total-width: 687px;
+$wonka-project-pro-acc-ico-total-height: 150px;
+$wonka-project-pro-acc-ico-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-pro-acc-ico: (332px, 15px, -332px, -15px, 26px, 26px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-pro-acc-ico', );
+$wonka-project-pro-ori-ico-name: 'wonka-project-pro-ori-ico';
+$wonka-project-pro-ori-ico-x: 368px;
+$wonka-project-pro-ori-ico-y: 15px;
+$wonka-project-pro-ori-ico-offset-x: -368px;
+$wonka-project-pro-ori-ico-offset-y: -15px;
+$wonka-project-pro-ori-ico-width: 26px;
+$wonka-project-pro-ori-ico-height: 26px;
+$wonka-project-pro-ori-ico-total-width: 687px;
+$wonka-project-pro-ori-ico-total-height: 150px;
+$wonka-project-pro-ori-ico-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-pro-ori-ico: (368px, 15px, -368px, -15px, 26px, 26px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-pro-ori-ico', );
+$wonka-project-qna-ico-name: 'wonka-project-qna-ico';
+$wonka-project-qna-ico-x: 160px;
+$wonka-project-qna-ico-y: 15px;
+$wonka-project-qna-ico-offset-x: -160px;
+$wonka-project-qna-ico-offset-y: -15px;
+$wonka-project-qna-ico-width: 40px;
+$wonka-project-qna-ico-height: 40px;
+$wonka-project-qna-ico-total-width: 687px;
+$wonka-project-qna-ico-total-height: 150px;
+$wonka-project-qna-ico-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-qna-ico: (160px, 15px, -160px, -15px, 40px, 40px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-qna-ico', );
+$wonka-project-step-arrow-name: 'wonka-project-step-arrow';
+$wonka-project-step-arrow-x: 420px;
+$wonka-project-step-arrow-y: 15px;
+$wonka-project-step-arrow-offset-x: -420px;
+$wonka-project-step-arrow-offset-y: -15px;
+$wonka-project-step-arrow-width: 6px;
+$wonka-project-step-arrow-height: 12px;
+$wonka-project-step-arrow-total-width: 687px;
+$wonka-project-step-arrow-total-height: 150px;
+$wonka-project-step-arrow-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-step-arrow: (420px, 15px, -420px, -15px, 6px, 12px, 687px, 150px, '@@img/sprites/wonka-project.webp', 'wonka-project-step-arrow', );
+$wonka-project-width: 687px;
+$wonka-project-height: 150px;
+$wonka-project-image: '@@img/sprites/wonka-project.webp';
+$wonka-project-sprites: ($wonka-project-buy-arrow, $wonka-project-intro-star, $wonka-project-payback-step-bar, $wonka-project-payback-step1, $wonka-project-payback-step2, $wonka-project-payback-step3, $wonka-project-payback-step4, $wonka-project-pro-acc-ico, $wonka-project-pro-ori-ico, $wonka-project-qna-ico, $wonka-project-step-arrow, );
+$wonka-project: (687px, 150px, '@@img/sprites/wonka-project.webp', $wonka-project-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

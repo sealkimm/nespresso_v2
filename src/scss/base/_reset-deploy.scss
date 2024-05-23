@@ -1,0 +1,14 @@
+/* stylelint-disable */
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+button {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+
+em { font-style: normal; }

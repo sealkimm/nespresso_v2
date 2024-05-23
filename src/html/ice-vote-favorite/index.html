@@ -1,0 +1,291 @@
+{%
+	set	pageInfo	=	{
+		lang: 'ko',
+		section: 'ice-vote-favorite',
+		page: 'ice-vote-favorite',
+		title: '나의 인생 아이스 커피 투표하기',
+		order: [0,0]
+	}
+%}
+{%	extends	'@inc/layout.html'	%}
+{%	block	content	%}
+<!-- <button type="button" class="test-login" v-if="isLogin" @click="testLogout">로그아웃</button> -->
+<!-- <button type="button" class="test-login" v-else @click="testLogin">로그인</button> -->
+<div class="ice-vote-favorite-wrap"	ref="container">
+	
+	<div class="intro-wrap bg"  v-lazy="isMobile ?  bg.intro[0] : bg.intro[1]">
+		<div class="txt">
+			<div class="title" v-html="msg.intro.title"></div>
+			<span class="icon"></span>
+			<div class="period" v-html="msg.intro.period"></div>
+		</div>
+	</div>
+	<div class="event-wrap">
+		<div class="polygon"></div>
+		<div :class="`event event${event.id}`" v-for="event in msg.intro.events">
+			<div :class="`img img-pc img${event.id}`" v-if="!isMobile && event.id == 1"><img :src="event.urlPc" alt=""></div>
+			<div class="txt-wrap">
+				<div :class="`label label${event.id}`" v-html="event.label"></div>
+				<div :class="`img img${event.id}`" v-if="isMobile">
+					<img :src="event.url" alt="">
+				</div>
+				<div class="tit" v-html="event.tit" v-if="isMobile"></div>
+				<div class="tit" v-html="event.titPc" v-else></div>
+				<div class="desc" v-html="event.desc" v-if="isMobile"></div>
+				<div class="desc" v-html="event.descPc" v-else></div>
+				<div class="period" v-html="event.period"></div>
+			</div>
+			<div :class="`img img-pc img${event.id}`" v-if="!isMobile && event.id == 2"><img :src="event.urlPc" alt=""></div>
+		</div>
+	</div>
+
+	<!-- vote-main-wrap -->
+	<div class="vote-main-wrap">
+		<div class="caution-layer" :class="{'is-show': loginAlertLayer}">
+			<div class="layer alert">
+				<div class="deco login"></div>
+				<div class="body">
+					<div class="txt-box">
+						<div v-html="msg.layerpop.loginAlert.tit.main"></div>
+					</div>
+					<!-- 실서버 -->
+					<a href="javascript:document.querySelector('#ta-login-dropdown--not-logged').click();" @click="closeLayer('loginAlert')"  class="btn gradient" v-html="msg.layerpop.loginAlert.ctaBtn.txt" :local_event_category="msg.layerpop.loginAlert.ctaBtn.gaCategory" :local_event_action="msg.layerpop.loginAlert.ctaBtn.gaAction" :local_event_label="msg.layerpop.loginAlert.ctaBtn.gaLabel"></a>
+					<!-- 테스트 -->
+					<!-- <button type="button" class="btn" @click="testLogin" v-html="msg.layerpop.loginAlert.ctaBtn.txt" :local_event_category="msg.layerpop.loginAlert.ctaBtn.gaCategory" :local_event_action="msg.layerpop.loginAlert.ctaBtn.gaAction" :local_event_label="msg.layerpop.loginAlert.ctaBtn.gaLabel"></button> -->
+					<button type="button" class="btn-close" @click="closeLayer('loginAlert')"></button>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- vote-wrap -->
+		<div class="vote-wrap">
+			<div class="title" v-html="msg.mainTab[0].title" v-if="mainContentNum === 'vertuo'"></div>
+			<div class="title" v-html="msg.mainTab[1].title" v-else></div>
+			<content-tab-group 
+				:propstabnum="mainContentNum"
+				:propstechinfo="techInfo"
+				:propscontenttabinit="{...contentTabInit}"
+				:propstablist="msg.mainTab"
+				@tab-active="mainTabUpdate">
+				<div class="tab-cont-wrap" v-show="mainContentNum === 'vertuo'">
+					<div class="vote-capsule-list">
+						<div class="vote-item vertuo" v-for="item in msg.capsules.vl" :data-void-id="item.voteId" :key="item.voteId" @click="selectCapsule(item.cate, item.voteId, item.voteName, $event)">
+							<div class="capsule">
+								<label :for="item.voteId" class="radio-only like" :local_event_category="item.gaCategory" :local_event_action="item.gaAction" :local_event_label="item.gaLabel">
+									<input type="radio" :id="item.voteId" :name="item.cate" :value="item.voteId" v-model="selectVlId">
+									<span></span>
+								</label>
+								<div class="area">
+									<div class="img front" v-lazy="bg.capsules.vl[item.id - 1].img"></div>
+									<div class="img back" v-lazy="bg.capsules.vlCoffee[item.id - 1].img"></div>
+								</div>
+							</div>
+							<span class="name" v-html="item.name"></span>
+						</div>
+					</div>
+				</div>
+				<div class="tab-cont-wrap" v-show="mainContentNum === 'original'">
+					<div class="vote-capsule-list">
+						<div class="vote-item original" v-for="item in msg.capsules.ol" :data-void-id="item.voteId" :key="item.voteId" @click="selectCapsule(item.cate, item.voteId, item.voteName, $event)">
+							<div class="capsule">
+								<label :for="item.voteId" class="radio-only like" :local_event_category="item.gaCategory" :local_event_action="item.gaAction" :local_event_label="item.gaLabel">
+									<input type="radio" :id="item.voteId" :name="item.cate" :value="item.voteId" v-model="selectOlId">
+									<span></span>
+								</label>
+								<div class="area">
+									<div class="img ol front" v-lazy="bg.capsules.ol[item.id - 1].img"></div>
+									<div class="img ol back" v-lazy="bg.capsules.olCoffee[item.id - 1].img"></div>
+								</div>
+							</div>
+							<span class="name" v-html="item.name"></span>
+						</div>
+					</div>
+				</div>
+			</content-tab-group>
+		</div>
+		<!--// vote-wrap -->
+
+		<!-- review-wrap -->
+		<div class="review-wrap">
+			<div class="title review" v-html="msg.review.title"></div>
+			<div class="input-cont">
+				<textarea :placeholder="msg.review.placeholder.vl" v-model="vlReview" v-show="mainContentNum === 'vertuo'" 
+					:disabled="selectVlId == '' || vlBtnCount > 0"
+					></textarea>
+				<textarea :placeholder="msg.review.placeholder.ol" v-model="olReview" v-show="mainContentNum === 'original'" 
+					:disabled="selectOlId == '' || olBtnCount > 0"
+					></textarea>
+			</div>
+			<div class="privacy-cont">
+				<div class="tit" v-html="msg.review.privacyTit"></div>
+				<div class="item" v-for="item in msg.review.privacy" :key="item.id">
+					<div class="num" v-html="`${item.id}.`"></div>
+					<div class="txt" v-html="item.txt" v-if="isMobile"></div>
+					<div class="txt" v-html="item.txtPc" v-else></div>
+				</div>
+			</div>
+			<label class="agree-cont vlAgreeOk" :class="`${vlBtnCount > 0 || !propsLogin && 'is-disabled'} `" for="vlAgreeOk" @change="agreeCheck" v-show="mainContentNum === 'vertuo'">
+				<div v-html="msg.review.agree.txt"></div>
+				<div class="str" v-html="msg.review.agree.agreeTxt"></div>
+				<div class="checkbox-only agree">
+					<input type="checkbox" id="vlAgreeOk" name="vlAgreeOk" >
+					<span></span>
+				</div>
+			</label>
+
+			<label class="agree-cont olAgreeOk" :class="`${olBtnCount > 0 || !propsLogin && 'is-disabled'} `" for="olAgreeOk" @change="agreeCheck" v-show="mainContentNum === 'original'">
+				<div v-html="msg.review.agree.txt"></div>
+				<div class="str" v-html="msg.review.agree.agreeTxt"></div>
+				<div class="checkbox-only agree">
+					<input type="checkbox" id="olAgreeOk" name="olAgreeOk" >
+					<span></span>
+				</div>
+			</label>
+			
+			<div class="btn-group agreement">
+				<button 
+				type="button"
+				class="btn large"
+				v-html="msg.review.ctaReqBtn.txt"
+				@click="voteSubmit(mainContentNum, mainContentNum === 'vertuo' ? selectVlId : selectOlId, mainContentNum === 'vertuo' ? selectVlName : selectOlName)"
+				:disabled="mainContentNum === 'vertuo' ? vlBtnDisabled : olBtnDisabled">
+				</button>
+			</div>
+			<div class="benefit-cont" v-html="msg.review.benefit"></div>
+		</div>
+		<!--// review-wrap -->
+
+	</div>
+	<!-- // Daily 투표 순위 -->
+	<div class="daily-vote-wrap">
+		<div class="title">
+			<span  v-html="msg.daily.title" ></span>
+			<span class="date">
+				<span v-html="msg.daily.date[0]"></span>
+				<span v-html="dailyRank.date"></span>
+				<span v-html="msg.daily.date[1]"></span>
+			</span>
+		</div>
+
+		
+		<div class="chart-wrap">
+			<!--// mob -->
+			<table id="mob-chart" class="charts-css bar show-labels how-data-axes " v-if="isMobile" >
+				<!-- //버츄오 -->
+				<tbody v-if="mainContentNum === 'vertuo'">
+					<tr :class="`item item${item.id}`"  v-for="item in msg.daily.vtList" :key="item.name">
+						<th scope="col" class="icon" :style="`--labels-size: ${ isMobile? '7rem' : '90px'}`">
+							<div class="img">
+								<img :src="item.imgUrl" alt="">
+								<div class="name" v-html="item.name"></div>
+							</div>
+						</th>
+						<!-- 해당 캡슐 투표수/ 최대 득표수(1위 캡슐의 투표수) -->
+						<td :style="`--size: calc( ${dailyRank.vt[item.id].vote}/ ${dailyRank.vtMax});`">
+							<span :class="`data ${dailyRank.vt[item.id].rank == 1 && 'best' }`"  v-if="dailyRank.vt[item.id].percent"  v-html="dailyRank.vt[item.id].percent"></span>
+						</td>
+					</tr>
+				</tbody>
+				<!-- //오리지널 -->
+				<tbody v-if="mainContentNum === 'original'">
+					<tr :class="`item item${item.id}`"  v-for="item in msg.daily.olList" :key="item.name">
+						<th scope="col" class="icon ol" :style="`--labels-size: ${ isMobile? '7rem' : '90px'}`">
+							<div class="img">
+								<img :src="item.imgUrl" alt="">
+								<div class="name" v-html="item.name"></div>
+							</div>
+						</th>
+						<!-- 해당 캡슐 투표수/ 최대 득표수(1위 캡슐의 투표수) -->
+						<td :style="`--size: calc( ${dailyRank.ol[item.id].vote}/ ${dailyRank.olMax});`">
+							<span :class="`data ${dailyRank.ol[item.id].rank == 1 && 'best' }`" v-if="dailyRank.ol[item.id].rank == 1 || dailyRank.ol[item.id].rank == 2 || dailyRank.ol[item.id].rank == 3" v-html="dailyRank.ol[item.id].percent"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- mob //-->
+			<!--// pc -->
+			<table id="pc-chart" class="
+				charts-css column show-labels show-primary-axis
+			" v-else >
+				<!-- //버츄오 -->
+				<tbody v-if="mainContentNum === 'vertuo'">
+					<tr :class="`item item${item.id}`"  v-for="item in msg.daily.vtList" :key="item.name">
+						<th scope="row" class="icon" >
+							<div class="img">
+								<img :src="item.imgUrl" alt="">
+							</div>
+						</th>
+						<!-- 해당 캡슐 투표수/ 최대 득표수(1위 캡슐의 투표수) -->
+						<td :style="`--size: calc( ${dailyRank.vt[item.id].vote}/ ${dailyRank.vtMax});`">
+							<div class="name" v-html="item.name"></div>
+							<span :class="`data ${dailyRank.vt[item.id].rank == 1 && 'best' }`"  v-if="dailyRank.vt[item.id].rank == 1 || dailyRank.vt[item.id].rank == 2 || dailyRank.vt[item.id].rank == 3"  v-html="dailyRank.vt[item.id].percent"></span>
+						</td>
+					</tr>
+				</tbody>
+				<!-- //오리지널 -->
+				<tbody v-if="mainContentNum === 'original'">
+					<tr :class="`item item${item.id}`"  v-for="item in msg.daily.olList" :key="item.name">
+						<th scope="row" class="icon ol" :style="`--labels-size: ${ isMobile? '7rem' : '90px'}`">
+						<!-- <th scope="row" class="icon" > -->
+							<div class="img">
+								<img :src="item.imgUrl" alt="">
+							</div>
+						</th>
+						<!-- 해당 캡슐 투표수/ 최대 득표수(1위 캡슐의 투표수) -->
+						<td :style="`--size: calc( ${dailyRank.ol[item.id].vote}/ ${dailyRank.olMax});`">
+							<div class="name" v-html="item.name"></div>
+							<span :class="`data ${dailyRank.ol[item.id].rank == 1 && 'best' }`" v-if="dailyRank.ol[item.id].rank == 1 || dailyRank.ol[item.id].rank == 2 || dailyRank.ol[item.id].rank == 3" v-html="dailyRank.ol[item.id].percent"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- pc // -->
+
+		</div>	
+		<div class="btn-group cta black">
+			<a class="btn black large" :href="msg.review.ctaBtn.vl.url" target="_blank" v-html="msg.review.ctaBtn.vl.txt" :local_event_category="msg.review.ctaBtn.vl.gaCategory" :local_event_action="msg.review.ctaBtn.vl.gaAction" :local_event_label="msg.review.ctaBtn.vl.gaLabel"  v-if="mainContentNum === 'vertuo'"></a>
+			<a class="btn black large" :href="msg.review.ctaBtn.ol.url" target="_blank" v-html="msg.review.ctaBtn.ol.txt" :local_event_category="msg.review.ctaBtn.ol.gaCategory" :local_event_action="msg.review.ctaBtn.ol.gaAction" :local_event_label="msg.review.ctaBtn.ol.gaLabel"  v-else></a>
+		</div>
+	</div>
+	<!-- Daily 투표 순위 // -->
+	<dl class="caution-wrap">
+		<dt class="tit" v-html="msg.contentCaution.tit"></dt>
+		<dd class="item" v-for="item in msg.contentCaution.cont" v-html="item.txt" :key="item.id"></dd>
+	</dl>
+	<!--// vote-main-wrap -->
+	
+
+	<a :href="msg.botBanner.url" class="bot-banner" target="_blank" v-lazy="(isMobile) ? bg.botBanner[0] : bg.botBanner[1]" :local_event_category="msg.botBanner.gaCategory" :local_event_action="msg.botBanner.gaAction" :local_event_label="msg.botBanner.gaLabel">
+		<span class="txt-main" v-html="msg.botBanner.txt1"></span>
+		<span class="txt-sub" v-html="msg.botBanner.txt2" v-if="msg.botBanner.txt2 != ''"></span>
+	</a>
+
+	<div class="layer-wrap" :class="{'is-show': googleFormsLayer}">
+		<div class="layer alert capsule">
+			<div class="body capsule">
+				<div class="deco" :class="`${mainContentNum === 'vertuo' ? 'vt': 'ol'}`"></div>
+				<div class="txt-box box1">
+					<div v-html="msg.layerpop.gotoForms.complateTit"></div>
+					<button type="button" class="btn" v-html="msg.layerpop.gotoForms.btnVl" 
+					:local_event_category="msg.layerpop.gotoForms.gaCategory" :local_event_action="msg.layerpop.gotoForms.gaAction" :local_event_label="msg.layerpop.gotoForms.gaLabel"
+						v-show="mainContentNum === 'vertuo' && olBtnCount === 0 " @click="changeTab('original');"></button>
+					<button type="button" class="btn" v-html="msg.layerpop.gotoForms.btnOl" 
+					:local_event_category="msg.layerpop.gotoForms.gaCategory" :local_event_action="msg.layerpop.gotoForms.gaAction" :local_event_label="msg.layerpop.gotoForms.gaLabel"
+						v-show="mainContentNum === 'original' && vlBtnCount === 0" @click="changeTab('vertuo');"></button>
+				</div>
+				<div class="txt-box box2">
+					<div v-html="msg.layerpop.gotoForms.tit"></div>
+					<a :href="msg.layerpop.gotoForms.ctaBtn.url" target="_blank" class="btn" v-html="msg.layerpop.gotoForms.ctaBtn.txt" :local_event_category="msg.layerpop.gotoForms.ctaBtn.gaCategory" :local_event_action="msg.layerpop.gotoForms.ctaBtn.gaAction" :local_event_label="msg.layerpop.gotoForms.ctaBtn.gaLabel" @click="closeLayer(msg.layerpop.gotoForms.type)"></a>
+				</div>
+					<button type="button" class="btn-close" @click="closeLayer(msg.layerpop.gotoForms.type)"></button>
+			</div>
+		</div>
+	</div>
+
+
+
+	{{	include('../ice-vote-favorite/@components/content-tab-group.html')	}}
+</div>
+{{	include('../ice-vote-favorite/@inc/vue.html')	}}
+{%	endblock	%}

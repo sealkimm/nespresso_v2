@@ -1,0 +1,65 @@
+// Breakpoint Type
+$desktop-width: 1920px;
+$laptop-width: 	1280px;
+$tablet-width: 	768px;
+$mobile-width: 	375px;
+
+$sm-width: 		640px;
+$md-width: 		768px;
+$lg-width: 		1024px;
+$xl-width: 		1280px;
+$xl2-width: 	1536px;
+
+// --------------------------------------------------
+
+// Breakpoint
+@mixin breakpoint($device) {
+	@if ($device == 'desktop') {
+		@media (min-width: $desktop-width) {
+			@content;
+		}
+	}
+	@if ($device == 'laptop') {
+		@media (min-width: $laptop-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'tablet') {
+		@media (min-width: $tablet-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'mobile') {
+		@media (min-width: $mobile-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'sm') {
+		@media (min-width: $sm-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'md') {
+		@media (min-width: $md-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'lg') {
+		@media (min-width: $lg-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'xl') {
+		@media (min-width: $xl-width) {
+			@content;
+		}
+	}
+	@else if ($device == 'xl2') {
+		@media (min-width: $xl2-width) {
+			@content;
+		}
+	}
+	@else {
+		@error 'not found #{$device}';
+	}
+}

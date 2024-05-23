@@ -1,0 +1,843 @@
+{%
+	set pageInfo = {
+		lang: 'en',
+		section: 'ice2024',
+		page: 'ice2024',
+		title: 'ICE 2024',
+		order: [0,0]
+	}
+%}
+{% extends '@inc/layout.html' %}
+{% block content %}
+<div class="ice2024-wrap" ref="container">
+
+	<div class="intro-wrap">
+		<div class="swiper intro-swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide bg-lazy" :class="`slide-content${item.id}`" v-for="(item, index) in msg.intro" :key="index" :style="`background-image: url(${isMobile ? bg.intro[index].img[0] : bg.intro[index].img[1]})`">
+					<div class="wrap" v-if="item.youtube.show">
+						<div class="txt" :class="`txt${isMobile ? 1 : 2}`">
+							<span class="sub" v-html="item.txt.sub"></span>
+							<span class="main" v-html="item.txt.main"></span>
+						</div>
+						<button class="btn landing-btn" @click="openMachineGuideLayer(0)" onclick="playGuideVideo(0)" v-html="item.youtube.txt" :local_event_category="item.youtube.localEventCategory" :local_event_action="item.youtube.localEventAction" :local_event_label="item.youtube.localEventLabel"></button>
+					</div>
+					<div class="wrap" v-else>
+						<div class="txt txt2">
+							<span class="sub" v-html="item.txt.sub"></span>
+							<span class="main" v-html="item.txt.main"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination intro-pagination"></div>
+		</div>
+	</div>
+
+	<content-tab-group
+		:propstabnum="mainContentNum"
+		:propstablist="msg.mainTab"
+		@tab-active="mainTabSelect">
+		<!-- NEW 제품 -->
+		<div class="tab-main-content" v-show="mainContentNum === 1">
+			<div class="content-tab-group">
+				<div class="depth02-tab-wrap">
+					<div class="tab" :class="{'is-active': item.id == newProductContentNum}" v-for="item in msg.newProducts.subTab" :key="item.id" @click="subTabSelect(mainContentNum,item.id)" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+						<span v-html="item.tit" class="txt"></span>
+						<!-- <em class="wave" v-lazy="(isMobile) ? bg.wave[0] : bg.wave[1]"></em> -->
+						<em class="wave"></em>
+					</div>
+				</div>
+				<!-- NEW 제품 > 커피 -->
+				<div class="tab-sub-content" v-show="newProductContentNum === 1">
+					<div class="content-tab-group">
+						<div class="depth03-tab-wrap">
+							<div class="tab" :class="item.cate, {'is-active': item.id == capsuleCateNum}" v-for="item in msg.newProducts.capsules.capsuleTab" :key="item.id" @click="capsuleCateSelect(item.id)" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+								<svg viewBox="0 0 37 49" fill="none" xmlns="http://www.w3.org/2000/svg" v-show="item.id === 1">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M24.5184 26.1822L25.2814 24.9777C25.4109 25.0594 28.4634 27.0557 28.4634 34.1458H27.0381C27.0381 27.9751 24.5791 26.2252 24.5221 26.1822H24.5184ZM11.7164 24.9777C11.5869 25.0594 8.53442 27.0557 8.53442 34.1458H9.95744C9.95744 27.9751 12.4165 26.2252 12.4734 26.1822L12.0879 25.5826L11.7164 24.9777ZM17.7844 24.1555H19.2074V34.1458H17.7881L17.7844 24.1555ZM34.154 35.5729C34.154 25.6501 27.568 18.4471 18.5 18.4471C9.49642 18.4471 3.16202 25.4571 2.87342 35.5729H34.154ZM18.5 17.02C28.3945 17.02 35.577 24.8234 35.577 35.5729H37V37H0V35.5729H1.4319C1.7205 24.6111 8.658 17.02 18.5 17.02Z" />
+								</svg>
+								<svg viewBox="0 0 37 44" fill="none" xmlns="http://www.w3.org/2000/svg"  v-show="item.id === 2">
+									<g clip-path="url(#clip0_158_2643)">
+									<path d="M11.1499 17.5L15.6999 14.7H21.2999L25.8499 17.5L27.9499 32.1904C28.0169 32.7166 28.2419 33.2088 28.5941 33.6H8.6999C9.05652 33.2057 9.28976 32.7123 9.36989 32.1826L11.1499 17.5ZM29.1557 32.0593L27.1868 16.4404L21.5261 13.3H15.4655L9.81302 16.4404L7.84688 32.0387C7.59378 33.5676 5.96893 34.0136 5.8999 34.0136V35H31.0999V34.0136C31.0292 34.0136 29.3671 33.5676 29.1557 32.0593Z" />
+									</g>
+									<defs>
+									<clippath id="clip0_158_2643">
+										<rect width="35" height="35" fill="white" transform="translate(1)"/>
+									</clippath>
+									</defs>
+									</svg>
+								<span v-html="item.tit" class="txt"></span>
+							</div>
+						</div>
+						<!-- NEW 제품 > 커피 > 버츄오 -->
+						<div class="tab-capsule-content" v-show="capsuleCateNum === 1">
+							<div class="capsule-main-wrap">
+								<div class="swiper capsule-vt-swiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" v-for="(item, index) in msg.newProducts.capsules.vt">
+											<div class="item-capsule">
+												<div class="img-wrap">
+													<div class="label limited" :class="`label-${item.cate}`" v-if="item.label.show">
+														<div class="inner">
+															<span v-html="item.label.txt" class="txt"></span>
+														</div>
+													</div>
+													<span class="img bg-lazy" v-lazy="bg.capsules.vt[index].img"></span>
+												</div>
+												<div class="info-wrap">
+													<div class="capsule-tooltip" v-if="item.tooltip.show">
+														<span class="txt" v-html="item.tooltip.txt"></span>
+														<span class="icon"></span>
+													</div>
+													<div class="name" v-html="isMobile ? item.name : item.namePc"></div>
+													<div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+													<div class="notes" :class="`${item.notes.length < 2 && `single`}`" v-if="item.notes.length > 0 ">
+														<span :class="`note${index + 1}`" v-for="(note, index) in item.notes" :key="index" v-html="note"></span>
+													</div>
+													<div class="cup" :class="item.type" v-html="item.cup"></div>
+													<div class="contain" v-html="item.contain" v-if="item.contain !== ''"></div>
+													<div class="composition" v-if="item.composition.list.length > 0">
+														<span v-for="(row, index) in item.composition.list" :key="index" v-html="row"></span>
+													</div>	
+													<div class="item-cart">
+														<div class="align-wrap">
+															<div class="price-wrap">
+																<span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+																<span class="member" v-html="item.price.member"></span>
+															</div>
+															<div class="pieces-wrap" v-html="item.pieces" v-if="item.pieces !== ''"></div>
+														</div>
+														
+														<div class="cart-wrap">
+															<div class="quantity">
+																<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+																<input type="text" class="num" v-model="productsInfo.vtCapsulesInfo[index].quantity" readonly />
+																<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+															</div>
+															<button class="cart-btn" @click="addCart(productsInfo.vtCapsulesInfo[index])"></button>
+														</div>
+													</div>
+												</div>
+											</div>
+	
+										</div>
+									</div>
+									<a :href="msg.maketingBanner.url" target="_blank" class="content-bot-visual capsule-bot-visual bg-lazy" v-lazy="isMobile ? bg.capsules.vtVisual[slideActive.capsules.vt].img[0] : bg.capsules.vtVisual[slideActive.capsules.vt].img[1]" :local_event_category="msg.maketingBanner.localEventCategory" :local_event_action="msg.maketingBanner.localEventAction" :local_event_label="msg.maketingBanner.localEventLabel"></a>
+									<div class="swiper-pagination capsule-pagination capsule-vt-pagination"></div>
+									
+								</div>
+								<div class="swiper-button-next capsule-button-next capsule-vt-button-next"></div>
+								<div class="swiper-button-prev capsule-button-prev capsule-vt-button-prev"></div>
+							</div>
+							
+						</div>
+						<!--// NEW 제품 > 커피 > 버츄오 -->
+
+						<!-- NEW 제품 > 커피 > 오리지널 -->
+						<div class="tab-capsule-content" v-show="capsuleCateNum === 2">
+							<div class="capsule-main-wrap">
+								<div class="swiper capsule-ol-swiper">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" v-for="(item, index) in msg.newProducts.capsules.ol">
+											<div class="item-capsule">
+												<div class="img-wrap">
+													<div class="label limited" :class="`label-${item.cate}`" v-if="item.label.show">
+														<div class="inner">
+															<span v-html="item.label.txt" class="txt"></span>
+														</div>
+													</div>
+													<span class="img bg-lazy" v-lazy="bg.capsules.ol[index].img"></span>
+												</div>
+												<div class="info-wrap">
+													<div class="capsule-tooltip" v-if="item.tooltip.show">
+														<span class="txt" v-html="item.tooltip.txt"></span>
+														<span class="icon"></span>
+													</div>
+													<div class="name" v-html="isMobile ? item.name : item.namePc"></div>
+													<div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+													<div class="notes" :class="`${item.notes.length < 2 && `single`}`" v-if="item.notes.length > 0 ">
+														<span :class="`note${index + 1}`" v-for="(note, index) in item.notes" :key="index" v-html="note"></span>
+													</div>
+													<div class="cup" :class="item.type" v-html="item.cup"></div>
+													<div class="contain" v-html="item.contain" v-if="item.contain !== ''"></div>
+													<div class="composition" v-if="item.composition.list.length > 0">
+														<span v-for="(row, index) in item.composition.list" :key="index" v-html="row"></span>
+													</div>	
+													<div class="item-cart">
+														<div class="align-wrap">
+															<div class="price-wrap">
+																<span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+																<span class="member" v-html="item.price.member"></span>
+															</div>
+															<div class="pieces-wrap" v-html="item.pieces" v-if="item.pieces !== ''"></div>
+														</div>
+														<div class="cart-wrap">
+															<div class="quantity">
+																<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+																<input type="text" class="num" v-model="productsInfo.olCapsulesInfo[index].quantity" readonly />
+																<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+															</div>
+															<button class="cart-btn" @click="addCart(productsInfo.olCapsulesInfo[index])"></button>
+														</div>
+													</div>
+												</div>
+												
+											</div>
+	
+										</div>
+									</div>
+									<a :href="msg.maketingBanner.url" target="_blank" class="content-bot-visual capsule-bot-visual bg-lazy" v-lazy="isMobile ? bg.capsules.olVisual[slideActive.capsules.ol].img[0] : bg.capsules.olVisual[slideActive.capsules.ol].img[1]" :local_event_category="msg.maketingBanner.localEventCategory" :local_event_action="msg.maketingBanner.localEventAction" :local_event_label="msg.maketingBanner.localEventLabel"></a>
+									<div class="swiper-pagination capsule-pagination capsule-ol-pagination"></div>
+								</div>
+								<div class="swiper-button-next capsule-button-next capsule-ol-button-next"></div>
+								<div class="swiper-button-prev capsule-button-prev capsule-ol-button-prev"></div>
+							</div>
+							
+						</div>
+						<!--// NEW 제품 > 커피 > 오리지널 -->
+					</div>
+					
+				</div>
+				<!--// NEW 제품 > 커피 -->
+
+				<!-- NEW 제품 > 머신 -->
+				<div class="tab-sub-content" v-show="newProductContentNum === 2">
+					<div class="content-tab-group">
+						<div class="depth03-tab-wrap">
+							<div class="tab" :class="item.cate, {'is-active': item.id == machineCateNum}" v-for="item in msg.newProducts.machines.machineTab" :key="item.id" @click="machineCateSelect(item.id)" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+								<svg viewBox="0 0 37 49" fill="none" xmlns="http://www.w3.org/2000/svg" v-show="item.id === 1">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M24.5184 26.1822L25.2814 24.9777C25.4109 25.0594 28.4634 27.0557 28.4634 34.1458H27.0381C27.0381 27.9751 24.5791 26.2252 24.5221 26.1822H24.5184ZM11.7164 24.9777C11.5869 25.0594 8.53442 27.0557 8.53442 34.1458H9.95744C9.95744 27.9751 12.4165 26.2252 12.4734 26.1822L12.0879 25.5826L11.7164 24.9777ZM17.7844 24.1555H19.2074V34.1458H17.7881L17.7844 24.1555ZM34.154 35.5729C34.154 25.6501 27.568 18.4471 18.5 18.4471C9.49642 18.4471 3.16202 25.4571 2.87342 35.5729H34.154ZM18.5 17.02C28.3945 17.02 35.577 24.8234 35.577 35.5729H37V37H0V35.5729H1.4319C1.7205 24.6111 8.658 17.02 18.5 17.02Z" />
+								</svg>
+								<svg viewBox="0 0 37 44" fill="none" xmlns="http://www.w3.org/2000/svg"  v-show="item.id === 2">
+									<g clip-path="url(#clip0_158_2642)">
+									<path d="M11.1499 17.5L15.6999 14.7H21.2999L25.8499 17.5L27.9499 32.1904C28.0169 32.7166 28.2419 33.2088 28.5941 33.6H8.6999C9.05652 33.2057 9.28976 32.7123 9.36989 32.1826L11.1499 17.5ZM29.1557 32.0593L27.1868 16.4404L21.5261 13.3H15.4655L9.81302 16.4404L7.84688 32.0387C7.59378 33.5676 5.96893 34.0136 5.8999 34.0136V35H31.0999V34.0136C31.0292 34.0136 29.3671 33.5676 29.1557 32.0593Z" />
+									</g>
+									<defs>
+									<clippath id="clip0_158_2642">
+									<rect width="35" height="35" fill="white" transform="translate(1)"/>
+									</clippath>
+									</defs>
+									</svg>
+								<span v-html="item.tit" class="txt"></span>
+							</div>
+						</div>
+
+						<!-- NEW 제품 > 머신 > 버츄오 -->
+						<div class="tab-machine-content" v-show="machineCateNum === 1">
+							<div class="item-machine" v-for="(item, index) in msg.newProducts.machines.vt" :key="item.id">
+								<div class="wrap">
+									<div class="img-wrap">
+										<div class="img-box">
+											<span class="img bg-lazy" v-lazy="bg.machines.vt[0].img"></span>
+										</div>
+									</div>
+									<div class="info-warp">
+										<span class="name" v-html="item.name"></span>
+										<div class="desc">
+											<span v-for="(txt, index) in isMobile ? item.desc : item.descPc" v-html="txt" :key="index"></span>
+										</div>
+									</div>
+
+									<div class="purchasing-wrap">
+										<dl class="item" v-if="machinesPurchasing.vertuo.buyingNow.show">
+											<dt>
+												<div class="label" v-html="machinesPurchasing.vertuo.buyingNow.label"></div>
+												<span v-html="item.purchasing.buynow.txt"></span>
+											</dt>
+											<dd>
+												<div class="item-cart row">
+													<div class="price-wrap">
+														<span class="nonmember" v-html="machinesPurchasing.vertuo.buyingNow.nonmember" v-if="machinesPurchasing.vertuo.buyingNow.nonmember !== ''"></span>
+														<span class="member" v-html="machinesPurchasing.vertuo.buyingNow.member"></span>
+													</div>
+													<div class="cart-wrap">
+														<div class="quantity">
+															<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+															<input type="text" class="num" v-model="productsInfo.vtMachinesInfo[index].quantity" readonly />
+															<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+														</div>
+														<button class="cart-btn" @click="addCart(productsInfo.vtMachinesInfo[index])"></button>
+													</div>
+												</div>
+												<a :href="item.purchasing.buynow.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.buynow.ctaBtn.localEventCategory" :local_event_action="item.purchasing.buynow.ctaBtn.localEventAction" :local_event_label="item.purchasing.buynow.ctaBtn.localEventLabel" v-html="item.purchasing.buynow.ctaBtn.txt"></a>
+											</dd>
+										</dl>
+										<span class="line bg-lazy" v-lazy="(isMobile) ? bg.machines.line[0] : bg.machines.line[1]" v-if="machinesPurchasing.vertuo.buyingNow.show"></span>
+										<dl class="item" v-if="machinesPurchasing.vertuo.payback.show">
+											<dt>
+												<div class="label" v-html="machinesPurchasing.vertuo.payback.label"></div>
+												<span v-html="item.purchasing.payback.txt"></span>
+											</dt>
+											<dd>
+												<div class="item-cart row">
+													<div class="price-wrap payback-price">
+														<span class="nonmember" v-html="machinesPurchasing.vertuo.payback.nonmember" v-if="machinesPurchasing.vertuo.payback.nonmember !== ''"></span>
+														<span class="member" v-html="machinesPurchasing.vertuo.payback.member"></span>
+													</div>
+													<div class="payback-wrap">
+														<span class="label" v-html="item.purchasing.payback.icon"></span>
+														<span class="icon"></span>
+													</div>
+												</div>
+												<a :href="item.purchasing.payback.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.payback.ctaBtn.localEventCategory" :local_event_action="item.purchasing.payback.ctaBtn.localEventAction" :local_event_label="item.purchasing.payback.ctaBtn.localEventLabel" v-html="item.purchasing.payback.ctaBtn.txt"></a>
+											</dd>
+										</dl>
+									</div>
+
+								</div>
+								
+								<a :href="msg.maketingBanner.url" target="_blank" class="content-bot-visual machine-bot-visual bg-lazy" v-lazy="isMobile ? bg.machines.vtVisual[slideActive.machines.vt].img[0] : bg.machines.vtVisual[slideActive.machines.vt].img[1]" :local_event_category="msg.maketingBanner.localEventCategory" :local_event_action="msg.maketingBanner.localEventAction" :local_event_label="msg.maketingBanner.localEventLabel"></a>
+							</div>
+							<div class="machine-used-tip">
+								<div class="label">
+									<span class="txt">Tip</span>
+									<span class="icon"></span>
+								</div>
+								<div class="title" v-html="msg.newProducts.machines.tip.vt.title"></div>
+								<div class="btn-warp">
+									<div class="tooltip">
+										<span class="txt" v-html="msg.newProducts.machines.tip.vt.btns.tooltip.txt"></span>
+										<span class="icon"></span>
+									</div>
+									<div class="open-btn">
+										<button class="btn" @click="openMachineGuideLayer(1)"></button>
+										<span class="obj twinkle"></span>
+										<div class="obj hand">
+											<span class="icon"></span>
+											<span class="txt">Click</span>
+										</div>
+									</div>
+									<div class="btn-group machine">
+										<a :href="cta.url" class="btn square" v-for="(cta, index) in msg.newProducts.machines.ctaBtns.vt.ctas" :key="index" v-html="cta.txt" :local_event_category="cta.localEventCategory" :local_event_action="cta.localEventAction" :local_event_label="cta.localEventLabel"></a>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<!--// NEW 제품 > 머신 > 버츄오 -->
+
+						<!-- NEW 제품 > 머신 > 오리지널 -->
+						<div class="tab-machine-content" v-show="machineCateNum === 2">
+							<div class="item-machine" v-for="(item, index) in msg.newProducts.machines.ol" :key="item.id">
+								<div class="wrap">
+									<div class="img-wrap">
+										<div class="img-box">
+											<span class="img bg-lazy" v-lazy="bg.machines.ol[0].img"></span>
+										</div>
+									</div>
+									<div class="info-warp">
+										<span class="name" v-html="item.name"></span>
+										<div class="desc">
+											<span v-for="(txt, index) in isMobile ? item.desc : item.descPc" v-html="txt" :key="index"></span>
+										</div>
+									</div>
+
+									<div class="purchasing-wrap">
+										<dl class="item" v-if="machinesPurchasing.original.buyingNow.show">
+											<dt>
+												<div class="label" v-html="machinesPurchasing.original.buyingNow.label"></div>
+												<span v-html="item.purchasing.buynow.txt"></span>
+											</dt>
+											<dd>
+												<div class="item-cart row">
+													<div class="price-wrap">
+														<span class="nonmember" v-html="machinesPurchasing.original.buyingNow.nonmember" v-if="machinesPurchasing.original.buyingNow.nonmember !== ''"></span>
+														<span class="member" v-html="machinesPurchasing.original.buyingNow.member"></span>
+													</div>
+													<div class="cart-wrap">
+														<div class="quantity">
+															<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+															<input type="text" class="num" v-model="productsInfo.olMachinesInfo[index].quantity" readonly />
+															<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+														</div>
+														<button class="cart-btn" @click="addCart(productsInfo.olMachinesInfo[index])"></button>
+													</div>
+												</div>
+												<a :href="item.purchasing.buynow.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.buynow.ctaBtn.localEventCategory" :local_event_action="item.purchasing.buynow.ctaBtn.localEventAction" :local_event_label="item.purchasing.buynow.ctaBtn.localEventLabel" v-html="item.purchasing.buynow.ctaBtn.txt"></a>
+											</dd>
+										</dl>
+										<span class="line bg-lazy" v-lazy="(isMobile) ? bg.machines.line[0] : bg.machines.line[1]" v-if="machinesPurchasing.original.buyingNow.show"></span>
+										<dl class="item" v-if="machinesPurchasing.original.payback.show">
+											<dt>
+												<div class="label" v-html="machinesPurchasing.original.payback.label"></div>
+												<span v-html="item.purchasing.payback.txt"></span>
+											</dt>
+											<dd>
+												<div class="item-cart row">
+													<div class="price-wrap payback-price">
+														<span class="nonmember" v-html="machinesPurchasing.original.payback.nonmember" v-if="machinesPurchasing.original.payback.nonmember !== ''"></span>
+														<span class="member" v-html="machinesPurchasing.original.payback.member"></span>
+													</div>
+													<div class="payback-wrap">
+														<span class="label" v-html="item.purchasing.payback.icon"></span>
+														<span class="icon"></span>
+													</div>
+												</div>
+												<a :href="item.purchasing.payback.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.payback.ctaBtn.localEventCategory" :local_event_action="item.purchasing.payback.ctaBtn.localEventAction" :local_event_label="item.purchasing.payback.ctaBtn.localEventLabel" v-html="item.purchasing.payback.ctaBtn.txt"></a>
+											</dd>
+										</dl>
+									</div>
+
+								</div>
+								
+								<a :href="msg.maketingBanner.url" target="_blank" class="content-bot-visual machine-bot-visual bg-lazy" v-lazy="isMobile ? bg.machines.olVisual[slideActive.machines.ol].img[0] : bg.machines.olVisual[slideActive.machines.ol].img[1]" :local_event_category="msg.maketingBanner.localEventCategory" :local_event_action="msg.maketingBanner.localEventAction" :local_event_label="msg.maketingBanner.localEventLabel"></a>
+								<div class="btn-group machine ol">
+									<a :href="cta.url" class="btn square" v-for="(cta, index) in msg.newProducts.machines.ctaBtns.ol.ctas" :key="index" v-html="cta.txt" :local_event_category="cta.localEventCategory" :local_event_action="cta.localEventAction" :local_event_label="cta.localEventLabel"></a>
+								</div>
+							</div>
+						</div>	
+						<!--// NEW 제품 > 머신 > 오리지널 -->
+
+					</div>
+
+				</div>
+				<!--// NEW 제품 > 머신 -->
+
+				<!-- NEW 제품 > 액세서리 -->
+				<div class="tab-sub-content" v-show="newProductContentNum === 3">
+					<div class="accessory-main-wrap">
+						<div class="swiper accessory-swiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide" v-for="(item, index) in msg.newProducts.accessorys">
+									<div class="item-accessory">
+										<div class="img-wrap">
+											<span class="img bg-lazy" :class="`img${item.id}`" v-lazy="bg.accessorys.lists[index].img"></span>
+										</div>
+										<div class="info-wrap">
+											<span class="name" v-html="isMobile ? item.name : item.namePc"></span>
+											<div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+											<div class="ingredient" v-html="item.ingredient"></div>
+											<div class="volume" v-if="item.volume.length > 0 ">
+												<span class="item" v-for="(txt, index) in item.volume" :key="index" v-html="txt"></span>
+											</div>
+											<div class="item-cart">
+												<div class="price-wrap">
+													<span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+													<span class="member" v-html="item.price.member"></span>
+												</div>
+												<div class="cart-wrap">
+													<div class="quantity">
+														<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, item.id)"></button>
+														<input type="text" class="num" v-model="productsInfo.accessorysInfo[item.id - 1].quantity" readonly />
+														<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, item.id)"></button>
+													</div>
+													<button class="cart-btn" @click="addCart(productsInfo.accessorysInfo[item.id - 1])"></button>
+												</div>
+											</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+							<a :href="msg.maketingBanner.url" target="_blank" class="content-bot-visual capsule-bot-visual bg-lazy" v-lazy="isMobile ? bg.accessorys.botVisual[slideActive.accessorys].img[0] : bg.accessorys.botVisual[slideActive.accessorys].img[1]" :local_event_category="msg.maketingBanner.localEventCategory" :local_event_action="msg.maketingBanner.localEventAction" :local_event_label="msg.maketingBanner.localEventLabel"></a>
+							<div class="swiper-pagination accessory-pagination"></div>
+						</div>
+						<div class="swiper-button-next accessory-button-next"></div>
+						<div class="swiper-button-prev accessory-button-prev"></div>
+					</div>
+					
+				</div>
+				<!--// NEW 제품 > 액세서리 -->
+			</div>
+		</div>
+		<!--// NEW 제품 -->
+
+		<!-- 특별한 여름혜택 -->
+		<div class="tab-main-content" v-show="mainContentNum === 2">
+			<div class="content-tab-group">
+				<div class="depth02-tab-wrap">
+					<div class="tab" :class="{'is-active': item.id == summerBenefitContentNum}" v-for="item in msg.summerBenefits.subTab" :key="item.id" @click="subTabSelect(mainContentNum,item.id)" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+						<span v-html="item.tit" class="txt"></span>
+						<!-- <em class="wave" v-lazy="(isMobile) ? bg.wave[0] : bg.wave[1]"></em> -->
+						<em class="wave"></em>
+					</div>
+				</div>
+				<!-- 특별한 여름혜택 > 여름맞이 증정품 -->
+				<div class="tab-sub-content tab-benefit-content" v-show="summerBenefitContentNum === 1">
+
+					<div class="benefit-title">
+						<div class="main" v-html="msg.summerBenefits.giveaways.title.main"></div>
+					</div>
+					<span class="icon-etc"></span>
+					<div class="beneift-top-banner">
+						<span class="icon icon1"></span>
+						<span class="icon icon3"></span>
+						<div class="condition" v-html="msg.summerBenefits.giveaways.topBanner.condition"></div>
+						<div class="gift" v-html="msg.summerBenefits.giveaways.topBanner.gifts[specialGiftsVar.order].txt"></div>
+					</div>
+
+					<div class="benefit-main-wrap">
+						<div class="swiper benefit-swiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide" v-for="(item, index) in sleevePackage" :key="index">
+									<div class="item-capsule benefit-item-capsule">
+										<div class="img-wrap">
+											<span class="img bg-lazy" v-lazy="index === 0 ? bg.capsules.vt[5].img : bg.capsules.ol[5].img"></span>
+										</div>
+										<div class="info-wrap">
+											<div class="name" v-html="isMobile ? item.name : item.namePc"></div>
+											<div class="cup" :class="item.type" v-html="item.cup"></div>
+											<div class="composition" v-if="item.composition.list.length > 0">
+												<strong v-html="item.composition.tit"></strong>
+												<span v-for="(row, index) in item.composition.list" :key="index" v-html="row"></span>
+											</div>	
+											<div class="item-cart">
+												<div class="price-wrap">
+													<span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+													<span class="member" v-html="item.price.member"></span>
+												</div>
+												<div class="pieces-wrap" v-html="item.pieces" v-if="item.pieces !== ''"></div>
+												<div class="cart-wrap">
+													<div class="quantity">
+														<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+														<input type="text" class="num" v-model="productsInfo.vtCapsulesInfo[item.id - 1].quantity" readonly v-if="item.cate === 'vt'"/>
+														<input type="text" class="num" v-model="productsInfo.olCapsulesInfo[item.id - 1].quantity" readonly v-else/>
+														<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+													</div>
+													<button class="cart-btn" @click="addCart(productsInfo.vtCapsulesInfo[item.id - 1])" v-if="item.cate === 'vt'"></button>
+													<button class="cart-btn" @click="addCart(productsInfo.olCapsulesInfo[item.id - 1])" v-else></button>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+	
+								</div>
+							</div>
+							<div class="swiper-pagination capsule-pagination benefit-pagination"></div>
+						</div>
+						<div class="swiper-button-next benefit-button-next"></div>
+						<div class="swiper-button-prev benefit-button-prev"></div>
+					</div>
+
+					<div class="specialgift-wrap">
+						<span class="bg-top bg-lazy" v-lazy="isMobile ? bg.specialgift.top[0] : bg.specialgift.top[1]"></span>
+						<div class="wrap">
+							<div class="specialgift-title">
+								<span class="sub" v-html="msg.summerBenefits.giveaways.specialGifts.title.sub"></span>
+								<span class="main" v-html="msg.summerBenefits.giveaways.specialGifts.title.main"></span>
+							</div>
+							<div class="gifts">
+								<div class="item" :class="`item-${specialGiftsVar.order + 1}-${item.id}`" v-for="(item, index) in msg.summerBenefits.giveaways.specialGifts.giftSet[specialGiftsVar.order].lists" :key="index">
+									<div class="img bg-lazy" v-lazy="bg.specialgift.gifts[specialGiftsVar.order].img[index]" :class="`img${specialGiftsVar.order + 1}-${item.id}`"></div>
+									<div class="info">
+										<span class="label" v-html="item.label"></span>
+										<span class="name" v-html="item.name"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cautions-wrap">
+								<div class="txt" v-for="(item, index) in msg.summerBenefits.giveaways.specialGifts.speicalGiftsCautions" :key="index" v-html="item"></div>
+							</div>
+						</div>
+						<span class="bg-bot bg-lazy" v-lazy="isMobile ? bg.specialgift.bot[0] : bg.specialgift.bot[1]"></span>
+						<div class="btn-group">
+							<a :href="msg.summerBenefits.giveaways.specialGifts.ctaBtn.url" target="_blank" class="btn square" v-html="msg.summerBenefits.giveaways.specialGifts.ctaBtn.txt" :local_event_category="msg.summerBenefits.giveaways.specialGifts.ctaBtn.localEventCategory" :local_event_action="msg.summerBenefits.giveaways.specialGifts.ctaBtn.localEventAction" :local_event_label="msg.summerBenefits.giveaways.specialGifts.ctaBtn.localEventLabel"></a>
+						</div>
+						<div class="stock-banner" v-if="specialGiftsVar.stockBanner">
+							<span class="icon">
+								<em class="sound"></em>
+							</span>
+							<span class="txt" v-html="msg.summerBenefits.giveaways.specialGifts.stockMsg"></span>
+						</div>
+						<span class="icon sandals"></span>
+					</div>
+				</div>
+				<!--// 특별한 여름혜택 > 여름맞이 증정품 -->
+
+				<!-- 특별한 여름혜택 > 얼리버드 -->
+				<div class="tab-sub-content" v-show="summerBenefitContentNum === 2">
+					<div class="earlybird-top-banner">
+						<span class="icon icon1"></span>
+						<span class="icon icon2"></span>
+						<div class="txt-wrap">
+							<span class="sub" v-html="isMobile ? msg.summerBenefits.earlyBird.topBanner.sub : msg.summerBenefits.earlyBird.topBanner.subPc"></span>
+							<span class="main" v-html="isMobile ? msg.summerBenefits.earlyBird.topBanner.main : msg.summerBenefits.earlyBird.topBanner.mainPc"></span>
+							<span class="period" v-html="msg.summerBenefits.earlyBird.topBanner.period"></span>
+						</div>
+						<span class="limitededtions bg-lazy" v-lazy="bg.earlyBird.topBanner"></span>
+					</div>
+
+					<div class="limitededtion-wrap">
+						<div class="item-limitededtion" :class="`item-limitededtion${item.earlyBirdId}`" v-for="(item, index) in limitedEdtions" :key="index">
+							<div class="img-wrap">
+								<div class="label" :class="`label${item.id}`">
+									<div class="wrap"><div class="txt" v-html="item.label.discount.txt" v-if="item.label.discount.show"></div></div>
+								</div>
+								<span class="img bg-lazy" :class="`img${item.id}`" v-lazy="bg.accessorys.lists[index].earlyBirdImg"></span>
+							</div>
+							<div class="info-wrap">
+								<span class="name" v-html="isMobile ? item.name : item.namePc"></span>
+								<div class="desc" v-html="isMobile ? item.desc : item.descPc"></div>
+								<span class="ingredient" v-html="item.ingredient"></span>
+								<div class="volume" v-if="item.volume.length > 0 ">
+									<span class="item" v-for="(txt, index) in item.volume" :key="index" v-html="txt"></span>
+								</div>
+								<div class="item-cart row">
+									<div class="price-wrap">
+										<span class="nonmember" v-html="item.limitededPrice.nonmember" v-if="item.limitededPrice.nonmember !== ''"></span>
+										<span class="member" v-html="item.limitededPrice.member"></span>
+									</div>
+									<div class="cart-wrap">
+										<div class="quantity">
+											<button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, item.id)"></button>
+											<input type="text" class="num" v-model="productsInfo.accessorysInfo[item.id - 1].quantity" readonly/>
+											<button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, item.id)"></button>
+										</div>
+										<button class="cart-btn" @click="addCart(productsInfo.accessorysInfo[item.id - 1])"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+				<!--// 특별한 여름혜택 > 얼리버드 -->
+			</div>	
+		</div>
+		<!--// 특별한 여름혜택 -->
+
+		<!-- 체험하기 -->
+		<div class="tab-main-content tab-experience-content" v-show="mainContentNum === 3">
+			<div class="content-tab-group">
+				<div class="depth02-tab-wrap">
+					<div class="tab" :class="{'is-active': item.id == experienceContentNum}, `tab-experience${item.id}`" v-for="item in msg.experience.subTab" :key="item.id" @click="subTabSelect(mainContentNum,item.id)" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+						<span v-html="item.tit" class="txt"></span>
+						<!-- <em class="wave" v-lazy="(isMobile) ? bg.wave[0] : bg.wave[1]"></em> -->
+						<em class="wave"></em>
+					</div>
+				</div>
+
+				<!-- 체험하기 > 인생 아이스 커피 -->
+				<div class="tab-sub-content" v-show="experienceContentNum === 100">
+					<span class="icon icon1-1"></span>
+					<span class="icon icon1-2"></span>
+					<span class="icon icon1-3"></span>
+					<div class="favorite-coffee-wrap" :style="`background-image: url(${(isMobile) ? bg.experience.wrap[0] : bg.experience.wrap[1]})`">
+						<span class="title" v-html="msg.experience.favoriteCoffe.title"></span>
+						<div class="page-content page1">
+							<div class="page-title">
+								<span class="txt">P</span>
+								<span class="txt">A</span>
+								<span class="txt">G</span>
+								<span class="txt">E</span>
+								<span class="txt">1</span>
+							</div>
+							<span class="txt-question" v-html="msg.experience.favoriteCoffe.page1.question"></span>
+							<div class="movie-wrap">
+								<div class="cover bg-lazy" v-lazy="(isMobile) ? bg.experience.movieIntro[0] : bg.experience.movieIntro[1]">
+									<button class="btn-play" @click="openMachineGuideLayer(2)" onclick="playGuideVideo(2)"></button>
+								</div>
+							</div>
+						</div>
+						<div class="page-content page2">
+							<div class="page-title">
+								<span class="txt">P</span>
+								<span class="txt">A</span>
+								<span class="txt">G</span>
+								<span class="txt">E</span>
+								<span class="txt">2</span>
+							</div>
+							<span class="txt-question" v-html="msg.experience.favoriteCoffe.page2.question"></span>
+							<div class="vote-banner bg-lazy" v-lazy="(isMobile) ? bg.experience.voteBanner[0] : bg.experience.voteBanner[1]">
+								<span class="sub" v-html="msg.experience.favoriteCoffe.page2.banner.sub"></span>
+								<span class="main" v-html="msg.experience.favoriteCoffe.page2.banner.main"></span>
+							</div>
+							<div class="btn-group">
+								<a :href="msg.experience.favoriteCoffe.page2.ctaBtn.url" target="_blank" class="btn square black" v-html="msg.experience.favoriteCoffe.page2.ctaBtn.txt" :local_event_category="msg.experience.favoriteCoffe.page2.ctaBtn.localEventCategory" :local_event_action="msg.experience.favoriteCoffe.page2.ctaBtn.localEventAction" :local_event_label="msg.experience.favoriteCoffe.page2.ctaBtn.localEventLabel"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--// 체험하기 > 인생 아이스 커피 -->
+
+				<!-- 체험하기 > 아이스 레시피 -->
+				<div class="tab-sub-content" v-show="experienceContentNum === 1">
+					<div class="ice-recipe-wrap">
+						<span class="tape"></span>
+						<span class="title" v-html="msg.experience.iceRecipes.title" v-if="isMobile"></span>
+						<div class="recipe-main-wrap">
+							<div class="swiper recipe-swiper">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" v-for="(item, index) in msg.experience.iceRecipes.recipes" :key="index">
+										<div class="item-recipe">
+											<div class="example-wrap bg-lazy" :style="`background-image: url(${(isMobile) ? bg.experience.recipes.list[index].img[0] : bg.experience.recipes.list[index].img[1]})`">
+												<div class="txt-mob-wrap" v-if="isMobile">
+													<span class="eng" :class="`color${item.id}`" v-html="item.eng"></span>
+													<span class="name" v-html="item.name"></span>
+													<div class="desc" v-html="item.desc"></div>
+												</div>
+											</div>
+											<div class="info-wrap">
+												<div class="txt-pc-wrap" v-if="!isMobile">
+													<span class="eng" :class="`color${item.id}`" v-html="item.eng"></span>
+													<span class="name" v-html="item.name"></span>
+													<div class="desc" v-html="item.desc"></div>
+												</div>
+												<div class="ingredients-wrap">
+													<span class="tit"></span>
+													<div class="desc" v-html="isMobile ? item.ingredients : item.ingredientsPc"></div>
+													<span class="capsule bg-lazy" :style="`background-image: url(${bg.experience.recipes.capsules[item.id === 6 ? 1 : index].img})`"></span>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-button-next recipe-button-next"></div>
+							<div class="swiper-button-prev recipe-button-prev"></div>
+						</div>
+						
+						
+						
+						<div class="step-by-step">
+							<span class="icon glasscup"></span>
+							<span class="icon mugcup"></span>
+							<div class="title">Step By Step</div>
+							<div class="steps">
+								<div class="txt-item" v-for="(item, index) in recipeSteps" :key="index">
+									<span class="num" v-html="`${index + 1}.`"></span>
+									<span class="txt" v-html="item"></span>
+								</div>
+							</div>
+							<span class="arrow"></span>
+							<div class="lading-wrap">
+								<span class="landing-title" v-html="msg.experience.iceRecipes.ctaBtns.title"></span>
+								<div class="btn-group">
+									<a :href="item.urls[recipeNum]" class="btn square black" :class="`color${item.id}`" target="_blank" v-for="item in msg.experience.iceRecipes.ctaBtns.btns" :key="item.id" v-html="item.txt" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel"></a>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-pagination recipe-pagination"></div>
+						<a :href="msg.experience.iceRecipes.ctaBtns.detailBtn.url" target="_blank" class="btn small-txt" v-html="msg.experience.iceRecipes.ctaBtns.detailBtn.txt" :local_event_category="msg.experience.iceRecipes.ctaBtns.detailBtn.localEventCategory" :local_event_action="msg.experience.iceRecipes.ctaBtns.detailBtn.localEventAction" :local_event_label="msg.experience.iceRecipes.ctaBtns.detailBtn.localEventLabel"></a>
+					</div>
+					
+				</div>
+				<!--// 체험하기 > 아이스 레시피 -->
+
+				<!-- 체험하기 > 서울 재즈 페스티벌 -->
+				<div class="tab-sub-content" v-show="experienceContentNum === 2">
+					<div class="jazzfestival-wrap">
+						<span class="icon garland1"></span>
+						<span class="icon garland2"></span>
+						<span class="icon palmtree1"></span>
+						<span class="icon palmtree2"></span>
+						<span class="icon firework1"></span>
+						<span class="icon firework2"></span>
+						<span class="icon sunglasses"></span>
+						<span class="icon sunbed"></span>
+						<div class="title">
+							<div class="main" v-html="msg.experience.jazzFestival.title.main"></div>
+							<span class="sub" v-html="msg.experience.jazzFestival.title.sub"></span>
+						</div>
+						<div class="festival-guide-wrap" :style="`background-image: url(${(isMobile) ? bg.experience.wrap[0] : bg.experience.wrap[1]})`">
+							<span class="guide-title" v-html="msg.experience.jazzFestival.festivalGuide.title"></span>
+							<div class="dots">
+								<span class="dot"></span>
+								<span class="dot"></span>
+								<span class="dot"></span>
+							</div>
+							<div class="introduce">
+								<div v-for="(item, index) in msg.experience.jazzFestival.festivalGuide.introduce" :key="index" v-html="item"></div>
+							</div>
+							<div class="event-wrap">
+								<span class="tape"></span>
+								<div class="visual bg-lazy" v-lazy="(isMobile) ? bg.experience.jazzFestival.visual[0] : bg.experience.jazzFestival.visual[1]"></div>
+								<div class="apply-guide">
+									<span class="apply-tit" v-html="msg.experience.jazzFestival.festivalGuide.applyGuide.title"></span>
+									<div class="apply-step">
+										<div class="step" v-for="(item, index) in msg.experience.jazzFestival.festivalGuide.applyGuide.steps" :key="index">
+											<em class="num" v-html="`${index + 1}.`"></em>
+											<span class="txt" v-html="item"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="apply-info">
+								<div class="info" v-for="(item, index) in msg.experience.jazzFestival.festivalGuide.applyInfo" :key="index">
+									<span class="label" v-html="item.label"></span>
+									<span class="txt" v-html="item.txt"></span>
+								</div>
+							</div>
+							<span class="arrow"></span>
+							<div class="festival-info">
+								<div class="title-wrap">
+									<span class="tit" v-html="msg.experience.jazzFestival.festivalGuide.festivalInfo.title"></span>
+									<span class="period" v-html="msg.experience.jazzFestival.festivalGuide.festivalInfo.period"></span>
+								</div>
+								<div class="btn-group">
+									<a :href="item.url" class="btn-sns" target="_blank" v-for="(item, index) in msg.experience.jazzFestival.festivalGuide.festivalInfo.ctaBtns" :key="index" :local_event_category="item.localEventCategory" :local_event_action="item.localEventAction" :local_event_label="item.localEventLabel">
+										<span class="logo" :class="`logo${item.id}`"></span>
+										<span class="txt btn small-txt" :class="{'txt-kakao' : item.id === 2}" v-html="item.txt"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--// 체험하기 > 서울 재즈 페스티벌 -->
+
+			</div>	
+		</div>
+		<!--// 체험하기 -->
+	</content-tab-group>
+	
+	<div class="bot-wave-wrap" :class="mainContentNum === 3 && `experience-wave`">
+		<div v-show="mainContentNum < 3">
+			<span class="starfish obj"></span>
+			<span class="tube obj"></span>
+			<div class="sea1" v-lazy="(isMobile) ? bg.sea1[0] : bg.sea1[1]"></div>
+			<div class="sea2 obj" v-lazy="(isMobile) ? bg.sea2[0] : bg.sea2[1]"></div>
+		</div>
+		<div v-show="mainContentNum === 3" style="background-color: #f9f3e5;">
+			<span class="obj starfish2"></span>
+			<div class="sea3" v-lazy="(isMobile) ? bg.sea3[0] : bg.sea3[1]"></div>
+			<div class="sea4 obj" v-lazy="(isMobile) ? bg.sea4[0] : bg.sea4[1]"></div>
+			<div class="sea5 obj" v-lazy="(isMobile) ? bg.sea5[0] : bg.sea5[1]"></div>
+		</div>
+	</div>
+	<a href="#" class="bot-banner" target="_blank" v-lazy="(isMobile) ? bg.botBanner[0] : bg.botBanner[1]" :local_event_category="msg.botBanner.localEventCategory" :local_event_action="msg.botBanner.localEventAction" :local_event_label="msg.botBanner.localEventLabel">
+		<span class="txt-main" v-html="msg.botBanner.txt1"></span>
+		<span class="txt-sub" v-html="msg.botBanner.txt2" v-if="msg.botBanner.txt2 != ''"></span>
+	</a>
+
+	<!-- 아이스 & 라테모드 안내 영상 레이어 -->
+	<div class="machine-guide-layer" v-show="machinGuideLayerShow">
+		<div class="layer-wrap">
+			<div class="machin-guide-wrap">
+				<div class="cover bg-lazy" v-lazy="(isMobile) ? bg.machines.cover[0] : bg.machines.cover[1]" v-show="layerNum === 1">
+					<div class="wrap">
+						<!-- <button type="button" class="btn-play" onclick="playGuideVideo(0)" v-show="layerNum === 0"></button> -->
+						<button type="button" class="btn-play" onclick="playGuideVideo(1)" v-show="layerNum === 1"></button>
+						<!-- <button type="button" class="btn-play" onclick="playGuideVideo(2)" v-show="layerNum === 2"></button> -->
+						<div class="title">
+							<span class="sub" v-html="msg.newProducts.machines.tip.layer.sub"></span>
+							<span class="main" v-html="msg.newProducts.machines.tip.layer.main"></span>
+						</div>
+					</div>
+				</div>
+				<div class="guide-mov">
+					<div v-show="layerNum === 0">
+						<div id="player0"></div>
+					</div>
+					<div v-show="layerNum === 1">
+						<div id="player1"></div>
+					</div>
+					<div v-show="layerNum === 2">
+						<div id="player2"></div>
+					</div>
+				</div>
+				<button type="button" class="btn-close" @click="closeMachineGuideLayer()" onclick="stopGuideVideo(0)" v-show="layerNum === 0"></button>
+				<button type="button" class="btn-close" @click="closeMachineGuideLayer()" onclick="stopGuideVideo(1)" v-show="layerNum === 1"></button>
+				<button type="button" class="btn-close" @click="closeMachineGuideLayer()" onclick="stopGuideVideo(2)" v-show="layerNum === 2"></button>
+			</div>
+			
+		</div>
+	</div>
+	<!--// 아이스 & 라테모드 안내 영상 레이어 -->
+
+
+	{{	include('../ice2024/@components/content-tab-group.html')	}}
+</div>
+{{ include('../ice2024/@inc/vue.html') }}
+{% endblock %}

@@ -1,0 +1,267 @@
+.daily-vote-wrap {
+	width: 100%;
+	padding: 1rem 4.6rem;
+	margin: 4rem 0 8rem;
+
+	.title .str { font-size: 5.2rem; }
+
+	.title .date {
+		@include font(2.2rem, var(--regular));
+		margin-left: 2rem;
+		color: #7a7a7a;
+		letter-spacing: -.1rem;
+	}
+
+
+	@include breakpoint('lg') {
+		padding: 0;
+		margin: 15px 0 82px;
+
+		.title .str { font-size: 52px; }
+
+		.title .date {
+			margin-left: 20px;
+
+			@include font(20px, var(--light));
+			letter-spacing: -.1px;
+		}
+	}
+
+	.chart-wrap {
+		width: 100%;
+		margin: 5rem 0 6rem;
+
+		@include breakpoint('lg') { margin: 43px 0 75px; }
+
+		#mob-chart {
+			height: 63.5rem;
+			position: relative;
+
+			&::before, &::after {
+				@include before-after();
+				z-index: 0;
+			}
+
+			.data {
+				margin-right: 10px;
+				font-size: 2.6rem;
+			}
+
+			&::before {
+				@include size(16%, 100%);
+				left: 17%;
+				border-right: 2px dashed #ddd;
+				border-left: 2px dashed #ddd;
+			}
+
+			&::after {
+				@include size(43%, 100%);
+				right: 0%;
+				border-right: 2px dashed #ddd;
+				border-left: 2px dashed #ddd;
+			}
+
+			tbody {
+				height: 100%;
+				position: relative;
+				z-index: 1;
+
+				td { transform-origin: left; }
+
+				&::after {
+					@include before-after();
+					@include size(calc(100% - 7rem), 2px);
+					right: 0;
+					bottom: 0;
+					border-bottom: 2px solid #000;
+				}
+
+				tr {
+					border-left: 2px solid #000;
+				}
+			}
+
+			.item {
+				padding: 0 0 3.3rem;
+				margin-left: 7rem;
+
+
+				.icon {
+					margin-top: -4%;
+
+					.img { @include size(5rem, auto); }
+
+					.name {
+						top: -1.2rem;
+						left: 6.3rem;
+					}
+
+					&.ol { margin-top: -7%; }
+				}
+			}
+		}//mo
+
+		#pc-chart {
+			@include size(900px, 456px);
+
+
+			.item {
+				width: 100px;
+				padding: 0 35px;
+				position: relative;
+
+				&.item0 { z-index: 8; }
+
+				&.item1 { z-index: 7; }
+
+				&.item2 { z-index: 6; }
+
+				&.item3 { z-index: 5; }
+
+				&.item4 { z-index: 4; }
+
+				&.item5 { z-index: 3; }
+
+				&.item6 { z-index: 2; }
+
+				&.item7 { z-index: 1; }
+
+				&.item8 { z-index: 0; }
+
+				.icon {
+					margin-bottom: -76px;
+
+					.img { @include size(56px, auto); }
+				}
+			}
+
+			tbody {
+				position: relative;
+
+				td { transform-origin: bottom; }
+
+				@keyframes revealing-bars {
+					0% { transform: scaleY(0); }
+
+					30% { transform: scaleY(1); }
+				}
+
+				tr, td {
+					position: relative;
+					z-index: 1;
+				}
+
+				&::before, &::after {
+					@include before-after();
+					width: 100%;
+					left: 0;
+					z-index: 0;
+					border-top: 1px dashed #c8c8c8;
+					border-bottom: 1px dashed #c8c8c8;
+				}
+
+				&::before {
+					height: 25%;
+					top: 0;
+				}
+
+				&::after {
+					height: 25%;
+					top: 50%;
+				}
+			}
+
+
+			tr td {
+				background-color: #61aab1;
+				border-radius: 15px 15px 0 0;
+
+				.data {
+					width: 90px;
+					margin-top: -33px;
+					color: #c8c8c8;
+					text-align: center;
+					letter-spacing: -.8px;
+					white-space: nowrap;
+
+					@include font(30px, $bold);
+
+					&.best {
+						color: #ffd551;
+					}
+				}
+			}
+
+			.name {
+				top: 10px;
+				left: 25px;
+			}
+		} //pc
+
+		tbody tr {
+			&.item { box-sizing: border-box; }
+
+			&:hover {
+				.name {
+					opacity: 1;
+				}
+			}
+
+			th {
+				.img {
+					overflow: visible;
+					position: relative;
+
+					img { @include size(100%, auto); }
+				}
+			}
+
+			.name { // mo: tr | pc: td
+				display: block;
+				padding: 6px 5px 4px;
+				overflow: visible;
+				position: absolute;
+				z-index: 10;
+				background: #000;
+				border-radius: 3px 3px 3px 0;
+				opacity: 0;
+
+				@include font( 1.9rem,var(--medium));
+				color: #fff;
+				white-space: nowrap;
+
+				@include breakpoint('lg') {
+					font-size: 16px;
+				}
+
+				&::before {
+					@include before-after();
+					@include size(10px, 10px);
+					overflow: visible;
+					bottom: 0;
+					left: -6px;
+					z-index: 10;
+					border-top: 10px solid transparent;
+					border-right: 10px solid #000;
+
+					@include breakpoint('lg') {
+						z-index: 10;
+					}
+				}
+			}
+
+			td {
+				background-color: #61aab1 !important;
+				border-radius: 0 1.8rem 1.8rem 0;
+				font-weight: bold;
+				color: #fff;
+
+				.data {
+					&.best {
+						color: #ffd551;
+					}
+				}
+			}
+		}
+	}
+}

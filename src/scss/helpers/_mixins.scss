@@ -1,0 +1,149 @@
+// @use './vendors/test-sprite' as *;
+// @use './vendors/test-x2-sprite' as *;
+
+@mixin hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+// width, height
+@mixin size($width: null, $height: null) {
+	width: $width;
+	height: $height;
+}
+@mixin height($height: null) {
+	height: $height;
+	line-height: $height;
+}
+
+// ::before, ::after - absolute
+@mixin before-after() {
+	content: '';
+	box-sizing: border-box;
+	display: inline-block;
+	position: absolute;
+}
+
+//flex
+@mixin flex($flex-flow: null, $justify-content: null,$align-items: null) {
+	display: flex;
+	flex-flow: $flex-flow;
+	align-items: $align-items;
+	justify-content: $justify-content;
+}
+
+// font
+@mixin font($font-size: null, $font-weight: null, $line-height: null) {
+	font-size: $font-size;
+	font-weight: $font-weight;
+	line-height: $line-height;
+}
+
+//px to vw
+@function vw($type,$num) {
+
+	$pc-viewport: 995;
+	$mob-viewport: 750;
+
+	@if ($type == 'pc') {
+		$vw-context: ($pc-viewport * .01) * 1px;
+
+		@return calc(($num / $vw-context) * 1vw);
+	}
+	@else {
+		$vw-context: ($mob-viewport * .01) * 1px;
+
+		@return calc(($num / $vw-context) * 1vw);
+	}
+}
+// px to rem (is mobile)
+@function rem($value) {
+	$rootValue: clamp(5px,1.302vw,10px);
+	// $rootValue: 5px;
+
+	$remSize: calc(($value / $rootValue) * 1rem);
+
+	@return $remSize;
+}
+
+
+// clamp 믹스인
+// css 속성 clamp 선언
+// $value: css 속성
+// $min: 최소값
+// $max: 최대값
+@mixin clamp($type,$value,$min,$max) {
+	#{$value}: clamp($min,vw($type,$max),$max);
+}
+
+// sprite image replace
+@mixin spriteIR($width, $height, $sprite, $position: relative) {
+	display: inline-flex;
+	width: $width;
+	height: 0;
+	max-height: 0;
+	padding-top: $height;
+	overflow: hidden;
+	position: $position;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+
+		@include sprite($sprite);
+	}
+}
+
+// x2 sprite image
+@mixin sprite-x2($sprite) {
+	display: inline-flex;
+
+	@include sprite-width-x2($sprite);
+	@include sprite-height-x2($sprite);
+	@include sprite-image($sprite);
+	@include sprite-size-x2($sprite);
+	@include sprite-position-x2($sprite);
+}
+@mixin sprite-width-x2($sprite) {
+	width: vw(mob,calc(nth($sprite,5) / 2));
+}
+@mixin sprite-height-x2($sprite) {
+	height: vw(mob,calc(nth($sprite,6) / 2));
+}
+@mixin sprite-size-x2($sprite) {
+	background-size: vw(mob,calc(nth($sprite,7) / 2)) vw(mob,calc(nth($sprite,8) / 2));
+
+	@include breakpoint('lg') {
+		background-size: auto;
+	}
+}
+@mixin sprite-position-x2($sprite) {
+	$sprite-offset-x: vw(mob,calc(nth($sprite,3) / 2));
+	$sprite-offset-y: vw(mob,calc(nth($sprite,4) / 2));
+	$pc-sprite-offset-x: calc(nth($sprite,3) / 2);
+	$pc-sprite-offset-y: calc(nth($sprite,4) / 2);
+	background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+// x2 sprite image replace
+@mixin spriteIR-x2($width, $height, $sprite, $position: relative) {
+	width: $width;
+	height: 0;
+	max-height: 0;
+	padding-top: $height;
+	overflow: hidden;
+	position: $position;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+
+		@include sprite-x2($sprite);
+	}
+}

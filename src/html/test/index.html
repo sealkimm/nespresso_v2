@@ -1,0 +1,24 @@
+{%
+	set pageInfo = {
+		lang: 'ko',
+		section: 'test',
+		page: 'test',
+		title: '테스트',
+		order: [0,0]
+	}
+%}
+{% extends '@inc/layout.html' %}
+{% block content %}
+<div class="test-wrap" ref="container">
+	<div class="dummy-wrap">
+		<div class="title"  v-html="msg.test"></div>
+		<ul class="list">
+			<li :class="`item item${idx + 1}`" v-for="(item, idx) in msg.lists">
+				<span v-html="item.id"></span>
+				<span v-html="item.tit"></span>
+			</li>
+		</ul>
+	</div>
+</div>
+{{ include('../test/@inc/vue.html') }}
+{% endblock %}

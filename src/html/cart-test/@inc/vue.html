@@ -1,0 +1,570 @@
+<script>
+  const {
+    createApp,
+    ref,
+    toRefs,
+    computed,
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    watchEffect,
+    onUpdated,
+    watch,
+    reactive,
+    component,
+  } = Vue;
+  const locale = document.querySelector('html').getAttribute('lang');
+  const lazyloadOptions = (el, binding) => {
+    const initStyle = (el, binding) => {
+      const style = `${el.getAttribute('style')}`;
+      el.style.backgroundImage = `url(${binding.value})`;
+      el.classList.add('bg-lazy');
+    };
+    const callIntersectionApi = () => {
+      const options = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px',
+      };
+      const lazyLoadCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 감지대상이 교차영역에 진입 할 경우
+            initStyle(el, binding);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const lazyLoadingIO = new IntersectionObserver(lazyLoadCallback, options);
+      lazyLoadingIO.observe(el);
+    };
+    window.IntersectionObserver
+      ? callIntersectionApi()
+      : initStyle(el, binding);
+  };
+
+  const App = {
+    setup() {
+      const state = reactive({
+        isMobile: true,
+        lang: locale,
+        msg: locale === 'ko' ? messages.ko : messages.en, // 국문, 영문 메시지
+        isProduction: window.location.origin === 'https://www.nespresso.com' ? true : false, // 운영서버 여부
+        isStaging:  window.location.origin === 'https://e.adnstyle.com' ? true : false, // 스테이징(테섭) 여부
+        bg: {},
+        mainContentNum: 1,
+        newProductContentNum: 1,
+        summerBenefitContentNum: 1,
+        experienceContentNum: 1,
+        capsuleCateNum: 1,
+        machineCateNum: 1,
+        slideActive: {
+          capsules: {
+            vt: 0,
+            ol: 0
+          },
+          machines: {
+            vt: 0,
+            ol: 0
+          },
+          accessorys: 0,
+          giveaways: 0,
+        },
+        productsInfo: {
+          vtCapsulesInfo: [],
+          olCapsulesInfo: [],
+          vtMachinesInfo: [],
+          olMachinesInfo: [],
+          accessorysInfo: [],
+        },
+        specialGiftsVar: {
+          // capsuleNumber: 120,
+          order: 0, // 여름맞이 증정품 탑 배너 증정품 - 0: 버츄오 머그 컵 스몰 & 바스타 코스터 세트 팬톤 에디션, 1: 바스타 디저트 보울 세트 & 컴팩트 캡슐 보관함
+          stockBanner: true, // 품절 임박 배너 노출 여부
+        },
+        recipeNum: 0,
+        contentsVideo: [],
+        machinGuideLayerShow: false,
+        pageNumArr: [],
+        machinesPurchasing: {
+          vertuo: { 
+            buyingNow: { show: true, member: '￦ 179,000', nonmember: '￦ 239,000' },
+            payback: {  show: true,  member: '￦ 239,000', nonmember: '' }
+          },
+          original: {
+            buyingNow: { show: true, member: '￦ 239,000', nonmember: '' },
+            payback: { show: true, member: '￦ 239,000', nonmember: '' }, // 5/17 219,000으로 변경필요
+          }
+        },
+        layerNum: 10,
+      });
+
+      // 이미지 경로 설정
+      let imgPath;
+      if(state.isProduction) {
+        // imgPath = 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer'
+        imgPath = 'https://e.adnstyle.com/nespresso/img/ice2024'
+      } else if(state.isStaging) {
+        imgPath = 'https://e.adnstyle.com/nespresso/img/ice2024'
+      } else {
+        imgPath = '{{base}}/img/ice2024'
+      }
+      // 사용 이미지
+      state.bg = {
+        botBanner: [`${imgPath}/mob/bg-bot-banner.webp`, `${imgPath}/bg-bot-banner.webp`],
+        intro: [
+          { id: 1, img: [`${imgPath}/mob/intro/bg-intro1.webp`, `${imgPath}/intro/bg-intro1.webp`] },
+          { id: 2, img: [`${imgPath}/mob/intro/bg-intro2.webp`, `${imgPath}/intro/bg-intro2.webp`] },
+          { id: 3, img: [`${imgPath}/mob/intro/bg-intro3.webp`, `${imgPath}/intro/bg-intro3.webp`] },
+        ],
+        wave: [`${imgPath}/mob/wave.webp`, `${imgPath}/wave.webp`],
+        capsules: {
+          vt: [
+            { id: 1, img: `${imgPath}/mob/capsules/vt-capsule1.webp` },
+            { id: 2, img: `${imgPath}/mob/capsules/vt-capsule2.webp` },
+            { id: 3, img: `${imgPath}/mob/capsules/vt-capsule3.webp` },
+            { id: 4, img: `${imgPath}/mob/capsules/vt-capsule4.webp` },
+            { id: 5, img: `${imgPath}/mob/capsules/vt-capsule5.webp` },
+            { id: 6, img: `${imgPath}/mob/capsules/vt-capsule6.webp` },
+          ],
+          ol: [
+            { id: 1, img: `${imgPath}/mob/capsules/ol-capsule1.webp` },
+            { id: 2, img: `${imgPath}/mob/capsules/ol-capsule2.webp` },
+            { id: 3, img: `${imgPath}/mob/capsules/ol-capsule3.webp` },
+            { id: 4, img: `${imgPath}/mob/capsules/ol-capsule4.webp` },
+            { id: 5, img: `${imgPath}/mob/capsules/ol-capsule5.webp` },
+            { id: 6, img: `${imgPath}/mob/capsules/ol-capsule6.webp` },
+          ],
+        },
+        machines: {
+          vt: [
+            { id: 1, img: `${imgPath}/mob/machines/vt-machine1.webp` },
+          ],
+          ol: [
+            { id: 1, img: `${imgPath}/mob/machines/ol-machine1.webp` },
+          ],
+          line: [`${imgPath}/mob/purchasing-line.png`, `${imgPath}/purchasing-line.webp`],
+          vtVisual: [
+            { id: 1, img: [`${imgPath}/mob/machines/machine-vt-banner.webp`,`${imgPath}/machines/machine-vt-banner.webp`] },
+          ],
+          olVisual: [
+            { id: 1, img: [`${imgPath}/mob/machines/machine-ol-banner.webp`,`${imgPath}/machines/machine-ol-banner.webp`] },
+          ],
+          cover: [`${imgPath}/mob/machines/machine-guide-cover.webp`,`${imgPath}/machines/machine-guide-cover.webp`]
+        },
+        accessorys: {
+          lists: [
+            { id: 1, img: `${imgPath}/mob/accessorys/acc1.webp`, earlyBirdImg: `${imgPath}/mob/accessorys/acc2-1.webp` },
+            { id: 2, img: `${imgPath}/mob/accessorys/acc2.webp`, earlyBirdImg: `${imgPath}/mob/accessorys/acc3-1.webp` },
+            { id: 3, img: `${imgPath}/mob/accessorys/acc3.webp`, earlyBirdImg: `${imgPath}/mob/accessorys/acc1-1.webp` },
+            { id: 4, img: `${imgPath}/mob/accessorys/acc4.webp`, earlyBirdImg: `${imgPath}/mob/accessorys/acc5-1.webp` },
+            { id: 5, img: `${imgPath}/mob/accessorys/acc5.webp`, earlyBirdImg: `${imgPath}/mob/accessorys/acc4-1.webp` },
+          ],
+        },
+      };
+
+
+      // gmt 헤더 설정
+      const gaHeadingInit = () => {
+        let $gaHeading = document.querySelector('#hidden-main-heading')
+        if(document.documentElement.lang === "ko") {
+          $gaHeading.append('테스트 페이지');
+        } else {
+          $gaHeading.append('Test Page');
+        }
+      }
+      // pc, mob breakpoint
+      const checkMedia = () => {
+        const mediaQueryList = window.matchMedia('(min-width: 1024px)');
+        mediaQueryList.matches
+          ? (state.isMobile = false)
+          : (state.isMobile = true);
+        mediaQueryList.addEventListener('change', e =>
+          e.matches ? (state.isMobile = false) : (state.isMobile = true),
+        );
+      };
+
+      const sleevePackage = computed(() => {
+        let list = [];
+        return list = [{...state.msg.newProducts.capsules.vt[5]}, {...state.msg.newProducts.capsules.ol[5]}]
+      })
+
+      const limitedEdtions = computed(() => {
+        const list = [...state.msg.newProducts.accessorys];
+        return _.orderBy(list, ['earlyBirdId'], ['asc'])
+      })
+
+      const recipeSteps = computed(() => {
+        return state.isMobile 
+          ? state.msg.experience.iceRecipes.stepByStep[state.recipeNum].step
+          : state.msg.experience.iceRecipes.stepByStep[state.recipeNum].stepPc
+      })
+
+      const mainTabSelect = v => {
+        state.mainContentNum = v;
+      };
+
+      const subTabSelect = (t, v) => {
+        // console.log(t,v);
+        switch(t) {
+          case 1 :
+            state.newProductContentNum = v;
+            break;
+          case 2 :
+            state.summerBenefitContentNum = v;
+            break;
+          case 3 :
+            state.experienceContentNum = v;
+            break;
+        }
+      }
+
+      const capsuleCateSelect = v => {
+        state.capsuleCateNum = v
+      }
+
+      const machineCateSelect = v => {
+        state.machineCateNum = v
+      }
+
+      const initIntroSwiper = () => {
+        const introSwiper = new Swiper('.intro-swiper', {
+          loop: true,
+          observer: true,
+          observeParents: true,
+          observeSlideChildren: true,
+          watchSlidesProgress: true,
+          loopPreventsSlide: true,
+          pagination: {
+            el: '.intro-pagination',
+            clickable: true,
+          },
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }
+        });
+      }
+
+      const initCapsuleSwiper = () => {
+
+        const options = {
+          loop: true,
+          observer: true,
+          observeParents: true,
+          observeSlideChildren: true,
+          watchSlidesProgress: true,
+          slidesPerView: 1.9,
+          centeredSlides: true,
+          initialSlide: 0,
+          loopPreventsSlide: true,
+          slideToClickedSlide: false,
+          
+        }
+        
+        const capsuleVtSwiper = new Swiper('.capsule-vt-swiper', {
+          ...options,
+          pagination: {
+            el: '.capsule-vt-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            1024: {
+              slidesPerView: 1,
+              navigation: {
+                nextEl: ".capsule-vt-button-next",
+                prevEl: ".capsule-vt-button-prev",
+              },
+            },
+          },
+        });
+
+        const capsuleOlSwiper = new Swiper('.capsule-ol-swiper', {
+          ...options,
+          pagination: {
+            el: '.capsule-ol-pagination',
+            clickable: true,
+          },
+          breakpoints: {
+            1024: {
+              slidesPerView: 1,
+              navigation: {
+                nextEl: ".capsule-ol-button-next",
+                prevEl: ".capsule-ol-button-prev",
+              },
+            },
+          },
+        });
+        
+      }
+
+      const initAccessorySwiper = () => {
+        const options = {
+          loop: true,
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
+          slidesPerView: 1.87,
+          centeredSlides: true,
+          loopPreventsSlide: true,
+          autoHeight: true,
+          breakpoints: {
+            1024: {
+              slidesPerView: 1,
+              navigation: {
+                nextEl: ".accessory-button-next",
+                prevEl: ".accessory-button-prev",
+              },
+            },
+          },
+        }
+        const accessoryVtSwiper = new Swiper('.accessory-swiper', {
+          ...options,
+          pagination: {
+            el: '.accessory-pagination',
+            clickable: true,
+          },
+        });
+      }
+
+      // 개별 페이지 url 설정
+      const getPageNum = () => {
+        const urlStr = window.location.href;
+        const url = new URL(urlStr);
+        const urlParams = url.searchParams;
+        const pageNum = urlParams.get('pageNum');
+        const contNum = urlParams.get('contNum');
+        const tabNum = urlParams.get('tabNum');
+
+
+        let numArr = [];
+        numArr = [Number(pageNum) ?? 1, Number(contNum) ?? 1, Number(tabNum) ?? 1];
+        state.pageNumArr = numArr;
+        let subTabLen = 3;
+        let mainTabLen = 3;
+        if(state.pageNumArr[1] === 1) {
+          subTabLen = 3;
+        } else if(state.pageNumArr[1] === 2) {
+          subTabLen = 2;
+        } else if(state.pageNumArr[1] === 3) {
+          subTabLen = 3;
+        }
+        
+        if(pageNum === null) {
+          mainTabSelect(1)
+          
+        } else if(state.pageNumArr[0] > mainTabLen) {
+          mainTabSelect(1)
+        } else if(contNum === null) {
+          mainTabSelect(state.pageNumArr[0])
+          subTabSelect(state.pageNumArr[0],1)
+        } else {
+
+          mainTabSelect(state.pageNumArr[0]);
+          
+          switch(state.pageNumArr[1]) {
+            case state.pageNumArr[1]:
+              subTabSelect(state.pageNumArr[0],state.pageNumArr[1])
+            break;
+          }
+          
+        }
+
+
+      };
+
+      // 버츄오 캡슐 장바구니 관련 정보 세팅 - message 변수에 정의되어 있는 제품 정보를 state에 세팅하여 v-model과 연결
+      state.productsInfo.vtCapsulesInfo = state.msg.newProducts.capsules.vt.map(row => {
+          return {
+            name: row.name,
+            sku: row.sku,
+            quantity: 0,
+          }
+        });
+
+      // 오리지널 캡슐 장바구니 관련 정보 세팅 - message 변수에 정의되어 있는 제품 정보를 state에 세팅하여 v-model과 연결
+      state.productsInfo.olCapsulesInfo = state.msg.newProducts.capsules.ol.map(row => {
+          return {
+            name: row.name,
+            sku: row.sku,
+            quantity: 0,
+          }
+        });
+
+      // 버츄오 머신 장바구니 관련 정보 세팅 - message 변수에 정의되어 있는 제품 정보를 state에 세팅하여 v-model과 연결
+      state.productsInfo.vtMachinesInfo = state.msg.newProducts.machines.vt.map(row => {
+          return {
+            name: row.name,
+            sku: row.sku,
+            quantity: 0,
+          }
+        });
+
+      // 오리지널 머신 장바구니 관련 정보 세팅 - message 변수에 정의되어 있는 제품 정보를 state에 세팅하여 v-model과 연결
+      state.productsInfo.olMachinesInfo = state.msg.newProducts.machines.ol.map(row => {
+          return {
+            name: row.name,
+            sku: row.sku,
+            quantity: 0,
+          }
+        });
+
+      // 액세서리 장바구니 관련 정보 세팅 - message 변수에 정의되어 있는 제품 정보를 state에 세팅하여 v-model과 연결
+      state.productsInfo.accessorysInfo = state.msg.newProducts.accessorys.map(row => {
+          return {
+            name: row.name,
+            sku: row.sku,
+            quantity: 0,
+          }
+        });
+      
+      /**
+       * 수량 증가
+       * @param {string} type - 제품 타입(캡슐, 슬리브팩, 머신, 액세서리)
+       * @param {string} cate - 제품 카테고리(버츄오, 오리지널)
+       * @param {number} count - 카운팅 수량(캡슐 - 10개, 캡슐(콜드브루) - 7개, 머신, 액세서리, 슬리브팩 - 1개)
+       * @param {number} index - 제품 순서
+       **/
+      const quantityUp = (type, cate, count, index) => {
+        
+        switch (type) {
+          case 'capsule':
+            if(cate === 'vt') {
+              state.productsInfo.vtCapsulesInfo[index].quantity += count
+            } else {
+              state.productsInfo.olCapsulesInfo[index].quantity += count
+            }
+            break;
+
+          case 'sleeve':
+            if(cate === 'vt') {
+              state.productsInfo.vtCapsulesInfo[state.productsInfo.vtCapsulesInfo.length - 1].quantity += count
+            } else {
+              state.productsInfo.olCapsulesInfo[state.productsInfo.olCapsulesInfo.length - 1].quantity += count
+            }
+            break;
+          
+          case 'machine':
+            if(cate === 'vt') {
+              state.productsInfo.vtMachinesInfo[index].quantity += count
+            } else {
+              state.productsInfo.olMachinesInfo[index].quantity += count
+            }
+            break;
+
+          case 'accessory':
+            state.productsInfo.accessorysInfo[index - 1].quantity += count
+            break;
+        }
+      }
+
+      /**
+       * 수량 감소
+       * @param {string} type - 제품 타입(캡슐, 슬리브팩, 머신, 액세서리)
+       * @param {string} cate - 제품 카테고리(버츄오, 오리지널)
+       * @param {number} count - 카운팅 수량(캡슐 - 10개, 캡슐(콜드브루) - 7개, 머신, 액세서리, 슬리브팩 - 1개)
+       * @param {number} index - 제품 순서
+       **/
+      const quantityDown = (type, cate, count, index) => {
+        switch (type) {
+          case 'capsule':
+            if(cate === 'vt') {
+              if (state.productsInfo.vtCapsulesInfo[index].quantity === 0) {
+                return
+              }
+              state.productsInfo.vtCapsulesInfo[index].quantity -= count
+            } else {
+              if (state.productsInfo.olCapsulesInfo[index].quantity === 0) {
+                return
+              }
+              state.productsInfo.olCapsulesInfo[index].quantity -= count
+            }
+            break;
+          
+          case 'sleeve':
+            if(cate === 'vt') {
+              if (state.productsInfo.vtCapsulesInfo[state.productsInfo.vtCapsulesInfo.length - 1].quantity === 0) {
+                return
+              }
+              state.productsInfo.vtCapsulesInfo[state.productsInfo.vtCapsulesInfo.length - 1].quantity -= count
+            } else {
+              if (state.productsInfo.olCapsulesInfo[state.productsInfo.olCapsulesInfo.length - 1].quantity === 0) {
+                return
+              }
+              state.productsInfo.olCapsulesInfo[state.productsInfo.olCapsulesInfo.length - 1].quantity -= count
+            }
+            break;
+
+          case 'machine':
+            if(cate === 'vt') {
+              if (state.productsInfo.vtMachinesInfo[index].quantity === 0) {
+                return
+              }
+              state.productsInfo.vtMachinesInfo[index].quantity -= count
+            } else {
+              if (state.productsInfo.olMachinesInfo[index].quantity === 0) {
+                return
+              }
+              state.productsInfo.olMachinesInfo[index].quantity -= count
+            }
+            break;
+          
+          case 'accessory':
+            if (state.productsInfo.accessorysInfo[index - 1].quantity === 0) {
+                return
+              }
+              state.productsInfo.accessorysInfo[index - 1].quantity -= count
+            break;
+
+        }
+      }
+      /** 
+       * 장바구니 제품 추가
+       * @param {object} info - sku: 제품 id, name: 제품명, quantity: 수량
+       * state.isProduction === true일때(운영) 제공 받은 함수에 sku, quantity 전달
+       * state.isProduction === false일때(테섭, 로컬) alert으로 제품 id, name, quantity 확인 가능
+      **/
+      const addCart = (info) => {
+        const {sku, name, quantity} = info;
+        
+        if(state.isProduction) {
+          window.CartManager.updateItem(sku, quantity).then(() => { });
+        } else {
+          alert(`sku: ${sku}, 수량: ${quantity}, 제품명: ${name.replace(/<[^>]*>?/g, '')}`)
+        }
+      }
+      
+      
+      checkMedia();
+      getPageNum();
+      
+      onMounted(() => {
+        // DOM 로드 되고 난 후에 사용할 함수들 선언
+        gaHeadingInit();
+        initIntroSwiper();
+        initCapsuleSwiper();
+        initAccessorySwiper();
+      });
+
+      return {
+        // life cycle hook 제외한 커스텀 함수 중에서 setup 함수 외부에 사용 할 경우, 컴포넌트 데이터 전달 할 경우 return
+        gaHeadingInit,
+        ...toRefs(state), // toRefs() - 반응형 객체를 일반 객체로 변환
+        propsTabNum: state.mainContentNum, // component props data
+        propsTabList: state.msg.mainTab,
+        // propsContentTabInit: state.contentTabInit,
+        
+        quantityUp,
+        quantityDown,
+        addCart,
+      };
+    },
+  };
+
+  // vue3 앱 초기화, 관련 써드파티 플려그인 초기화
+  const app = Vue.createApp(App)
+    .directive('lazy', lazyloadOptions)
+    .component('content-tab-group', contentTabGroup)
+    .mount('#app');
+</script>

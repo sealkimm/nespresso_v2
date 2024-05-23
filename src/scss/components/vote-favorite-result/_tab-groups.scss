@@ -1,0 +1,105 @@
+.content-tab-group {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	// margin-top: 0;
+	position: relative;
+
+	@include breakpoint('lg') {
+		margin-top: 30px;
+	}
+
+	.tab-wrap {
+		display: flex;
+		position: relative;
+		background-image: linear-gradient(#000,#000), linear-gradient(-45deg,#c28d38,#f0e4c1,#ffe8c2,#e0bc7f,#c69d5e);
+		background-clip: content-box, border-box;
+		background-origin: border-box;
+		border: 1px solid transparent;
+		border-radius: 5rem;
+
+		@include size(35.2rem,6.6rem);
+
+		&::before {
+			@include before-after();
+			top: 0;
+			left: 0;
+			background: linear-gradient(-45deg,#c28d38,#f0e4c1,#ffe8c2,#e0bc7f,#c69d5e);
+			border-radius: 5rem;
+
+			@include size(50%,100%);
+		}
+
+		&.vertuo::before {
+			left: 0;
+		}
+
+		&.original::before {
+			left: 50%;
+		}
+
+		@include breakpoint('lg') {
+			@include size(279px,42px);
+		}
+	}
+
+	.tab {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		width: 50%;
+		overflow: hidden;
+		position: relative;
+		z-index: 2;
+
+		@include font(2.2rem,var(--bold));
+		background: linear-gradient(97deg,#c28d38 31.45%,#f0e4c1 47.05%,#ffe8c2 51.95%,#e0bc7f 61.72%,#c69d5e 100%);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		&::before {
+			content: '';
+			position: relative;
+			top: -.5rem;
+			left: 0;
+		}
+
+		&.is-active {
+			background: transparent;
+			background-clip: none;
+			color: #000;
+			-webkit-text-fill-color: #000;
+		}
+
+		@include breakpoint('lg') {
+			gap: 10px;
+			font-size: 18px;
+			cursor: pointer;
+
+			&::before { top: -5px; }
+		}
+
+
+
+		&.vertuo::before {
+			@include sprite-x2($vote-favorite-result-x2-tab-vl-off);
+			@include breakpoint('lg') { @include sprite($vote-favorite-result-tab-vl-off); }
+		}
+
+		&.original::before {
+			@include sprite-x2($vote-favorite-result-x2-tab-ol-off);
+			@include breakpoint('lg') { @include sprite($vote-favorite-result-tab-ol-off); }
+		}
+
+		&.vertuo.is-active::before {
+			@include sprite-x2($vote-favorite-result-x2-tab-vl-on);
+			@include breakpoint('lg') { @include sprite($vote-favorite-result-tab-vl-on); }
+		}
+
+		&.original.is-active::before {
+			@include sprite-x2($vote-favorite-result-x2-tab-ol-on);
+			@include breakpoint('lg') { @include sprite($vote-favorite-result-tab-ol-on); }
+		}
+	}
+}

@@ -1,0 +1,321 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$vote-favorite-coffee-x2-arrow-botbanner-name: 'vote-favorite-coffee-x2-arrow-botbanner';
+$vote-favorite-coffee-x2-arrow-botbanner-x: 963px;
+$vote-favorite-coffee-x2-arrow-botbanner-y: 245px;
+$vote-favorite-coffee-x2-arrow-botbanner-offset-x: -963px;
+$vote-favorite-coffee-x2-arrow-botbanner-offset-y: -245px;
+$vote-favorite-coffee-x2-arrow-botbanner-width: 18px;
+$vote-favorite-coffee-x2-arrow-botbanner-height: 32px;
+$vote-favorite-coffee-x2-arrow-botbanner-total-width: 1938px;
+$vote-favorite-coffee-x2-arrow-botbanner-total-height: 1533px;
+$vote-favorite-coffee-x2-arrow-botbanner-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-arrow-botbanner: (963px, 245px, -963px, -245px, 18px, 32px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-arrow-botbanner', );
+$vote-favorite-coffee-x2-arrow-check-name: 'vote-favorite-coffee-x2-arrow-check';
+$vote-favorite-coffee-x2-arrow-check-x: 1377px;
+$vote-favorite-coffee-x2-arrow-check-y: 289px;
+$vote-favorite-coffee-x2-arrow-check-offset-x: -1377px;
+$vote-favorite-coffee-x2-arrow-check-offset-y: -289px;
+$vote-favorite-coffee-x2-arrow-check-width: 40px;
+$vote-favorite-coffee-x2-arrow-check-height: 40px;
+$vote-favorite-coffee-x2-arrow-check-total-width: 1938px;
+$vote-favorite-coffee-x2-arrow-check-total-height: 1533px;
+$vote-favorite-coffee-x2-arrow-check-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-arrow-check: (1377px, 289px, -1377px, -289px, 40px, 40px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-arrow-check', );
+$vote-favorite-coffee-x2-arrow-cta1-name: 'vote-favorite-coffee-x2-arrow-cta1';
+$vote-favorite-coffee-x2-arrow-cta1-x: 934px;
+$vote-favorite-coffee-x2-arrow-cta1-y: 245px;
+$vote-favorite-coffee-x2-arrow-cta1-offset-x: -934px;
+$vote-favorite-coffee-x2-arrow-cta1-offset-y: -245px;
+$vote-favorite-coffee-x2-arrow-cta1-width: 19px;
+$vote-favorite-coffee-x2-arrow-cta1-height: 33px;
+$vote-favorite-coffee-x2-arrow-cta1-total-width: 1938px;
+$vote-favorite-coffee-x2-arrow-cta1-total-height: 1533px;
+$vote-favorite-coffee-x2-arrow-cta1-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-arrow-cta1: (934px, 245px, -934px, -245px, 19px, 33px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-arrow-cta1', );
+$vote-favorite-coffee-x2-arrow-cta2-name: 'vote-favorite-coffee-x2-arrow-cta2';
+$vote-favorite-coffee-x2-arrow-cta2-x: 991px;
+$vote-favorite-coffee-x2-arrow-cta2-y: 245px;
+$vote-favorite-coffee-x2-arrow-cta2-offset-x: -991px;
+$vote-favorite-coffee-x2-arrow-cta2-offset-y: -245px;
+$vote-favorite-coffee-x2-arrow-cta2-width: 11px;
+$vote-favorite-coffee-x2-arrow-cta2-height: 19px;
+$vote-favorite-coffee-x2-arrow-cta2-total-width: 1938px;
+$vote-favorite-coffee-x2-arrow-cta2-total-height: 1533px;
+$vote-favorite-coffee-x2-arrow-cta2-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-arrow-cta2: (991px, 245px, -991px, -245px, 11px, 19px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-arrow-cta2', );
+$vote-favorite-coffee-x2-close1-name: 'vote-favorite-coffee-x2-close1';
+$vote-favorite-coffee-x2-close1-x: 1147px;
+$vote-favorite-coffee-x2-close1-y: 289px;
+$vote-favorite-coffee-x2-close1-offset-x: -1147px;
+$vote-favorite-coffee-x2-close1-offset-y: -289px;
+$vote-favorite-coffee-x2-close1-width: 80px;
+$vote-favorite-coffee-x2-close1-height: 80px;
+$vote-favorite-coffee-x2-close1-total-width: 1938px;
+$vote-favorite-coffee-x2-close1-total-height: 1533px;
+$vote-favorite-coffee-x2-close1-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-close1: (1147px, 289px, -1147px, -289px, 80px, 80px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-close1', );
+$vote-favorite-coffee-x2-heart-off-name: 'vote-favorite-coffee-x2-heart-off';
+$vote-favorite-coffee-x2-heart-off-x: 1237px;
+$vote-favorite-coffee-x2-heart-off-y: 289px;
+$vote-favorite-coffee-x2-heart-off-offset-x: -1237px;
+$vote-favorite-coffee-x2-heart-off-offset-y: -289px;
+$vote-favorite-coffee-x2-heart-off-width: 60px;
+$vote-favorite-coffee-x2-heart-off-height: 60px;
+$vote-favorite-coffee-x2-heart-off-total-width: 1938px;
+$vote-favorite-coffee-x2-heart-off-total-height: 1533px;
+$vote-favorite-coffee-x2-heart-off-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-heart-off: (1237px, 289px, -1237px, -289px, 60px, 60px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-heart-off', );
+$vote-favorite-coffee-x2-heart-on-name: 'vote-favorite-coffee-x2-heart-on';
+$vote-favorite-coffee-x2-heart-on-x: 1307px;
+$vote-favorite-coffee-x2-heart-on-y: 289px;
+$vote-favorite-coffee-x2-heart-on-offset-x: -1307px;
+$vote-favorite-coffee-x2-heart-on-offset-y: -289px;
+$vote-favorite-coffee-x2-heart-on-width: 60px;
+$vote-favorite-coffee-x2-heart-on-height: 60px;
+$vote-favorite-coffee-x2-heart-on-total-width: 1938px;
+$vote-favorite-coffee-x2-heart-on-total-height: 1533px;
+$vote-favorite-coffee-x2-heart-on-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-heart-on: (1307px, 289px, -1307px, -289px, 60px, 60px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-heart-on', );
+$vote-favorite-coffee-x2-intro-ev-img1-name: 'vote-favorite-coffee-x2-intro-ev-img1';
+$vote-favorite-coffee-x2-intro-ev-img1-x: 0px;
+$vote-favorite-coffee-x2-intro-ev-img1-y: 1027px;
+$vote-favorite-coffee-x2-intro-ev-img1-offset-x: 0px;
+$vote-favorite-coffee-x2-intro-ev-img1-offset-y: -1027px;
+$vote-favorite-coffee-x2-intro-ev-img1-width: 134px;
+$vote-favorite-coffee-x2-intro-ev-img1-height: 196px;
+$vote-favorite-coffee-x2-intro-ev-img1-total-width: 1938px;
+$vote-favorite-coffee-x2-intro-ev-img1-total-height: 1533px;
+$vote-favorite-coffee-x2-intro-ev-img1-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-intro-ev-img1: (0px, 1027px, 0px, -1027px, 134px, 196px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-intro-ev-img1', );
+$vote-favorite-coffee-x2-intro-line1-name: 'vote-favorite-coffee-x2-intro-line1';
+$vote-favorite-coffee-x2-intro-line1-x: 0px;
+$vote-favorite-coffee-x2-intro-line1-y: 1233px;
+$vote-favorite-coffee-x2-intro-line1-offset-x: 0px;
+$vote-favorite-coffee-x2-intro-line1-offset-y: -1233px;
+$vote-favorite-coffee-x2-intro-line1-width: 2px;
+$vote-favorite-coffee-x2-intro-line1-height: 300px;
+$vote-favorite-coffee-x2-intro-line1-total-width: 1938px;
+$vote-favorite-coffee-x2-intro-line1-total-height: 1533px;
+$vote-favorite-coffee-x2-intro-line1-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-intro-line1: (0px, 1233px, 0px, -1233px, 2px, 300px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-intro-line1', );
+$vote-favorite-coffee-x2-intro-title-en-name: 'vote-favorite-coffee-x2-intro-title-en';
+$vote-favorite-coffee-x2-intro-title-en-x: 934px;
+$vote-favorite-coffee-x2-intro-title-en-y: 0px;
+$vote-favorite-coffee-x2-intro-title-en-offset-x: -934px;
+$vote-favorite-coffee-x2-intro-title-en-offset-y: 0px;
+$vote-favorite-coffee-x2-intro-title-en-width: 1004px;
+$vote-favorite-coffee-x2-intro-title-en-height: 235px;
+$vote-favorite-coffee-x2-intro-title-en-total-width: 1938px;
+$vote-favorite-coffee-x2-intro-title-en-total-height: 1533px;
+$vote-favorite-coffee-x2-intro-title-en-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-intro-title-en: (934px, 0px, -934px, 0px, 1004px, 235px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-intro-title-en', );
+$vote-favorite-coffee-x2-intro-title-name: 'vote-favorite-coffee-x2-intro-title';
+$vote-favorite-coffee-x2-intro-title-x: 0px;
+$vote-favorite-coffee-x2-intro-title-y: 0px;
+$vote-favorite-coffee-x2-intro-title-offset-x: 0px;
+$vote-favorite-coffee-x2-intro-title-offset-y: 0px;
+$vote-favorite-coffee-x2-intro-title-width: 924px;
+$vote-favorite-coffee-x2-intro-title-height: 279px;
+$vote-favorite-coffee-x2-intro-title-total-width: 1938px;
+$vote-favorite-coffee-x2-intro-title-total-height: 1533px;
+$vote-favorite-coffee-x2-intro-title-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-intro-title: (0px, 0px, 0px, 0px, 924px, 279px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-intro-title', );
+$vote-favorite-coffee-x2-review-title-en-name: 'vote-favorite-coffee-x2-review-title-en';
+$vote-favorite-coffee-x2-review-title-en-x: 0px;
+$vote-favorite-coffee-x2-review-title-en-y: 289px;
+$vote-favorite-coffee-x2-review-title-en-offset-x: 0px;
+$vote-favorite-coffee-x2-review-title-en-offset-y: -289px;
+$vote-favorite-coffee-x2-review-title-en-width: 1137px;
+$vote-favorite-coffee-x2-review-title-en-height: 163px;
+$vote-favorite-coffee-x2-review-title-en-total-width: 1938px;
+$vote-favorite-coffee-x2-review-title-en-total-height: 1533px;
+$vote-favorite-coffee-x2-review-title-en-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-review-title-en: (0px, 289px, 0px, -289px, 1137px, 163px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-review-title-en', );
+$vote-favorite-coffee-x2-review-title-name: 'vote-favorite-coffee-x2-review-title';
+$vote-favorite-coffee-x2-review-title-x: 0px;
+$vote-favorite-coffee-x2-review-title-y: 929px;
+$vote-favorite-coffee-x2-review-title-offset-x: 0px;
+$vote-favorite-coffee-x2-review-title-offset-y: -929px;
+$vote-favorite-coffee-x2-review-title-width: 920px;
+$vote-favorite-coffee-x2-review-title-height: 88px;
+$vote-favorite-coffee-x2-review-title-total-width: 1938px;
+$vote-favorite-coffee-x2-review-title-total-height: 1533px;
+$vote-favorite-coffee-x2-review-title-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-review-title: (0px, 929px, 0px, -929px, 920px, 88px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-review-title', );
+$vote-favorite-coffee-x2-tab-ol-off-name: 'vote-favorite-coffee-x2-tab-ol-off';
+$vote-favorite-coffee-x2-tab-ol-off-x: 1147px;
+$vote-favorite-coffee-x2-tab-ol-off-y: 379px;
+$vote-favorite-coffee-x2-tab-ol-off-offset-x: -1147px;
+$vote-favorite-coffee-x2-tab-ol-off-offset-y: -379px;
+$vote-favorite-coffee-x2-tab-ol-off-width: 52px;
+$vote-favorite-coffee-x2-tab-ol-off-height: 64px;
+$vote-favorite-coffee-x2-tab-ol-off-total-width: 1938px;
+$vote-favorite-coffee-x2-tab-ol-off-total-height: 1533px;
+$vote-favorite-coffee-x2-tab-ol-off-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-tab-ol-off: (1147px, 379px, -1147px, -379px, 52px, 64px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-tab-ol-off', );
+$vote-favorite-coffee-x2-tab-ol-on-name: 'vote-favorite-coffee-x2-tab-ol-on';
+$vote-favorite-coffee-x2-tab-ol-on-x: 1209px;
+$vote-favorite-coffee-x2-tab-ol-on-y: 379px;
+$vote-favorite-coffee-x2-tab-ol-on-offset-x: -1209px;
+$vote-favorite-coffee-x2-tab-ol-on-offset-y: -379px;
+$vote-favorite-coffee-x2-tab-ol-on-width: 52px;
+$vote-favorite-coffee-x2-tab-ol-on-height: 64px;
+$vote-favorite-coffee-x2-tab-ol-on-total-width: 1938px;
+$vote-favorite-coffee-x2-tab-ol-on-total-height: 1533px;
+$vote-favorite-coffee-x2-tab-ol-on-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-tab-ol-on: (1209px, 379px, -1209px, -379px, 52px, 64px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-tab-ol-on', );
+$vote-favorite-coffee-x2-tab-vl-off-name: 'vote-favorite-coffee-x2-tab-vl-off';
+$vote-favorite-coffee-x2-tab-vl-off-x: 1271px;
+$vote-favorite-coffee-x2-tab-vl-off-y: 379px;
+$vote-favorite-coffee-x2-tab-vl-off-offset-x: -1271px;
+$vote-favorite-coffee-x2-tab-vl-off-offset-y: -379px;
+$vote-favorite-coffee-x2-tab-vl-off-width: 52px;
+$vote-favorite-coffee-x2-tab-vl-off-height: 64px;
+$vote-favorite-coffee-x2-tab-vl-off-total-width: 1938px;
+$vote-favorite-coffee-x2-tab-vl-off-total-height: 1533px;
+$vote-favorite-coffee-x2-tab-vl-off-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-tab-vl-off: (1271px, 379px, -1271px, -379px, 52px, 64px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-tab-vl-off', );
+$vote-favorite-coffee-x2-tab-vl-on-name: 'vote-favorite-coffee-x2-tab-vl-on';
+$vote-favorite-coffee-x2-tab-vl-on-x: 1333px;
+$vote-favorite-coffee-x2-tab-vl-on-y: 379px;
+$vote-favorite-coffee-x2-tab-vl-on-offset-x: -1333px;
+$vote-favorite-coffee-x2-tab-vl-on-offset-y: -379px;
+$vote-favorite-coffee-x2-tab-vl-on-width: 52px;
+$vote-favorite-coffee-x2-tab-vl-on-height: 64px;
+$vote-favorite-coffee-x2-tab-vl-on-total-width: 1938px;
+$vote-favorite-coffee-x2-tab-vl-on-total-height: 1533px;
+$vote-favorite-coffee-x2-tab-vl-on-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-tab-vl-on: (1333px, 379px, -1333px, -379px, 52px, 64px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-tab-vl-on', );
+$vote-favorite-coffee-x2-vote-ol-title-en-name: 'vote-favorite-coffee-x2-vote-ol-title-en';
+$vote-favorite-coffee-x2-vote-ol-title-en-x: 0px;
+$vote-favorite-coffee-x2-vote-ol-title-en-y: 462px;
+$vote-favorite-coffee-x2-vote-ol-title-en-offset-x: 0px;
+$vote-favorite-coffee-x2-vote-ol-title-en-offset-y: -462px;
+$vote-favorite-coffee-x2-vote-ol-title-en-width: 1338px;
+$vote-favorite-coffee-x2-vote-ol-title-en-height: 86px;
+$vote-favorite-coffee-x2-vote-ol-title-en-total-width: 1938px;
+$vote-favorite-coffee-x2-vote-ol-title-en-total-height: 1533px;
+$vote-favorite-coffee-x2-vote-ol-title-en-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-vote-ol-title-en: (0px, 462px, 0px, -462px, 1338px, 86px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-vote-ol-title-en', );
+$vote-favorite-coffee-x2-vote-ol-title-name: 'vote-favorite-coffee-x2-vote-ol-title';
+$vote-favorite-coffee-x2-vote-ol-title-x: 0px;
+$vote-favorite-coffee-x2-vote-ol-title-y: 558px;
+$vote-favorite-coffee-x2-vote-ol-title-offset-x: 0px;
+$vote-favorite-coffee-x2-vote-ol-title-offset-y: -558px;
+$vote-favorite-coffee-x2-vote-ol-title-width: 1136px;
+$vote-favorite-coffee-x2-vote-ol-title-height: 88px;
+$vote-favorite-coffee-x2-vote-ol-title-total-width: 1938px;
+$vote-favorite-coffee-x2-vote-ol-title-total-height: 1533px;
+$vote-favorite-coffee-x2-vote-ol-title-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-vote-ol-title: (0px, 558px, 0px, -558px, 1136px, 88px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-vote-ol-title', );
+$vote-favorite-coffee-x2-vote-title-name: 'vote-favorite-coffee-x2-vote-title';
+$vote-favorite-coffee-x2-vote-title-x: 0px;
+$vote-favorite-coffee-x2-vote-title-y: 656px;
+$vote-favorite-coffee-x2-vote-title-offset-x: 0px;
+$vote-favorite-coffee-x2-vote-title-offset-y: -656px;
+$vote-favorite-coffee-x2-vote-title-width: 1064px;
+$vote-favorite-coffee-x2-vote-title-height: 88px;
+$vote-favorite-coffee-x2-vote-title-total-width: 1938px;
+$vote-favorite-coffee-x2-vote-title-total-height: 1533px;
+$vote-favorite-coffee-x2-vote-title-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-vote-title: (0px, 656px, 0px, -656px, 1064px, 88px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-vote-title', );
+$vote-favorite-coffee-x2-vote-vl-title-en-name: 'vote-favorite-coffee-x2-vote-vl-title-en';
+$vote-favorite-coffee-x2-vote-vl-title-en-x: 0px;
+$vote-favorite-coffee-x2-vote-vl-title-en-y: 852px;
+$vote-favorite-coffee-x2-vote-vl-title-en-offset-x: 0px;
+$vote-favorite-coffee-x2-vote-vl-title-en-offset-y: -852px;
+$vote-favorite-coffee-x2-vote-vl-title-en-width: 1281px;
+$vote-favorite-coffee-x2-vote-vl-title-en-height: 67px;
+$vote-favorite-coffee-x2-vote-vl-title-en-total-width: 1938px;
+$vote-favorite-coffee-x2-vote-vl-title-en-total-height: 1533px;
+$vote-favorite-coffee-x2-vote-vl-title-en-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-vote-vl-title-en: (0px, 852px, 0px, -852px, 1281px, 67px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-vote-vl-title-en', );
+$vote-favorite-coffee-x2-vote-vl-title-name: 'vote-favorite-coffee-x2-vote-vl-title';
+$vote-favorite-coffee-x2-vote-vl-title-x: 0px;
+$vote-favorite-coffee-x2-vote-vl-title-y: 754px;
+$vote-favorite-coffee-x2-vote-vl-title-offset-x: 0px;
+$vote-favorite-coffee-x2-vote-vl-title-offset-y: -754px;
+$vote-favorite-coffee-x2-vote-vl-title-width: 1064px;
+$vote-favorite-coffee-x2-vote-vl-title-height: 88px;
+$vote-favorite-coffee-x2-vote-vl-title-total-width: 1938px;
+$vote-favorite-coffee-x2-vote-vl-title-total-height: 1533px;
+$vote-favorite-coffee-x2-vote-vl-title-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-vote-vl-title: (0px, 754px, 0px, -754px, 1064px, 88px, 1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', 'vote-favorite-coffee-x2-vote-vl-title', );
+$vote-favorite-coffee-x2-width: 1938px;
+$vote-favorite-coffee-x2-height: 1533px;
+$vote-favorite-coffee-x2-image: '@@img/sprites/vote-favorite-coffee-x2.webp';
+$vote-favorite-coffee-x2-sprites: ($vote-favorite-coffee-x2-arrow-botbanner, $vote-favorite-coffee-x2-arrow-check, $vote-favorite-coffee-x2-arrow-cta1, $vote-favorite-coffee-x2-arrow-cta2, $vote-favorite-coffee-x2-close1, $vote-favorite-coffee-x2-heart-off, $vote-favorite-coffee-x2-heart-on, $vote-favorite-coffee-x2-intro-ev-img1, $vote-favorite-coffee-x2-intro-line1, $vote-favorite-coffee-x2-intro-title-en, $vote-favorite-coffee-x2-intro-title, $vote-favorite-coffee-x2-review-title-en, $vote-favorite-coffee-x2-review-title, $vote-favorite-coffee-x2-tab-ol-off, $vote-favorite-coffee-x2-tab-ol-on, $vote-favorite-coffee-x2-tab-vl-off, $vote-favorite-coffee-x2-tab-vl-on, $vote-favorite-coffee-x2-vote-ol-title-en, $vote-favorite-coffee-x2-vote-ol-title, $vote-favorite-coffee-x2-vote-title, $vote-favorite-coffee-x2-vote-vl-title-en, $vote-favorite-coffee-x2-vote-vl-title, );
+$vote-favorite-coffee-x2: (1938px, 1533px, '@@img/sprites/vote-favorite-coffee-x2.webp', $vote-favorite-coffee-x2-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

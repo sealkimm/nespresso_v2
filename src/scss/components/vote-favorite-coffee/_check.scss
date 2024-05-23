@@ -1,0 +1,51 @@
+.checkbox-only {
+	&.agree {
+		position: relative;
+
+		@include size(2.4rem,2.4rem);
+		@include breakpoint('lg') {
+			@include size(18px,18px);
+		}
+
+		input[type='checkbox'] {
+			@include size(100%,100%);
+			margin: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+
+			&:disabled { opacity: .3; }
+		}
+
+		span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			@include size(2.4rem,2.4rem);
+			border: 1px solid #fff;
+
+			&::before {
+				content: '';
+
+				@include sprite-x2($vote-favorite-coffee-x2-arrow-check);
+				opacity: 0;
+			}
+
+			@include breakpoint('lg') {
+				@include size(18px,18px);
+
+				&::before { @include sprite($vote-favorite-coffee-arrow-check); }
+			}
+		}
+
+		input {
+			&:checked {
+				& + span {
+					&::before { opacity: 1; }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,191 @@
+{%
+	set	pageInfo	=	{
+		lang:	'ko',
+		section:	'vote-favorite-result',
+		page:	'vote-favorite-result',
+		title:	'나의 최애 커피 특별 혜택',
+		order:	[0,0]
+	}
+%}
+{%	extends	'@inc/layout.html'	%}
+{%	block	content	%}
+<div class="vote-favorite-result-wrap"	ref="container">
+	<div	class="intro-wrap">
+		<div	class="curtain"	v-lazy="(isMobile) ? bg.intro.curtain[0] :	bg.intro.curtain[1]">
+			<div	class="intro-tit">
+				<span	class="main"></span>
+				<span	class="desc">
+					<span class="tit" v-html="msg.intro.tit"></span>
+					<span class="add" v-html="msg.intro.add"></span>
+				</span>
+			</div>
+			<div	class="trophy" v-lazy="(isMobile) ? bg.intro.trophy[0]	:	bg.intro.trophy[1]"></div>
+		</div>
+	</div>
+
+	<div class="best-wrap">
+		
+		<div class="vt-wrap" v-lazy="(isMobile) ? bg.intro.frame[0] :	bg.intro.frame[1]">
+			<div class="title"></div>
+			<div class="desc" v-html="msg.best.desc"></div>
+			<div class="list">
+				<div class="item" :class="`item${item.id}`" v-for="(item, index) in msg.best.capsuleVt">
+					<div class="img" :class="`img${item.id}`">
+						<img :src="bg.bestList.vt[index]" alt="">
+					</div>
+					<div class="name" v-html="item.name"></div>
+					<div class="cart-wrap col" >
+						<div class="price">
+							<span class="nonmember" v-if="item.price.nonmember" v-html="item.price.nonmember"></span>
+							<span v-html="item.price.member"></span>
+						</div>
+						<div class="cart-btn" :id="item.skuId" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel"
+						>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a :href="msg.best.ctaBtn[0].url" v-html="msg.best.ctaBtn[0].txt" target="_blank" class="btn"
+			:ga_category="msg.best.ctaBtn[0].gaCategory" :ga_action="msg.best.ctaBtn[0].gaAction" :ga_label="msg.best.ctaBtn[0].gaLabel"
+			></a>
+		</div>
+
+		<div class="ol-wrap" v-lazy="(isMobile) ? bg.intro.frame[0] :	bg.intro.frame[1]">
+			<div class="title"></div>
+			<div class="desc" v-html="msg.best.desc"></div>
+			<div class="list">
+				<div class="item" :class="`item${item.id}`" v-for="(item, index) in msg.best.capsuleOl">
+					<div class="img" :class="`img${item.id}`">
+						<img :src="bg.bestList.ol[index]" alt="">
+					</div>
+					<div class="name" v-html="item.name"></div>
+					<div class="cart-wrap col" >
+						<div class="price">
+							<span class="nonmember" v-if="item.price.nonmember" v-html="item.price.nonmember"></span>
+							<span v-html="item.price.member"></span>
+						</div>
+						<div class="cart-btn" :id="item.skuId" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel"
+						>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a :href="msg.best.ctaBtn[1].url" v-html="msg.best.ctaBtn[1].txt" target="_blank" class="btn" 
+				:ga_category="msg.best.ctaBtn[1].gaCategory" :ga_action="msg.best.ctaBtn[1].gaAction" :ga_label="msg.best.ctaBtn[1].gaLabel"
+			></a>
+		</div>
+	
+		<div class="notice">
+			<div class="tit" v-html="msg.best.notice.tit"></div>
+			<div class="desc" v-html="msg.best.notice.desc" v-if="isMobile"></div>
+			<div class="desc" v-html="msg.best.notice.descPc" v-else></div>
+		</div>
+	</div><!-- // .best-wrap -->
+
+	<div class="review-wrap">
+		<div class="title" v-lazy="bg.bestList.title"></div>
+		<content-tab-group 
+			:propstabnum="mainContentNum"
+			:propscontenttabinit="{...contentTabInit}"
+			:propstablist="msg.mainTab"
+			@tab-active="mainTabUpdate"
+		>
+			<div class="tab-content tab-review-content" v-show="mainContentNum == 'vertuo'">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide" v-for="(item, index) in msg.vtBestlists">
+							<div class="capsule-box">
+
+								<div class="img" v-lazy="bg.bestList.vt[index]"></div>
+								<div class="txt">
+									<div class="name" v-html="item.name"></div>
+									<div class="desc" v-html="item.desc" v-if="isMobile"></div>
+									<div class="desc" v-html="item.descPc" v-else></div>
+									<div class="cart-wrap">
+										<div class="price">
+											<span class="nonmember" v-if="item.price.nonmember" v-html="item.price.nonmember"></span>
+											<span v-html="item.price.member"></span>
+										</div>
+										<div class="cart-btn" :id="item.skuId" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel"
+										>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="review-box">
+								<div class="review" :class="`review${idx+1}`" v-for=" (review, idx) in  msg.vtBestlists[index].reviewList" 
+								>
+									<div class="txt" v-html="review.txt"></div>
+									<div class="user" v-html="review.user"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-button-prev" ga_category="favorite coffee special benefit 2024" ga_action="click_prev_review" ga_label="prev_review"></div>
+					<div class="swiper-button-next" ga_category="favorite coffee special benefit 2024" ga_action="click_next_review" ga_label="next_review"></div>
+				</div>
+			</div>
+			<div class="tab-content tab-review-content" v-show="mainContentNum == 'original'">
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide" v-for="(item, index) in msg.olBestlists">
+							<div class="capsule-box">
+
+								<div class="img" v-lazy="bg.bestList.ol[index]"></div>
+								<div class="txt">
+									<div class="name" v-html="item.name"></div>
+									<div class="desc" v-html="item.desc" v-if="isMobile"></div>
+									<div class="desc" v-html="item.descPc" v-else></div>
+									<div class="cart-wrap">
+										<div class="price">
+											<span class="nonmember" v-if="item.price.nonmember" v-html="item.price.nonmember"></span>
+											<span v-html="item.price.member"></span>
+										</div>
+										<div class="cart-btn" :id="item.skuId" :ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel"
+										>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="review-box">
+								<div class="review" :class="`review${idx+1}`" v-for=" (review, idx) in  msg.olBestlists[index].reviewList" 
+								>
+									<div class="txt" v-html="review.txt"></div>
+									<div class="user" v-html="review.user"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-button-prev" ga_category="favorite coffee special benefit 2024" ga_action="click_prev_review" ga_label="prev_review"></div>
+					<div class="swiper-button-next" ga_category="favorite coffee special benefit 2024" ga_action="click_next_review" ga_label="next_review"></div>
+				</div>
+				
+				
+			</div>
+		</content-tab-group>
+	</div><!-- // .review-wrap -->
+
+	<div class="reviewer-banner" v-lazy="(isMobile) ? bg.reviewer[0] : bg.reviewer[1]">
+		<div class="desc" v-html="msg.reviewer.desc" v-if="isMobile"></div>
+		<div class="desc" v-html="msg.reviewer.descPc" v-else></div>
+		<div class="line" v-lazy="bg.reviewer[2]"></div>
+		<ul class="list">
+			<li  v-for="(per, idx) in msg.reviewer.list" v-html="per"></li>
+		</ul>
+		<div class="line" v-lazy="bg.reviewer[2]"></div>
+		<div class="noti" v-html="msg.reviewer.notice.tit"></div>
+		<div class="desc" v-html="msg.reviewer.notice.desc"></div>
+	</div>
+	
+	
+	<a :href="msg.botBanner.url" class="bot-banner" target="_blank" v-lazy="(isMobile) ? bg.botBanner[0] : bg.botBanner[1]" :ga_category="msg.botBanner.gaCategory" :ga_action="msg.botBanner.gaAction" :ga_label="msg.botBanner.gaLabel">
+	<span class="txt-main" v-html="msg.botBanner.txt1"></span>
+    <span class="txt-sub" v-html="msg.botBanner.txt2" v-if="msg.botBanner.txt2 != ''"></span>
+	</a>
+
+	{{	include('../vote-favorite-result/@components/content-tab-group.html')	}}
+</div>
+{{	include('../vote-favorite-result/@inc/vue.html')	}}
+{%	endblock	%}

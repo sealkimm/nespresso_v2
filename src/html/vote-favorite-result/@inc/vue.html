@@ -1,0 +1,247 @@
+<script>
+  const {
+    createApp,
+    ref,
+    toRefs,
+    computed,
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    watchEffect,
+    onUpdated,
+    watch,
+    reactive,
+    component,
+  } = Vue;
+  const locale = document.querySelector('html').getAttribute('lang');
+  // const i18nOptions = ({
+  //   locale: locale,
+  //   fallbackLocale: 'ko', // 기본 언어
+  //   messages: messages
+  // });
+  const lazyloadOptions = (el, binding) => {
+    const initStyle = (el, binding) => {
+      const style = `${el.getAttribute('style')}`;
+      el.style.backgroundImage = `url(${binding.value})`;
+      el.classList.add('bg-lazy');
+    };
+    const callIntersectionApi = () => {
+      const options = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px',
+      };
+      const lazyLoadCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 감지대상이 교차영역에 진입 할 경우
+            initStyle(el, binding);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const lazyLoadingIO = new IntersectionObserver(lazyLoadCallback, options);
+      lazyLoadingIO.observe(el);
+    };
+    window.IntersectionObserver
+      ? callIntersectionApi()
+      : initStyle(el, binding);
+  };
+
+  const App = {
+    setup() {
+      // const imgPath = '{{base}}/img/vote-favorite-result';
+      // const imgPath = 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result';
+      // const imgPath = 'https://e.adnstyle.com/nespresso/img/vote-favorite-result';
+      const bg = {
+        botBanner: [`https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/vote-favorite-coffee/mob/bg-bot-banner.webp`, `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/vote-favorite-coffee/bg-bot-banner.webp`],
+        reviewer: ['https://e.adnstyle.com/nespresso/img/vote-favorite-result/mob/reviewer-bg.webp','https://e.adnstyle.com/nespresso/img/vote-favorite-result/reviewer-bg.webp','https://e.adnstyle.com/nespresso/img/vote-favorite-result/mob/line.webp'],
+        intro: {
+          frame: [
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/mob/frame.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/frame.webp`,
+            ],
+          curtain: [`https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/vote-favorite-coffee/mob/bg-intro-curtain.webp`, `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable/vote-favorite-coffee/bg-intro-curtain.webp`],
+          event: [
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/mob/bg-intro-event.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/bg-intro-event.webp`,
+          ],
+          trophy: [
+          
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/mob/intro-deco.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/intro-deco.webp`,
+          ],
+        },
+        bestList: {
+          title: `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/mob/review-title.webp`,
+          vt: [
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/capsule/vt3.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/capsule/vt2.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/capsule/vt4.webp`,
+          ],
+          ol: [
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result//capsule/ol3.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result/capsule/ol4.webp`,
+            `https://www.nespresso.com/shared_res/mos/free_html/kr/2024Unforgettable_result/images/vote-favorite-result//capsule/ol1.webp`,
+          ]
+        },
+      };
+      const state = reactive({
+        isMobile: true,
+        lang: locale,
+        msg: locale === 'ko' ? messages.ko : messages.en, // 국문, 영문 메시지
+        isLogin: JSON.parse(sessionStorage.getItem('loginInfo-kr'))
+          ? JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
+          : false,
+        vlReview: '버츄오 커피 리뷰',
+        olReview: '오리지널 커피 리뷰',
+        vlCapsuleNum: 'vl-coffee-1',
+        olCapsuleNum: 'ol-coffee-1',
+        swiperActiveIndex: '0',
+        memberInfo: {},
+        mainContentNum: 'vertuo',
+        contentTabInit: {
+          tabGroupClass: '',
+          // tabWrapClass: 'tab-wrap1',
+          tabClass: 'tab1',
+        },
+        bg,
+      });
+      const gaHeadingInit = () => {
+        let $gaHeading = document.querySelector('#hidden-main-heading')
+        if(document.documentElement.lang === "ko") {
+          $gaHeading.append('나의 최애 커피 특별 혜택');
+        } else {
+          $gaHeading.append('Favorite Coffee Special Benefit');
+        }
+      }
+
+      const checkMedia = () => {
+        const mediaQueryList = window.matchMedia('(min-width: 1024px)');
+        mediaQueryList.matches
+          ? (state.isMobile = false)
+          : (state.isMobile = true);
+        mediaQueryList.addEventListener('change', e =>
+          e.matches ? (state.isMobile = false) : (state.isMobile = true),
+        );
+      };
+
+      const mainTabSelect = v => {
+        state.mainContentNum = v;
+      };
+
+      const mainTabUpdate = v => {
+        mainTabSelect(v);
+      };
+
+      const getPageNum = () => {
+        const urlStr = window.location.href;
+        const url = new URL(urlStr);
+        const urlParams = url.searchParams;
+        const tabName = urlParams.get('tab');
+        mainTabSelect(tabName ?? 'vertuo');
+      };
+
+      const updateCart = function(skuNum, qantity){
+        //소스 전달시 주석 해제
+        // setTimeout(() => window.CartManager.updateItem(skuNum, qantity).then((result) => {}), 100);
+        console.log(skuNum, qantity); //로컬에서만 사용
+      }
+
+      const initTestSwiper = () => {
+        const swiper = new Swiper('.swiper', {
+          loop: true,
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
+          slidesPerView: 1,
+          loopFillGroupWithBlank: true,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            // slideChangeTransitionEnd = 다른 슬라이드(다음 또는 이전)로의 애니메이션 후 이벤트가 시작됩니다.
+            slideChangeTransitionEnd: (swiper) => { 
+              const idx = swiper.realIndex;
+              console.log(swiper.realIndex);
+              state.mainContentNum === 'vertuo'
+              ? get_purchase_nes_buttons('small',`top3_vt_capsule${swiper.realIndex + 1}`,state.msg.vtBestlists[idx].sku)
+              : get_purchase_nes_buttons('small',`top3_ol_capsule${swiper.realIndex + 1}`,state.msg.olBestlists[idx].sku)
+            }
+          }
+        });
+      };
+
+      const get_purchase_nes_buttons = (buttonSize, containerId, productId) => {
+        console.log(buttonSize, containerId, productId) //테스트
+        // window.napi
+        //   .getConfig()
+        //   .then(() => {
+        //     window.ui = window.ui || []
+        //     window.ui.push({
+        //       id: containerId,
+        //       module: 'AddToBagButton',
+        //       configuration: {
+        //         props: {
+        //           productId,
+        //           buttonSize
+        //         }
+        //       },
+        //       ecommerceData: {
+        //         activated: true
+        //       }
+        //     })
+        //   })
+        //   .catch(e => console.error(e))
+        // return new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //       resolve(containerId);
+        //     }, 250);
+        // })
+      }
+
+      checkMedia();
+      getPageNum();
+
+      onMounted(() => {
+        // DOM 로드 되고 난 후에 사용할 함수들 선언
+        gaHeadingInit();
+        initTestSwiper();
+
+        // 버츄오 부문 BEST 3
+        get_purchase_nes_buttons('small','top3_vt_capsule1','7216.60');
+        get_purchase_nes_buttons('small','top3_vt_capsule2','7219.60');
+        get_purchase_nes_buttons('small','top3_vt_capsule3','7225.60');
+        get_purchase_nes_buttons('small','top3_vt2_capsule1','7216.60');
+        get_purchase_nes_buttons('small','top3_vt2_capsule2','7219.60');
+        get_purchase_nes_buttons('small','top3_vt2_capsule3','7225.60');
+        // 오리지널 부문 BEST 3
+        get_purchase_nes_buttons('small','top3_ol_capsule1','7765.40');
+        get_purchase_nes_buttons('small','top3_ol_capsule2','7748.40');
+        get_purchase_nes_buttons('small','top3_ol_capsule3','7720.70');
+        get_purchase_nes_buttons('small','top3_ol2_capsule1','7765.40');
+        get_purchase_nes_buttons('small','top3_ol2_capsule2','7748.40');
+        get_purchase_nes_buttons('small','top3_ol2_capsule3','7720.70');
+        
+      });
+
+      return {
+        // life cycle hook 제외한 커스텀 함수 중에서 setup 함수 바깥에 사용 할 경우, 컴포넌트 데이터 전달 할 경우 return
+        gaHeadingInit,
+        ...toRefs(state), // toRefs() - 반응형 객체를 일반 객체로 변환
+        propsTabNum: state.mainContentNum, // component props data
+        propsTabList: state.msg.mainTab,
+        propsContentTabInit: state.contentTabInit,
+        mainTabUpdate,
+        updateCart
+      };
+    },
+  };
+
+  // vue3 앱 초기화, 관련 써드파티 플려그인 초기화
+  const app = Vue.createApp(App)
+    .directive('lazy', lazyloadOptions)
+    .component('content-tab-group', contentTabGroup)
+    .mount('#app');
+</script>

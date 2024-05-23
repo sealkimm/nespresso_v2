@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+<title>NESPRESSO - CAMPAIGN LIST</title>
+<!-- <script src="./js/lib/jquery-3.4.1.min.js"></script> -->
+<style>
+/* stylelint-disable */
+/* Basic Style START (seungwan, 202102) */
+html, body { height:100%; -webkit-text-size-adjust:none; font-family:dotum,"돋움",Arial,Sans-serif; font-size:12px; }
+body, input, select, button, textarea, h1, h2, h3, h4, h5, h6, table { line-height:1.5; font:inherit; color:inherit; }
+html, body, div, form, input, select, button, textarea, legend, fieldset, figure, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, blockquote, address, p, th, td, caption { margin:0; padding:0; }
+ol, ul, li { list-style:none; }
+img, fieldset { vertical-align:middle; border:0 none; }
+input, select, textarea { vertical-align:middle; resize:none; }
+input[type=text], input[type=password], input[type=submit], input[type=tel], input[type=number], input[type=email], input[type=url], input[type=search], textarea { -webkit-appearance:none; border-radius:0; }
+button { border:0 none; background:transparent; cursor:pointer; }
+hr { display:none; }
+legend, .hide { position:absolute; left:-9999px; }
+table caption { width:0; height:0; visibility:hidden; text-indent:-9999px; font-size:0; line-height:0; }
+table { border-collapse:collapse; border-spacing:0; }
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption { display:block; }
+
+a { color:inherit; text-decoration:none; }
+a:active, a:hover, a:focus { text-decoration:underline; }
+/* Basic Style END */
+
+a:link, a:visited { color:#2d7fe0; }
+a:active, a:hover, a:focus { background:#eee; }
+html, body { font-family: 'Malgun Gothic',sans-serif; }
+body { min-width:1700px; color:#666; overflow: scroll; overflow-x: auto; }
+header { position: relative; }
+.group-filter { line-height: 1.8; margin: 10px 15px 0; font-size: 11px; }
+.group-filter input { margin-left: 10px; }
+.group-filter label { color: #2d7fe0; }
+.filter-input { box-sizing: border-box; width: 180px; height: 30px; margin-top: -15px; padding: 0 15px; background: transparent; border: 1px solid #ccc; box-shadow: inset 2px 2px 5px rgba(0,0,0,.2); position: absolute; top: 50%; right: 20px; }
+h1 { padding:10px 20px; font-weight:bold; font-size:16px; color:#999; background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),color-stop(50%, #f3f3f3),color-stop(51%, #ededed),to(#ffffff));background: -webkit-linear-gradient(top, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%);background: linear-gradient(to bottom, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%); border-bottom:1px solid #eee; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+h2 { padding:0 0 10px; font-size:14px; }
+.container { box-sizing:border-box; padding:20px; overflow:hidden; }
+table { width:100%; font-size:12px; color:#333; table-layout:fixed; border-collapse:collapse; border-spacing:0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+table thead th { padding:5px; background:#f5f5f5; border-left:1px solid #ccc; border-top:1px solid #ccc; }
+table tbody th, table tbody td { padding:5px 10px; word-wrap:break-word; border-left:1px solid #ccc; border-top:1px solid #ccc; }
+table .center { text-align:center; }
+table .others { padding: 12px 50px; border-top: 1px solid black; background: #f3f3f3; }
+table .group:not(:first-child) th, table .group:not(:first-child) td { border-top:10px solid #eee; }
+table .sub-group th, table .sub-group td { border-top:3px double #bbb; }
+table span, table .up { color:#2d7fe0; }
+a.cms:before { content: '['; display: inline; }
+a.cms:after { content: ']'; display: inline; }
+</style>
+<script>
+// 모든 링크 새창으로 변경
+function linkTargetChange() {
+  var arr = document.querySelectorAll('a');
+  for(var i=arr.length; i--; ) {
+    arr[i].target = "_blank";
+  }
+}
+// 링크 URL 자동
+function setLink() {
+  var arr = document.querySelectorAll('a.path');
+  for(var i=arr.length; i--; ) {
+    arr[i].href = 'html/' + arr[i].innerHTML;
+  }
+}
+// 미리보기 URL 설정
+function previewLink() {
+  var arr = document.querySelectorAll('a.preview');
+  var path = location.href.split('/');
+  path.length = path.length - 1;
+  path = path.join('/');
+  for(var i=arr.length; i--; ) {
+    arr[i].href = 'http://troy.labs.daum.net/?url='
+      + encodeURIComponent(path + '/' + arr[i].parentNode.parentNode.querySelector('a.path').getAttribute('href'))
+      + '&device=A1549;A1474'; // 아이폰8,아이패드
+  }
+}
+// 리스트 검색 필터
+function listFilter() {
+  var input, filter, table, tr, len, td, i;
+  var searchIndex = 2; // 검색 대상 td index 설정
+  var input = document.getElementById("filterInput");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("mainTable");
+  var tr = table.querySelector('tbody').getElementsByTagName("tr");
+  var textArr = Array.prototype.map.call(tr, function(row) {
+    const td = row.getElementsByTagName('td');
+    return td[0].innerText + td[1].innerText + td[2].innerText + td[3].innerText + td[4].innerText;
+  });
+  var len = tr.length;
+
+  for(var i = 0; i < len; i++) {
+    td = tr[i].getElementsByTagName("td")[searchIndex];
+    if(td) {
+      if(textArr[i].toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function setRowFilter() {
+  var tr = document.querySelectorAll('#mainTable tbody tr');
+  var len = tr.length;
+  var groupNames = [];
+  var groupIndex = -1;
+  var groupFilter = document.querySelector('.group-filter');
+  for(var i = 0; i < len; i++) {
+    var className = tr[i].className;
+    if(className === 'group') {
+      groupNames.push(tr[i].querySelectorAll("th")[0].innerText);
+      groupIndex++;
+      // tr[i].setAttribute('rowspan', groupIndex);
+    }
+    tr[i].classList.add('seq'+groupIndex);
+    tr[i].setAttribute('id', 'seq' + groupIndex);
+    
+  }
+  groupFilter.innerHTML = groupNames.reduce(function(acc, v, i) {
+    return acc + '<input type="radio" name="groupFilter" value="' + i + '"> <a href="#seq' + i + '"><strong>' + v + '↓</strong></a>';
+  }, '<label><input type="radio" name="groupFilter" value="-1" checked> <strong>전체</strong></label>');
+  Array.prototype.forEach.call(groupFilter.querySelectorAll('input'), function(el) {
+    el.addEventListener('change', function(e) {
+      var checked = groupFilter.querySelector('input:checked').value;
+      for(var i = 0; i < len; i++) {
+        if(checked === '-1') {
+          tr[i].style.display = 'table-row';
+        } else if (checked === tr[i].className.split('seq')[1]) {
+          tr[i].style.display = 'table-row';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    });
+  });
+}
+window.onload = function() {
+  linkTargetChange();
+  setLink();
+  previewLink();
+  setRowFilter();
+};
+$(function(){
+    var size = 0;
+    $('.group').each(function(idx){
+      $(this).children('th').attr('rowspan',
+        $(this).nextAll('.group').index() < 0 ? size = $(this).nextAll().length  + 1: $(this).nextAll('.group').index() - size
+      );
+      size = $(this).nextAll('.group').index();
+    });
+    $('.group2').each(function(idx){
+      $(this).find('.depth2').attr('rowspan',
+        $(this).nextAll('.depth2').index() < 0 ? size = $(this).nextAll().length  + 1: $(this).nextAll('.depth2').index() - size
+      );
+      size = $(this).nextAll('.depth2').index();
+    });
+  });
+</script>
+<body>
+  <header>
+    <h1>NESPRESSO - CAMPAIGN LIST</h1>
+    <input type="text" id="filterInput" class="filter-input" onkeyup="listFilter()" placeholder="메뉴명/화면ID 검색.." title="검색">
+  </header>
+  <div class="group-filter"></div>
+  <div class="container">
+    <table id="mainTable">
+      <colgroup>
+        <col style="width:150px;">
+        <col style="width:250px;">
+        <col style="width:150px;">
+        <col style="width:150px;">
+        <col style="width:auto;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>year</th>
+          <th>campaign title</th>
+          <th>period</th>
+          <th>PAGE URL</th>
+          <th>etc</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>TEST</th>
+          <td></td>
+          <td class="center"></td>
+          <td class="center">
+            <a href="./html/test/index.html">[test]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="group">
+          <th>2021</th>
+          <td>이스피라치오네 이탈리아나</td>
+          <td class="center">2021.09</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202109/ispirazione-italiana-capsule-coffee.html">[국문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>페스티브</td>
+          <td class="center">2021.11</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202111/festive.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202111/en-festive.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>웨이크업</td>
+          <td class="center">2021.12</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202112/wakeup/index.html">[국문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>웨이크업 크레딧 이벤트</td>
+          <td class="center">2021.12</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202112/wakeup-detail_v1/index.html">[국문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>웨이크업 이벤트</td>
+          <td class="center">2021.12</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202112/wakeup-detail_v2/index.html">[국문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="group">
+          <th>2022</th>
+          <td>스페셜 리저브</td>
+          <td class="center">2022.01</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202201/special-reserve/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202201/special-reserve/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>마이애미</td>
+          <td class="center">2022.02</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202202/miami/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202202/miami/index.html">[영문]</a>
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>마스터 오리진</td>
+          <td class="center">2022.04</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202204/master-origins/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202204/master-origins/index.html">[영문]</a>
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>마스터 위크</td>
+          <td class="center">2022.04</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202204/master-weeks/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202204/master-weeks/index.html">[영문]</a>
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>WORLD EXPLORATIONS</td>
+          <td class="center">2022.04</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/202204/wex2/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/202204/wex2/index.html">[영문]</a>
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>썸머 캠페인(커피)</td>
+          <td class="center">2022.05</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/summer-campaign/2022-summer-ice-campaign.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/summer-campaign/2022-summer-ice-campaign-en.html">[영문]</a>
+          </td>
+          <td>컨텐츠양이 많아서 탭컨텐츠에서 페이지로 분리</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>썸머 캠페인(머신)</td>
+          <td class="center">2022.05</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/summer-campaign/2022-summer-ice-campaign-machine.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/summer-campaign/2022-summer-ice-campaign-machine-en.html">[영문]</a>
+          </td>
+          <td>컨텐츠양이 많아서 탭컨텐츠에서 페이지로 분리</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>썸머 캠페인(액세서리)</td>
+          <td class="center">2022.05</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/summer-campaign/2022-summer-ice-campaign-acc.html">[국문]</a>
+          </td>
+          <td>컨텐츠양이 많아서 탭컨텐츠에서 페이지로 분리</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>바리스타 크리에이션</td>
+          <td class="center">2022.09</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/barista-creations/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/barista-creations/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>리바이빙 오리진</td>
+          <td class="center">2022.10</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/reviving-origins/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/reviving-origins/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>페스티브</td>
+          <td class="center">2022.11</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/festive/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/festive/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="group">
+          <th>2023</th>
+          <td>잊지 못할 나의 커피 경험</td>
+          <td class="center">2023.01</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/ispi/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/ispi/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>MWC</td>
+          <td class="center">2023.02</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/mwc/index.html">[국문]</a>
+            &emsp;
+            <!-- <a href="https://e.adnstyle.com/nespresso/html/mwc/index-en.html">[영문]</a> -->
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>버츄오 팝</td>
+          <td class="center">2023.03</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/vertuopop/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/vertuopop/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>ICE 2023</td>
+          <td class="center">2023.05</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/ice2023/index-0703live.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/ice2023/index-en-0703live.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>버츄오 팝&플러스</td>
+          <td class="center">2023.06</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/vertuopop-plus/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/vertuopop-plus/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>MWC 2023</td>
+          <td class="center">2023.08</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/mwc2023/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/mwc2023/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>머신 페이백</td>
+          <td class="center">2023.09</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>머신 페이백_v2</td>
+          <td class="center">2024.02</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>정기배송</td>
+          <td class="center">2023.09</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/easy-order/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/easy-order/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>프리 페스티브</td>
+          <td class="center">2023.10</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/prefestive2023/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/prefestive2023/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>페스티브</td>
+          <td class="center">2023.11</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/festive2023/index.html">[국문]</a>&emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/festive2023/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr class="group">
+          <th>2024</th>
+          <td>나의 최애 커피 투표</td>
+          <td class="center">2024.01</td>
+          <td class="center">
+            <a href="./html/vote-favorite-coffee/index.html">[국문]</a>
+            &emsp;
+            <a href="./html/vote-favorite-coffee/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>나의 최애 커피 결과</td>
+          <td class="center">2024.01</td>
+          <td class="center">
+            <a href="./html/vote-favorite-result/index.html">[국문]</a>
+          </td>
+          <td></td>margin-top: 3rem;
+        </tr>
+        <tr></tr>
+        
+        <tr></tr>
+        <tr>
+          <th></th>
+          <td>인생 아이스 투표</td>
+          <td class="center">2024.05</td>
+          <td class="center">
+            <a href="./html/ice-vote-favorite/index.html">[국문]</a>
+            &emsp;
+            <a href="./html/ice-vote-favorite/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>인생 아이스 투표 결과</td>
+          <td class="center">2024.05</td>
+          <td class="center">
+            <a href="./html/ice-vote-favorite-result/index.html">[국문]</a>
+            &emsp;
+            <a href="./html/ice-vote-favorite-result/index-en.html">[영문]</a>
+          </td>
+          <td>예정</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td rowspan="3">머신페이백</td>
+          <td colspan="3" class="others">
+            <b>3/14</b> - <a href="https://e.adnstyle.com/newspresso/html/payback/2024/03-index.html">[ 국문</a> |
+            <a href="https://e.adnstyle.com/nespresso/html/payback/2024/03-index-en.html">영문 ]</a>
+            <b>&emsp;||&emsp;</b>
+            <b>4/18</b> - <a href="https://e.adnstyle.com/nespresso/html/payback/2024/04-index.html">[ 국문</a> |
+            <a href="https://e.adnstyle.com/nespresso/html/payback/2024/04-index-en.html">영문 ]</a>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td class="center">2024.05 (1)</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/payback/index-en.html">[영문]</a>
+          </td>
+          <td style="color: #a9a9a9;font-style: italic;">5월 Promotion</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td class="center">2024.05 (2)</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/payback2/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/payback2/index-en.html">[영문]</a>
+          </td>
+          <td style="color: #a9a9a9;font-style: italic;">신제품 Promotion</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>ICE 2024</td>
+          <td class="center">2024.05</td>
+          <td class="center">
+            <a href="https://e.adnstyle.com/nespresso/html/ice2024/index.html">[국문]</a>
+            &emsp;
+            <a href="https://e.adnstyle.com/nespresso/html/ice2024/index-en.html">[영문]</a>
+          </td>
+          <td>예정</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>웡카 프로젝트</td>
+          <td class="center">2024.05</td>
+          <td class="center">
+            <a href="./html/wonka-project/index.html">[국문]</a>
+            &emsp;
+            <a href="./html/wonka-project/index-en.html">[영문]</a>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</body>
+</head>
+</html>

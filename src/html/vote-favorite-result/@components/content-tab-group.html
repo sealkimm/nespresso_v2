@@ -1,0 +1,45 @@
+<template id="contentTabGroup">
+	<div class="content-tab-group" :class="tabGroupClass">
+		<div class="tab-wrap" :class="tabWrapClass, propstabnum">
+			<div class="tab" :class="tabClass, item.cate, {'is-active': item.cate == propstabnum}" v-for="item in propstablist" :key="item.cate"
+				:ga_category="item.gaCategory" :ga_action="item.gaAction" :ga_label="item.gaLabel"
+				@click="tabActive(item.cate)" 
+			>
+				<span v-html="item.tit"></span>
+			</div>
+		</div>
+		<slot></slot>
+	</div>
+	<!-- <div v-html="mainTab[0].tit"></div> -->
+</template>
+
+<script>
+	const contentTabGroup = {
+		
+		template: document.querySelector('#contentTabGroup').innerHTML,
+		props: {
+			// propslogin: { type: Boolean },
+			propstabnum: { type: Number	},
+			propstechinfo: { type: String	},
+			propstablist: { type: Array },
+			propscontenttabinit: { type: Object },
+		},
+		
+		setup(props, context) {
+      console.log(props)
+			const state = reactive({
+				tabGroupClass: props?.propscontenttabinit?.tabGroupClass,
+				tabWrapClass: props?.propscontenttabinit?.tabWrapClass,
+				tabClass: props?.propscontenttabinit?.tabClass,
+			});
+			const tabActive = (id) => {
+				context.emit('tab-active', id)
+				// console.log(id)
+			}
+			return {
+				...toRefs(state),
+				tabActive,
+			}
+		},
+	}
+</script>

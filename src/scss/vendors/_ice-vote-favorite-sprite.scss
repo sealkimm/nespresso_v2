@@ -1,0 +1,167 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$ice-vote-favorite-arrow-cta-name: 'ice-vote-favorite-arrow-cta';
+$ice-vote-favorite-arrow-cta-x: 96px;
+$ice-vote-favorite-arrow-cta-y: 101px;
+$ice-vote-favorite-arrow-cta-offset-x: -96px;
+$ice-vote-favorite-arrow-cta-offset-y: -101px;
+$ice-vote-favorite-arrow-cta-width: 7px;
+$ice-vote-favorite-arrow-cta-height: 13px;
+$ice-vote-favorite-arrow-cta-total-width: 159px;
+$ice-vote-favorite-arrow-cta-total-height: 129px;
+$ice-vote-favorite-arrow-cta-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-arrow-cta: (96px, 101px, -96px, -101px, 7px, 13px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-arrow-cta', );
+$ice-vote-favorite-check-name: 'ice-vote-favorite-check';
+$ice-vote-favorite-check-x: 134px;
+$ice-vote-favorite-check-y: 74px;
+$ice-vote-favorite-check-offset-x: -134px;
+$ice-vote-favorite-check-offset-y: -74px;
+$ice-vote-favorite-check-width: 13px;
+$ice-vote-favorite-check-height: 12px;
+$ice-vote-favorite-check-total-width: 159px;
+$ice-vote-favorite-check-total-height: 129px;
+$ice-vote-favorite-check-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-check: (134px, 74px, -134px, -74px, 13px, 12px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-check', );
+$ice-vote-favorite-close-name: 'ice-vote-favorite-close';
+$ice-vote-favorite-close-x: 134px;
+$ice-vote-favorite-close-y: 0px;
+$ice-vote-favorite-close-offset-x: -134px;
+$ice-vote-favorite-close-offset-y: 0px;
+$ice-vote-favorite-close-width: 25px;
+$ice-vote-favorite-close-height: 26px;
+$ice-vote-favorite-close-total-width: 159px;
+$ice-vote-favorite-close-total-height: 129px;
+$ice-vote-favorite-close-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-close: (134px, 0px, -134px, 0px, 25px, 26px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-close', );
+$ice-vote-favorite-ol-off-name: 'ice-vote-favorite-ol-off';
+$ice-vote-favorite-ol-off-x: 134px;
+$ice-vote-favorite-ol-off-y: 36px;
+$ice-vote-favorite-ol-off-offset-x: -134px;
+$ice-vote-favorite-ol-off-offset-y: -36px;
+$ice-vote-favorite-ol-off-width: 22px;
+$ice-vote-favorite-ol-off-height: 28px;
+$ice-vote-favorite-ol-off-total-width: 159px;
+$ice-vote-favorite-ol-off-total-height: 129px;
+$ice-vote-favorite-ol-off-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-ol-off: (134px, 36px, -134px, -36px, 22px, 28px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-ol-off', );
+$ice-vote-favorite-ol-on-name: 'ice-vote-favorite-ol-on';
+$ice-vote-favorite-ol-on-x: 0px;
+$ice-vote-favorite-ol-on-y: 101px;
+$ice-vote-favorite-ol-on-offset-x: 0px;
+$ice-vote-favorite-ol-on-offset-y: -101px;
+$ice-vote-favorite-ol-on-width: 22px;
+$ice-vote-favorite-ol-on-height: 28px;
+$ice-vote-favorite-ol-on-total-width: 159px;
+$ice-vote-favorite-ol-on-total-height: 129px;
+$ice-vote-favorite-ol-on-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-ol-on: (0px, 101px, 0px, -101px, 22px, 28px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-ol-on', );
+$ice-vote-favorite-pick-icon-name: 'ice-vote-favorite-pick-icon';
+$ice-vote-favorite-pick-icon-x: 0px;
+$ice-vote-favorite-pick-icon-y: 0px;
+$ice-vote-favorite-pick-icon-offset-x: 0px;
+$ice-vote-favorite-pick-icon-offset-y: 0px;
+$ice-vote-favorite-pick-icon-width: 124px;
+$ice-vote-favorite-pick-icon-height: 91px;
+$ice-vote-favorite-pick-icon-total-width: 159px;
+$ice-vote-favorite-pick-icon-total-height: 129px;
+$ice-vote-favorite-pick-icon-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-pick-icon: (0px, 0px, 0px, 0px, 124px, 91px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-pick-icon', );
+$ice-vote-favorite-vt-off-name: 'ice-vote-favorite-vt-off';
+$ice-vote-favorite-vt-off-x: 32px;
+$ice-vote-favorite-vt-off-y: 101px;
+$ice-vote-favorite-vt-off-offset-x: -32px;
+$ice-vote-favorite-vt-off-offset-y: -101px;
+$ice-vote-favorite-vt-off-width: 22px;
+$ice-vote-favorite-vt-off-height: 28px;
+$ice-vote-favorite-vt-off-total-width: 159px;
+$ice-vote-favorite-vt-off-total-height: 129px;
+$ice-vote-favorite-vt-off-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-vt-off: (32px, 101px, -32px, -101px, 22px, 28px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-vt-off', );
+$ice-vote-favorite-vt-on-name: 'ice-vote-favorite-vt-on';
+$ice-vote-favorite-vt-on-x: 64px;
+$ice-vote-favorite-vt-on-y: 101px;
+$ice-vote-favorite-vt-on-offset-x: -64px;
+$ice-vote-favorite-vt-on-offset-y: -101px;
+$ice-vote-favorite-vt-on-width: 22px;
+$ice-vote-favorite-vt-on-height: 28px;
+$ice-vote-favorite-vt-on-total-width: 159px;
+$ice-vote-favorite-vt-on-total-height: 129px;
+$ice-vote-favorite-vt-on-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-vt-on: (64px, 101px, -64px, -101px, 22px, 28px, 159px, 129px, '@@img/sprites/ice-vote-favorite.webp', 'ice-vote-favorite-vt-on', );
+$ice-vote-favorite-width: 159px;
+$ice-vote-favorite-height: 129px;
+$ice-vote-favorite-image: '@@img/sprites/ice-vote-favorite.webp';
+$ice-vote-favorite-sprites: ($ice-vote-favorite-arrow-cta, $ice-vote-favorite-check, $ice-vote-favorite-close, $ice-vote-favorite-ol-off, $ice-vote-favorite-ol-on, $ice-vote-favorite-pick-icon, $ice-vote-favorite-vt-off, $ice-vote-favorite-vt-on, );
+$ice-vote-favorite: (159px, 129px, '@@img/sprites/ice-vote-favorite.webp', $ice-vote-favorite-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

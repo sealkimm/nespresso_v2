@@ -1,0 +1,164 @@
+.btn {
+	display: inline-flex;
+	align-items: center;
+	color: #000;
+
+	&.small-txt {
+		@include font(2.2rem,var(--medium));
+		gap: .7rem;
+
+		&::after {
+			content: '';
+			position: relative;
+			top: -.2rem;
+
+			@include sprite-x2($ice2024-x2-arrow1);
+		}
+
+		@include breakpoint('lg') {
+			gap: 7px;
+			font-size: 14px;
+
+			&::after {
+				top: 0;
+
+				@include sprite($ice2024-arrow1);
+			}
+		}
+	}
+
+	&.square {
+		gap: 1rem;
+		height: 7.1rem;
+		padding: 0 6rem;
+		border: 1px solid #000;
+		color: #000;
+		letter-spacing: -.25rem;
+
+		@include font(2.6rem,var(--medium),137%);
+
+		&::after {
+			content: '';
+
+			@include sprite-x2($ice2024-x2-arrow2);
+		}
+
+		@include breakpoint('lg') {
+			gap: 5px;
+			width: auto;
+			height: 48px;
+			padding: 5px 30px 0;
+			font-size: 15px;
+			letter-spacing: -.3px;
+
+			&::after {
+				position: relative;
+				top: -2px;
+
+				@include sprite($ice2024-arrow2);
+			}
+
+			&:lang(en) {
+				font-size: 16px;
+				line-height: 120%;
+
+				&::after {
+					top: 0;
+				}
+			}
+		}
+	}
+
+	&.black {
+		background-color: #000;
+		color: #fff;
+
+		&::after {
+			content: '';
+
+			@include sprite-x2($ice2024-x2-arrow3);
+			@include breakpoint('lg') {
+				@include sprite($ice2024-arrow3);
+			}
+		}
+	}
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+	margin-top: 0;
+
+	&::after { content: ''; }
+}
+
+.swiper-button-next {
+	&::after {
+		@include sprite-x2($ice2024-x2-arrow-next);
+		@include breakpoint('lg') {
+			@include sprite($ice2024-arrow-next);
+		}
+	}
+
+	&.capsule-button-next,
+	&.accessory-button-next {
+		display: none;
+
+		@include breakpoint('lg') {
+			display: block;
+			top: 196px;
+			right: 0;
+			left: auto;
+		}
+	}
+
+	&.capsule-button-prev {
+		@include breakpoint('lg') {
+			right: 30px;
+		}
+	}
+
+	&.benefit-button-next {
+		top: 40rem;
+
+		@include breakpoint('lg') {
+			display: none;
+		}
+	}
+}
+
+.swiper-button-prev {
+	&::after {
+		@include sprite-x2($ice2024-x2-arrow-prev);
+		@include breakpoint('lg') {
+			@include sprite($ice2024-arrow-prev);
+		}
+	}
+
+	&.capsule-button-prev,
+	&.accessory-button-prev {
+		display: none;
+
+		@include breakpoint('lg') {
+			display: block;
+			top: 196px;
+			left: 0;
+		}
+	}
+
+	&.capsule-button-prev {
+		@include breakpoint('lg') {
+			left: 30px;
+		}
+	}
+
+	&.benefit-button-prev {
+		top: 40rem;
+
+		@include breakpoint('lg') {
+			display: none;
+		}
+	}
+}
+
+

@@ -1,0 +1,298 @@
+<script>
+  let messages = {
+    ko: {
+      test: '2024 나의 인생 아이스커피 투표',
+      botBanner: { txt1: '네스프레소의 혜택을 가장 먼저 만날 수 있는 기회!', txt2: '마케팅 수신 동의하고 다양한 혜택 만나보기', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+      intro: {
+        title: '<b>인생 아이스 커피</b>에<br>투표하세요!',
+        period: '기간 : <em>2024</em>년 <em>5</em>월 <em>2</em>일 ~ <em>15</em>일',
+        events: [
+          { 
+            id: 1, label: 'Event. 1',
+            tit: '인생 아이스 커피 투표하고<br>할인 기회 받자!',
+            titPc: '인생 아이스 커피 투표하고<br>할인 기회 받자!',
+            desc: `최다 득표 인생 아이스 커피 <br>TOP<em>3</em> 할인 혜택`,
+            url: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event1.webp',
+            urlPc: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/event01.png',
+            descPc: `최다 득표 인생 아이스 커피 TOP<em>3</em> 할인 혜택`,
+            period: '(7월 이달의 커피 프로모션)'
+          },
+          { 
+            id: 2, label: 'Event. 2',
+            tit: '리뷰 후기 남기고 선물 받자!',
+            titPc: '리뷰 후기 남기고 선물 받자!',
+            desc: `베스트 리뷰어 <em>50</em>분을 선정하여<br>한정판 썸머 액세서리를 드립니다.`,
+            descPc: `베스트 리뷰어 50분을 선정하여<br>한정판 썸머 액세서리를 드립니다.`,
+            url: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event2.webp',
+            urlPc: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event2.webp',
+            period: '(6월부터 개별 공지)'
+          },
+        ]
+      },
+      daily: {
+        title: '<span class="str">Daily</span> 투표 순위',
+        date: ['5월 ', '일 기준'],
+        vtList: [
+          { id: 0, name:'아이스 레제로', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-01.webp', },
+          { id: 1, name:'더블 에스프레소 돌체', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-06.webp', },
+          { id: 2, name:'알티시오 디카페나토', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-08.webp', },
+          { id: 3, name:'콜롬비아', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-02.webp', },
+          { id: 4, name:'솔레리오', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-03.webp', },
+          { id: 5, name:'콜드브루', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-04.webp', },
+          { id: 6, name:'아이스 포르테', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-05.webp', },
+          { id: 7, name:'인텐소', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-07.webp', },
+          { id: 8, name:'기타', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-09.webp', },
+        ],
+        olList: [
+          { id: 0, name:'프레도 인텐소', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-04.webp', },
+          { id: 1, name:'콜롬비아', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-03.webp', },
+          { id: 2, name:'아르페지오 디카페나토', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-06.webp', },
+          { id: 3, name:'프레도 델리카토', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-01.webp', },
+          { id: 4, name:'리반토', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-02.webp', },
+          { id: 5, name:'카프리치오', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-05.webp', },
+          { id: 6, name:'나폴리', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-07.webp', },
+          { id: 7, name:'파리', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-08.webp', },
+          { id: 8, name:'기타', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-09.webp', },
+        ],
+      },
+      mainTab: [
+        { id: 1, cate: 'vertuo', tit: '버츄오', gaCategory: 'vote ice 2024', gaAction: 'click-tab', gaLabel: 'vertuo-button', title: '<span class="str">버츄오 인생 아이스 커피</span> 투표하기' },
+        { id: 2, cate: 'original', tit: '오리지널', gaCategory: 'vote ice 2024', gaAction: 'click-tab', gaLabel: 'original-button', title: '<span class="str">오리지널 인생 아이스 커피</span> 투표하기' },
+      ],
+      capsules: {
+        vl: [
+          { id: 1, cate: 'vertuo', voteId: 'vlCapsule1', voteName: '아이스 레제로', name: '아이스 레제로', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'vertuo', voteId: 'vlCapsule2', voteName: '더블 에스프레소 돌체', name: '더블 에스프레소 돌체', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'vertuo', voteId: 'vlCapsule3', voteName: '알티시오 디카페나토', name: '알티시오 디카페나토', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'vertuo', voteId: 'vlCapsule4', voteName: '콜롬비아', name: '콜롬비아', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'vertuo', voteId: 'vlCapsule5', voteName: '아이스 포르테', name: '아이스 포르테', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'vertuo', voteId: 'vlCapsule6', voteName: '솔레리오', name: '솔레리오', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'vertuo', voteId: 'vlCapsule7', voteName: '인텐소', name: '인텐소', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'vertuo', voteId: 'vlCapsule8', voteName: '콜드브루', name: '콜드브루', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'vertuo', voteId: 'vlCapsule9', voteName: '기타 (나만의 버츄오 아이스 커피)', name: '기타 <div class="min">(나만의 버츄오 아이스 커피)</div>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+        ],
+        ol: [
+          { id: 1, cate: 'original', voteId: 'olCapsule1', voteName: '프레도 인텐소', name: '프레도 인텐소', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 2, cate: 'original', voteId: 'olCapsule2', voteName: '아르페지오 디카페나토', name: '아르페지오 디카페나토', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'original', voteId: 'olCapsule3', voteName: '콜롬비아', name: '콜롬비아', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'original', voteId: 'olCapsule4', voteName: '프레도 델리카토', name: '프레도 델리카토', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 5, cate: 'original', voteId: 'olCapsule5', voteName: '카프리치오', name: '카프리치오', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'original', voteId: 'olCapsule6', voteName: '리반토', name: '리반토', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'original', voteId: 'olCapsule7', voteName: '나폴리', name: '나폴리', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'original', voteId: 'olCapsule8', voteName: '파리', name: '파리', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'original', voteId: 'olCapsule9', voteName: '기타 (나만의 오리지널 아이스 커피)', name: '기타 <div class="min">(나만의 오리지널 아이스 커피)</div>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+        ]
+      },
+      review: {
+        title: '인생 아이스 커피 <span class="str">후기 남기기</span>',
+        placeholder: {
+          vl: `Q) 이 커피를 나의 인생 아이스 커피로 고른 이유를 알려주세요. \n후보에 원하는 캡슐이 없는 경우 '기타 (나만의 아이스 커피)'를 선택해주시고, 캡슐명과 이유도 함께 남겨주세요.\n\n(개인정보 수집·이용 동의 시, 후기 이벤트 참여가 가능합니다.)`,
+          ol: `Q) 이 커피를 나의 인생 아이스 커피로 고른 이유를 알려주세요. \n후보에 원하는 캡슐이 없는 경우 '기타 (나만의 아이스 커피)'를 선택해주시고, 캡슐명과 이유도 함께 남겨주세요.\n\n(개인정보 수집·이용 동의 시, 후기 이벤트 참여가 가능합니다.)`
+        },
+        privacy: [
+          { id: 1, txt: '개인정보 수집 목적 : 네스프레소 후기 이벤트 참여를 통해, 베스트 리뷰어 선정 시 경품 제공을 위한 연락', txtPc: '개인정보 수집 목적 : 네스프레소 후기 이벤트 참여를 통해, 베스트 리뷰어 선정 시 경품 제공을 위한 연락' },
+          { id: 2, txt: '개인정보 수집 항목 : 휴대전화번호', txtPc: '개인정보 수집 항목 : 휴대전화번호' },
+          { id: 3, txt: '보유 및 이용기간 : 수집일로부터 <em>1</em>개월', txtPc: '보유 및 이용기간 : 수집일로부터 <em>1</em>개월' },
+          { id: 4, txt: '동의 거부권 및 거부 시 불이익 : 귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며,<br>동의를 거부할 경우 후기 이벤트 참여에 제한을 받을 수 있습니다.', txtPc: '동의 거부권 및 거부 시 불이익 : 귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며,<br>동의를 거부할 경우 후기 이벤트 참여에 제한을 받을 수 있습니다.' },
+          { id: 5, txt: '리뷰 콘텐츠는 내부 마케팅 용도로 <em>2</em>차 활용 될 수 있습니다.', txtPc: '리뷰 콘텐츠는 내부 마케팅 용도로 <em>2</em>차 활용 될 수 있습니다.' },
+        ],
+        privacyTit: '개인정보 수집·이용 동의',
+        agree: { txt: '위 개인정보를 수집·이용하는 것에 동의합니다.', agreeTxt: '동의함', gaCategory: 'vote ice 2024', gaAction: 'click-checkbox', gaLabel: 'checkbox-button', },
+        benefit: '투표 제출 버튼 클릭 후 회원번호 별도 기재 시, <em>6</em>월 2,000</em>원 쿠폰이 지급됩니다.',
+        ctaReqBtn: { txt: '투표 제출하기', gaCategory: 'vote ice 2024', gaAction: 'submit-click', gaLabel: 'vote-submit-button',},
+        ctaBtn: {
+          vl: { txt: '더 다양한 커피 만나보기', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo', gaCategory: 'vote ice 2024', gaAction: 'click-goto-coffeePLP', gaLabel: 'coffeePLP-vl' },
+          ol: { txt: '더 다양한 커피 만나보기', url: 'https://www.nespresso.com/kr/ko/order/capsules/original', gaCategory: 'vote ice 2024', gaAction: 'click-goto-coffeePLP', gaLabel: 'coffeePLP-ol' },
+        }
+      },
+      contentCaution: {
+        tit: '유의사항',
+        cont: [
+          { id: 1, 
+            txt: `<strong>투표 기간</strong> : <em>5</em>월 <em>2</em>일~<em>5</em>월 <em>15</em>일 (<em>2</em>주간)`,
+            txtPc: `<strong>투표 기간</strong> : <em>5</em>월 <em>2</em>일~<em>5</em>월 <em>15</em>일 (<em>2</em>주간)` },
+          { id: 2, 
+            txt: `<strong>투표 대상자</strong> : 네스프레소 클럽 회원이라면 누구나 (계정 당 <em>1</em>회 참여 가능)`,
+            txtPc: `<strong>투표 대상자</strong> : 네스프레소 클럽 회원이라면 누구나 (계정 당 <em>1</em>회 참여 가능)` },
+          { id: 3, 
+            txt: `<strong>투표 방법</strong> : 홈페이지 로그인 후, 오리지널 1종 / 버츄오 1종 선택 & 투표 제출하기 클릭 <span>(<em>2</em>종 중 <em>1</em>종만 선택해도 투표 가능)</span>`,
+            txtPc: `<strong>투표 방법</strong> : 홈페이지 로그인 후, 오리지널 1종 / 버츄오 1종 선택 & 투표 제출하기 클릭 <span>(<em>2</em>종 중 <em>1</em>종만 선택해도 투표 가능)</span>` },
+          { id: 4,
+            txt: `<strong>해당 이벤트는 사전 공지 없이 내부 상황에 따라 조기 종료되거나 변동 사항이 발생 할 수 있습니다.</strong>`,
+            txtPc: `<strong>해당 이벤트는 사전 공지 없이 내부 상황에 따라 조기 종료되거나 변동 사항이 발생 할 수 있습니다.</strong>` },
+        ]
+      },
+      layerpop: {
+        close: '닫기',
+        gotoForms: {
+          type: 'googleForms',
+          btnVl: '오리지널 커피도 투표하기', btnOl: '버츄오 커피도 투표하기',
+          gaCategory: 'vote ice 2024', gaAction: 'click-other-tech', gaLabel: 'goto-vote-button',
+          complateTit: '<span>투표 제출 완료!</span>',
+          tit: '<span class="min">회원번호 제출 시</span><div class="middle"><span class="og"><em>6</em>월 <em>2,000</em>원</span> 쿠폰 증정</div>',
+          ctaBtn: { txt: '회원번호 제출하러 가기', url: 'https://forms.office.com/e/0GzhQMECfU', gaCategory: 'vote ice 2024', gaAction: 'click-submit-googleForms', gaLabel: 'submit-googleForms-button' }
+        },
+        loginAlert: {
+          type: 'loginAlert',
+          tit: { main: '<span class="tit">로그인 후 참여해 주세요. </span><span class="min"><br>계정 당 <em>1</em>회 참여 가능</span>' },
+          ctaBtn: { txt: '로그인 하러가기', url: '#', gaCategory: 'vote ice 2024', gaAction: 'click-login', gaLabel: 'login-button' }
+        }
+      }
+    },
+
+    en: {
+      test: '2024 나의 인생 아이스커피 투표',
+      botBanner: { txt1: 'Consent to receive marketing<br>and enjoy more various Nespresso benefits.', txt2: '', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '' },
+      intro: {
+        title: '<b>인생 아이스 커피</b>에<br>투표하세요!',
+        period: '기간 : <em>2024</em>년 <em>5</em>월 <em>2</em>일 ~ <em>15</em>일',
+        events: [
+          { 
+            id: 1, label: 'Event. 1', 
+            tit: `Let's vote for the<br>best iced coffee,<br>and get a discount`,
+            titPc: `Let's vote for the best iced coffee, and get a discount`,
+            desc: `Top 3 voted best iced coffee<br>discounts promotion`,
+            descPc: `Top 3 voted best iced coffee discounts<br>promotion`,
+            url: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event1.webp',
+            urlPc: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/event01.png',
+            period: '(Coffee of The Month’ promotion in July)'
+          },
+          { 
+            id: 2, label: 'Event. 2', 
+            tit: `Let's write reviews <br>and get gifts`,
+            titPc: `Let's write reviews and get gifts`,
+            desc: `50 best reviewers will be selected<br>and given limited edition summer<br>accessories`,
+            descPc: `50 best reviewers will be selected and <br>given limited edition summer accessories`,
+            url: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event2.webp',
+            urlPc: 'https://e.adnstyle.com/nespresso/img/ice-vote-favorite/mob/event2.webp',
+            period: '(Individual notice from June)'
+          },
+        ]
+      },
+      daily: {
+        title: '<span class="og">Daily</span> Vote Ranking',
+        date: [' May,', '.2024'],
+        vtList: [
+          { id: 0, name: 'Ice leggero', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-01.webp', },
+          { id: 1, name: 'Double espresso dolce', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-06.webp', },
+          { id: 2, name: 'Altissio decaffeinato', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-08.webp', },
+          { id: 3, name: 'Colombia', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-02.webp', },
+          { id: 4, name: 'Solelio', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-03.webp', },
+          { id: 5, name: 'Coldbrew', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-04.webp', },
+          { id: 6, name: 'Ice forte', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-05.webp', },
+          { id: 7, name: 'Intenso', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-07.webp', },
+          { id: 8, name: 'Etc.', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/vt-09.webp', },
+        ],
+        olList: [
+          { id: 0, name:'Freddo intenso', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-04.webp', },
+          { id: 1, name:'Colombia', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-03.webp', },
+          { id: 2, name:'Arpeggio decaffeinato', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-06.webp', },
+          { id: 3, name:'Freddo delicato', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-01.webp', },
+          { id: 4, name:'Livanto', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-02.webp', },
+          { id: 5, name:'Capriccio', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-05.webp', },
+          { id: 6, name:'Napoli', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-07.webp', },
+          { id: 7, name:'Paris', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-08.webp', },
+          { id: 8, name:'Etc.', imgUrl: 'https://www.nespresso.com/shared_res/mos/free_html/kr/2024_summer_vote/ice-vote-favorite/mob/capsules/ol-09.webp', },
+        ],
+      },
+      mainTab: [
+        { id: 1, cate: 'vertuo', tit: 'Vertuo', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '', 
+          title: 'Voting for <span class="str">Vertuo best iced coffee</span>' },
+        { id: 2, cate: 'original', tit: 'Original', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: '', 
+          title: 'Voting for <span class="str">Original best iced coffee</span>' },
+      ],
+      capsules: {
+        vl: [
+          { id: 1, cate: 'vertuo', voteId: 'vlCapsule1', voteName: 'Ice leggero', name: 'Ice leggero', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'vertuo', voteId: 'vlCapsule2', voteName: 'Double espresso dolce', name: 'Double espresso <span>dolce</span>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 3, cate: 'vertuo', voteId: 'vlCapsule3', voteName: 'Altissio decaffeinato', name: 'Altissio <span>decaffeinato</span>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 4, cate: 'vertuo', voteId: 'vlCapsule4', voteName: 'Colombia', name: 'Colombia', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 5, cate: 'vertuo', voteId: 'vlCapsule5', voteName: 'Ice forte', name: 'Ice forte', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 6, cate: 'vertuo', voteId: 'vlCapsule6', voteName: 'Solelio', name: 'Solelio', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 7, cate: 'vertuo', voteId: 'vlCapsule7', voteName: 'Intenso', name: 'Intenso', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 8, cate: 'vertuo', voteId: 'vlCapsule8', voteName: 'Coldbrew', name: 'Coldbrew', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 9, cate: 'vertuo', voteId: 'vlCapsule9', voteName: 'Etc(My own Vertuo iced coffee)', name: 'Etc<br><div class="min">(My own Vertuo iced coffee)</div>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+        ],
+        ol: [
+          { id: 1, cate: 'original', voteId: 'olCapsule1', voteName: 'Freddo intenso', name: 'Freddo intenso', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'original', voteId: 'olCapsule2', voteName: 'Arpeggio decaffeinato', name: 'Arpeggio <span>decaffeinato</span>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 3, cate: 'original', voteId: 'olCapsule3', voteName: 'Colombia', name: 'Colombia', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 4, cate: 'original', voteId: 'olCapsule4', voteName: 'Freddo delicato', name: 'Freddo delicato', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 5, cate: 'original', voteId: 'olCapsule5', voteName: 'Capriccio', name: 'Capriccio', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 6, cate: 'original', voteId: 'olCapsule6', voteName: 'Livanto', name: 'Livanto', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 7, cate: 'original', voteId: 'olCapsule7', voteName: 'Napoli', name: 'Napoli', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 8, cate: 'original', voteId: 'olCapsule8', voteName: 'Paris', name: 'Paris', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+          { id: 9, cate: 'original', voteId: 'olCapsule9', voteName: 'Etc(My own Original iced coffee)', name: 'Etc<br><div class="min">(My own Original iced coffee)</div>', gaCategory: 'vote ice 2024', gaAction: '', gaLabel: ''},
+        ]
+      },
+      review: {
+        title: '<span class="str">Writing a review</span><br>about my best iced coffee',
+        placeholder: {
+          vl: `Q) Please let me know why you chose this coffee as your best iced coffee.\nIf the option does not have the desired capsule, please select ‘Etc. (My own Iced Coffee)’ and write the capsule name and reason.
+          \n(If you agree to collect and use personal information, you can participate in the review event.)`,
+          ol: `Q) Please let me know why you chose this coffee as your best iced coffee.\nIf the option does not have the desired capsule, please select ‘Etc. (My own Iced Coffee)’ and write the capsule name and reason.
+          \n(If you agree to collect and use personal information, you can participate in the review event.)`,
+        },
+        privacy: [
+          { id: 1, 
+            txt: 'Purpose of collecting personal information: Contact to provide prizes when selecting best reviewers<br>through participation in the Nespresso review event',
+            txtPc: 'Purpose of collecting personal information: Contact to provide prizes when selecting best reviewers<br>through participation in the Nespresso review event' 
+          },
+          { id: 2, 
+            txt: 'Personal Information collection item: mobile phone number',
+            txtPc: 'Personal Information collection item: mobile phone number' 
+          },
+          { id: 3, 
+            txt: 'Retention and Use Period: 1 month from the date of collection',
+            txtPc: 'Retention and Use Period: 1 month from the date of collection' 
+          },
+          { id: 4, 
+            txt: 'Right to Refusal and Disadvantages of Refusal: You have the right to refuse consent to the collection<br>and use of personal information. However, if you refuse consent, you may be subject to restrictions<br>when selecting the best reviewers.',
+            txtPc: 'Right to Refusal and Disadvantages of Refusal: You have the right to refuse consent to the collection<br>and use of personal information. However, if you refuse consent, you may be subject to restrictions<br>when selecting the best reviewers.' 
+          },
+          { id: 5, txt: `Review content may be used for internal marketing purposes.`,
+            txtPc: `Review content may be used for internal marketing purposes.` },
+        ],
+        privacyTit: '',
+        agree: { txt: 'I agree to collect and use the above personal information.', agreeTxt: 'Agree', gaCategory: 'vote ice 2024', gaAction: 'click-checkbox', gaLabel: 'checkbox-button', },
+        benefit: 'After clicking the submit button for voting, if you provide <span>a membership number, 2,000 won coupon will be given.</span>',
+        ctaReqBtn: { txt: 'Submitting a vote' },
+        ctaBtn: {
+          vl: { txt: 'View More Coffee Options', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo', gaCategory: 'vote ice 2024', gaAction: 'click_goto_coffeePLP_vl', gaLabel: 'goto_coffeePLP_vl' },
+          ol: { txt: 'View More Coffee Options', url: 'https://www.nespresso.com/kr/ko/order/capsules/original', gaCategory: 'vote ice 2024', gaAction: 'click_goto_coffeePLP_ol', gaLabel: 'goto_coffeePLP_ol' },
+        }
+      },
+      contentCaution: {
+        tit: 'Precautions',
+        cont: [
+          { id: 1, txt: `<strong>Voting Period </strong> : May 2nd to May 15th (2 weeks)`,
+            txtPc: `<strong>Voting Period </strong> : May 2nd to May 15th (2 weeks)` },
+          { id: 2, txt: `<strong>Eligible Voters </strong> : Any Nespresso Club member (1 participation per account)`,
+            txtPc: `<strong>Eligible Voters </strong> : Any Nespresso Club member (1 participation per account)` },
+          { id: 3, txt: `<strong>Voting Method </strong> : Log in to the website, choose one out of Original and Virtuo, then click on<br>"Submitting a Vote“`,
+            txtPc: `<strong>Voting Method </strong> : Log in to the website, choose one out of Original and Virtuo, then click on "Submitting a Vote“` },
+          { id: 4, txt: `<strong>This event may end early or undergo changes based on internal circumstances<br>without prior notice.</strong>`,
+            txtPc: `<strong>This event may end early or undergo changes based on internal circumstances without prior notice.</strong>`,
+          },
+        ]
+      },
+      layerpop: {
+        close: '닫기',
+        gotoForms: {
+          type: 'googleForms',
+          btnVl: 'Voting for Original coffee', btnOl: ' Voting for Vertuo coffee',
+          gaCategory: 'vote ice 2024', gaAction: 'click-other-tech', gaLabel: 'goto-vote-button',
+          complateTit: '<span>Voting completed</span>',
+          tit: '<span class="min "><span class="og str">2,000 KRW </span>Feb voucher <br>upon submission of club <br>member number.</span>',
+          ctaBtn: { txt: 'Submit', url: 'https://forms.office.com/e/0GzhQMECfU', gaCategory: 'vote ice 2024', gaAction: 'click-submit-googleForms', gaLabel: 'submit-googleForms-button' }
+        },
+        loginAlert: {
+          type: 'loginAlert',
+          tit: { main: '<span class="tit">This service requires login. <br>please try again after login. </span><br><div class="min">Can be done once per account</div>' },
+          ctaBtn: { txt: 'Log in ', url: '#', gaCategory: 'vote ice 2024', gaAction: 'click-login', gaLabel: 'login-button' }
+        }
+      }
+    },
+    
+  }
+</script>

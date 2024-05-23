@@ -1,0 +1,249 @@
+<script>
+  let messages = {
+    ko: {
+      test: '2024 웡카 프로젝트',
+      intro: {
+        title: '상자 속<br>특별한 혜택!',
+        titlePc: '상자 속 특별한 혜택!',
+        sub: '네스프레소가 준비한 특별한 혜택과 함께<br><span>잊을 수 없는 커피 경험</span>을 이어가세요.',
+        payback: {
+          title: '공식판매점 페이백',
+          sub: '머신 구매 후, 바우처를 받으신 고객에 한해<br><span>기한 내 총 12번의 네스프레소 주문 횟수 조건을<br>충족하시면 페이백 혜택을 제공합니다.</span>',
+          subPc: '머신 구매 후, 바우처를 받으신 고객에 한해<br><span>기한 내 총 12번의 네스프레소 주문 횟수 조건을 충족하시면 페이백 혜택을 제공합니다.</span>',
+        }
+      },
+      step: {
+        title: '사용 방법',
+        sub: '공식판매점 페이백 바우처',
+        num: [
+        { id: 0, label: 'STEP 1', tit: '네스프레소 회원 가입<br>또는 로그인', titPc: '네스프레소 회원 가입 또는 로그인', txt: '계정 등록을 위해 <span>네스프레소 회원 가입<br>또는 로그인 진행해주세요.</span>', txtPc: '계정 등록을 위해 <span>네스프레소 회원 가입 또는 로그인 진행해주세요.</span>', link: '회원가입 하기' },
+        { id: 1, label: 'STEP 2', tit: '머신 정품 등록', txt: '네스프레소 제품 주문 전<br>구매하신 <span>머신 정품 등록을 진행</span>해 주세요.', txtPc: '네스프레소 제품 주문 전 구매하신 <span>머신 정품 등록을 진행</span>해 주세요.', txt2: '등록하신 머신으로 네스프레소에서 제공하는<br>페이백 서비스를 받을 수 있습니다.',txt2Pc: '등록하신 머신으로 네스프레소에서 제공하는 페이백 서비스를<br>받을 수 있습니다.', link: '정품 등록 하기', note1: '※ 한 계정당 총 1대만 페이백 할인 혜택 적용', note2: '※ 도움이 필요할 경우 네스프레소 클럽으로 문의하세요.<br>&emsp;네스프레소 클럽 : 080-734-1111<br>&emsp;(매일, 9시~18시, 수신자부담)', note2Pc: '※ 도움이 필요할 경우 네스프레소 클럽으로 문의하세요. <br>네스프레소 클럽 : 080-734-1111 &emsp;(매일, 9시~18시, 수신자부담)' },
+        { id: 2, label: 'STEP 3', tit: '5만원 이상 구매 시 할인', txt: '네스프레소 제품 5만원 이상 주문 시<br><span>장바구니 단계에서 바우처에 기입되어있는<br>프로모션 코드 확인 후 입력</span>', txtPc: '네스프레소 제품 5만원 이상 주문 시 <span>장바구니 단계에서<br>바우처에 기입되어있는 프로모션 코드 확인 후 입력</span>', note1: '※ 공식판매점 페이백 바우처 사용처 : 네스프레소 부티크<br>&emsp;/공식홈페이지/모바일 애플리케이션/네스프레소 클럽', note2: '※ 공식판매점 페이백  바우처 만료 기간동안 사용하셔야<br>&emsp;바우처 코드 등록이 가능합니다.<br>&emsp;만료 기간 이후 바우처 사용 불가합니다.', note2Pc: '※ 공식판매점 페이백 바우처 만료 기간동안 사용하셔야 바우처 코드 등록이 가능합니다.<br>만료 기간 이후 바우처 사용 불가합니다.'},
+        { id: 3, label: 'STEP 4', tit: '총 12번의 할인 혜택', txt: '첫 주문 이후, 나머지 할인 혜택은 자동으로<br>계정에 입력되어 <span>첫 할인 이후<br>24개월 동안 네스프레소 제품 5만원 이상<br>주문 시, 11번의 추가 할인 혜택</span>을 드립니다.', txtPc: '첫 주문 이후, 나머지 할인 혜택은 자동으로 계정에 입력되어<br><span>첫 할인 이후 24개월 동안 네스프레소 제품 5만원 이상 주문 시,<br>  11번의 추가 할인 혜택</span>을 드립니다.', note1: '※ 5만원 이하 결제 시 할인은 적용되지 않습니다.' },
+      ],
+      },
+      qna: {
+        title: '자주하는 질문 (Q&A)',
+        sub: '공식판매점 페이백',
+        // more: {
+        //   tit: '판매 이용 약관 보기<span class="icon"></span>', url: 'https://www.nespresso.com/kr/ko/terms-and-condition',
+        //   gaCategory: '2023_refund_LP', gaAction: 'link-category-click', gaLabel: '판매이용-약관-click',
+        // },
+        tabs: [
+          { id: 0, tabtit: '혜택', activeIndex: 0, gaCategory: '2023_refund_LP', gaAction: 'tab-category-click', gaLabel: '혜택-click' },
+          { id: 1, tabtit: '주문', activeIndex: 5, gaCategory: '2023_refund_LP', gaAction: 'tab-category-click', gaLabel: '주문-click' },
+          { id: 2, tabtit: '취소/반품', activeIndex: 6, gaCategory: '2023_refund_LP', gaAction: 'tab-category-click', gaLabel: '취소-반품-click' },
+          { id: 3, tabtit: '기타', activeIndex: 7, gaCategory: '2023_refund_LP', gaAction: 'tab-category-click', gaLabel: '기타-click' },
+        ],
+        pages: [
+          //혜택 0 ~ 4
+          { num: 0,
+            cont1: { 
+              id: '0-0', quest: '공식판매점 페이백은 어떤 혜택을 제공하나요?',
+              answer: '네스프레소 제품 <b>5만원 이상 주문 시 총 12번의 금액 분할 할인</b> 적용됩니다.<span class="cs">※ 바우처 첫 사용 이후 24개월 이내 사용가능한 11번의 할인 혜택이 주어집니다. (총 12번)<br>※ 제품은 부티크, 네스프레소 공식홈페이지, 모바일 애플리케이션, 네스프레소 클럽에서 구매 가능합니다.</span>',
+            },
+            cont2: { 
+              id: '0-1', quest: '언제 처음 커피 할인을 받을 수 있나요?',
+              answer: '<b>바우처에 기입되어있는 유효기간 내 사용 시</b> 할인 혜택을 바로 받으실 수 있습니다.<span class="cs">※ 바우처 만료 날짜 이후, 바우처 등록이 불가하므로 기간 내 바우처 등록 필수입니다.</span>',
+            },
+          },
+          { num: 1,
+            cont1: {
+              id: '1-0', quest: '커피 정기 배송에 공식 판매점 페이백 커피 할인 혜택을 받을 수 있나요?',
+              answer: `공식 판매점 페이백과 커피 정기 배송은 <b>동시 혜택 적용이 불가</b>합니다.`, 
+            },
+            cont2: {
+              id: '1-1', quest: '공식 판매점 페이백 혜택이 다른 프로모션과 중복 적용이 가능한가요?',
+              answer: '공식 판매점 페이백 혜택은 다른 프로모션과 <b>중복 적용이 불가</b>합니다. ', 
+            },
+            
+          },
+          { num: 2,
+            cont1: {
+              id: '2-0', quest: '제품을 많이 살 수록 더 많은 할인을 받을 수 있나요?',
+              answer: '주문 건 당 할인가가 정해져 있기 때문에 <b>추가 할인 적용은 불가</b>합니다.', 
+            },
+            cont2: {
+              id: '3-1', quest: '공식 판매점 페이백 혜택을 적용하여 총 몇 대의 머신을 구매할 수 있나요?',
+              answer: '<b>한 계정당 총 1대만 할인 혜택</b>을 받으실 수 있습니다.', 
+            },
+          },
+          { num: 3,
+            cont1: {
+              id: '3-0', quest: '공식 판매점 페이백으로 2대 이상 머신을 구매할 경우, <br>커피 할인 혜택을 2대 모두 받을 수 있나요?',
+              answer: '2대 이상의 머신을 구매할 경우, 공식 판매점 페이백 <b>혜택 적용은 1대만 가능</b>합니다. (중복 할인 불가)', 
+            },
+            cont2: {
+              id: '4-1', quest: '24개월 내에 12번의 주문 횟수를 충족하지 못하는 경우 어떻게 되나요?',
+              answer: '예를 들어 <b>바우처를 첫 사용한 날짜로부터 24개월 이내에 총 10번의 커피 주문</b>을 진행한 경우 <b>나머지 1회</b>에 대해서는 <b>할인 혜택을 받을 수 없습니다.</b><span class="cs">※ 바우처 첫 사용 이후 11번의 주문 횟수 조건 충족 필요</span>', 
+            },
+          }, 
+          { num: 4,
+            cont1: {
+              id: '4-0', quest: '언제까지 신청해야 공식 판매점 페이백 혜택을 받을 수 있나요?',
+              answer: '공식 판매점 페이백은 기간 한정 없이 <b>상시 진행</b>되는 프로그램입니다.', 
+            },
+            cont2: {
+              id: '4-1', quest: '12번의 공식 판매점 페이백 할인 혜택을 모두 받은 후 머신을 추가로 구매하면,할인 혜택을 또 받을 수 있나요?',
+              answer: '아쉽게도 공식 판매점 페이백 혜택은 <b>한 계정당 1회</b>만 적용됩니다.', 
+            },
+          }, 
+          // 주문 5
+          { num: 5,
+            cont1: {
+              id: '5-0', quest: '공식 판매점 페이백으로 머신 구매 후 제품 할인을 받으려면 어느 채널에서 제품을 구매해야 하나요?',
+              answer: '공식 판매점 페이백의 커피 할인 혜택은 <b>네스프레소 공식 홈페이지, 모바일 앱, 네스프레소 부티크</b> 채널을 통해 커피를 구매할 경우 적용 받을 수 있습니다.', 
+            },
+            cont2: {
+              id: '5-1', quest: '공식 판매점 페이백 혜택을 받으려면 첫 커피 구매를 언제까지 시작해야 하나요?',
+              answer: `<b>바우처에 기입되어있는 바우처 만료기간 이내에 첫 주문</b>을 진행해 주셔야 공식 판매점 페이백의 할인 혜택이 시작됩니다.`, 
+            },
+          },
+          // 취소/반품 6
+          { num: 6,
+            cont1: {
+              id: '6-0', quest: '머신 반품 및 공식 판매점 페이백 구매 취소가 가능한가요?',
+              answer: '<b>머신 미개봉 상품</b>에 한하여 <b>제품 수령일로부터 7일 이내</b>에 <b>교환 및 환불 가능</b>합니다. 교환/환불 문의는 구매하신 구매처에 문의 부탁드립니다.<span>※ 제품에 결함이 있을 경우는 위의 내용과 상관없이 교환 및 환불 가능합니다.</span>',
+              
+            },
+            cont2: {
+              id: '6-1', quest: '',
+              answer: '', imgUrl: { mo: '', pc: '' },
+            },
+          },
+          // 기타 7
+          { num: 7,
+            cont1: {
+              id: '7-0', quest: '구매한 공식 판매점 페이백 혜택을 다른 사람에게 양도할 수 있나요?',
+              answer: '머신을 구매한 계정에만 커피 할인이 적용되기 때문에 <b>양도</b>는 <b>불가</b>합니다.', 
+              // imgUrl: { mo: 'https://www.nespresso.com/shared_res/mos/free_html/kr/machine_refund/images/payback/mob/faq-answer.webp', pc: 'https://www.nespresso.com/shared_res/mos/free_html/kr/machine_refund/images/payback/faq-answer-v2.png', },
+            },
+            cont2: {
+              id: '7-1', quest: '공식 판매점 페이백으로 구매한 머신 등록은 어떻게 하나요?',
+              answer: '네스프레소 웹사이트 내에 "<b>정품 등록</b>" 페이지에서 구매하신 머신 등록이 가능합니다. <b>구입일로부터 30일 이내 정품 등록 시</b> 무상 보증 기간 1년이 추가되어 <b>총 2년의 혜택</b>을 제공 받으실 수 있습니다.', 
+              // imgUrl: { mo: '', pc: '' },
+            },
+          },
+        ]
+      },
+      pro: {
+        title: '카테고리별 사랑받는<br><span>NESPRESSO 제품</span>',
+        sub: 'Love NESPRESSO',
+        tabs: [
+          // { id: 0, tabtit: '혜택', activeIndex: 0, gaCategory: '2023_refund_LP', gaAction: 'tab-category-click', gaLabel: '혜택-click' },
+          { id: 0, tabtit: '오리지널 커피', activeIndex: 0 },
+          { id: 1, tabtit: '액세서리', activeIndex: 1 },
+        ],
+        ori: [
+        // { id: 1, cate: 'original', voteId: 'olCapsule1', name: '콜롬비아', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+        { id: 0, cate: 'original', name: '오리지널 베스트 셀렉션', namePc: '오리지널<br>베스트 셀렉션', price: '108,050원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/capsules/original/favourites-150-pack-add', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/ori1.webp', pc: '../../img/wonka-project/item/ori1.webp',  }},
+        { id: 1, cate: 'original', name: '오리지널 마일드 셀렉션', namePc: '오리지널<br>마일드 셀렉션', price: '42,740원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/capsules/original/ol-mild-pack', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/ori2.webp', pc: '../../img/wonka-project/item/ori2.webp',  }},
+        { id: 2, cate: 'original', name: '오리지널 인텐스 셀렉션', namePc: '오리지널<br>인텐스 셀렉션', price: '41,940원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/capsules/original/ol-intense-pack', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/ori3.webp', pc: '../../img/wonka-project/item/ori3.webp',  }},
+        { id: 3, cate: 'original', name: '아르페지오', namePc: '아르페지오', price: '6,990원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/capsules/original/ispirazione-firenze', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/ori4.webp', pc: '../../img/wonka-project/item/ori4.webp',  }},
+        { id: 0, cate: 'original', name: '리스트레토', namePc: '리스트레토', price: '6,990원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/capsules/original/isp-ristretto-italiano', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/ori5.webp', pc: '../../img/wonka-project/item/ori5.webp',  }},
+        ],
+        acc: [
+        { id: 0, cate: 'acc', name: '네스프레소 캡슐 스테이션', namePc: '네스프레소<br>캡슐 스테이션', price: '89,000원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/accessories/original/drawer-dispenser', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/acc1.webp', pc: '../../img/wonka-project/item/acc1.webp',  }},
+        { id: 1, cate: 'acc', name: '노마드 트래블 머그<br>라지, 미드나잇 블루', namePc: '노마드 트래블 머그<br>라지, 미드나잇 블루', price: '39,000원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/accessories/original/nomad-mug-midnight', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/acc2.webp', pc: '../../img/wonka-project/item/acc2.webp',  }},
+        { id: 2, cate: 'acc', name: '노마드 트래블 머그<br>스몰, 테라코타',  namePc: '노마드 트래블 머그<br>스몰, 테라코타',price: '30,000원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/accessories/original/nomad-mug-terracotta', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/acc3.webp', pc: '../../img/wonka-project/item/acc3.webp',  }},
+        { id: 3, cate: 'acc', name: '에어로치노4', price: '149,000원',  namePc: '에어로치노4', price: '149,000원',buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/accessories/original/aeroccino-4-milk-frother', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/acc4.webp', pc: '../../img/wonka-project/item/acc4.webp',  }},
+        { id: 4, cate: 'acc', name: '오리지널 버티컬 디스펜서', namePc: '오리지널<br>버티컬 디스펜서', price: '55,000원', buy: '구매하기', link: 'https://www.nespresso.com/kr/ko/order/accessories/original/display-vertical-ol', gaCategory: '', gaAction: '', gaLabel: '', 
+        imgUrl: { mo: '../../img/wonka-project/mob/item/acc5.webp', pc: '../../img/wonka-project/item/acc5.webp',  }},
+        ]
+      },
+
+    },
+    en: {
+      test: '2023 VOTE FOR YOUR FAVORITE COFFEE',
+      botBanner: { txt1: 'Consent to receive marketing<br>and enjoy more various Nespresso benefits.', txt2: '', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', gaCategory: '', gaAction: '', gaLabel: '' },
+      intro: {
+        title: 'VOTE FOR YOUR FAVORITE COFFEE',
+        period: 'Period : Jan 11 ~ 24',
+        event1: { label: 'EVENT 1', tit: 'Vote for special offer', desc: 'Reveal best 3 coffees<br>with discount offer', descPc: 'Reveal best 3 coffees with discount offer', period: 'Period : Feb 1 ~ 7'  },
+        event2: { label: 'EVENT 2', tit: 'Reward for best reviewer', desc: 'Gift ‘Nomad Travel Mug small’<br>worth 30,000 KRW<br>to 30 best reviewers.', descPc: 'Gift ‘Nomad Travel Mug small’ worth<br>30,000 KRW to 30 best reviewers.', period: ''  },
+      },
+      mainTab: [
+        { id: 1, cate: 'vertuo', tit: 'VERTUO', gaCategory: '', gaAction: '', gaLabel: ''  },
+        { id: 2, cate: 'original', tit: 'OROGINAL', gaCategory: '', gaAction: '', gaLabel: ''  },
+      ],
+      capsules: {
+        vl: [
+          { id: 1, cate: 'vertuo', voteId: 'vlCapsule1', name: 'Double Espresso Dolce', voteName: 'Double Espresso Dolce', gaCategory: '', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'vertuo', voteId: 'vlCapsule2', name: 'El Salvador', voteName: 'El Salvador', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'vertuo', voteId: 'vlCapsule3', name: 'Altissio', voteName: 'Altissio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'vertuo', voteId: 'vlCapsule4', name: 'Colombia', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'vertuo', voteId: 'vlCapsule5', name: 'Ethiopia', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'vertuo', voteId: 'vlCapsule6', name: 'Orafio', voteName: 'Orafio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'vertuo', voteId: 'vlCapsule7', name: 'Arondio', voteName: 'Arondio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'vertuo', voteId: 'vlCapsule8', name: 'Melozio', voteName: 'Melozio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'vertuo', voteId: 'vlCapsule9', name: 'Double Espresso Scuro', voteName: 'Double Espresso Scuro', gaCategory: '', gaAction: '', gaLabel: '' },
+        ],
+        ol: [
+          { id: 1, cate: 'original', voteId: 'olCapsule1', name: 'Colombia', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 2, cate: 'original', voteId: 'olCapsule2', name: 'Volluto', voteName: 'Volluto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'original', voteId: 'olCapsule3', name: 'Arpeggio', voteName: 'Arpeggio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'original', voteId: 'olCapsule4', name: 'Ristretto', voteName: 'Ristretto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'original', voteId: 'olCapsule5', name: 'Lungo', voteName: 'Lungo', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'original', voteId: 'olCapsule6', name: 'Cosi',  voteName: 'Cosi', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'original', voteId: 'olCapsule7', name: 'Vienna', voteName: 'Vienna', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'original', voteId: 'olCapsule8', name: 'Indonesia', voteName: 'Indonesia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'original', voteId: 'olCapsule9', name: 'Ethiopia', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+        ]
+      },
+      review: {
+        placeholder: {
+          vl: 'Leave review for your favorite Vertuo coffee',
+          ol: 'Leave review for your favorite Original coffee'
+        },
+        privacy: [
+          { id: 1, txt: 'Purpose of personal information collection: Contact for selected best reviewer reward', txtPc: 'Purpose of personal information collection: Contact for selected best reviewer reward' },
+          { id: 2, txt: 'Personal information collection item: Mobile number', txtPc: 'Personal information collection item: Mobile number' },
+          { id: 3, txt: 'Data collection and usage period: 1 month after collection', txtPc: 'Data collection and usage period: 1 month after collection' },
+          { id: 4, txt: 'Disadvantage upon disagreement of personal information collection:<br>You may disagree with personal information collection<br>In case of disagreement, you may get eliminated from best reviewer selection.', txtPc: 'Disadvantage upon disagreement of personal information collection: You may disagree with personal information collection.<br>In case of disagreement, you may get eliminated from best reviewer selection.' },
+        ],
+        agree: { txt: 'I shall agree above personal information collection and usage.', agreeTxt: 'Agree' },
+        benefit: { txt: 'Receive 2,000 KRW voucher in Feb upon submission<br>of club member number.', txtPc: 'Receive 2,000 KRW voucher in Feb upon submission of club member number.' },
+        ctaReqBtn: { txt: 'Submit' },
+        ctaBtn: {
+          vl: { txt: 'Discover more', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_vl', gaLabel: 'goto_coffeePLP_vl' },
+          ol: { txt: 'Discover more', url: 'https://www.nespresso.com/kr/ko/order/capsules/original',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_ol', gaLabel: 'goto_coffeePLP_ol' },
+        }
+      },
+      contentCaution: {
+        tit: 'Terms &Conditions',
+        cont: [
+          { id: 1, txt: '<strong>Vote Period</strong> : Jan 11 ~ 24 (2 weeks)', txtPc: '<strong>Vote Period</strong> : Jan 11 ~ 24 (2 weeks)' },
+          { id: 2, txt: '<strong>Who</strong> : Any Nespresso Club member (can vote once per each account)', txtPc: '<strong>Who</strong> : Any Nespresso Club member (can vote once per each account)' },
+          { id: 3, txt: '<strong>How</strong> : Log-in to official e-commerce page, Select one coffee for Original & one coffee<br>for Vertuo and click submit(You may<br>vote only one from Original and Vertuo)', txtPc: 'Log-in to official e-commerce page, Select one coffee for Original & one coffee for Vertuo and click submit(You may vote<br>only one from Original and Vertuo)' },
+          { id: 4, txt: 'Review content may be utilized as marketing contents.', txtPc: 'Review content may be utilized as marketing contents.' },
+          { id: 5, txt: 'Offer scheme and period is subject to change without prior notice', txtPc: 'Offer scheme and period is subject to change without prior notice' },
+        ]
+      },
+      layerpop: {
+        close: '닫기',
+        gotoForms: {
+          type: 'googleForms',
+          btnVl: '오리지널 커피도 투표 하러 가기',
+          btnOl: '버츄오 커피도 투표 하러 가기',
+          complateTit: '<span>투표 제출 완료!</span>',
+          tit: '2,000 KRW Feb voucher<br>upon submission of<br>club member number.',
+          ctaBtn: { txt: 'Submit', url: 'https://forms.microsoft.com/e/UHjBc1fzJw', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_submit_googleForms_botton', gaLabel: 'submit_googleForms_botton' }
+        },
+        loginAlert: {
+          type: 'loginAlert',
+          tit: { main: 'This service requires login.<br>please try again after login', sub: 'Can be done once per account' },
+          ctaBtn: { txt: 'Log in', url: '#', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_login_botton', gaLabel: 'login_botton' }
+        }
+      }
+    }
+  }
+</script>

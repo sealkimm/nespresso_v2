@@ -1,0 +1,474 @@
+<script>
+  let messages = {
+    ko: {
+      test: '2024 아이스',
+      botBanner: { txt1: '네스프레소의 혜택을 가장 먼저 만날 수 있는 기회!', txt2: '마케팅 수신 동의하고 다양한 혜택 만나보기', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', localEventCategory: 'summer ice 2024', localEventAction: 'click-agree-subscribe', localEventLabel: 'button-subscribe' },
+      intro: [
+        { id: 1, txt: { main: '<strong>인생 아이스 커피</strong>로 끌어올리다', sub: '여름의 모든 행복,' }, youtube: { show: true, txt: '영상 보기', url: 'https://www.youtube.com/watch?v=QlDbUXs-L3c', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+        { id: 2, txt: { main: '<strong>인생 아이스 커피</strong>로 끌어올리다', sub: '여름의 모든 행복,' }, youtube: { show: false, txt: '영상 보기', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+        { id: 3, txt: { main: '<strong>인생 아이스 커피</strong>로 끌어올리다', sub: '여름의 모든 행복,' }, youtube: { show: false, txt: '영상 보기', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+      ],
+      mainTab: [
+        { id: 1, cate: '', tit: '<em>NEW</em> 제품', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'new-button' },
+        { id: 2, cate: '', tit: '특별한 여름혜택', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'benefit-button' },
+        { id: 3, cate: '', tit: '체험하기', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'activity-button' },
+      ],
+      maketingBanner: { url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', localEventCategory: 'summer ice 2024', localEventAction: '', localEventLabel: '' },
+      newProducts: {
+        subTab: [
+          { id: 1, cate: '', tit: '커피', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'coffee-button' },
+          { id: 2, cate: '', tit: '머신', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'machine-button' },
+          { id: 3, cate: '', tit: '액세서리', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'acc-button' },
+        ],
+        capsules: {
+          capsuleTab: [
+            { id: 1, cate: 'vt', tit: '버츄오', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'coffee-vertuo-button' },
+            { id: 2, cate: 'ol', tit: '오리지널', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'coffee-original-button' },
+          ],
+          vt: [
+            { id: 1, cate: 'vt', count: 10, type: 'capsule', name: '아이스 써니 아몬드<br>바닐라향<sup>*</sup> 커피', namePc: '아이스 써니 아몬드<br>바닐라향<sup>*</sup> 커피', desc: '햇살을 닮은 달콤한 풍미의<br>아몬드 & 바닐라향 커피', descPc: '햇살을 닮은 달콤한 풍미의 아몬드 & 바닐라향 커피', notes: ['아몬드향','바닐라향'], cup: '<span class="icon cup1"></span><span class="txt">더블 에스프레소 <em>(80ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,390', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '<sup>*</sup>합성향료 함유', label: { show: true, txt: '<em>NEW</em> 시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7019.60' },
+            { id: 2, cate: 'vt', count: 10, type: 'capsule', name: '아이스 트로피컬<br>코코넛향<sup>*</sup> 커피', namePc: '아이스 트로피컬<br>코코넛향<sup>*</sup> 커피', desc: '달콤한 코코넛 향이 더해진<br>이국적인 아이스 커피', descPc: '달콤한 코코넛 향이 더해진 이국적인 아이스 커피', notes: ['코코넛향'], cup: '<span class="icon cup2"></span><span class="txt">머그 (<em>230ml</em>)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 10,490', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '<sup>*</sup>합성향료 함유', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7226.60' },
+            { id: 3, cate: 'vt', count: 10, type: 'capsule', name: '아이스 레제로', namePc: '아이스 레제로', desc: '산뜻한 아이스로 즐기기에 좋은<br>곡물향과 과일향의 커피', descPc: '산뜻한 아이스로 즐기기에 좋은 곡물향과 과일향의 커피', notes: ['과일향','구운 곡물향'], cup: '<span class="icon cup1"></span><span class="txt">더블 에스프레소 (<em>80ml</em>)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,690', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7223.60' },
+            { id: 4, cate: 'vt', count: 10, type: 'capsule', name: '아이스 포르테', namePc: '아이스 포르테', desc: '진한 아이스 커피로 즐기기에 좋은<br>구수한 곡물향과 우디향의 커피', descPc: '진한 아이스 커피로 즐기기에 좋은<br>구수한 곡물향과 우디향의 커피', notes: ['강한 로스팅향','스파이시향'], cup: '<span class="icon cup2"></span><span class="txt">머그 (<em>230ml</em>)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,390', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7205.60' },
+            { id: 5, cate: 'vt', count: 7, type: 'capsule', name: '콜드브루 스타일<br>인텐스', namePc: '콜드브루 스타일 인텐스', desc: '단 몇분만에 완성되는 부드러운 풍미의<br>콜드브루 스타일 커피', descPc: '단 몇분만에 완성되는 부드러운 풍미의<br>콜드브루 스타일 커피', notes: ['캐러멜향','곡물향'], cup: '<span class="icon cup3"></span><span class="txt">XL (<em>355ml</em>)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,100', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>7</em>캡슐)', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: true, txt: '버츄오 팝 & 넥스트 전용' }, sku: '7278.60' },
+            { id: 6, cate: 'vt', count: 1, type: 'sleeve', name: '<em>2024</em> 버츄오 아이스<br><em>6</em> 슬리브 팩', namePc: '<em>2024</em> 버츄오 아이스<br><em>6</em> 슬리브 팩', desc: '', descPc: '', notes: [], cup: "<span>아이스로 즐기기 좋은 커피 팩</span>", composition: { tit: '[구성]', list: ['아이스 써니 아몬드 바닐라향 커피 <em>10</em>캡슐', '아이스 트로피컬 코코넛향 커피 <em>10</em>캡슐', '아이스 레제로 <em>20</em>캡슐', '아이스 포르테 <em>20</em>캡슐'] }, price: { member: '￦ 56,040', nonmember: '' }, pieces: '', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '142717' },  
+          ],
+          ol: [
+            { id: 1, cate: 'ol', count: 10, type: 'capsule', name: '카디스', namePc: '카디스', desc: '스페인 스타일로 즐기는 달콤한 한잔', descPc: '스페인 스타일로 즐기는 달콤한 한잔', notes: ['맥아향','캐러멜향'], cup: '<span class="icon cup4"></span><span class="txt">에스프레소 <em>(40ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,190', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: true, txt: '<em>NEW</em>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7793.40' },
+            { id: 2, cate: 'ol', count: 10, type: 'capsule', name: '리스본 비카', namePc: '리스본 비카', desc: '포르투갈 스타일로 즐기는 강렬한 한잔', descPc: '포르투갈 스타일로 즐기는 강렬한 한잔', notes: ['스파이시향','견과류향'], cup: '<span class="icon cup4"></span><span class="txt">에스프레소 <em>(40ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,190', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: true, txt: '<em>NEW</em>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7794.40' },
+            { id: 3, cate: 'ol', count: 10, type: 'capsule', name: '아이스 코코넛향<sup>*</sup> 커피', namePc: '아이스 코코넛향<sup>*</sup> 커피', desc: '달콤한 코코넛 향이 더해진<br>이국적인 아이스 커피', descPc: '달콤한 코코넛 향이 더해진<br>이국적인 아이스 커피', notes: ['코코넛향'], cup: '<span class="icon cup4"></span><span class="txt">에스프레소 <em>(40ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,790', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '<sup>*</sup>합성향료 함유', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7750.40' },
+            { id: 4, cate: 'ol', count: 10, type: 'capsule', name: '프레도 델리카토', namePc: '프레도 델리카토', desc: '산뜻한 아이스커피로 즐기기에 좋은<br>달콤한 과일향의 커피', descPc: '산뜻한 아이스커피로 즐기기에 좋은<br>달콤한 과일향의 커피', notes: ['곡물향','과일향'], cup: '<span class="icon cup4"></span><span class="txt">에스프레소 <em>(40ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 7,490', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7763.40' },
+            { id: 5, cate: 'ol', count: 10, type: 'capsule', name: '프레도 인텐소', namePc: '프레도 인텐소', desc: '진한 아이스커피로 즐기기에 좋은<br>고소한 곡물향의 커피', descPc: '진한 아이스커피로 즐기기에 좋은<br>고소한 곡물향의 커피', notes: ['우디향','곡물향'], cup: '<span class="icon cup4"></span><span class="txt">에스프레소 <em>(40ml)</em></span>', composition: { tit: '', list: [] }, price: { member: '￦ 7,490', nonmember: '' }, pieces: '<em>1</em>슬리브 (<em>10</em>캡슐)', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '7764.40' },
+            { id: 6, cate: 'ol', count: 1, type: 'sleeve', name: '<em>2024</em> 오리지널 아이스<br><em>6</em> 슬리브 팩', namePc: '<em>2024</em> 오리지널 아이스<br><em>6</em> 슬리브 팩', desc: '', descPc: '', notes: [], cup: "<span>아이스로 즐기기 좋은 커피 팩</span>", composition: { tit: '[구성]', list: ['아이스 코코넛향 커피 <em>20</em>캡슐', '프레도 델리카토 <em>20</em>캡슐', '프레도 인텐소 <em>20</em>캡슐'] }, price: { member: '￦ 47,540', nonmember: '' }, pieces: '', contain: '', label: { show: false, txt: '<em>NEW</em><br>시즌 한정' }, tooltip: { show: false, txt: '' }, sku: '142716' },
+          ]
+        },
+        machines: {
+          machineTab: [
+            { id: 1, cate: 'vt', tit: '버츄오', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'machine-vertuo-button' },
+            { id: 2, cate: 'ol', tit: '오리지널', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'machine-original-button' },
+          ],
+          vt: [
+            {
+              id: 1, cate: 'vt', count: 1, type: 'machine', name: '<span class="cate">버츄오 팝</span><div class="model"><span class="bg"><em class="txt">팬톤 에디션</em></span></div>', namePc: '', desc: ['여름의 활기를 머금은<br>한정판 팬톤 에디션으로<br>잊지 못할 아이스 커피 모먼트를<br>만들어보세요'], descPc: ['여름의 활기를 머금은 한정판 팬톤 에디션으로<br>잊지 못할 아이스 커피 모먼트를 만들어보세요'], sku: 'GCV2-KR-PA-KIT3',
+              purchasing: {
+                buynow: { label: '<span class="txt">구매방법<em>1.</em></span>', txt: '바로구매', icon: '', price: { member: '￦ 179,000', nonmember: '￦ 239,000' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo/pantone-vertuo-pop', txt: '바로 구매하기', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-normal-vertuo-pop-pantone-edition' } },
+                payback: { label: '<span class="txt">구매방법<em>2.</em></span>', txt: '페이백 구매', icon: '<em>92%</em><br>페이백', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo/vertuo-pop-pantone-ref', txt: '페이백 구매하기', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-payback-essenza-mini-pantone-edition' } } }
+            },
+          ],
+          ol: [
+            {
+              id: 1, cate: 'ol', count: 1, type: 'machine', name: '<span class="cate">에센자 미니</span><div class="model"><span class="bg"><em class="txt">팬톤 에디션</em></span></div>', namePc: '', desc: ['여름의 활기를 머금은<br>한정판 팬톤 에디션으로<br>잊지 못할 아이스 커피 모먼트를<br>만들어보세요'], descPc: ['여름의 활기를 머금은 한정판 팬톤 에디션으로<br>잊지 못할 아이스 커피 모먼트를 만들어보세요'], sku: 'C30-KR-PA-KIT3',
+              purchasing: {
+                buynow: { label: '<span class="txt">구매방법<em>1.</em></span>', txt: '바로구매', icon: '', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/original/pantone-essenza-mini', txt: '바로 구매하기', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-normal-vertuo-pop-pantone-edition' } },
+                payback: { label: '<span class="txt">구매방법<em>2.</em></span>', txt: '페이백 구매', icon: '<em>54%</em><br>페이백', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/original/essenza-mini-pantone-ref', txt: '페이백 구매하기', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-payback-essenza-mini-pantone-edition' } } }
+            }
+          ],
+          tip: {
+            vt: {
+              title: '더블 클릭으로 <span><strong>더 진한 라테</strong>를 즐기고 싶을 땐,</span>',
+              btns: {
+                tooltip: { txt: '아이스 & 라테 모드', localEventCategory: 'summer ice 2024', localEventAction: 'click-alamode-video', localEventLabel: 'alamode-video-play-button' },
+              }
+            },
+            layer: { show: true, main: '아이스 & 라테 모드', sub: '더블 클릭으로 더 진하게', cover: false, }
+          },
+          ctaBtns: {
+            vt: {
+              ctas: [
+                { txt: '모든 머신 보러가기', url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-normal' },
+                { txt: '머신 비교 하러가기', url: 'https://www.nespresso.com/kr/ko/coffee-machine-overview', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'buyNow-button-payback' },
+              ]
+            },
+            ol: {
+              ctas: [
+                { txt: '모든 머신 보러가기', url: 'https://www.nespresso.com/kr/ko/order/machines/original', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-normal' },
+                { txt: '머신 비교 하러가기', url: 'https://www.nespresso.com/kr/ko/coffee-machine-overview', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'buyNow-button-payback' },
+              ]
+            }
+          }
+        },
+        accessorys: [
+          { id: 1, earlyBirdId: 3, cate: '', count: 1, type: 'accessory', name: '노마드 텀블러,<br>만다린 오렌지', namePc: '노마드 텀블러, 만다린 오렌지', desc: '감각적인 컬러와 실용적인 디자인이 만나<br>여름의 모든 순간 완벽한 아이스커피<br>모먼트를 선사하는 한정판 텀블러', descPc: '감각적인 컬러와 실용적인 디자인이 만나<br>여름의 모든 순간 완벽한 아이스커피 모먼트를<br>선사하는 한정판 텀블러', volume: ['<em>540ml</em>'], ingredient: '', price: { member: '￦ 28,000', nonmember: ''}, limitededPrice: { member: '￦ 22,400', nonmember: '￦ 28,000' }, sku: '137267', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>할인</span>' } } },
+          { id: 2, earlyBirdId: 1, cate: '', count: 1, type: 'accessory', name: '노마드 트래블 머그 미디엄,<br>만다린 오렌지', namePc: '노마드 트래블 머그 미디엄,<br>만다린 오렌지', desc: '강렬한 태양을 담은 쨍한 오렌지 컬러로<br>레트로한 휴양지 감성을 느낄 수 있는<br>노마드 트래블 머그', descPc: '강렬한 태양을 담은 쨍한 오렌지 컬러로<br>레트로한 휴양지 감성을 느낄 수 있는<br>노마드 트래블 머그', volume: ['<em>400ml</em>'], ingredient: '리사이클 스테인리스 스틸 <em>90%</em> 사용', price: { member: '￦ 35,000', nonmember: ''}, limitededPrice: { member: '￦ 28,000', nonmember: '￦ 35,000' }, sku: '136877', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>할인</span>' } } },
+          { id: 3, earlyBirdId: 2, cate: '', count: 1, type: 'accessory', name: '노마드 트래블 머그 라지,<br>아쿠아렐', namePc: '노마드 트래블 머그 라지,<br>아쿠아렐', desc: '인상적인 아쿠아 컬러로 시각적으로도,<br>기능적으로도 시원한 아이스커피<br>모먼트를 선사하는 노마드 트래블 머그', descPc: '인상적인 아쿠아 컬러로 시각적으로도,<br>기능적으로도 시원한 아이스커피 모먼트를<br>선사하는 노마드 트래블 머그', volume: ['<em>540ml</em>'], ingredient: '리사이클 스테인리스 스틸 <em>90%</em> 사용', price: { member: '￦ 39,000', nonmember: ''}, limitededPrice: { member: '￦ 31,200', nonmember: '￦ 39,000' }, sku: '136876', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>할인</span>' } } },
+          { id: 4, earlyBirdId: 4, cate: '', count: 1, type: 'accessory', name: '버츄오 머그 컵 세트<br>미디엄', namePc: '버츄오 머그 컵 세트<br>미디엄', desc: '눈과 코와 입 모두를 만족시키는<br>커피 경험을 선사하는 네스프레소의<br>시그니처 머그 컵 세트', descPc: '눈과 코와 입 모두를 만족시키는<br>커피 경험을 선사하는<br>네스프레소의 시그니처 머그 컵 세트', volume: ['머그: <em>490ml</em>','스푼: <em>15cm</em>'], ingredient: '', price: { member: '￦ 45,000', nonmember: ''}, limitededPrice: { member: '￦ 36,000', nonmember: '￦ 45,000' }, sku: '134505', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>할인</span>' } } },
+          // { id: 5, earlyBirdId: 4, cate: '', count: 1, type: 'accessory', name: '네스프레소 커피 머그<br>팬톤 에디션', namePc: '네스프레소 커피 머그<br>팬톤 에디션', desc: '네스프레소의 시그니처 머그 컵과<br>팬톤의 감각적인 컬러가 만나 잊지 못할<br>아이스 커피 모먼트를 선사하는<br>한정판 커피 머그', descPc: '네스프레소의 시그니처 머그 컵과<br>팬톤의 감각적인 컬러가 만나 잊지 못할<br>아이스 커피 모먼트를 선사하는 한정판 커피 머그', volume: ['<em>390ml</em>'], ingredient: '', price: { member: '￦ 20,000', nonmember: ''}, limitededPrice: { member: '￦ 16,000', nonmember: '￦ 20,000' }, sku: '137359', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>할인</span>' } } },
+        ]
+      },
+      summerBenefits: {
+        subTab: [
+          { id: 1, cate: '', tit: '여름 맞이 증정품', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'giveaways-button' },
+          { id: 2, cate: '', tit: '얼리버드', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'specialgifts-button' },
+        ],
+        giveaways: {
+          title: { main: '상큼한 만다린 오렌지 컬러로 <span>완성하는 아이스 홈카페 경험!</span>', sub: '여름의 맛을 한껏 끌어 올릴 인생 아이스 커피!' },
+          topBanner: {
+            condition: `버츄오 or 오리지널 아이스 팩 포함 <strong><span class="txt"><em>120</em>캡슐 이상</span> 구매 시,</strong>`,
+            gifts: [
+              { id: 1, txt: '<strong>버츄오 머그 컵 스몰 &<br>바리스타 코스터 세트 팬톤 에디션</strong> 증정' },
+              { id: 2, txt: '<strong>바리스타 디저트 보울 세트 &<br>컴팩트 캡슐 보관함</strong> 증정' },
+            ]
+          },
+          specialGifts: {
+            title: { main: '스페셜 기프트', sub: '썸머 한정기간에만 만날 수 있는' },
+            giftSet: [
+              { id: 1,
+                lists: [
+                  { id: 1, label: 'GIFT 1', name: '버츄오 머그 컵<br>스몰(<em>390ml</em>)' },
+                  { id: 2, label: 'GIFT 2', name: '바리스타 코스터 세트<br>팬톤 에디션(<em>2</em>개)' },
+                ]
+              },
+              { id: 2,
+                lists: [
+                  { id: 1, label: 'GIFT 1', name: '바리스타 디저트<br>보울 세트(<em>2</em>개)' },
+                  { id: 2, label: 'GIFT 2', name: '컴팩트 캡슐<br>보관함' },
+                ]
+              }
+            ],
+            speicalGiftsCautions: [
+              '준비수량 소진 시 증정 품목이 변경되거나, 프로모션이 조기 종료될 수 있습니다.',
+              '오리지널, 버츄오 캡슐 교차 구매 적용이 가능합니다.',
+              '증정 내역은 결제 단계에서 확인할 수 있습니다.',
+              '이전에 구매한 제품에 소급하여 혜택을 적용 받을 수 없고, <br class="break">공지된 사용 기간 내에 새로 구매하는 경우에만 적용 가능합니다.',
+              '계정 당 최대 1회 혜택 적용이 가능합니다.'
+            ],
+            ctaBtn: { txt: '캡슐 사러 가기', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-coffee-plp' },
+            stockMsg: '품절임박'
+          }
+        },
+        earlyBird: {
+          topBanner: {
+            main: '썸머 액세서리 신제품<br><em>20%</em> 할인', mainPc: '썸머 액세서리 신제품<br><em>20%</em> 할인',
+            sub: '누구보다 빠르게 여름을 맞이한 <br class="break">당신을 위한 혜택', subPc: '누구보다 빠르게 여름을 맞이한 <br class="break">당신을 위한 혜택',
+            period: '기간 : <em>5</em>월 <em>16</em>일 ~ <em>5</em>월 <em>31</em>일'
+          },
+          limitedEdtions: [],
+        },
+      },
+      experience: {
+        subTab: [
+          // { id: 1, cate: '', tit: '인생 <span class="wrap">아이스 커피</span>', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'best-iced-coffee-button' },
+          { id: 1, cate: '', tit: '아이스 <span class="wrap">레시피</span>', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'ice-recipe-button' },
+          { id: 2, cate: '', tit: '서울 재즈 <span class="wrap">패스티벌</span>', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'seoul-jazz-festival-button' },
+        ],
+        favoriteCoffe: {
+          title: '김고은과 네스프레소 러버들의<br class="break"><strong>투표 결과</strong>를 확인해보세요.',
+          page1: {
+            question: '김고은의 <strong>인생 아이스 커피</strong>는<br class="break">무엇일까요?',
+            // ctaBtn: { txt: '영상 보러 가기', url: 'https://www.youtube.com/watch?v=QlDbUXs-L3c', localEventCategory: 'summer ice 2024', localEventAction: '', localEventLabel: '' }
+          },
+          page2: {
+            question: '네스프레소 러버들이 가장 사랑하는<br><strong>인생 아이스 커피</strong>는 무엇일까요?',
+            banner: { main: '인생 아이스 커피<br><strong>투표 결과 발표</strong>', sub: 'What’s My Favorite' },
+            ctaBtn: { txt: '리뷰 보러 가기', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-best-review-lp' }
+          }
+        },
+        iceRecipes: {
+          title: '아이스 커피를 <strong>네스프레소만의 레시피</strong>로<br>다채롭게 즐겨보세요.',
+          recipes: [
+            { id: 1, eng: 'K-AMERICANO', name: '냉커피', desc: '산뜻한 인생 아이스 아메리카노', descPc: '산뜻한 인생 아이스 아메리카노', ingredients: '아이스 레제로 캡슐 <em>1</em>개(<em>80ml</em>),<br>얼음 <em>150g</em>, 물 <em>80ml</em>', ingredientsPc: '아이스 레제로 캡슐 <em>1</em>개(<em>80ml</em>),<br>얼음 <em>150g</em>, 물 <em>80ml</em>' },
+            { id: 2, eng: 'SUNNY AFFOGATO', name: '써니 아포카토', desc: '지중해 햇살을 닮은 에스프레소와<br>아이스크림의 달콤쌉싸름한 조화', descPc: '지중해 햇살을 닮은 에스프레소와<br>아이스크림의 달콤쌉싸름한 조화', ingredients: '아이스 써니 아몬드 바닐라향<br>캡슐 <em>1</em>개 (<em>80ml</em>), 우유 <em>20ml</em>,<br>생크림 <em>20ml</em>, 연유 <em>10ml</em>,<br>바닐라 익스트랙 <em>1</em>-<em>2</em>방울, 쉬크르 루', ingredientsPc: '아이스 써니 아몬드 바닐라향<br>캡슐 <em>1</em>개 (<em>80ml</em>), 우유 <em>20ml</em>,<br>생크림 <em>20ml</em>, 연유 <em>10ml</em>,<br>바닐라 익스트랙 <em>1</em>-<em>2</em>방울, 쉬크르 루' },
+            { id: 3, eng: 'COCO PINA COLADA', name: '코코 피나 콜라다', desc: '휴양지를 연상시키는 파인애플과<br>코코넛의 이국적이며 상큼한 조합', descPc: '휴양지를 연상시키는 파인애플과<br>코코넛의 이국적이며 상큼한 조합', ingredients: '아이스 트로피컬 코코넛향<br>캡슐 <em>1</em>개 (<em>230ml</em>), 파인애플 샤베트 <em>1</em>개,<br>연유 <em>5ml</em>, 코코넛 밀크 <em>10ml</em>,<br>코코넛 젤리 <em>5g</em>', ingredientsPc: '아이스 트로피컬 코코넛향<br>캡슐 <em>1</em>개 (<em>230ml</em>),<br>파인애플 샤베트 <em>1</em>개,<br>연유 <em>5ml</em>,<br>코코넛 밀크 <em>10ml</em>, 코코넛 젤리 <em>5g</em>' },
+            { id: 4, eng: 'RUBY COSMOPOLITAN', name: '루비 코스모폴리탄', desc: '매혹적인 석류와 상쾌한<br>아이스 커피의 랑데부', descPc: '매혹적인 석류와 상쾌한<br>아이스 커피의 랑데부', ingredients: '아이스 레제로 캡슐 <em>1</em>개 (<em>80ml</em>),<br>얼음 <em>150g</em>, 케인슈가 시럽 <em>10ml</em>,<br>석류주스 <em>80ml</em>', ingredientsPc: '아이스 레제로 캡슐 <em>1</em>개 (<em>80ml</em>), 얼음 <em>150g</em>,<br>케인슈가 시럽 <em>10ml</em>, 석류주스 <em>80ml</em>' },
+            { id: 5, eng: 'SKINNY A-SHOT-CHU', name: '스키니 아샷추', desc: '칼로리 부담 없이 즐기는<br>시원달달 아샷추', descPc: '칼로리 부담 없이 즐기는<br>시원달달 아샷추', ingredients: '아이스 레제로 캡슐 <em>1</em>개,<br>크리스탈 라이트 피치망고<br>그린티 온더고 스틱 <em>1</em>포,<br> 물 <em>120</em>~<em>150ml</em>, 얼음 <em>250</em>~<em>300g</em>', ingredientsPc: '아이스 레제로 캡슐 <em>1</em>개,<br>크리스탈 라이트 피치망고 그린티 온더고 스틱 <em>1</em>포,<br> 물 <em>120</em>~<em>150ml</em>, 얼음 <em>250</em>~<em>300g</em>' },
+            { id: 6, eng: 'DOUBLE VANILLA NUTS LATTE', name: '더블 바닐라 넛츠 라테', desc: '달콤함도 더블, 고소함도 더블!<br>바닐라의 달콤함과 견과류의 고소한 풍미를<br>더블로 즐길 수 있는 라테', descPc: '달콤함도 더블, 고소함도 더블!<br>바닐라의 달콤함과 견과류의 고소한 풍미를<br>더블로 즐길 수 있는 라테', ingredients: '아이스 써니 아몬드 바닐라향 캡슐 <em>1</em>개,<br>얼음 <em>150g</em>, 우유 <em>60ml</em>,<br>바닐라빈 소스 <em>20ml</em>,<br>마카다미아 시럽 <em>10ml</em><br><span class="option">* 선택 준비물 : 캐러멜 시럽 10ml, 생크림 10ml</span>', ingredientsPc: '아이스 써니 아몬드 바닐라향 캡슐 <em>1</em>개,<br>얼음 <em>150g</em>, 우유 <em>60ml</em>, 바닐라빈 소스 <em>20ml</em>,<br>마카다미아 시럽 <em>10ml</em><br><span class="option">* 선택 준비물 : 캐러멜 시럽 10ml, 생크림 10ml</span>' },
+          ],
+          stepByStep: [
+            { id: 1, step: ['바리스타 레시피 스몰 잔에 얼음 <em>150g</em>을 담아 준비해주세요.', '위에 시원한 물 <em>80ml</em>를 부어주세요.', '그 위에 아이스 레제로 캡슐을 추출하여(<em>80ml</em>) 완성해주세요.'], stepPc: ['바리스타 레시피 스몰 잔에 얼음 <em>150g</em>을 담아 준비해주세요.', '위에 시원한 물 <em>80ml</em>를 부어주세요.', '그 위에 아이스 레제로 캡슐을 추출하여(<em>80ml</em>) 완성해주세요.'] },
+            { id: 2, step: ['우유 <em>40ml</em>, 생크림 <em>40ml</em>, 연유 <em>20ml</em> 비율로 믹스를 만들고,<br>마지막 바닐라 익스트랙 <em>1</em>-<em>2</em>방울을 넣어주세요.', '만들어진 믹스를 아이스 롤리 몰드 <em>2</em>구에 넣고,<br>냉동실에서 <em>8</em>시간 이상 얼려주세요.', '바리스타 디저트 보울에 쉬크르 루 한 봉 넣어주세요.', '얼린 아이스 롤리 몰드를 꺼내서 바리스타 디저트 보울 위에<br>올려주세요. (몰드를 꺼내기 전 상온에 잠깐 두었다가<br>분리하면 더 쉽게 떨어집니다.)', '아이스 롤리 위에 써니 아몬드 바닐라향 커피를<br>버츄오 팝/넥스트의 "아이스 & 라테" 모드로 추출해서<br>완성해주세요 (<em>40ml</em>).'], stepPc: ['우유 <em>40ml</em>, 생크림 <em>40ml</em>, 연유 <em>20ml</em> 비율로 믹스를 만들고,<br>마지막 바닐라 익스트랙 <em>1</em>-<em>2</em>방울을 넣어주세요.', '만들어진 믹스를 아이스 롤리 몰드 <em>2</em>구에 넣고,<br>냉동실에서 <em>8</em>시간 이상 얼려주세요.', '바리스타 디저트 보울에 쉬크르 루 한 봉 넣어주세요.', '얼린 아이스 롤리 몰드를 꺼내서 바리스타 디저트 보울 위에 올려주세요.<br>(몰드를 꺼내기 전 상온에 잠깐 두었다가 분리하면 더 쉽게 떨어집니다.)', '아이스 롤리 위에 써니 아몬드 바닐라향 커피를 버츄오 팝/넥스트의 "아이스 & 라테" 모드로<br>추출해서 완성해주세요 (<em>40ml</em>).'] },
+            { id: 3, step: ['바리스타 트레이 위에 파인애플 샤베트를 배치해주세요.', '다용도 장갑 착용 후 스푼으로 파인애플 샤베트를 파내주세요.', '파인애플 속에 연유 <em>5ml</em>, 코코넛 밀크 <em>10ml</em>, 코코넛 젤리 <em>5g</em>을<br>넣어주세요.', '코코넛 캡슐을 버츄오 팝/ 넥스트의 "아이스 & 라테" 모드로<br>추출 후 (<em>80ml</em>) 반만 넣어주세요(<em>40ml</em>).<br><span class="txt-note">*버츄오 플러스에서는 <em>230ml</em> 그대로 추출 후 <em>40ml</em>만 활용해 주세요!</span>', '아까 파낸 샤베트를 올려 완성해주세요.'], stepPc: ['바리스타 트레이 위에 파인애플 샤베트를 배치해주세요.', '다용도 장갑 착용 후 스푼으로 파인애플 샤베트를 파내주세요.', '파인애플 속에 연유 <em>5ml</em>, 코코넛 밀크 <em>10ml</em>, 코코넛 젤리 <em>5g</em>을 넣어주세요.', '코코넛 캡슐을 버츄오 팝/ 넥스트의 "아이스 & 라테" 모드로 추출 후 (<em>80ml</em>) 반만 넣어주세요(<em>40ml</em>).<br><span class="txt-note">*버츄오 플러스에서는 <em>230ml</em> 그대로 추출 후 <em>40ml</em>만 활용해 주세요!</span>', '아까 파낸 샤베트를 올려 완성해주세요.'] },
+            { id: 4, step: ['리빌 콜드 커피 잔에 얼음 <em>150g</em>과 케인슈가 시럽 10ml를 넣어주세요.', '잔에 석류주스 <em>80ml</em> 부어주세요.', '샷 글라스로 아이스 레제로 1캡슐을 추출 후 (<em>80ml</em>),<br>리빌 콜드 잔에 커피 용량의 반만 넣어주세요 (<em>40ml</em>).', '위에 석류 토핑을 넣어 완성! 먹기 전에 잘 섞어주세요.'], stepPc: ['리빌 콜드 커피 잔에 얼음 <em>150g</em>과 케인슈가 시럽 10ml를 넣어주세요.', '잔에 석류주스 <em>80ml</em> 부어주세요.', '샷 글라스로 아이스 레제로 1캡슐을 추출 후 (<em>80ml</em>), 리빌 콜드 잔에 커피 용량의 반만 넣어주세요 (<em>40ml</em>).', '위에 석류 토핑을 넣어 완성! 먹기 전에 잘 섞어주세요.'] },
+            { id: 5, step: ['노마드 텀블러에 크리스탈 라이트 피치망고 그린티 온더고<br>스틱 <em>1</em>포(<em>2.32g</em>)를 넣으세요.', '물을 <em>120</em>~<em>150ml</em> 부어 분말을 충분히 녹여줍니다.', '아이스 레제로(<em>80ml</em>)를 추출합니다.', '얼음을 <em>250</em>~<em>300g</em> 넣어 시원하게 즐겨보세요.'], stepPc: ['노마드 텀블러에 크리스탈 라이트 피치망고 그린티 온더고 스틱 <em>1</em>포(<em>2.32g</em>)를 넣으세요.', '물을 <em>120</em>~<em>150ml</em> 부어 분말을 충분히 녹여줍니다.', '아이스 레제로(<em>80ml</em>)를 추출합니다.', '얼음을 <em>250</em>~<em>300g</em> 넣어 시원하게 즐겨보세요.'] },
+            { id: 6, step: ['바리스타 레시피 글라스 라지 잔에 바닐라빈 소스 <em>20ml</em>와<br>마카다미아 시럽 <em>10ml</em>를 넣습니다.<br><span class="txt-note">* 더 달콤한 라테를 원한다면 캐러멜 시럽 <em>10ml</em>를 추가해 보세요.</span>', '그 위에 써니 바닐라 아몬드향 커피(<em>80ml</em>)를 추출합니다.', '잘 저은 후 얼음을 <em>150g</em> 넣어주세요.', '그 위에 우유 <em>60ml</em>를 더해 완성해 줍니다.<br><span class="txt-note">* 더 진한 라테를 원한다면 생크림 <em>10ml</em>을 더해보세요.</span>'], stepPc: ['바리스타 레시피 글라스 라지 잔에 바닐라빈 소스 <em>20ml</em>와 마카다미아 시럽 <em>10ml</em>를 넣습니다.<br><span class="txt-note">* 더 달콤한 라테를 원한다면 캐러멜 시럽 <em>10ml</em>를 추가해 보세요.</span>', '그 위에 써니 바닐라 아몬드향 커피(<em>80ml</em>)를 추출합니다.', '잘 저은 후 얼음을 <em>150g</em> 넣어주세요.', '그 위에 우유 <em>60ml</em>를 더해 완성해 줍니다.<br><span class="txt-note">* 더 진한 라테를 원한다면 생크림 <em>10ml</em>을 더해보세요.</span>'] },
+          ],
+          ctaBtns: {
+            title: '이 <strong>레시피</strong>를<br>직접 만들어 먹어보고 싶다면?',
+            btns: [
+              { id: 1, txt: '레시피에서 사용한 커피 구매하러 가기',
+                urls: [
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/sunny-almond-vanilla',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/vertuo-tropical-coconut',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/sunny-almond-vanilla',
+                ],
+                localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-recipe-coffee' },
+              { id: 2, txt: '레시피에서 사용한 액세서리 구매하러 가기',
+                urls: [
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-recipe-glass-small',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/brown-sugar',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-tray-set',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/reveal-cold-coffee',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/nomad-tumbler-orange',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-recipe-glass-large'
+                ],
+                localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-recipe-acc' },
+            ],
+            detailBtn: { txt: '더 많은 레시피 알아보기', url: 'https://www.nespresso.com/kr/ko/nespresso-coffee-recipes', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-recipe-discoverMore' }
+          }
+        },
+        jazzFestival: {
+          title: { main: 'Taste the <span class="color1">Summer</span> Memories', sub: '네스프레소와 일상에서 얼마나 함께하고 계신가요?<br>올여름 <em>2024</em> 서울 재즈 페스티벌에 네스프레소가 함께합니다!' },
+          festivalGuide: {
+            title: '<strong>서울 재즈 페스티벌</strong>에서<br>네스프레소와 함께 즐기는 현장 분위기를<br>생생히 전달해 줄 분들을 찾고 있습니다',
+            introduce: ['이번엔 특별히 네스프레소가 특파원을 모집하고 있는데요<br>음악과 커피를 사랑하는 분들이라면, 이번 기회 놓치지 마세요!', '더불어 서울 재즈 페스티벌에, <strong>텀블러를 지참</strong>하시면<br>네스프레소 커피도 제공하니<br>잊지 말고 환경을 위한 한걸음에도 동참해주세요.', '<strong class="str">잊지 못할 여름,</strong><br><span class="txt">네스프레소와 서울 재즈 페스티벌과 함께 해보세요</span>'],
+            applyGuide: {
+              title: '[특파원 신청 방법]',
+              steps: ['네스프레소 공식 인스타그램 계정 팔로우는 필수!', '인스타그램 게시물에 함께 가고 싶은 지인 태그하기', '네스프레소 인스타그램 프로필에 기입된 바이오 링크 접속', '이벤트 참여 버튼을 눌러 정보 제출하면 참여 완료!']
+            },
+            applyInfo: [
+              { label: '신청 기간', txt: '<em>4</em>월 <em>30</em>일(화) ~ <em>5</em>월 <em>19</em>일(일)' },
+              { label: '당첨 인원', txt: '<em>20</em>명 (<em>1</em>일권 <em>1</em>인 <em>2</em>매 제공, 날짜 지정 불가)' },
+              { label: '당첨자 발표', txt: '<em>5</em>월 <em>24</em>일(수) (당첨자 개별 연락 통해 안내 예정)' },
+              { label: '당첨 조건', txt: '최근 <em>3</em>개월 이내 커피 구매 이력이 있는<br>네스프레소 회원' },
+            ],
+            festivalInfo: {
+              title: '서울 재즈 페스티벌 <em>2024</em>',
+              period: '일시 : <em>5</em>월 <em>31</em>일(금) ~ <em>6</em>월 <em>2</em>일(일)<br>장소 : 올림픽공원',
+              ctaBtns: [
+                { id: 1, txt: '네스프레소<br>공식 인스타 그램', url: 'https://www.instagram.com/nespresso.kr/', localEventCategory: 'summer ice 2024', localEventAction: 'click-Nespresso-SNS', localEventLabel: 'instagram' },
+                { id: 2, txt: '카카오톡 채널<br>추가하기', url: 'http://pf.kakao.com/_PMqxjs', localEventCategory: 'summer ice 2024', localEventAction: 'click-Nespresso-SNS', localEventLabel: 'kakaotalk' },
+              ]
+            }
+          } 
+        }
+      }
+    },
+    en: {
+      test: '2024 ice',
+      botBanner: { txt1: 'Consent to receive marketing<br>and enjoy more various Nespresso benefits', txt2: '', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', localEventCategory: 'summer ice 2024', localEventAction: '', localEventLabel: '' },
+      intro: [
+        { id: 1, txt: { main: 'ELEVATE ALL <strong>THE JOY OF SUMMER</strong>', sub: 'WITH ICED COFFEE' }, youtube: { show: true, txt: 'Watching video', url: 'https://www.youtube.com/watch?v=QlDbUXs-L3c', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+        { id: 2, txt: { main: 'ELEVATE ALL THE <strong>JOY OF SUMMER</strong>', sub: 'WITH ICED COFFEE' }, youtube: { show: false, txt: '영상 보러가기', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+        { id: 3, txt: { main: 'ELEVATE ALL THE <strong>JOY OF SUMMER</strong>', sub: 'WITH ICED COFFEE' }, youtube: { show: false, txt: '영상 보러가기', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-kv-video', localEventLabel: 'kv-video-play-button' } },
+      ],
+      mainTab: [
+        { id: 1, cate: '', tit: 'NEW PRODUCT', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'new-button' },
+        { id: 2, cate: '', tit: 'SPECIAL <br class="break">SUMMER BENEFIT', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'benefit-button' },
+        { id: 3, cate: '', tit: 'EXPERIENCING', localEventCategory: 'summer ice 2024', localEventAction: 'click-main-tab', localEventLabel: 'activity-button' },
+      ],
+      maketingBanner: { url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', localEventCategory: 'summer ice 2024', localEventAction: '', localEventLabel: '' },
+      newProducts: {
+        subTab: [
+          { id: 1, cate: '', tit: 'COFFEE', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'coffee-button' },
+          { id: 2, cate: '', tit: 'MACHINE', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'machine-button' },
+          { id: 3, cate: '', tit: 'ACCESSORIES', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'acc-button' },
+        ],
+        capsules: {
+          capsuleTab: [
+            { id: 1, cate: 'vt', tit: 'VERTUO', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'coffee-vertuo-button' },
+            { id: 2, cate: 'ol', tit: 'ORIGINAL', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'coffee-original-button' },
+          ],
+          vt: [
+            { id: 1, cate: 'vt', count: 10, type: 'capsule', name: 'Sunny Almond<br>Vanilla over Ice', namePc: 'Sunny Almond<br>Vanilla over Ice', desc: 'Charming iced coffee blend<br>with sweet almonds and vanilla flavors<br>that resemble Mediterranean sunshine', descPc: 'Charming iced coffee blend with sweet almonds and vanilla flavors that resemble Mediterranean sunshine', notes: ['Almond'], cup: '<span class="icon cup1"></span><span class="txt">Double espresso (80ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,390', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '<sup>*</sup>Containing synthetic fragrances', label: { show: true, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7019.60' },
+            { id: 2, cate: 'vt', count: 10, type: 'capsule', name: 'Tropical Coconut Flavor', namePc: 'Tropical Coconut Flavor', desc: 'Exotic flavored iced coffee blend<br>with coconut flavor', descPc: 'Exotic flavored iced coffee blend<br>with coconut flavor', notes: ['Coconut'], cup: '<span class="icon cup2"></span><span class="txt">Mug (230ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 10,490', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '<sup>*</sup>Containing synthetic fragrances', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7226.60' },
+            { id: 3, cate: 'vt', count: 10, type: 'capsule', name: 'Ice Leggero', namePc: 'Ice Leggero', desc: 'Fresh and mild iced coffee blend<br>that delivers a cool feeling', descPc: 'Fresh and mild iced coffee blend<br>that delivers a cool feeling', notes: ['Fruity','Roasted Cereal'], cup: '<span class="icon cup1"></span><span class="txt">Double espresso (80ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,690', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7223.60' },
+            { id: 4, cate: 'vt', count: 10, type: 'capsule', name: 'Ice Forte', namePc: 'Ice Forte', desc: 'Intense and intenuous iced coffee blend<br>that gives you an impressive aroma <br>experience of grain, woody,<br>and pepper', descPc: 'Intense and intenuous iced coffee blend that<br>gives you an impressive aroma experience of<br>grain, woody, and pepper', notes: ['Intense Roasted','Spicy'], cup: '<span class="icon cup2"></span>Mug (230ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,390', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7205.60' },
+            { id: 5, cate: 'vt', count: 7, type: 'capsule', name: 'Cold Brew Style Intetnse', namePc: 'Cold Brew Style Intetnse', desc: 'Coffee characterized by a soft texture<br>and a fresh acidity<br>and clean taste unique to cold brew', descPc: 'Coffee characterized by a soft texture and<br>a fresh acidity and clean taste unique to cold brew', notes: ['Caramel','Cereal'], cup: '<span class="icon cup3"></span><span class="txt">XL (355ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 9,100', nonmember: '' }, pieces: '1 Sleeve (7 capsules)', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: true, txt: 'ONLY FOR VERTUO POP & NEXT' }, sku: '7278.60' },
+            { id: 6, cate: 'vt', count: 1, type: 'sleeve', name: '2024 VL Summer<br>6 SLV Pack', namePc: '2024 VL Summer<br>6 SLV Pack', desc: '', descPc: '', notes: [], cup: "<span>Pack that's good to enjoy with iced coffee</span>", composition: { tit: '[Composition]', list: ['Sunny Almond Vanilla over Ice 10 capsules', 'Tropical Coconut Flavor 10 capsules', 'Ice Leggero 20 capsules', 'Ice Forte 20 capsules'] }, price: { member: '￦ 56,040', nonmember: '' }, pieces: '', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '142717' },  
+          ],
+          ol: [
+            { id: 1, cate: 'ol', count: 10, type: 'capsule', name: 'Wex Cadiz', namePc: 'Wex Cadiz', desc: 'A sweet cup in the style of Spain', descPc: 'A sweet cup in the style of Spain', notes: ['Malted','Caramel'], cup: '<span class="icon cup4"></span><span class="txt">Espresso (40ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,190', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: true, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7793.40' },
+            { id: 2, cate: 'ol', count: 10, type: 'capsule', name: 'Wex Lisbon Bica', namePc: 'Wex Lisbon Bica', desc: 'An intense cup In the style of Portugues', descPc: 'An intense cup In the style of Portugues', notes: ['Spicy','Nutty'], cup: '<span class="icon cup4"></span><span class="txt">Espresso (40ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,190', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: true, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7794.40' },
+            { id: 3, cate: 'ol', count: 10, type: 'capsule', name: 'Tropical Coconut Flavor', namePc: 'Tropical Coconut Flavor', desc: 'Exotic flavored iced coffee blend<br>with coconut flavor', descPc: 'Exotic flavored iced coffee blend<br>with coconut flavor', notes: ['Coconut'], cup: '<span class="icon cup4"></span><span class="txt">Espresso (40ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 8,790', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '<sup>*</sup>Containing synthetic fragrances', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7750.40' },
+            { id: 4, cate: 'ol', count: 10, type: 'capsule', name: 'Freddo Delicato', namePc: 'Freddo Delicato', desc: "A fresh, mild iced coffee<br>that blends Arabica beans' delicate fruity scent and balanced taste", descPc: "A fresh, mild iced coffee that blends Arabica beans'<br>delicate fruity scent and balanced taste", notes: ['Cereal','Fruity'], cup: '<span class="icon cup4"></span><span class="txt">Espresso (40ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 7,490', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7763.40' },
+            { id: 5, cate: 'ol', count: 10, type: 'capsule', name: 'Freddo Intenso', namePc: 'Freddo Intenso', desc: 'Refreshing iced coffee<br>that gives you an intense and impressive aroma experience of medium-dark roasted Arabica beans', descPc: 'Refreshing iced coffee that gives you an intense<br>and impressive aroma experience of<br>medium-dark roasted Arabica beans', notes: ['Woody','Cereal'], cup: '<span class="icon cup4"></span><span class="txt">Espresso (40ml)</span>', composition: { tit: '', list: [] }, price: { member: '￦ 7,490', nonmember: '' }, pieces: '1 Sleeve (10 capsules)', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '7764.40' },
+            { id: 6, cate: 'ol', count: 1, type: 'sleeve', name: '2024 OL Summer<br>6 SLV Pack', namePc: '2024 OL Summer<br>6 SLV Pack', desc: '', descPc: '', notes: [], cup: "<span>Pack that's good to enjoy with iced coffee</span>", composition: { tit: '[Composition]', list: ['LE Coconut 20 capsules','Freddo Delicato 20 capsules','Freddo Intenso 20 capsules'] }, price: { member: '￦ 47,540', nonmember: '' }, pieces: '', contain: '', label: { show: false, txt: 'Limited<br>Season' }, tooltip: { show: false, txt: '' }, sku: '142716' },
+          ]
+        },
+        machines: {
+          machineTab: [
+            { id: 1, cate: 'vt', tit: 'VERTUO', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'machine-vertuo-button' },
+            { id: 2, cate: 'ol', tit: 'ORIGINAL', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth03-tab', localEventLabel: 'machine-original-button' },
+          ],
+          vt: [
+            {
+              id: 1, cate: 'vt', count: 1, type: 'machine', name: '<span class="cate">VERTUO POP</span><div class="model"><span class="bg"><em class="txt">PANTONE EDITION</em></span></div>', namePc: '', desc: ['Introducing the limited edition<br>pantone edition machine imbued<br>with the vitality of summer.'], descPc: ['Introducing the limited edition pantone edition<br>machine imbued with the vitality of summer.'], sku: 'GCV2-KR-PA-KIT3',
+              purchasing: {
+                buynow: { label: '<span class="txt"><em>1.</em></span>', txt: 'Buying now', icon: '', price: { member: '￦ 179,000', nonmember: '￦ 239,000' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo/pantone-vertuo-pop', txt: 'Buying now', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-normal-vertuo-pop-pantone-edition' } },
+                payback: { label: '<span class="txt"><em>2.</em></span>', txt: 'Buying with payback', icon: '<em>92%</em><br>payback', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo/vertuo-pop-pantone-ref', txt: 'Buying with payback', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-payback-essenza-mini-pantone-edition' } } }
+            },
+          ],
+          ol: [
+            {
+              id: 1, cate: 'ol', count: 1, type: 'machine', name: '<span class="cate">ESSENZA MINI</span><div class="model"><span class="bg"><em class="txt">PANTONE EDITION</em></span></div>', namePc: '', desc: ['Introducing the limited edition<br>pantone edition machine imbued<br>with the vitality of summer.'], descPc: ['Introducing the limited edition pantone edition<br>machine imbued with the vitality of summer.'], sku: 'C30-KR-PA-KIT3',
+              purchasing: {
+                buynow: { label: '<span class="txt"><em>1.</em></span>', txt: 'Buying with payback', icon: '', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/original/pantone-essenza-mini', txt: 'Buying now', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-normal-vertuo-pop-pantone-edition' } },
+                payback: { label: '<span class="txt"><em>2.</em></span>', txt: 'Buying with payback', icon: '<em>54%</em><br>payback', price: { member: '￦ 239,000', nonmember: '' }, ctaBtn: { url: 'https://www.nespresso.com/kr/ko/order/machines/original/essenza-mini-pantone-ref', txt: 'Buying with payback', localEventCategory: 'summer ice 2024', localEventAction: 'click-buyNow', localEventLabel: 'buyNow-button-payback-essenza-mini-pantone-edition' } } }
+            }
+          ],
+          tip: {
+            vt: {
+              title: 'When you want to enjoy <strong>a stronger latte</strong> <span>with a double click</span>',
+              btns: {
+                tooltip: { txt: 'Ice & latte mode', localEventCategory: 'summer ice 2024', localEventAction: 'click-alamode-video', localEventLabel: 'alamode-video-play-button' },
+              }
+            },
+            layer: { show: true, main: '아이스 & 라테 모드', sub: '더블 클릭으로 더 진하게', cover: false, },
+          },
+          ctaBtns: {
+            vt: {
+              ctas: [
+                { txt: 'Go to see all the machines', url: 'https://www.nespresso.com/kr/ko/order/machines/vertuo', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-normal' },
+                { txt: 'Go to compare machines', url: 'https://www.nespresso.com/kr/ko/coffee-machine-overview', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'buyNow-button-payback' },
+              ]
+            },
+            ol: {
+              ctas: [
+                { txt: 'Go to see all the machines', url: 'https://www.nespresso.com/kr/ko/order/machines/original', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-normal' },
+                { txt: 'Go to compare machines', url: 'https://www.nespresso.com/kr/ko/coffee-machine-overview', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'buyNow-button-payback' },
+              ]
+            },
+          }
+        },
+        accessorys: [
+          { id: 1, earlyBirdId: 3, cate: '', count: 1, type: 'accessory', name: 'Nomad Tumbler,<br>Mandarin Orange', namePc: 'Nomad Tumbler,<br>Mandarin Orange', desc: "Limited edition tumbler<br>with sensuous color and practical design meet to give you the perfect iced coffee moment for every moment of summer", descPc: "Limited edition tumbler with sensuous color<br>and practical design meet to give you the perfect<br>iced coffee moment for every moment of summer", volume: ['<em>540ml</em>'], ingredient: '', price: { member: '￦ 28,000', nonmember: ''}, limitededPrice: { member: '￦ 22,400', nonmember: '￦ 28,000' }, sku: '137267', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>OFF</span>' } } },
+          { id: 2, earlyBirdId: 1, cate: '', count: 1, type: 'accessory', name: 'Nomad Travel Mug Medium,<br>Mandarin Orange', namePc: 'Nomad Travel Mug Medium,<br>Mandarin Orange', desc: "Limited edition tumbler<br>with sensuous color and practical design meet to give you the perfect iced coffee moment for every moment of summer", descPc: "Nomad Travel Mug Reminds of Retro-Sentimental<br>vacation spot with a bright orange color<br>that seems to capture the intense sun", volume: ['<em>400ml</em>'], ingredient: 'Using 90% Recycle Stainless Steel', price: { member: '￦ 35,000', nonmember: ''}, limitededPrice: { member: '￦ 28,000', nonmember: '￦ 35,000' }, sku: '136877', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>OFF</span>' } } },
+          { id: 3, earlyBirdId: 2, cate: '', count: 1, type: 'accessory', name: 'Nomad Travel Mug Large,<br>Aquarelle', namePc: 'Nomad Travel Mug Large,<br>Aquarelle', desc: "Nomad Travel Mug provides a visually<br>and functionally cool iced coffee moment with an impressive aqua color", descPc: "Nomad Travel Mug provides a visually<br>and functionally cool iced coffee moment<br>with an impressive aqua color", volume: ['<em>540ml</em>'], ingredient: 'Using 90% Recycle Stainless Steel', price: { member: '￦ 39,000', nonmember: ''}, limitededPrice: { member: '￦ 31,200', nonmember: '￦ 39,000' }, sku: '136876', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>OFF</span>' } } },
+          { id: 4, earlyBirdId: 5, cate: '', count: 1, type: 'accessory', name: 'Vertuo Mug Set,<br>Medium', namePc: 'Vertuo Mug Set,<br>Medium', desc: "Nespresso's signature mug set<br>for a coffee experience<br>that satisfies both eyes, nose and mouth", descPc: "Nespresso's signature mug set for a coffee<br>experience that satisfies both eyes, nose and mouth", volume: ['Mug : 490ml','Spoon : 15cm'], ingredient: '', price: { member: '￦ 45,000', nonmember: ''}, limitededPrice: { member: '￦ 36,000', nonmember: '￦ 45,000' }, sku: '134505', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>OFF</span>' } } },
+          // { id: 5, earlyBirdId: 4, cate: '', count: 1, type: 'accessory', name: 'Pantone<br>Limited Edition Mug', namePc: 'Pantone<br>Limited Edition Mug', desc: "A limited edition coffee mug<br>with Nespresso's signature mug<br>and Pantone's sensual color meet to give you an unforgettable iced coffee moment", descPc: "A limited edition coffee mug with Nespresso's<br>signature mug and Pantone's sensual color meet<br>to give you an unforgettable iced coffee moment", volume: ['<em>390ml</em>'], ingredient: '', price: { member: '￦ 20,000', nonmember: ''}, limitededPrice: { member: '￦ 20,000', nonmember: '￦ 16,000' }, sku: '137359', label: { discount: { show: true, txt: '<span class="eng"><em class="num">20</em>%</span><span>OFF</span>' } } },
+        ]
+      },
+      summerBenefits: {
+        subTab: [
+          { id: 1, cate: '', tit: 'SUMMER GIFT', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'giveaways-button' },
+          { id: 2, cate: '', tit: 'EARLY BIRD', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'specialgifts-button' },
+        ],
+        giveaways: {
+          title: { main: 'Ice Home Cafe Experience Complete<br>with Fresh Mandarin Orange Color', sub: '' },
+          topBanner: {
+            condition: `<strong>When purchasing more than <span class="txt">120 capsules</span></strong>including VL or OL pack,`,
+            gifts: [
+              { id: 1, txt: '<strong>Vertuo Mug small & barista coasters<br>pantone edition gift</strong>' },
+              { id: 2, txt: '<strong>Dessert Bowls & Mini<br>Display gift</strong>' },
+            ]
+          },
+          specialGifts: {
+            title: { main: 'Special gift', sub: 'that can only be seen for a limited time' },
+            giftSet: [
+              { id: 1,
+                lists: [
+                  { id: 1, label: 'GIFT 1', name: 'Vertuo Mug<br>Small(390ml)' },
+                  { id: 2, label: 'GIFT 2', name: 'Barista Coasters<br>Pantone Edition<br>(2 pieces set)' },
+                ]
+              },
+              { id: 2,
+                lists: [
+                  { id: 1, label: 'GIFT 1', name: 'Dessert<br>Bowls' },
+                  { id: 2, label: 'GIFT 2', name: 'Mini<br>Display' },
+                ]
+              }
+            ],
+            speicalGiftsCautions: [
+              'If the quantity of preparation is exhausted, the gift item may be changed<br class="break">or the promotion may be terminated early.',
+              'Original and Virtuo capsules can be cross-purchased.',
+              'You can check the details of the presentation at the payment stage.',
+              'You will not be eligible for benefits retroactively to previously purchased products,<br>Applicable only if you are making a new purchase within the announced usage period.',
+              'Benefits can be applied up to one time per account.'
+            ],
+            ctaBtn: { txt: 'Buying capsules', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-coffee-plp' },
+            stockMsg: '품절임박'
+          }
+        },
+        earlyBird: {
+          topBanner: {
+            main: 'Summer limited<br>edition Accessories<br><em>20%</em> discount', mainPc: 'Summer limited edition Accessories<br><em>20%</em> discount',
+            sub: 'Benefits for those of you<br>who have come to summer faster than<br>anyone else', subPc: 'Benefits for those of you who have come to summer<br>faster than anyone else',
+            period: 'Period : 5/16~5/31'
+          },
+          limitedEdtions: [],
+        },
+      },
+      experience: {
+        subTab: [
+          // { id: 1, cate: '', tit: 'BEST ICED <span class="wrap">COFFEE</span>', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'best-iced-coffee-button' },
+          { id: 1, cate: '', tit: 'ICE RECIPE', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'ice-recipe-button' },
+          { id: 2, cate: '', tit: 'SEOUL JAZZ <span class="wrap">FESTIVAL</span>', localEventCategory: 'summer ice 2024', localEventAction: 'click-depth02-tab', localEventLabel: 'seoul-jazz-festival-button' },
+        ],
+        favoriteCoffe: {
+          title: 'Check <strong>the results of the vote</strong> of<br>Kim and Nespresso lovers',
+          page1: {
+            question: 'What’s Kim’s <strong>best iced coffee?</strong>',
+            // ctaBtn: { txt: 'Watching Video', url: 'https://www.youtube.com/watch?v=QlDbUXs-L3c', localEventCategory: 'summer ice 2024', localEventAction: '', localEventLabel: '' }
+          },
+          page2: {
+            question: 'What’s Nespresso lovers’s<br><strong>best iced coffee?</strong>',
+            banner: { main: '인생 아이스 커피<br><strong>투표 결과 발표</strong>', sub: 'What’s My Favorite' },
+            ctaBtn: { txt: 'Check the reviews', url: '#', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-best-review-lp' }
+          }
+        },
+        iceRecipes: {
+          title: "Enjoy iced coffee in a variety of ways with<br><strong>Nespresso's unique recipe</strong>",
+          recipes: [
+            { id: 1, eng: 'K-AMERICANO', name: 'K-Americano', desc: 'Fresh favorite iced americano', descPc: 'Fresh favorite iced americano', ingredients: 'Ice Leggero capsule 1 (80ml),<br>Ice 150g, Water 80ml', ingredientsPc: 'Ice Leggero capsule 1 (80ml),<br>Ice 150g, Water 80ml' },
+            { id: 2, eng: 'SUNNY AFFOGATO', name: 'Sunny Affogato', desc: 'The sweet and bitter combination<br>of espresso and ice cream that resembles<br>the Mediterranean sunshine', descPc: 'The sweet and bitter combination of<br>espresso and ice cream that resembles<br>the Mediterranean sunshine', ingredients: 'Sunny Almond Vanilla over Ice<br>capsule 1 (80ml), Milk (20ml),<br>Whipped cream (20ml),<br>Condensed milk (10ml),<br>Vanilla extract (1-2drop), Brown sugar 1', ingredientsPc: 'Sunny Almond Vanilla over Ice capsule 1 (80ml),<br>Milk (20ml), Whipped cream (20ml),<br>Condensed milk (10ml),<br>Vanilla extract (1-2drop), Brown sugar 1' },
+            { id: 3, eng: 'COCO PINA COLADA', name: 'Coco Pina Colada', desc: 'The exotic and refreshing combination<br>of pineapple and coconut', descPc: 'The exotic and refreshing combination<br>of pineapple and coconut', ingredients: 'Tropical Coconut Flavor<br>capsule 1 (230ml),<br>Pineapple Sherbet 1,<br>Condensed milk (5ml),<br>Coconut milk (10ml), Coconut jelly (5g)', ingredientsPc: 'Tropical Coconut Flavor capsule 1 (230ml),<br>Pineapple Sherbet 1, Condensed milk (5ml),<br>Coconut milk (10ml), Coconut jelly (5g)' },
+            { id: 4, eng: 'RUBY COSMOPOLITAN', name: 'Ruby Cosmopolitan', desc: 'The rendezvous of pomegranates and<br>refreshing iced coffee', descPc: 'The rendezvous of pomegranates<br>and refreshing iced coffee', ingredients: 'Ice Leggero capsule 1 (80ml),<br>Ice (150g), Canesugar syrup (10ml),<br>Pomegranate juice (80ml)', ingredientsPc: 'Ice Leggero capsule 1 (80ml), Ice (150g),<br>Canesugar syrup (10ml),<br>Pomegranate juice (80ml)' },
+            { id: 5, eng: 'SKINNY A-SHOT-CHU', name: 'Skinny A-Shot-Chu', desc: 'Sweet and cool juice that you can enjoy<br>without any burden of calories', descPc: 'Sweet and cool juice that you can enjoy<br>without any burden of calories', ingredients: 'Ice Leggero capsule 1,<br>Crystal light peachmango<br>greentea on the go stick 1,<br>Water (120~150ml),<br>Ice (250~300g)', ingredientsPc: 'Ice Leggero capsule 1, Crystal light peachmango<br>greentea on the go stick 1, Water (120~150ml),<br>Ice (250~300g)' },
+            { id: 6, eng: 'DOUBLE VANILLA NUTS LATTE', name: 'Double Vanilla Nuts Latte', desc: 'Double the sweetness, double the nuttiness!<br>A latte where you can enjoy the sweet flavor<br>of vanilla and the nutty richness doubly.', descPc: 'Double the sweetness, double the<br>nuttiness! A latte where you can enjoy<br>the sweet flavor of vanilla and the nutty<br>richness doubly.', ingredients: 'Sunny Almond Vanilla over<br>Ice capsule 1, Ice (150g),<br>Milk (60ml), Vanillabean sauce<br>(20ml), Macadamia syrup (10ml)<br><span class="option">*Optional: Caramel syrup(10ml), Whipped cream (10ml)</span>', ingredientsPc: 'Sunny Almond Vanilla over Ice capsule 1,<br>Ice (150g), Milk (60ml), Vanillabean sauce (20ml),<br>Macadamia syrup (10ml)<br><span class="option">*Optional: Caramel syrup(10ml),<br>Whipped cream (10ml)</span>' },
+          ],
+          stepByStep: [
+            { id: 1, step: ['Put ice(150g) in a Barista Recipe Small glass.', 'Pour cool water(80ml).', 'Brew ICE LEGGERO capsule on top.'], stepPc: ['Put ice(150g) in a Barista Recipe Small glass.', 'Pour cool water(80ml).', 'Brew ICE LEGGERO capsule on top.'] },
+            { id: 2, step: ['Mix milk 40ml, whipped cream 40ml, and condensed milk 20ml<br>in the ratio specified, and add 1-2 drops of vanilla extract.', 'Pour the prepared mix into ice lolly molds and freeze in the freezer<br>for at least 8 hours.', 'Place brown sugar in a barista dessert bowl.', 'Remove the frozen ice lolly molds and place them on top of<br>the barista dessert bowl. (Let the molds sit at room<br>temperature for a while before separating for easier removal.)', "Extract 40ml of Sunny Almond Vanilla-flavored coffee<br>using the 'Ice & Latte' mode of the Vertuo Pop/Next."], stepPc: ['Mix milk 40ml, whipped cream 40ml, and condensed milk 20m in the ratio specified,<br>and add 1-2 drops of vanilla extract.', 'Pour the prepared mix into ice lolly molds and freeze in the freezer for at least 8 hours.', 'Place brown sugar in a barista dessert bowl.', 'Remove the frozen ice lolly molds and place them on top of the barista dessert bowl.<br>(Let the molds sit at room temperature for a while before separating for easier removal.)', "Extract 40ml of Sunny Almond Vanilla-flavored coffee<br>using the 'Ice & Latte' mode of the Vertuo Pop/Next."] },
+            { id: 3, step: ['Place a pineapple sherbet on the barista tray.', 'After wearing multipurpose gloves, scoop out the pineapple<br>sherbet with a spoon.', 'Fill the pineapple with 5ml of condensed milk, 10ml of<br>coconut milk, and 5g of coconut jelly.', "Extract a coconut capsule using the 'Ice & Latte' mode of<br>Vertuo Pop/Next, and pour only half (40ml) into the pineapple.<br>For Vertuo Plus, extract the coffee at 40ml.", 'Top it off with the scooped pineapple sherbet to complete.'], stepPc: ['Place a pineapple sherbet on the barista tray.', 'After wearing multipurpose gloves, scoop out the pineapple sherbet with a spoon.', 'Fill the pineapple with 5ml of condensed milk, 10ml of coconut milk, and 5g of coconut jelly.', "Extract a coconut capsule using the 'Ice & Latte' mode of Vertuo Pop/Next,<br>and pour only half (40ml) into the pineapple. For Vertuo Plus, extract the coffee at 40ml.", 'Top it off with the scooped pineapple sherbet to complete.'] },
+            { id: 4, step: ['Put 150g of ice and 10ml of cane sugar syrup into a Reveal<br>cold coffee glass.', 'Pour 80ml of pomegranate juice.', 'Extract one capsule of Ice Leggero using a shot glass (80ml),<br>then pour only half of the coffee volume into<br>the Reveal cold glass (40ml).', 'Top it with pomegranate topping to complete!<br>Please mix well before consuming.'], stepPc: ['Put 150g of ice and 10ml of cane sugar syrup into a Reveal cold coffee glass.', 'Pour 80ml of pomegranate juice.', 'Extract one capsule of Ice Leggero using a shot glass (80ml),<br>then pour only half of the coffee volume into<br>the Reveal cold glass (40ml).', 'Top it with pomegranate topping to complete! Please mix well before consuming.'] },
+            { id: 5, step: ['Put a Crystal Light Peachmango Greentea on the go stick 1<br>in a nomad tumbler.', 'Pour 120-150ml of water and dissolve the powder thoroughly.', 'Extract an Ice Leggero (80ml).', 'Add 250-300g of ice and enjoy it cool.'], stepPc: ['Put a Crystal Light Peachmango Greentea on the go stick 1 in a nomad tumbler.', 'Pour 120-150ml of water and dissolve the powder thoroughly.', 'Extract an Ice Leggero (80ml).', 'Add 250-300g of ice and enjoy it cool.'] },
+            { id: 6, step: ['In a Barista Recipe Glass Large, pour 20ml of vanilla bean<br>sauce and 10ml of macadamia syrup.<br><span class="txt-note">* If you desire a sweeter latte, try adding 10ml of caramel syrup.</span>', 'Extract Sunny Almond Vanilla over Ice capsule (80ml) over it.', 'After stirring well, add 150g of ice.', 'Top it off with 60ml of milk to complete.<br><span class="txt-note">* For a richer latte, consider adding 10ml of heavy cream.</span>'], stepPc: ['In a Barista Recipe Glass Large, pour 20ml of vanilla bean sauce and 10ml of macadamia syrup.<br><span class="txt-note">* If you desire a sweeter latte, try adding 10ml of caramel syrup.</span>', 'Extract Sunny Almond Vanilla over Ice capsule (80ml) over it.', 'After stirring well, add 150g of ice.', 'Top it off with 60ml of milk to complete.<br><span class="txt-note">* For a richer latte, consider adding 10ml of heavy cream.</span>'] },
+          ],
+          ctaBtns: {
+            title: 'If you want to make <br class="break"><strong>this recipe</strong> yourself?',
+            btns: [
+              { id: 1, txt: 'Going to buy the coffee used in this recipe',
+                urls: [
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/sunny-almond-vanilla',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/vertuo-tropical-coconut',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/ice-leggero',
+                  'https://www.nespresso.com/kr/ko/order/capsules/vertuo/sunny-almond-vanilla',
+                ],
+                localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-recipe-coffee' },
+              { id: 2, txt: 'Going to buy the Accessory used in this recipe',
+                urls: [
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-recipe-glass-small',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/brown-sugar',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-tray-set',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/reveal-cold-coffee',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/nomad-tumbler-orange',
+                  'https://www.nespresso.com/kr/ko/order/accessories/vertuo/barista-recipe-glass-large'
+                ],
+                localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-recipe-acc' },
+            ],
+            detailBtn: { txt: 'View more recipes', url: 'https://www.nespresso.com/kr/ko/nespresso-coffee-recipes', localEventCategory: 'summer ice 2024', localEventAction: 'click-goto', localEventLabel: 'goto-button-recipe-discoverMore' }
+          }
+        },
+        jazzFestival: {
+          title: { main: 'Taste the <span class="color1">Summer</span> Memories', sub: 'How much are you enjoying your daily life with Nespresso?<br>This summer 2024, Nespresso joins the Seoul Jazz Festival!' },
+          festivalGuide: {
+            title: "We're looking for people to<br>vividly deliver the atmosphere<br>of <strong>the Seoul Jazz Festival</strong><br>while enjoying it with Nespresso",
+            introduce: ['This time, Nespresso is particularly recruiting correspondents.', "If you love music and coffee, don't miss this opportunity!<br>Additionally, if you <strong>bring a tumbler</strong> to the Seoul Jazz Festival,<br>Nespresso coffee will be provided", "so don’t forget to join us in taking a step for the environment.<br><strong class='str'>Experience an unforgettable summer<br>with Nespresso at the Seoul Jazz Festival!</strong>"],
+            applyGuide: {
+              title: '[How to Apply as a Correspondent]',
+              steps: ['Following the official Nespresso Instagram<br>account is mandatory!', "Tag a friend you'd like to go with in an Instagram post.", 'Visit the bio link provided on the Nespresso Instagram profile.', 'Complete participation by pressing the event participation<br>button and submitting your information!']
+            },
+            applyInfo: [
+              { label: 'Application Period', txt: 'April 30 (Tue) to May 19 (Sun)' },
+              { label: '# of Winners', txt: '20 people<br><span class="condition">(two 1-day passes per person, date cannot be specified)</span>' },
+              { label: 'Winner Announcement', txt: 'May 24 <span class="condition">(Wed) (Winners will be contacted individually)</span>' },
+              { label: 'Winning Condition', txt: 'Must be a Nespresso member with coffee purchase history<br>within the last 3 months' },
+            ],
+            festivalInfo: {
+              title: 'Seoul Jazz Festival 2024',
+              period: 'Date : May 31 (Fri) to June 2 (Sun)<br>Location : Olympic Park',
+              ctaBtns: [
+                { id: 1, txt: 'Nespresso<br>Instagram', url: 'https://www.instagram.com/nespresso.kr/', localEventCategory: 'summer ice 2024', localEventAction: 'click-Nespresso-SNS', localEventLabel: 'instagram' },
+                { id: 2, txt: 'Add to<br>Kakao Channel', url: 'http://pf.kakao.com/_PMqxjs', localEventCategory: 'summer ice 2024', localEventAction: 'click-Nespresso-SNS', localEventLabel: 'kakaotalk' },
+              ]
+            }
+          } 
+        }
+      }
+    }
+  }
+</script>

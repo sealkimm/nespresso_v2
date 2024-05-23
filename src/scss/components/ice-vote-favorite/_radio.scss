@@ -1,0 +1,48 @@
+.radio-only {
+	&.like {
+		flex-shrink: 0;
+		position: absolute;
+		top: -18%;
+		right: -20%;
+		z-index: 1;
+
+		@include size(13.4rem,10rem);
+		@include breakpoint('lg') {
+			@include size(120px, 90px);
+			top: -22%;
+			// right: -20%;
+		}
+
+		input[type='radio'] {
+			@include size(100%,100%);
+			margin: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+
+		span {
+			opacity: 0;
+			transition: .01s;
+			transform: scale(1.4);
+
+			@include sprite-x2($ice-vote-favorite-x2-pick-icon);
+			@include breakpoint('lg') { @include sprite($ice-vote-favorite-pick-icon); }
+		}
+
+		input {
+			&:checked {
+				& + span {
+					opacity: 1;
+					transition: .3s;
+					transform: scale(1);
+
+
+					@include sprite-x2($ice-vote-favorite-x2-pick-icon);
+					@include breakpoint('lg') { @include sprite($ice-vote-favorite-pick-icon); }
+				}
+			}
+		}
+	}
+}

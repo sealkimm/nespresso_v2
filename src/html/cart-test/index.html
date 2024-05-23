@@ -1,0 +1,302 @@
+{%
+	set pageInfo = {
+		lang: 'ko',
+		section: 'cartTest',
+		page: 'cartTest',
+		title: '장바구니 테스트',
+		order: [0,0]
+	}
+%}
+{% extends '@inc/layout.html' %}
+{% block content %}
+<div class="ice2024-wrap" ref="container">
+  <div class="capsule-main-wrap">
+    <div class="swiper capsule-vt-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in msg.newProducts.capsules.vt">
+          <div class="item-capsule">
+            <div class="img-wrap">
+              <div class="label limited" :class="`label-${item.cate}`" v-if="item.label.show">
+                <div class="inner">
+                  <span v-html="item.label.txt" class="txt"></span>
+                </div>
+              </div>
+              <span class="img bg-lazy" v-lazy="bg.capsules.vt[index].img"></span>
+            </div>
+            <div class="info-wrap">
+              <div class="capsule-tooltip" v-if="item.tooltip.show">
+                <span class="txt" v-html="item.tooltip.txt"></span>
+                <span class="icon"></span>
+              </div>
+              <div class="name" v-html="isMobile ? item.name : item.namePc"></div>
+              <div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+              <div class="notes" :class="`${item.notes.length < 2 && `single`}`" v-if="item.notes.length > 0 ">
+                <span :class="`note${index + 1}`" v-for="(note, index) in item.notes" :key="index" v-html="note"></span>
+              </div>
+              <div class="cup" :class="item.type" v-html="item.cup"></div>
+              <div class="contain" v-html="item.contain" v-if="item.contain !== ''"></div>
+              <div class="composition" v-if="item.composition.list.length > 0">
+                <span v-for="(row, index) in item.composition.list" :key="index" v-html="row"></span>
+              </div>	
+              <div class="item-cart">
+                <div class="align-wrap">
+                  <div class="price-wrap">
+                    <span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+                    <span class="member" v-html="item.price.member"></span>
+                  </div>
+                  <div class="pieces-wrap" v-html="item.pieces" v-if="item.pieces !== ''"></div>
+                </div>
+                
+                <div class="cart-wrap">
+                  <div class="quantity">
+                    <button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+                    <input type="text" class="num" v-model="productsInfo.vtCapsulesInfo[index].quantity" readonly />
+                    <button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+                  </div>
+                  <button class="cart-btn" @click="addCart(productsInfo.vtCapsulesInfo[index])"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="swiper-pagination capsule-pagination capsule-vt-pagination"></div>
+      
+    </div>
+    <div class="swiper-button-next capsule-button-next capsule-vt-button-next"></div>
+    <div class="swiper-button-prev capsule-button-prev capsule-vt-button-prev"></div>
+  </div>
+
+
+  <div class="capsule-main-wrap">
+    <div class="swiper capsule-ol-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in msg.newProducts.capsules.ol">
+          <div class="item-capsule">
+            <div class="img-wrap">
+              <div class="label limited" :class="`label-${item.cate}`" v-if="item.label.show">
+                <div class="inner">
+                  <span v-html="item.label.txt" class="txt"></span>
+                </div>
+              </div>
+              <span class="img bg-lazy" v-lazy="bg.capsules.ol[index].img"></span>
+            </div>
+            <div class="info-wrap">
+              <div class="capsule-tooltip" v-if="item.tooltip.show">
+                <span class="txt" v-html="item.tooltip.txt"></span>
+                <span class="icon"></span>
+              </div>
+              <div class="name" v-html="isMobile ? item.name : item.namePc"></div>
+              <div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+              <div class="notes" :class="`${item.notes.length < 2 && `single`}`" v-if="item.notes.length > 0 ">
+                <span :class="`note${index + 1}`" v-for="(note, index) in item.notes" :key="index" v-html="note"></span>
+              </div>
+              <div class="cup" :class="item.type" v-html="item.cup"></div>
+              <div class="contain" v-html="item.contain" v-if="item.contain !== ''"></div>
+              <div class="composition" v-if="item.composition.list.length > 0">
+                <span v-for="(row, index) in item.composition.list" :key="index" v-html="row"></span>
+              </div>	
+              <div class="item-cart">
+                <div class="align-wrap">
+                  <div class="price-wrap">
+                    <span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+                    <span class="member" v-html="item.price.member"></span>
+                  </div>
+                  <div class="pieces-wrap" v-html="item.pieces" v-if="item.pieces !== ''"></div>
+                </div>
+                <div class="cart-wrap">
+                  <div class="quantity">
+                    <button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+                    <input type="text" class="num" v-model="productsInfo.olCapsulesInfo[index].quantity" readonly />
+                    <button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+                  </div>
+                  <button class="cart-btn" @click="addCart(productsInfo.olCapsulesInfo[index])"></button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+      <div class="swiper-pagination capsule-pagination capsule-ol-pagination"></div>
+    </div>
+    <div class="swiper-button-next capsule-button-next capsule-ol-button-next"></div>
+    <div class="swiper-button-prev capsule-button-prev capsule-ol-button-prev"></div>
+  </div>
+
+
+  <div class="tab-machine-content">
+    <div class="item-machine" v-for="(item, index) in msg.newProducts.machines.vt" :key="item.id">
+      <div class="wrap">
+        <div class="img-wrap">
+          <div class="img-box">
+            <span class="img bg-lazy" v-lazy="bg.machines.vt[0].img"></span>
+          </div>
+        </div>
+        <div class="info-warp">
+          <span class="name" v-html="item.name"></span>
+          <div class="desc">
+            <span v-for="(txt, index) in isMobile ? item.desc : item.descPc" v-html="txt" :key="index"></span>
+          </div>
+        </div>
+
+        <div class="purchasing-wrap">
+          <dl class="item" v-if="machinesPurchasing.vertuo.buyingNow.show">
+            <dt>
+              <div class="label" v-html="item.purchasing.buynow.label"></div>
+              <span v-html="item.purchasing.buynow.txt"></span>
+            </dt>
+            <dd>
+              <div class="item-cart row">
+                <div class="price-wrap">
+                  <span class="nonmember" v-html="machinesPurchasing.vertuo.buyingNow.nonmember" v-if="machinesPurchasing.vertuo.buyingNow.nonmember !== ''"></span>
+                  <span class="member" v-html="machinesPurchasing.vertuo.buyingNow.member"></span>
+                </div>
+                <div class="cart-wrap">
+                  <div class="quantity">
+                    <button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+                    <input type="text" class="num" v-model="productsInfo.vtMachinesInfo[index].quantity" readonly />
+                    <button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+                  </div>
+                  <button class="cart-btn" @click="addCart(productsInfo.vtMachinesInfo[index])"></button>
+                </div>
+              </div>
+              <a :href="item.purchasing.buynow.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.buynow.ctaBtn.localEventCategory" :local_event_action="item.purchasing.buynow.ctaBtn.localEventAction" :local_event_label="item.purchasing.buynow.ctaBtn.localEventLabel" v-html="item.purchasing.buynow.ctaBtn.txt"></a>
+            </dd>
+          </dl>
+          <span class="line bg-lazy" v-lazy="(isMobile) ? bg.machines.line[0] : bg.machines.line[1]" v-if="machinesPurchasing.vertuo.buyingNow.show"></span>
+          <dl class="item" v-if="machinesPurchasing.vertuo.payback.show">
+            <dt>
+              <div class="label" v-html="item.purchasing.payback.label"></div>
+              <span v-html="item.purchasing.payback.txt"></span>
+            </dt>
+            <dd>
+              <div class="item-cart row">
+                <div class="price-wrap payback-price">
+                  <span class="nonmember" v-html="machinesPurchasing.vertuo.payback.nonmember" v-if="machinesPurchasing.vertuo.payback.nonmember !== ''"></span>
+                  <span class="member" v-html="machinesPurchasing.vertuo.payback.member"></span>
+                </div>
+                <div class="payback-wrap">
+                  <span class="label" v-html="item.purchasing.payback.icon"></span>
+                  <span class="icon"></span>
+                </div>
+              </div>
+              <a :href="item.purchasing.payback.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.payback.ctaBtn.localEventCategory" :local_event_action="item.purchasing.payback.ctaBtn.localEventAction" :local_event_label="item.purchasing.payback.ctaBtn.localEventLabel" v-html="item.purchasing.payback.ctaBtn.txt"></a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-machine-content">
+    <div class="item-machine" v-for="(item, index) in msg.newProducts.machines.ol" :key="item.id">
+      <div class="wrap">
+        <div class="img-wrap">
+          <div class="img-box">
+            <span class="img bg-lazy" v-lazy="bg.machines.ol[0].img"></span>
+          </div>
+        </div>
+        <div class="info-warp">
+          <span class="name" v-html="item.name"></span>
+          <div class="desc">
+            <span v-for="(txt, index) in isMobile ? item.desc : item.descPc" v-html="txt" :key="index"></span>
+          </div>
+        </div>
+
+        <div class="purchasing-wrap">
+          <dl class="item" v-if="machinesPurchasing.original.buyingNow.show">
+            <dt>
+              <div class="label" v-html="item.purchasing.buynow.label"></div>
+              <span v-html="item.purchasing.buynow.txt"></span>
+            </dt>
+            <dd>
+              <div class="item-cart row">
+                <div class="price-wrap">
+                  <span class="nonmember" v-html="machinesPurchasing.original.buyingNow.nonmember" v-if="machinesPurchasing.original.buyingNow.nonmember !== ''"></span>
+                  <span class="member" v-html="machinesPurchasing.original.buyingNow.member"></span>
+                </div>
+                <div class="cart-wrap">
+                  <div class="quantity">
+                    <button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, index)"></button>
+                    <input type="text" class="num" v-model="productsInfo.olMachinesInfo[index].quantity" readonly />
+                    <button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, index)"></button>
+                  </div>
+                  <button class="cart-btn" @click="addCart(productsInfo.olMachinesInfo[index])"></button>
+                </div>
+              </div>
+              <a :href="item.purchasing.buynow.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.buynow.ctaBtn.localEventCategory" :local_event_action="item.purchasing.buynow.ctaBtn.localEventAction" :local_event_label="item.purchasing.buynow.ctaBtn.localEventLabel" v-html="item.purchasing.buynow.ctaBtn.txt"></a>
+            </dd>
+          </dl>
+          <span class="line bg-lazy" v-lazy="(isMobile) ? bg.machines.line[0] : bg.machines.line[1]" v-if="machinesPurchasing.original.buyingNow.show"></span>
+          <dl class="item" v-if="machinesPurchasing.original.payback.show">
+            <dt>
+              <div class="label" v-html="item.purchasing.payback.label"></div>
+              <span v-html="item.purchasing.payback.txt"></span>
+            </dt>
+            <dd>
+              <div class="item-cart row">
+                <div class="price-wrap payback-price">
+                  <span class="nonmember" v-html="machinesPurchasing.original.payback.nonmember" v-if="machinesPurchasing.original.payback.nonmember !== ''"></span>
+                  <span class="member" v-html="machinesPurchasing.original.payback.member"></span>
+                </div>
+                <div class="payback-wrap">
+                  <span class="label" v-html="item.purchasing.payback.icon"></span>
+                  <span class="icon"></span>
+                </div>
+              </div>
+              <a :href="item.purchasing.payback.ctaBtn.url" target="_blank" class="btn landing small-txt" :local_event_category="item.purchasing.payback.ctaBtn.localEventCategory" :local_event_action="item.purchasing.payback.ctaBtn.localEventAction" :local_event_label="item.purchasing.payback.ctaBtn.localEventLabel" v-html="item.purchasing.payback.ctaBtn.txt"></a>
+            </dd>
+          </dl>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="accessory-main-wrap">
+    <div class="swiper accessory-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in msg.newProducts.accessorys">
+          <div class="item-accessory">
+            <div class="img-wrap">
+              <span class="img bg-lazy" :class="`img${item.id}`" v-lazy="bg.accessorys.lists[index].img"></span>
+            </div>
+            <div class="info-wrap">
+              <span class="name" v-html="isMobile ? item.name : item.namePc"></span>
+              <div class="desc" v-html="isMobile ? item.desc : item.descPc" v-if="item.desc !== ''"></div>
+              <div class="ingredient" v-html="item.ingredient"></div>
+              <div class="volume" v-if="item.volume.length > 0 ">
+                <span class="item" v-for="(txt, index) in item.volume" :key="index" v-html="txt"></span>
+              </div>
+              <div class="item-cart">
+                <div class="price-wrap">
+                  <span class="nonmember" v-html="item.price.nonmember" v-if="item.price.nonmember !== ''"></span>
+                  <span class="member" v-html="item.price.member"></span>
+                </div>
+                <div class="cart-wrap">
+                  <div class="quantity">
+                    <button class="count-btn minus" @click="quantityDown(item.type, item.cate, item.count, item.id)"></button>
+                    <input type="text" class="num" v-model="productsInfo.accessorysInfo[item.id - 1].quantity" readonly />
+                    <button class="count-btn plus" @click="quantityUp(item.type, item.cate, item.count, item.id)"></button>
+                  </div>
+                  <button class="cart-btn" @click="addCart(productsInfo.accessorysInfo[item.id - 1])"></button>
+                </div>
+              </div>
+            </div>
+          </div>	
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next accessory-button-next"></div>
+    <div class="swiper-button-prev accessory-button-prev"></div>
+  </div>
+
+
+	{{	include('../cart-test/@components/content-tab-group.html')	}}
+</div>
+{{ include('../cart-test/@inc/vue.html') }}
+{% endblock %}

@@ -1,0 +1,171 @@
+<script>
+  let messages = {
+    ko: {
+      test: '2024 나의 최애커피 투표',
+      botBanner: { txt1: '네스프레소의 혜택을 가장 먼저 만날 수 있는 기회!', txt2: '마케팅 수신 동의하고 다양한 혜택 만나보기', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', gaCategory: '', gaAction: '', gaLabel: '' },
+      intro: {
+        title: '나의 최애 커피에 투표하세요!',
+        period: '기간 : <em>2024</em>년 <em>1</em>월 <em>11</em>일 ~ <em>24</em>일',
+        event1: { label: 'EVENT 1', tit: '투표하고 할인받기', desc: '<strong>베스트<em>3</em></strong> 커피 공개 및 할인 혜택', descPc: '<strong>베스트<em>3</em></strong> 커피 공개 및 할인 혜택', period: '기간 : 2월 1일 ~ 7일'  },
+        event2: { label: 'EVENT 2', tit: '후기 남기고 선물받기', desc: '베스트 리뷰어 <em>30</em>명 선정,<br><em>3</em>만원 상당 ‘<strong>노마드 트래블<br>머그 스몰</strong>’ 증정', descPc: '베스트 리뷰어 <em>30</em>명 선정,<br><em>3</em>만원 상당 <strong>‘노마드 트래블 머그 스몰’</strong> 증정', period: ''  },
+      },
+      mainTab: [
+        { id: 1, cate: 'vertuo', tit: '버츄오', gaCategory: '', gaAction: '', gaLabel: '' },
+        { id: 2, cate: 'original', tit: '오리지널', gaCategory: '', gaAction: '', gaLabel: '' },
+      ],
+      capsules: {
+        vl: [
+          { id: 1, cate: 'vertuo', voteId: 'vlCapsule1', name: '더블 에스프레소 돌체', voteName: 'Double Espresso Dolce', gaCategory: '', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'vertuo', voteId: 'vlCapsule2', name: '엘살바도르', voteName: 'El Salvador', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'vertuo', voteId: 'vlCapsule3', name: '알티시오', voteName: 'Altissio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'vertuo', voteId: 'vlCapsule4', name: '콜롬비아', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'vertuo', voteId: 'vlCapsule5', name: '에티오피아', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'vertuo', voteId: 'vlCapsule6', name: '오라피오', voteName: 'Orafio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'vertuo', voteId: 'vlCapsule7', name: '아론디오', voteName: 'Arondio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'vertuo', voteId: 'vlCapsule8', name: '멜로지오', voteName: 'Melozio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'vertuo', voteId: 'vlCapsule9', name: '더블 에스프레소 스쿠로', voteName: 'Double Espresso Scuro', gaCategory: '', gaAction: '', gaLabel: '' },
+        ],
+        ol: [
+          { id: 1, cate: 'original', voteId: 'olCapsule1', name: '콜롬비아', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 2, cate: 'original', voteId: 'olCapsule2', name: '볼루토', voteName: 'Volluto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'original', voteId: 'olCapsule3', name: '아르페지오', voteName: 'Arpeggio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'original', voteId: 'olCapsule4', name: '리스트레토', voteName: 'Ristretto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'original', voteId: 'olCapsule5', name: '도쿄', voteName: 'Lungo', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'original', voteId: 'olCapsule6', name: '코지', voteName: 'Cosi', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'original', voteId: 'olCapsule7', name: '비엔나', voteName: 'Vienna', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'original', voteId: 'olCapsule8', name: '인도네시아', voteName: 'Indonesia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'original', voteId: 'olCapsule9', name: '에티오피아', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+        ]
+      },
+      review: {
+        placeholder: {
+          vl: '나의 최애 버츄오 커피 시음 후기를 남겨주세요. \n(개인정보 수집·이용 동의 시, 후기 이벤트 참여가 가능합니다.)',
+          ol: '나의 최애 오리지널 커피 시음 후기를 남겨주세요. \n(개인정보 수집·이용 동의 시, 후기 이벤트 참여가 가능합니다.)'
+        },
+        privacy: [
+          { id: 1, txt: '개인정보 수집 목적 : 네스프레소 후기 이벤트 참여를 통해, 베스트 리뷰어 선정 시 경품 제공을 위한 연락', txtPc: '개인정보 수집 목적 : 네스프레소 후기 이벤트 참여를 통해, 베스트 리뷰어 선정 시 경품 제공을 위한 연락' },
+          { id: 2, txt: '개인정보 수집 항목 : 휴대전화번호', txtPc: '개인정보 수집 항목 : 휴대전화번호' },
+          { id: 3, txt: '보유 및 이용기간 : 수집일로부터 <em>1</em>개월', txtPc: '보유 및 이용기간 : 수집일로부터 <em>1</em>개월' },
+          { id: 4, txt: '동의 거부권 및 거부 시 불이익 : 귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며,<br>동의를 거부할 경우 후기 이벤트 참여에 제한을 받을 수 있습니다.', txtPc: '동의 거부권 및 거부 시 불이익 : 귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며,<br>동의를 거부할 경우 후기 이벤트 참여에 제한을 받을 수 있습니다.' },
+        ],
+        privacyTit: '개인정보 수집·이용 동의',
+        agree: { txt: '위 개인정보를 수집·이용하는 것에 동의합니다.', agreeTxt: '동의함' },
+        benefit: { txt: '투표 제출 버튼 클릭 후 회원번호 별도 기재 시,<br><em>2</em>월 <em>2,000</em>원 쿠폰이 지급됩니다.', txtPc: '투표 제출 버튼 클릭 후 회원번호 별도 기재 시,<br><em>2</em>월 <em>2,000</em>원 쿠폰이 지급됩니다.' },
+        ctaReqBtn: { txt: '투표 제출하기' },
+        ctaBtn: {
+          vl: { txt: '더 다양한 커피 만나보기', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_vl', gaLabel: 'goto_coffeePLP_vl' },
+          ol: { txt: '더 다양한 커피 만나보기', url: 'https://www.nespresso.com/kr/ko/order/capsules/original',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_ol', gaLabel: 'goto_coffeePLP_ol' },
+        }
+      },
+      contentCaution: {
+        tit: '유의사항',
+        cont: [
+          { id: 1, txt: '<strong>투표 기간</strong> : <em>1</em>월 <em>11</em>일~<em>1</em>월 <em>24</em>일 (<em>2</em>주간)', txtPc: '<strong>투표 기간</strong> : <em>1</em>월 <em>11</em>일~<em>1</em>월 <em>24</em>일 (<em>2</em>주간)' },
+          { id: 2, txt: '<strong>투표 대상자</strong> : 네스프레소 클럽 회원이라면 누구나 (계정 당 <em>1</em>회 참여 가능)', txtPc: '<strong>투표 대상자</strong> : 네스프레소 클럽 회원이라면 누구나 (계정 당 <em>1</em>회 참여 가능)' },
+          { id: 3, txt: '<strong>투표 방법</strong> : 홈페이지 로그인 후, 오리지널 1종 / 버츄오 1종 선택 & 투표 제출하기 클릭 <span>(<em>2</em>종 중 <em>1</em>종만 선택해도 투표 가능)</span>', txtPc: '<strong>투표 방법</strong> : 홈페이지 로그인 후, 오리지널 1종 / 버츄오 1종 선택 & 투표 제출하기 클릭 <span>(<em>2</em>종 중 <em>1</em>종만 선택해도 투표 가능)</span>' },
+          { id: 4, txt: '리뷰 콘텐츠는 내부 마케팅 용도로 <em>2</em>차 활용 될 수 있습니다.', txtPc: '리뷰 콘텐츠는 내부 마케팅 용도로 <em>2</em>차 활용 될 수 있습니다.' },
+          { id: 5, txt: '<strong>해당 이벤트는 사전 공지 없이 내부 상황에 따라 조기 종료되거나 변동 사항이 발생 할 수 있습니다.</strong>', txtPc: '<strong>해당 이벤트는 사전 공지 없이 내부 상황에 따라 조기 종료되거나 변동 사항이 발생 할 수 있습니다.</strong>' },
+        ]
+      },
+      layerpop: {
+        close: '닫기',
+        gotoForms: {
+          type: 'googleForms',
+          btnVl: '오리지널 커피도 투표 하러 가기',
+          btnOl: '버츄오 커피도 투표 하러 가기',
+          complateTit: '<span>투표 제출 완료!</span>',
+          tit: '회원번호 추가 제출 시<br><em>2</em>월 <em>2,000</em>원 쿠폰 증정',
+          ctaBtn: { txt: '회원번호 제출하러 가기', url: 'https://forms.microsoft.com/e/UHjBc1fzJw', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_submit_googleForms_botton', gaLabel: 'submit_googleForms_botton' }
+        },
+        loginAlert: {
+          type: 'loginAlert',
+          tit: { main: '로그인 후 참여해 주세요.', sub: '버츄오, 오리지널 각 1회 참여 가능' },
+          ctaBtn: { txt: '로그인', url: '#', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_login_botton', gaLabel: 'login_botton' }
+        }
+      }
+    },
+    en: {
+      test: '2023 VOTE FOR YOUR FAVORITE COFFEE',
+      botBanner: { txt1: 'Consent to receive marketing<br>and enjoy more various Nespresso benefits.', txt2: '', url: 'https://www.nespresso.com/kr/ko/nespresso-club-member-benefit', gaCategory: '', gaAction: '', gaLabel: '' },
+      intro: {
+        title: 'VOTE FOR YOUR FAVORITE COFFEE',
+        period: 'Period : Jan 11 ~ 24',
+        event1: { label: 'EVENT 1', tit: 'Vote for special offer', desc: 'Reveal best 3 coffees<br>with discount offer', descPc: 'Reveal best 3 coffees with discount offer', period: 'Period : Feb 1 ~ 7'  },
+        event2: { label: 'EVENT 2', tit: 'Reward for best reviewer', desc: 'Gift ‘Nomad Travel Mug small’<br>worth 30,000 KRW<br>to 30 best reviewers.', descPc: 'Gift ‘Nomad Travel Mug small’ worth<br>30,000 KRW to 30 best reviewers.', period: ''  },
+      },
+      mainTab: [
+        { id: 1, cate: 'vertuo', tit: 'VERTUO', gaCategory: '', gaAction: '', gaLabel: ''  },
+        { id: 2, cate: 'original', tit: 'OROGINAL', gaCategory: '', gaAction: '', gaLabel: ''  },
+      ],
+      capsules: {
+        vl: [
+          { id: 1, cate: 'vertuo', voteId: 'vlCapsule1', name: 'Double Espresso Dolce', voteName: 'Double Espresso Dolce', gaCategory: '', gaAction: '', gaLabel: ''},
+          { id: 2, cate: 'vertuo', voteId: 'vlCapsule2', name: 'El Salvador', voteName: 'El Salvador', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'vertuo', voteId: 'vlCapsule3', name: 'Altissio', voteName: 'Altissio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'vertuo', voteId: 'vlCapsule4', name: 'Colombia', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'vertuo', voteId: 'vlCapsule5', name: 'Ethiopia', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'vertuo', voteId: 'vlCapsule6', name: 'Orafio', voteName: 'Orafio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'vertuo', voteId: 'vlCapsule7', name: 'Arondio', voteName: 'Arondio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'vertuo', voteId: 'vlCapsule8', name: 'Melozio', voteName: 'Melozio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'vertuo', voteId: 'vlCapsule9', name: 'Double Espresso Scuro', voteName: 'Double Espresso Scuro', gaCategory: '', gaAction: '', gaLabel: '' },
+        ],
+        ol: [
+          { id: 1, cate: 'original', voteId: 'olCapsule1', name: 'Colombia', voteName: 'Colombia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 2, cate: 'original', voteId: 'olCapsule2', name: 'Volluto', voteName: 'Volluto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 3, cate: 'original', voteId: 'olCapsule3', name: 'Arpeggio', voteName: 'Arpeggio', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 4, cate: 'original', voteId: 'olCapsule4', name: 'Ristretto', voteName: 'Ristretto', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 5, cate: 'original', voteId: 'olCapsule5', name: 'Lungo', voteName: 'Lungo', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 6, cate: 'original', voteId: 'olCapsule6', name: 'Cosi',  voteName: 'Cosi', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 7, cate: 'original', voteId: 'olCapsule7', name: 'Vienna', voteName: 'Vienna', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 8, cate: 'original', voteId: 'olCapsule8', name: 'Indonesia', voteName: 'Indonesia', gaCategory: '', gaAction: '', gaLabel: '' },
+          { id: 9, cate: 'original', voteId: 'olCapsule9', name: 'Ethiopia', voteName: 'Ethiopia', gaCategory: '', gaAction: '', gaLabel: '' },
+        ]
+      },
+      review: {
+        placeholder: {
+          vl: 'Leave review for your favorite Vertuo coffee',
+          ol: 'Leave review for your favorite Original coffee'
+        },
+        privacy: [
+          { id: 1, txt: 'Purpose of personal information collection: Contact for selected best reviewer reward', txtPc: 'Purpose of personal information collection: Contact for selected best reviewer reward' },
+          { id: 2, txt: 'Personal information collection item: Mobile number', txtPc: 'Personal information collection item: Mobile number' },
+          { id: 3, txt: 'Data collection and usage period: 1 month after collection', txtPc: 'Data collection and usage period: 1 month after collection' },
+          { id: 4, txt: 'Disadvantage upon disagreement of personal information collection:<br>You may disagree with personal information collection<br>In case of disagreement, you may get eliminated from best reviewer selection.', txtPc: 'Disadvantage upon disagreement of personal information collection: You may disagree with personal information collection.<br>In case of disagreement, you may get eliminated from best reviewer selection.' },
+        ],
+        agree: { txt: 'I shall agree above personal information collection and usage.', agreeTxt: 'Agree' },
+        benefit: { txt: 'Receive 2,000 KRW voucher in Feb upon submission<br>of club member number.', txtPc: 'Receive 2,000 KRW voucher in Feb upon submission of club member number.' },
+        ctaReqBtn: { txt: 'Submit' },
+        ctaBtn: {
+          vl: { txt: 'Discover more', url: 'https://www.nespresso.com/kr/ko/order/capsules/vertuo',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_vl', gaLabel: 'goto_coffeePLP_vl' },
+          ol: { txt: 'Discover more', url: 'https://www.nespresso.com/kr/ko/order/capsules/original',  gaCategory: 'vote favorite coffee 2023', gaAction: 'click_goto_coffeePLP_ol', gaLabel: 'goto_coffeePLP_ol' },
+        }
+      },
+      contentCaution: {
+        tit: 'Terms &Conditions',
+        cont: [
+          { id: 1, txt: '<strong>Vote Period</strong> : Jan 11 ~ 24 (2 weeks)', txtPc: '<strong>Vote Period</strong> : Jan 11 ~ 24 (2 weeks)' },
+          { id: 2, txt: '<strong>Who</strong> : Any Nespresso Club member (can vote once per each account)', txtPc: '<strong>Who</strong> : Any Nespresso Club member (can vote once per each account)' },
+          { id: 3, txt: '<strong>How</strong> : Log-in to official e-commerce page, Select one coffee for Original & one coffee<br>for Vertuo and click submit(You may<br>vote only one from Original and Vertuo)', txtPc: 'Log-in to official e-commerce page, Select one coffee for Original & one coffee for Vertuo and click submit(You may vote<br>only one from Original and Vertuo)' },
+          { id: 4, txt: 'Review content may be utilized as marketing contents.', txtPc: 'Review content may be utilized as marketing contents.' },
+          { id: 5, txt: 'Offer scheme and period is subject to change without prior notice', txtPc: 'Offer scheme and period is subject to change without prior notice' },
+        ]
+      },
+      layerpop: {
+        close: '닫기',
+        gotoForms: {
+          type: 'googleForms',
+          btnVl: '오리지널 커피도 투표 하러 가기',
+          btnOl: '버츄오 커피도 투표 하러 가기',
+          complateTit: '<span>투표 제출 완료!</span>',
+          tit: '2,000 KRW Feb voucher<br>upon submission of<br>club member number.',
+          ctaBtn: { txt: 'Submit', url: 'https://forms.microsoft.com/e/UHjBc1fzJw', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_submit_googleForms_botton', gaLabel: 'submit_googleForms_botton' }
+        },
+        loginAlert: {
+          type: 'loginAlert',
+          tit: { main: 'This service requires login.<br>please try again after login', sub: 'Can be done once per account' },
+          ctaBtn: { txt: 'Log in', url: '#', gaCategory: 'vote favorite coffee 2023', gaAction: 'click_login_botton', gaLabel: 'login_botton' }
+        }
+      }
+    }
+  }
+</script>

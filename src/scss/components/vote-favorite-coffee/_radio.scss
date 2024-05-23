@@ -1,0 +1,34 @@
+.radio-only {
+	&.like {
+		flex-shrink: 0;
+		position: relative;
+
+		@include size(3rem,3rem);
+		@include breakpoint('lg') {
+			@include size(30px,30px);
+		}
+
+		input[type='radio'] {
+			@include size(100%,100%);
+			margin: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+		}
+
+		span {
+			@include sprite-x2($vote-favorite-coffee-x2-heart-off);
+			@include breakpoint('lg') { @include sprite($vote-favorite-coffee-heart-off); }
+		}
+
+		input {
+			&:checked {
+				& + span {
+					@include sprite-x2($vote-favorite-coffee-x2-heart-on);
+					@include breakpoint('lg') { @include sprite($vote-favorite-coffee-heart-on); }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{% macro include(fileName) -%}
+	{% include fileName ignore missing -%}
+{% endmacro -%}
+<!DOCTYPE html>
+<html lang="{{pageInfo.lang}}">
+{{ include('./head.html') }}
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH9FPVL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <h1 id="hidden-main-heading" class="visually-hidden" tabindex="-1"></h1>
+  <div class="header-dummy">
+    <div class="header">
+      <div class="inner">
+        
+      </div>
+    </div>
+    <nav class="nav"></nav>
+  </div>
+	<div id="app" class="{{pageInfo.lang}}">
+    <!-- Content // -->
+		{% block content %}
+		{% endblock %}
+		<!-- // Content -->
+  </div>
+</body>
+</html>

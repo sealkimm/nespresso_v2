@@ -1,0 +1,33 @@
+/* stylelint-disable */
+
+// test.scss
+// -------------------------------------------------- //
+
+// Base
+@use './base/reset';	
+@use './base/com';	
+
+// helpers
+@import './helpers/variables';	
+// @import './helpers/functions';
+@import './helpers/mixins';	
+@import './helpers/media';
+
+
+// vendors - img sprite 해당 캠페인 파일만
+@import './vendors/test-sprite';
+@import './vendors/test-x2-sprite';
+
+// Components
+// @import './components/test/**/*.scss';
+
+// Pages
+@import './pages/test.scss';
+
+// 네스프레소 홈페이지 관련 스타일 재정의
+@import './redefine/';
+
+
+
+
+

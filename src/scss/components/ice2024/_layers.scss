@@ -1,0 +1,141 @@
+.machine-guide-layer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999999;
+	background: rgb(0 0 0 /.6);
+
+	@include size(100%,100%);
+
+	.layer-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 20.4rem 0 0;
+		position: relative;
+
+		@include size(100%,100%);
+		@include breakpoint('lg') {
+			padding: 163px 0 0;
+		}
+	}
+
+	.machin-guide-wrap {
+		overflow: hidden;
+		position: relative;
+		border-radius: 1rem;
+
+		@include size(61.7rem,91.2rem);
+		@include breakpoint('lg') {
+			border-radius: 10px;
+
+			@include size(720px,730px);
+		}
+
+		.btn-close {
+			position: absolute;
+			top: 2.7rem;
+			right: 2.5rem;
+			z-index: 99999;
+
+			@include sprite-x2($ice2024-x2-close1);
+			@include breakpoint('lg') {
+				top: 23px;
+				right: 24px;
+
+				@include sprite($ice2024-close1);
+			}
+		}
+
+		.btn-play {
+			position: absolute;
+			top: 40.3rem;
+			left: 50%;
+			transform: translate(-50%,0);
+
+			@include sprite-x2($ice2024-x2-play1);
+			@include breakpoint('lg') {
+				top: 334px;
+
+				@include sprite($ice2024-play1);
+			}
+		}
+
+		.movie-wrap {
+			position: relative;
+
+			@include size(100%,100%);
+		}
+
+
+		.cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			@include size(100%,100%);
+
+			&.is-hide { display: none; }
+
+			& > .wrap {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 13.5rem 0 0;
+				position: relative;
+
+				@include breakpoint('lg') {
+					padding: 97px 0 0;
+				}
+			}
+
+			.title {
+				display: flex;
+				flex-direction: column;
+				color: #fff;
+				text-align: center;
+
+				.main {
+					@include font(4rem,var(--bold),135%);
+					letter-spacing: -.2rem;
+				}
+
+				.sub {
+					@include font(2.8rem,var(--medium),135%);
+					letter-spacing: -.14rem;
+				}
+
+				@include breakpoint('lg') {
+					.main {
+						font-size: 40px;
+						letter-spacing: -1.4px;
+					}
+
+					.sub {
+						font-size: 28px;
+						letter-spacing: -2px;
+					}
+				}
+			}
+		}
+
+
+		.guide-mov {
+			display: none;
+
+			@include size(100%,100%);
+
+			& > div { @include size(100%,100%); }
+
+			&.is-show {
+				display: block;
+			}
+
+			iframe {
+				@include size(100%,100%);
+			}
+		}
+	}
+}

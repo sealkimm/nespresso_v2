@@ -1,0 +1,64 @@
+.cart-wrap {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	cursor: pointer;
+
+	&.col {
+		flex-flow: column nowrap;
+		justify-content: center;
+
+		.price { width: 100%; }
+	}
+
+	@include breakpoint('lg') {
+		gap: 15px;
+	}
+
+	.price {
+		display: flex;
+		align-items: center;
+		gap: .5rem;
+
+		@include font( 2rem, var(--regular), 1.3);
+		font-family: 'NespressoLucas' !important;
+
+		@include breakpoint('lg') {
+			gap: 6px;
+			font-size: 18px;
+		}
+
+		.num {
+			display: flex;
+			align-items: center;
+			gap: .5rem;
+
+			&::before {
+				content: '￦';
+				font-size: 2rem;
+				line-height: 1.3;
+			}
+
+			@include breakpoint('lg') {
+				gap: 3px;
+
+				&::before {
+					position: relative;
+					top: 1px;
+					font-size: 16px;
+				}
+			}
+		}
+
+		.nonmember {
+			position: relative;
+			font-size: 2rem;
+			color: #929292;
+			text-decoration: line-through;
+
+			@include breakpoint('lg') {
+				font-size: 16px;
+			}
+		}
+	}
+}
