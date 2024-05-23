@@ -64,7 +64,7 @@
         isLogin: JSON.parse(sessionStorage.getItem('loginInfo-kr'))
           ? JSON.parse(sessionStorage.getItem('loginInfo-kr')).success
           : false,
-        activeStep: 0,
+        // activeStep: 0,
         activeQnaTab: 0,
         proContentNum: 0,
         bg,
@@ -212,69 +212,108 @@
 
       const activeStep = (idx) => {
         // pc
-        state.activeStep = idx;
-        const targetStep = stepPositions.find(step => step.id === idx);
+        // state.activeStep = idx;
+        // const targetStep = stepPositions.find(step => step.id === idx);
 
-        if (targetStep) {
-          window.scrollTo({
-              top: (targetStep.click) ? targetStep.click : targetStep.start,
-          });
-        }
+        // if (targetStep) {
+        //   window.scrollTo({
+        //       top: (targetStep.click) ? targetStep.click : targetStep.start,
+        //   });
+        // }
 
-        //모바일
-        if(state.isMobile) {
-          const targetElement = document.getElementById(idx);
+        // //모바일
+        // if(state.isMobile) {
+        //   const targetElement = document.getElementById(idx);
 
-          if (targetElement && state.isMobile) {
-            console.log(targetElement)
-              targetElement.scrollIntoView({block: 'start'});
-          }
+        //   if (targetElement && state.isMobile) {
+        //     console.log(targetElement)
+        //       targetElement.scrollIntoView({block: 'start'});
+        //   }
 
-          const stepItems = document.querySelectorAll('.guide-wrap li');
-          const buttons = document.querySelectorAll('.guide-wrap button'); 
-          buttons[0].classList.add('is-active');
-          stepItems.forEach((item, index) => {
-            const button = buttons[index];
-            const tl4 = gsap.timeline({
-              scrollTrigger: {
-                trigger: item,
-                start: "0% 30%",
-                end: "130% 30%",
-                scrub: 1,
-                onEnter: () => {button.classList.add('is-active')},
-                onLeave: () => {
-                  if (index !== 3) { 
-                    button.classList.remove('is-active');
-                  }
-                },
-                onEnterBack: () => {button.classList.add('is-active')},
-                onLeaveBack: () => {
-                  if (index !== 0) { 
-                    button.classList.remove('is-active');
-                  }
-                },
-              }
-            });
-          });
-        }
+        //   const stepItems = document.querySelectorAll('.guide-wrap li');
+        //   const buttons = document.querySelectorAll('.guide-wrap button'); 
+        //   buttons[0].classList.add('is-active');
+        //   stepItems.forEach((item, index) => {
+        //     const button = buttons[index];
+        //     const tl4 = gsap.timeline({
+        //       scrollTrigger: {
+        //         trigger: item,
+        //         start: "0% 30%",
+        //         end: "130% 30%",
+        //         scrub: 1,
+        //         onEnter: () => {button.classList.add('is-active')},
+        //         onLeave: () => {
+        //           if (index !== 3) { 
+        //             button.classList.remove('is-active');
+        //           }
+        //         },
+        //         onEnterBack: () => {button.classList.add('is-active')},
+        //         onLeaveBack: () => {
+        //           if (index !== 0) { 
+        //             button.classList.remove('is-active');
+        //           }
+        //         },
+        //       }
+        //     });
+        //   });
+        // }
       };
 
-      const updateActiveBtn = () => {
-          const currentPosition = window.scrollY;
-          const buttons = document.querySelectorAll('.guide-wrap button');
+      // const updateActiveBtn = () => {
+      //     const currentPosition = window.scrollY;
+      //     const buttons = document.querySelectorAll('.guide-wrap button');
 
-          let activeIndex = stepPositions.findIndex(step => currentPosition >= step.start && (step.end === undefined || currentPosition < step.end));
+      //     let activeIndex = stepPositions.findIndex(step => currentPosition >= step.start && (step.end === undefined || currentPosition < step.end));
 
-          buttons.forEach(button => {
-              button.classList.remove('is-active');
-          });
+      //     buttons.forEach(button => {
+      //         button.classList.remove('is-active');
+      //     });
 
-          if (activeIndex !== -1) {
-              buttons[activeIndex].classList.add('is-active');
-          }
-      }
+      //     if (activeIndex !== -1) {
+      //         buttons[activeIndex].classList.add('is-active');
+      //     }
+      // }
 
-      window.addEventListener('scroll', updateActiveBtn);
+      // window.addEventListener('scroll', updateActiveBtn);
+
+      
+
+        const marker=document.querySelector(".marker");
+
+        const setMarker = (e) => {
+          console.log(e)
+          marker.style.left = e.offsetLeft+"px";
+          marker.style.width = e.offsetWidth+"px";
+        }
+
+        const sections = document.querySelectorAll(".guide-wrap li");
+        const menus = document.querySelectorAll(".guide-wrap .button-area a")
+
+
+        window.addEventListener("scroll",()=>{
+            let current=""
+
+            sections.forEach(section=>{
+                const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+                if(window.scrollY >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+
+
+                
+                menus.forEach(menu=>{
+                    menu.classList.remove("is-active");
+                    const href = menu.getAttribute("href").substring(1);
+                    if(href===current) {
+                        menu.classList.add("is-active");
+                        setMarker(menu);
+                    }
+                })
+            })
+        })
+
+
+
 
       checkMedia();
       onMounted(() => {
@@ -284,6 +323,7 @@
         qnaSwiper();
         proSwiper();
         activeStep()
+        setMarker()
       });
 
       return {
@@ -293,6 +333,7 @@
         activeQnaSlide,
         activePro,
         activeStep,
+        setMarker
       };
     },
   };

@@ -40,32 +40,35 @@
 		</div>
 		<div class="inner">
 			<div class="button-area">
-				<button v-for="item in msg.step.num" :key="item.id" :id="'step' + item.id"
-				@click="activeStep(item.id)" :class="{ 'is-active': activeStep === item.id }"
+				<!-- ul, li > a -->
+				<a v-for="item in msg.step.num" :key="item.id" :href="'#' + item.id"
 				:ga_category="" :ga_action="" :ga_label=""
-				><span v-html="`${item.label}`"></span></button>
+				><span v-html="`${item.label}`"></span></a>
+				<div class="marker"></div>
 			</div>
 		</div>
-		<div class="step-area">
-			<ul class="list">
-				<li v-for="item in msg.step.num" :key="item.id" :id="item.id">
-					<span class="label" v-html="`${item.label}`"></span>
-					<div class="tit" v-html="item.tit" v-if="isMobile"></div>
-					<div class="tit" v-html="(item.titPc) ? item.titPc : item.tit" v-else></div>
-					<p class="txt" v-html="item.txt" v-if="isMobile"></p>
-					<p class="txt"  v-html="(item.txtPc) ? item.txtPc : item.txt" v-else></p>
-					<span class="txt2" v-if="item.txt2 && isMobile" v-html="item.txt2"></span>
-					<span class="txt2" v-if="item.txt2Pc && !isMobile" v-html="item.txt2Pc"></span>
-					<button class="link" v-if="item.link" v-html="item.link"
-					:ga_category="" :ga_action="" :ga_label=""
-					></button>
-					<div class="note" v-if="item.note1">
-						<span v-html="item.note1"></span>
-						<span v-if="item.note2 && isMobile" v-html="item.note2"></span>
-						<span v-if="item.note2Pc && !isMobile" v-html="item.note2Pc"></span>
-					</div>
-				</li>
-			</ul>
+		<div class="inner2">
+			<div class="step-area">
+				<ul class="list">
+					<li v-for="item in msg.step.num" :key="item.id" :id="item.id">
+						<span class="label" v-html="`${item.label}`"></span>setMarker
+						<div class="tit" v-html="item.tit" v-if="isMobile"></div>
+						<div class="tit" v-html="(item.titPc) ? item.titPc : item.tit" v-else></div>
+						<p class="txt" v-html="item.txt" v-if="isMobile"></p>
+						<p class="txt"  v-html="(item.txtPc) ? item.txtPc : item.txt" v-else></p>
+						<span class="txt2" v-if="item.txt2 && isMobile" v-html="item.txt2"></span>
+						<span class="txt2" v-if="item.txt2Pc && !isMobile" v-html="item.txt2Pc"></span>
+						<button class="link" v-if="item.link" v-html="item.link"
+						:ga_category="" :ga_action="" :ga_label=""
+						></button>
+						<div class="note" v-if="item.note1">
+							<span v-html="item.note1"></span>
+							<span v-if="item.note2 && isMobile" v-html="item.note2"></span>
+							<span v-if="item.note2Pc && !isMobile" v-html="item.note2Pc"></span>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
@@ -232,3 +235,129 @@
 </div>
 {{	include('../wonka-project/@inc/vue.html')	}}
 {%	endblock	%}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        html {
+  scroll-behavior: smooth;
+}
+a {
+  color:inherit;
+  text-decoration:none;
+}
+.nav {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  justify-content: center;
+}
+.nav__menu {
+  display: flex;
+}
+.nav__menu > li {
+  padding: 1.5rem;
+}
+.nav__menu--foused {
+  /* color: purple; */
+  background: linear-gradient(96deg,#c28d38 0%,#f0e4c1 39%,#ffe8c2 53%,#e0bc7f 67%,#c69d5e 92%);
+
+}
+ul,li {
+    list-style: none;
+}
+.marker {
+  content: "";
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  width: 0%;
+  height: 3px;
+  background-color: purple;
+  transition: 0.2s;
+}
+section {
+  text-align: center;
+  font-size: 20rem;
+  height: 200vh;
+  color: white;
+}
+#one {
+  background: palegoldenrod;
+}
+#two {
+  background: palegreen;
+}
+#three {
+  background: paleturquoise;
+}
+#four {
+  background: palevioletred;
+}
+
+    </style>
+
+
+
+    <nav id="nav" class="nav">
+        <ul class="nav__menu">
+            <li><a href="#one">ONE</a></li>
+            <li><a href="#two">TWO</a></li>
+            <li><a href="#three">THREE</a></li>
+            <li><a href="#four">FOUR</a></li>
+            <div class="marker"></div>
+        </ul>
+    </nav>
+    <section id="one">one</section>
+    <section id="two">two</section>
+    <section id="three">three</section>
+    <section id="four">four</section>
+
+
+    <script>
+        const marker=document.querySelector(".marker");
+
+const setMarker = (e) => {
+    console.log(e)
+    marker.style.left = e.offsetLeft+"px";
+    marker.style.width = e.offsetWidth+"px";
+}
+
+const sections = document.querySelectorAll("section");
+const menus = document.querySelectorAll(".nav__menu > li > a")
+
+
+window.addEventListener("scroll",()=>{
+    let current=""
+
+    sections.forEach(section=>{
+        
+        const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+        if(window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+
+        menus.forEach(menu=>{
+            menu.classList.remove("nav__menu--foused");
+            const href = menu.getAttribute("href").substring(1);
+            if(href===current) {
+                menu.classList.add("nav__menu--foused");
+                setMarker(menu);
+            }
+        })
+    })
+})
+    </script>
+</body>
+</html> -->
